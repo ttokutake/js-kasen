@@ -10,5 +10,8 @@
   },
   "devDependencies": {
     "immutable": "^3.8.2"
+  },
+  "dependencies": {
+    "clone": "^2.1.2"
   }
 }
