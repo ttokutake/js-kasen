@@ -1,5 +1,7 @@
 const clone = require('clone');
 
+const {Some, None} = require('./option');
+
 class Iterator {
   constructor(array, isReverse) {
     this.array = array;
@@ -19,6 +21,11 @@ class Iterator {
   }
 }
 
+const Methods = {
+  map: (func, some, key) => some.set(func(some.value, key)),
+  filter: (func, some, key) => func(some.value, key) ? some : new None(),
+};
+
 class KasenArray {
   constructor(array) {
     this.__array = clone(array);
@@ -27,8 +34,8 @@ class KasenArray {
     this.__isReverse = false;
   }
 
-  __pile(methodName, ...args) {
-    this.__depot.push([methodName, args]);
+  __pile(methodName, func) {
+    this.__depot.push([methodName, func]);
   }
 
   __collect(func) {
@@ -42,6 +49,11 @@ class KasenArray {
 
   map(func) {
     this.__pile('map', func);
+    return this;
+  }
+
+  filter(func) {
+    this.__pile('filter', func);
     return this;
   }
 
@@ -64,25 +76,28 @@ class KasenArray {
   }
 
   __consume() {
-    return this.__ship().reduce((nextColl, [lazyMethods, punctuator]) => {
-      const coll = [];
-      const iter = new Iterator(nextColl, this.__isReverse);
+    return this.__ship().reduce((coll, [lazyMethods, punctuator]) => {
+      const nextColl = [];
+      const iter = new Iterator(coll, this.__isReverse);
       let key, value;
       while (!({key, value} = iter.next()).done) {
-        const finalValue = lazyMethods.reduce((nextValue, [method, args]) => {
-          switch (method) {
-            case 'map': {
-              const [func] = args;
-              return func(nextValue, key);
-            }
-            default: {
-              throw new Error('method not found');
-            }
+        let option = new Some(value);
+        for (let i = 0, len = lazyMethods.length; i < len; i++) {
+          const [methodName, func] = lazyMethods[i];
+          const method = Methods[methodName];
+          if (!method) {
+            throw new Error('method not found');
           }
-        }, value);
-        coll.push(finalValue);
+          option = method(func, option, key);
+          if (None.isMine(option)) {
+            break;
+          }
+        }
+        if (Some.isMine(option)) {
+          nextColl.push(option.value);
+        }
       }
-      return punctuator ? punctuator(coll) : coll;
+      return punctuator ? punctuator(nextColl) : nextColl;
     }, this.__array);
   }
 

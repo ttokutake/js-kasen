@@ -5,9 +5,10 @@ const input = [1, 2, 3, 4];
 console.log(input);
 
 let array = new KasenArray(input)
-  .map((v, i) => { console.log(i, v); return v + 1; })
+  .map((v, i) => { console.log('map1', i, v); return v + 1; })
   .reverse()
-  .map((v, i) => { console.log(i, v); return v + 1; });
+  .filter((v, i) => { console.log('filt', i, v); return i % 2 === 0; })
+  .map((v, i) => { console.log('map2', i, v); return v + 1; });
 
 let output = array.toJs();
 output.push(100);
