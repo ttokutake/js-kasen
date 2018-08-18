@@ -20,18 +20,28 @@ class Iterator {
 }
 
 class KasenArray {
-  __reset(array, doClone) {
-    this.__array = doClone ? clone(array) : array;
-    this.__methods = [];
+  constructor(array) {
+    this.__array = clone(array);
+    this.__depot = [];
+    this.__warehouse = [];
     this.__isReverse = false;
   }
 
-  constructor(array) {
-    this.__reset(array, true);
+  __pile(methodName, ...args) {
+    this.__depot.push([methodName, args]);
+  }
+
+  __collect(func) {
+    this.__warehouse.push([this.__depot, func]);
+    this.__depot = [];
+  }
+
+  __ship() {
+    return this.__depot.length ? [...this.__warehouse, [this.__depot, null]] : this.__warehouse;
   }
 
   map(func) {
-    this.__methods.push(['map', [func]]);
+    this.__pile('map', func);
     return this;
   }
 
@@ -40,51 +50,52 @@ class KasenArray {
     return this;
   }
 
-  __consume() {
-    const coll = [];
-    const iter = new Iterator(this.__array, this.__isReverse);
-    let key, value;
-    while (!({key, value} = iter.next()).done) {
-      let final = value;
-      this.__methods.forEach(([method, args]) => {
-        switch (method) {
-          case 'map':
-            const [func] = args;
-            final = func(final, key);
-            break;
-          default:
-            throw new Error('method not found');
-        }
-      });
-      coll.push(final);
-    }
-    return coll;
-  }
-
   set(index, value) {
-    if (index > this.__array.length) {
-      throw new Error('cannot set');
-    }
-    const coll = this.__consume();
-    const key = index < 0 ? this.__array.length + ((index + 1) % this.__array.length) - 1 : index;
-    coll[key] = value;
-    this.__reset(coll, false);
+    const func = (array) => {
+      if (index > array.length) {
+        throw new Error('cannot set');
+      }
+      const key = index < 0 ? array.length + ((index + 1) % array.length) - 1 : index;
+      array[key] = value;
+      return array;
+    };
+    this.__collect(func);
     return this;
   }
 
+  __consume() {
+    return this.__ship().reduce((nextColl, [lazyMethods, punctuator]) => {
+      const coll = [];
+      const iter = new Iterator(nextColl, this.__isReverse);
+      let key, value;
+      while (!({key, value} = iter.next()).done) {
+        const finalValue = lazyMethods.reduce((nextValue, [method, args]) => {
+          switch (method) {
+            case 'map': {
+              const [func] = args;
+              return func(nextValue, key);
+            }
+            default: {
+              throw new Error('method not found');
+            }
+          }
+        }, value);
+        coll.push(finalValue);
+      }
+      return punctuator ? punctuator(coll) : coll;
+    }, this.__array);
+  }
+
   toJs() {
-    const coll = this.__consume();
-    this.__reset(coll, true);
-    return coll;
+    return this.__consume();
   }
 
   reduce(func, init) {
-    const coll = this.toJs();
-    this.__reset(coll, false);
+    const coll = this.__consume();
     let acc = init;
     let tail = coll;
-    if (acc === undefined) {
-      if (tail.length === 0) {
+    if (init === undefined) {
+      if (coll.length === 0) {
         throw new Error('cannot reduce');
       }
       [acc, ...tail] = coll;
