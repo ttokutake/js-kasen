@@ -52,7 +52,7 @@ class KasenArray {
 
   set(index, value) {
     const func = (array) => {
-      if (index > array.length) {
+      if (index < -array.length || array.length < index) {
         throw new Error('cannot set');
       }
       const key = index < 0 ? array.length + ((index + 1) % array.length) - 1 : index;

@@ -24,7 +24,6 @@ console.log(output);
 output = new KasenArray(input)
   .set(-1, 100)
   .set(-4, 1000)
-  .set(-5, 99)
   .toJs();
 
 console.log(output);
