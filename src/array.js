@@ -1,6 +1,6 @@
 const clone = require('clone');
 
-const {Some, None, Break} = require('./state');
+const {Some, None, Next, Gone, Done} = require('./state');
 
 class Iterator {
   constructor(array, isReverse) {
@@ -24,8 +24,9 @@ class Iterator {
 const Methods = {
   map: (func, some, key) => some.set(func(some.value, key)),
   filter: (func, some, key) => func(some.value, key) ? some : new None(),
-  every: (func, some, key) => func(some.value, key) ? some : new Break(false),
-  find: (func, some, key) => func(some.value, key) ? new Break(some.value) : some,
+  take: (func, some, key) => func(some, key),
+  every: (func, some, key) => func(some.value, key) ? some : new Done(false),
+  find: (func, some, key) => func(some.value, key) ? new Done(some.value) : some,
 };
 
 class KasenArray {
@@ -57,6 +58,22 @@ class KasenArray {
 
   filter(func) {
     this.__pile(['filter', func]);
+    return this;
+  }
+
+  take(num) {
+    let count = 0;
+    const func = (some, _key) => {
+      count++;
+      if (count > num) {
+        return new Gone();
+      }
+      if (count === num) {
+        return new Next(some.value);
+      }
+      return some;
+    };
+    this.__pile(['take', func]);
     return this;
   }
 
@@ -97,7 +114,7 @@ class KasenArray {
             throw new Error('method not found');
           }
           state = method(func, state, key);
-          if (Break.isMine(state)) {
+          if (Done.isMine(state)) {
             return state;
           }
           if (None.isMine(state)) {
@@ -106,6 +123,12 @@ class KasenArray {
         }
         if (Some.isMine(state)) {
           nextColl.push(state.value);
+          if (Next.isMine(state)) {
+            break;
+          }
+        }
+        if (Gone.isMine(state)) {
+          break;
         }
       }
       coll = punctuator ? punctuator(nextColl) : nextColl;
@@ -135,17 +158,17 @@ class KasenArray {
 
   every(func) {
     const result = this.__consume(['every', func], false);
-    return !Break.isMine(result);
+    return !Done.isMine(result);
   }
 
   find(func) {
     const result = this.__consume(['find', func], false);
-    return Break.isMine(result) ? result.value : undefined;
+    return Done.isMine(result) ? result.value : undefined;
   }
 
   findLast(func) {
     const result = this.__consume(['find', func], true);
-    return Break.isMine(result) ? result.value : undefined;
+    return Done.isMine(result) ? result.value : undefined;
   }
 }
 

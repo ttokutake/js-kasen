@@ -19,18 +19,32 @@ class None {
   }
 }
 
-class Break {
+class Next extends Some {
+  static isMine(v) {
+    return v instanceof Next;
+  }
+}
+
+class Gone extends None {
+  static isMine(v) {
+    return v instanceof Gone;
+  }
+}
+
+class Done {
   constructor(value) {
     this.value = value;
   }
 
   static isMine(v) {
-    return v instanceof Break;
+    return v instanceof Done;
   }
 }
 
 module.exports = {
   Some,
   None,
-  Break,
+  Next,
+  Gone,
+  Done,
 };

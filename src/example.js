@@ -46,3 +46,11 @@ output = new KasenArray(input)
   .findLast(v => v === 3);
 
 console.log(output);
+
+output = new KasenArray(input)
+  .map(v => v + 1)
+  .take(3)
+  .map(v => v + 1)
+  .toJs();
+
+console.log(output);
