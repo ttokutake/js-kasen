@@ -71,12 +71,12 @@ class Collection {
   }
 
   __consume(lazyMethod, toggleReverse) {
-    const operators = this.__ship(lazyMethod);
+    const operations = this.__ship(lazyMethod);
     const isReverse = toggleReverse ? !this.__isReverse : this.__isReverse;
 
     let coll = this.__coll;
-    for (let i = 0, operatorsLen = operators.length; i < operatorsLen; i++) {
-      const [lazyMethods, punctuator] = operators[i];
+    for (let i = 0, operationsLen = operations.length; i < operationsLen; i++) {
+      const [lazyMethods, layOut] = operations[i];
       const nextColl = this.Self.__default();
       const iter = this.Self.__genIterator(coll, isReverse);
       let key, value;
@@ -106,7 +106,7 @@ class Collection {
           break;
         }
       }
-      coll = punctuator ? punctuator(nextColl) : nextColl;
+      coll = layOut ? layOut(nextColl) : nextColl;
     }
     return coll;
   }
