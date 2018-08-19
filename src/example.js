@@ -40,3 +40,9 @@ output = new KasenArray(input)
   .find(v => v === 3);
 
 console.log(output);
+
+output = new KasenArray(input)
+  .map(v => v + 1)
+  .findLast(v => v === 3);
+
+console.log(output);

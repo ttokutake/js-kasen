@@ -78,13 +78,15 @@ class KasenArray {
     return this;
   }
 
-  __consume(lazyMethod) {
+  __consume(lazyMethod, toggleReverse) {
     const operators = this.__ship(lazyMethod);
+    const isReverse = toggleReverse ? !this.__isReverse : this.__isReverse;
+
     let coll = this.__array;
     for (let i = 0, operatorsLen = operators.length; i < operatorsLen; i++) {
       const [lazyMethods, punctuator] = operators[i];
       const nextColl = [];
-      const iter = new Iterator(coll, this.__isReverse);
+      const iter = new Iterator(coll, isReverse);
       let key, value;
       while (!({key, value} = iter.next()).done) {
         let state = new Some(value);
@@ -112,11 +114,11 @@ class KasenArray {
   }
 
   toJs() {
-    return this.__consume(null);
+    return this.__consume(null, false);
   }
 
   reduce(func, init) {
-    const coll = this.__consume(null);
+    const coll = this.__consume(null, false);
     let acc = init;
     let tail = coll;
     if (init === undefined) {
@@ -132,12 +134,17 @@ class KasenArray {
   }
 
   every(func) {
-    const result = this.__consume(['every', func]);
+    const result = this.__consume(['every', func], false);
     return !Break.isMine(result);
   }
 
   find(func) {
-    const result = this.__consume(['find', func]);
+    const result = this.__consume(['find', func], false);
+    return Break.isMine(result) ? result.value : undefined;
+  }
+
+  findLast(func) {
+    const result = this.__consume(['find', func], true);
     return Break.isMine(result) ? result.value : undefined;
   }
 }
