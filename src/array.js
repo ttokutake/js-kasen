@@ -25,6 +25,7 @@ const Methods = {
   map: (func, some, key) => some.set(func(some.value, key)),
   filter: (func, some, key) => func(some.value, key) ? some : new None(),
   every: (func, some, key) => func(some.value, key) ? some : new Break(false),
+  find: (func, some, key) => func(some.value, key) ? new Break(some.value) : some,
 };
 
 class KasenArray {
@@ -77,7 +78,7 @@ class KasenArray {
     return this;
   }
 
-  __consume(lazyMethod, finalizer) {
+  __consume(lazyMethod) {
     const operators = this.__ship(lazyMethod);
     let coll = this.__array;
     for (let i = 0, operatorsLen = operators.length; i < operatorsLen; i++) {
@@ -95,7 +96,7 @@ class KasenArray {
           }
           state = method(func, state, key);
           if (Break.isMine(state)) {
-            return state.value;
+            return state;
           }
           if (None.isMine(state)) {
             break;
@@ -107,15 +108,15 @@ class KasenArray {
       }
       coll = punctuator ? punctuator(nextColl) : nextColl;
     }
-    return finalizer ? finalizer() : coll;
+    return coll;
   }
 
   toJs() {
-    return this.__consume(null, null);
+    return this.__consume(null);
   }
 
   reduce(func, init) {
-    const coll = this.__consume(null, null);
+    const coll = this.__consume(null);
     let acc = init;
     let tail = coll;
     if (init === undefined) {
@@ -131,7 +132,13 @@ class KasenArray {
   }
 
   every(func) {
-    return this.__consume(['every', func], () => true);
+    const result = this.__consume(['every', func]);
+    return !Break.isMine(result);
+  }
+
+  find(func) {
+    const result = this.__consume(['find', func]);
+    return Break.isMine(result) ? result.value : undefined;
   }
 }
 

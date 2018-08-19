@@ -34,3 +34,9 @@ output = new KasenArray(input)
   .every(v => v % 2 == 0);
 
 console.log(output);
+
+output = new KasenArray(input)
+  .map(v => v + 1)
+  .find(v => v === 3);
+
+console.log(output);
