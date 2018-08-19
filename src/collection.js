@@ -19,17 +19,17 @@ class Collection {
     this.Self = Self;
   }
 
-  static __genIterator(_coll, _isReverse) {
-    throw new Error('not implemented');
-  }
+  // static __genIterator(_coll, _isReverse) {
+  //   throw new Error('not implemented');
+  // }
 
-  static __default() {
-    throw new Error('not implemented');
-  }
+  // static __default() {
+  //   throw new Error('not implemented');
+  // }
 
-  static __add(_coll, _key, _value) {
-    throw new Error('not implemented');
-  }
+  // static __add(_coll, _key, _value) {
+  //   throw new Error('not implemented');
+  // }
 
   __pile(lazyMethod) {
     this.__depot.push(lazyMethod);
@@ -119,6 +119,10 @@ class Collection {
     const coll = this.__consume(null, false);
     return this.Self.reduce(coll, func, init);
   }
+
+  // static reduce(_coll, _func, _init) {
+  //   throw new Error('not implemented');
+  // }
 
   every(func) {
     const result = this.__consume(['every', func], false);
