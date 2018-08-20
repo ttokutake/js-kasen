@@ -39,8 +39,9 @@ class KasenArray extends Collection {
 
   take(num) {
     let count = 0;
+    // eslint-disable-next-line no-unused-vars
     const func = (some, _key) => {
-      count++;
+      count += 1;
       if (count > num) {
         return new Gone();
       }
@@ -59,7 +60,7 @@ class KasenArray extends Collection {
       }
       const key =
         index < 0 ? array.length + ((index + 1) % array.length) - 1 : index;
-      array[key] = value;
+      array[key] = value; // eslint-disable-line no-param-reassign
       return array;
     };
     return super.set(func);

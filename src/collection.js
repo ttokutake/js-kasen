@@ -80,18 +80,23 @@ class Collection {
     const isReverse = toggleReverse ? !this.__isReverse : this.__isReverse;
 
     let coll = this.__coll;
-    for (let i = 0, operationsLen = operations.length; i < operationsLen; i++) {
+    for (
+      let i = 0, operationsLen = operations.length;
+      i < operationsLen;
+      i += 1
+    ) {
       const [lazyMethods, layOut] = operations[i];
       const nextColl = this.Self.__default();
       const iter = this.Self.__genIterator(coll, isReverse);
       let key;
       let value;
+      // eslint-disable-next-line no-cond-assign
       while (!({ key, value } = iter.next()).done) {
         let state = new Some(value);
         for (
           let j = 0, lazyMethodsLen = lazyMethods.length;
           j < lazyMethodsLen;
-          j++
+          j += 1
         ) {
           const [methodName, func] = lazyMethods[j];
           const method = Methods[methodName];

@@ -5,10 +5,10 @@ const input = [1, 2, 3, 4];
 console.log(input);
 
 const array = new KasenArray(input)
-  .map((v, i) => v + 1)
+  .map(v => v + 1)
   .reverse()
   .filter((v, i) => i % 2 === 0)
-  .map((v, i) => v + 1);
+  .map(v => v + 1);
 
 let output = array.toJs();
 output.push(100);
@@ -27,7 +27,7 @@ output = new KasenArray(input)
 
 console.log(output);
 
-output = new KasenArray(input).map(v => v + 1).every(v => v % 2 == 0);
+output = new KasenArray(input).map(v => v + 1).every(v => v % 2 === 0);
 
 console.log(output);
 
