@@ -1,5 +1,9 @@
 {
   "extends": ["airbnb-base", "plugin:prettier/recommended"],
+  "plugins": ["jest"],
+  "env": {
+    "jest/globals": true
+  },
   "rules": {
     "no-underscore-dangle": ["error", { "allowAfterThis": true, "allowAfterSuper": true, "allow": ["__genIterator", "__default", "__add"] }]
   }
