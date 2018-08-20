@@ -6,10 +6,18 @@
   "author": "ttokutake <tadatoshi.tokutake@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "immutable": "^3.8.2"
+    "eslint": "^5.4.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^3.0.1",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-prettier": "^2.6.2",
+    "immutable": "^3.8.2",
+    "prettier": "^1.14.2"
   },
   "dependencies": {
     "clone": "^2.1.2"
