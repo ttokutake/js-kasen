@@ -46,5 +46,5 @@ module.exports = {
   None,
   Next,
   Gone,
-  Done,
+  Done
 };

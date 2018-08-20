@@ -1,13 +1,14 @@
-const clone = require('clone');
+const clone = require("clone");
 
-const {Some, None, Next, Gone, Done} = require('./state');
+const { Some, None, Next, Gone, Done } = require("./state");
 
 const Methods = {
   map: (func, some, key) => some.set(func(some.value, key)),
-  filter: (func, some, key) => func(some.value, key) ? some : new None(),
+  filter: (func, some, key) => (func(some.value, key) ? some : new None()),
   take: (func, some, key) => func(some, key),
-  every: (func, some, key) => func(some.value, key) ? some : new Done(false),
-  find: (func, some, key) => func(some.value, key) ? new Done(some.value) : some,
+  every: (func, some, key) => (func(some.value, key) ? some : new Done(false)),
+  find: (func, some, key) =>
+    func(some.value, key) ? new Done(some.value) : some
 };
 
 class Collection {
@@ -41,22 +42,26 @@ class Collection {
   }
 
   __ship(lazyMethod) {
-    const lazyMethods = lazyMethod ? [...this.__depot, lazyMethod] : this.__depot;
-    return lazyMethods.length ? [...this.__warehouse, [lazyMethods, null]] : this.__warehouse;
+    const lazyMethods = lazyMethod
+      ? [...this.__depot, lazyMethod]
+      : this.__depot;
+    return lazyMethods.length
+      ? [...this.__warehouse, [lazyMethods, null]]
+      : this.__warehouse;
   }
 
   map(func) {
-    this.__pile(['map', func]);
+    this.__pile(["map", func]);
     return this;
   }
 
   filter(func) {
-    this.__pile(['filter', func]);
+    this.__pile(["filter", func]);
     return this;
   }
 
   take(func) {
-    this.__pile(['take', func]);
+    this.__pile(["take", func]);
     return this;
   }
 
@@ -79,14 +84,19 @@ class Collection {
       const [lazyMethods, layOut] = operations[i];
       const nextColl = this.Self.__default();
       const iter = this.Self.__genIterator(coll, isReverse);
-      let key, value;
-      while (!({key, value} = iter.next()).done) {
+      let key;
+      let value;
+      while (!({ key, value } = iter.next()).done) {
         let state = new Some(value);
-        for (let j = 0, lazyMethodsLen = lazyMethods.length; j < lazyMethodsLen; j++) {
+        for (
+          let j = 0, lazyMethodsLen = lazyMethods.length;
+          j < lazyMethodsLen;
+          j++
+        ) {
           const [methodName, func] = lazyMethods[j];
           const method = Methods[methodName];
           if (!method) {
-            throw new Error('method not found');
+            throw new Error("method not found");
           }
           state = method(func, state, key);
           if (Done.isMine(state)) {
@@ -125,17 +135,17 @@ class Collection {
   // }
 
   every(func) {
-    const result = this.__consume(['every', func], false);
+    const result = this.__consume(["every", func], false);
     return !Done.isMine(result);
   }
 
   find(func) {
-    const result = this.__consume(['find', func], false);
+    const result = this.__consume(["find", func], false);
     return Done.isMine(result) ? result.value : undefined;
   }
 
   findLast(func) {
-    const result = this.__consume(['find', func], true);
+    const result = this.__consume(["find", func], true);
     return Done.isMine(result) ? result.value : undefined;
   }
 }

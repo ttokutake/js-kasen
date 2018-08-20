@@ -1,5 +1,5 @@
-const Collection = require('./collection');
-const {Next, Gone} = require('./state');
+const Collection = require("./collection");
+const { Next, Gone } = require("./state");
 
 class Iterator {
   constructor(array, isReverse) {
@@ -11,12 +11,12 @@ class Iterator {
 
   next() {
     if (this.i === this.end) {
-      return {done: true};
+      return { done: true };
     }
     const key = this.i;
     const value = this.array[key];
     this.i += this.step;
-    return {key, value, done: false};
+    return { key, value, done: false };
   }
 }
 
@@ -53,11 +53,12 @@ class KasenArray extends Collection {
   }
 
   set(index, value) {
-    const func = (array) => {
+    const func = array => {
       if (index < -array.length || array.length < index) {
-        throw new Error('cannot set');
+        throw new Error("cannot set");
       }
-      const key = index < 0 ? array.length + ((index + 1) % array.length) - 1 : index;
+      const key =
+        index < 0 ? array.length + ((index + 1) % array.length) - 1 : index;
       array[key] = value;
       return array;
     };

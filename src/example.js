@@ -1,10 +1,10 @@
-const KasenArray = require('./array');
+const KasenArray = require("./array");
 
 const input = [1, 2, 3, 4];
 
 console.log(input);
 
-let array = new KasenArray(input)
+const array = new KasenArray(input)
   .map((v, i) => v + 1)
   .reverse()
   .filter((v, i) => i % 2 === 0)
@@ -16,9 +16,7 @@ output.push(100);
 console.log(output);
 console.log(array.toJs());
 
-output = new KasenArray(input)
-  .map(v => v + 1)
-  .reduce((v, k) => v + k, 10);
+output = new KasenArray(input).map(v => v + 1).reduce((v, k) => v + k, 10);
 
 console.log(output);
 
@@ -29,21 +27,15 @@ output = new KasenArray(input)
 
 console.log(output);
 
-output = new KasenArray(input)
-  .map(v => v + 1)
-  .every(v => v % 2 == 0);
+output = new KasenArray(input).map(v => v + 1).every(v => v % 2 == 0);
 
 console.log(output);
 
-output = new KasenArray(input)
-  .map(v => v + 1)
-  .find(v => v === 3);
+output = new KasenArray(input).map(v => v + 1).find(v => v === 3);
 
 console.log(output);
 
-output = new KasenArray(input)
-  .map(v => v + 1)
-  .findLast(v => v === 3);
+output = new KasenArray(input).map(v => v + 1).findLast(v => v === 3);
 
 console.log(output);
 
