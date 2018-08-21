@@ -2,7 +2,7 @@ const _ = require("../src/array");
 
 describe("Array", () => {
   describe("map()", () => {
-    test("should return mapped array", () => {
+    test("method", () => {
       const ios = [
         [[], []],
         [[1], [2]],
@@ -18,7 +18,7 @@ describe("Array", () => {
   });
 
   describe("filter()", () => {
-    test("should return filtered array", () => {
+    test("method", () => {
       const ios = [
         [[], []],
         [[1], []],
@@ -29,6 +29,30 @@ describe("Array", () => {
       ios.forEach(([input, expected]) => {
         const array = new _(input);
         const result = array.filter(v => v % 2 === 0).toJs();
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
+  describe("take()", () => {
+    test("method", () => {
+      const ios = [
+        [[], 0, []],
+        [[1], 0, []],
+        [[1, 2], 0, []],
+        [[1, 2, 3], 0, []],
+        [[], 1, []],
+        [[1], 1, [1]],
+        [[1, 2], 1, [1]],
+        [[1, 2, 3], 1, [1]],
+        [[], 2, []],
+        [[1], 2, [1]],
+        [[1, 2], 2, [1, 2]],
+        [[1, 2, 3], 2, [1, 2]],
+      ];
+      ios.forEach(([input, arg, expected]) => {
+        const array = new _(input);
+        const result = array.take(arg).toJs();
         expect(result).toEqual(expected);
       });
     });
