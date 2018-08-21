@@ -16,4 +16,21 @@ describe("Array", () => {
       });
     });
   });
+
+  describe("filter()", () => {
+    test("should return filtered array", () => {
+      const ios = [
+        [[], []],
+        [[1], []],
+        [[2], [2]],
+        [[1, 2], [2]],
+        [[1, 2, 3], [2]]
+      ];
+      ios.forEach(([input, expected]) => {
+        const array = new _(input);
+        const result = array.filter(v => v % 2 === 0).toJs();
+        expect(result).toEqual(expected);
+      });
+    });
+  });
 });
