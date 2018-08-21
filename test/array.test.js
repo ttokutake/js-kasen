@@ -50,9 +50,9 @@ describe("Array", () => {
         [[1, 2], 2, [1, 2]],
         [[1, 2, 3], 2, [1, 2]]
       ];
-      ios.forEach(([input, arg, expected]) => {
+      ios.forEach(([input, num, expected]) => {
         const array = new _(input);
-        const result = array.take(arg).toJs();
+        const result = array.take(num).toJs();
         expect(result).toEqual(expected);
       });
     });
@@ -69,6 +69,27 @@ describe("Array", () => {
       ios.forEach(([input, expected]) => {
         const array = new _(input);
         const result = array.reverse().toJs();
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
+  describe("set()", () => {
+    test("method", () => {
+      const ios = [
+        [[], 0, [10]],
+        [[1], -1, [10]],
+        [[1], 0, [10]],
+        [[1], 1, [1, 10]],
+        [[1, 2], -2, [10, 2]],
+        [[1, 2], -1, [1, 10]],
+        [[1, 2], 0, [10, 2]],
+        [[1, 2], 1, [1, 10]],
+        [[1, 2], 2, [1, 2, 10]]
+      ];
+      ios.forEach(([input, index, expected]) => {
+        const array = new _(input);
+        const result = array.set(index, 10).toJs();
         expect(result).toEqual(expected);
       });
     });
