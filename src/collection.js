@@ -67,6 +67,7 @@ class Collection {
 
   reverse() {
     this.__isReverse = !this.__isReverse;
+    this.__pile(["map", v => v]); // TODO: Consider more efficient way
     return this;
   }
 

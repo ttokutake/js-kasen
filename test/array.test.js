@@ -48,11 +48,27 @@ describe("Array", () => {
         [[], 2, []],
         [[1], 2, [1]],
         [[1, 2], 2, [1, 2]],
-        [[1, 2, 3], 2, [1, 2]],
+        [[1, 2, 3], 2, [1, 2]]
       ];
       ios.forEach(([input, arg, expected]) => {
         const array = new _(input);
         const result = array.take(arg).toJs();
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
+  describe("reverse()", () => {
+    test("method", () => {
+      const ios = [
+        [[], []],
+        [[1], [1]],
+        [[1, 2], [2, 1]],
+        [[1, 2, 3], [3, 2, 1]]
+      ];
+      ios.forEach(([input, expected]) => {
+        const array = new _(input);
+        const result = array.reverse().toJs();
         expect(result).toEqual(expected);
       });
     });
