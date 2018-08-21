@@ -67,7 +67,7 @@ class KasenArray extends Collection {
   }
 
   static reduce(array, func, init) {
-    return array.reduce(func, init);
+    return init === undefined ? array.reduce(func) : array.reduce(func, init);
   }
 }
 
