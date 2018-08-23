@@ -1,4 +1,4 @@
-const Kasen = require("../src/array");
+const Kasen = require("../dist/kasen");
 
 describe("Array", () => {
   describe("map()", () => {
