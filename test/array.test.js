@@ -133,8 +133,64 @@ describe("Array", () => {
     // TODO: error
   });
 
-  // TODO: every()
-  // TODO: find()
-  // TODO: findLast()
+  describe("every()", () => {
+    test("ok", () => {
+      const ios = [
+        [[], true],
+        [[1], true],
+        [[2], false],
+        [[1, 2], false],
+        [[1, 2, 3], false],
+        [[1, 3, 5], true]
+      ];
+      ios.forEach(([input, expected]) => {
+        const array = new _(input);
+        const result = array.every(v => v % 2 === 1);
+        expect(result).toBe(expected);
+      });
+      // TODO: static method
+    });
+  });
+
+  describe("find()", () => {
+    test("ok", () => {
+      const ios = [
+        [[], undefined],
+        [[1], 1],
+        [[2], undefined],
+        [[1, 2], 1],
+        [[2, 3], 3],
+        [[1, 2, 3], 1],
+        [[2, 4, 5], 5]
+      ];
+      ios.forEach(([input, expected]) => {
+        const array = new _(input);
+        const result = array.find(v => v % 2 === 1);
+        expect(result).toBe(expected);
+      });
+      // TODO: static method
+    });
+  });
+
+  describe("findLast()", () => {
+    test("ok", () => {
+      const ios = [
+        [[], undefined],
+        [[1], 1],
+        [[2], undefined],
+        [[1, 2], 1],
+        [[2, 3], 3],
+        [[1, 2, 3], 3],
+        [[1, 2, 4], 1]
+      ];
+      ios.forEach(([input, expected]) => {
+        const array = new _(input);
+        const result = array.findLast(v => v % 2 === 1);
+        expect(result).toBe(expected);
+      });
+      // TODO: static method
+    });
+  });
+
   // TODO: combination tests (Some, None, Next, Gone)
 });
