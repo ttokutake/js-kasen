@@ -1,10 +1,15 @@
-const mode = process.env.NODE_ENV === "production" ? "production" : "development";
+const mode =
+  process.env.NODE_ENV === "production" ? "production" : "development";
 
 module.exports = {
   mode,
   output: {
     library: "Kasen",
-    libraryTarget: "commonjs2",
+    libraryTarget: "umd",
+    globalObject: "this",
     filename: "kasen.js"
+  },
+  module: {
+    rules: [{ test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }]
   }
 };

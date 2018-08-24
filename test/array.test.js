@@ -1,4 +1,4 @@
-const Kasen = require("../dist/kasen");
+import Kasen from "../dist/kasen";
 
 describe("Array", () => {
   describe("map()", () => {
