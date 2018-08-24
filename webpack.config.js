@@ -6,7 +6,7 @@ module.exports = {
   output: {
     library: "Kasen",
     libraryTarget: "umd",
-    globalObject: "this",
+    globalObject: "this", // TODO: Remove this workaround
     filename: "kasen.js"
   },
   module: {
