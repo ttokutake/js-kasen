@@ -3,6 +3,7 @@ const mode =
 
 module.exports = {
   mode,
+  entry: "./src/kasen.js",
   output: {
     library: "Kasen",
     libraryTarget: "umd",
