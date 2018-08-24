@@ -1,4 +1,4 @@
-class Some {
+export class Some {
   constructor(value) {
     this.value = value;
   }
@@ -13,25 +13,25 @@ class Some {
   }
 }
 
-class None {
+export class None {
   static isMine(v) {
     return v instanceof None;
   }
 }
 
-class Next extends Some {
+export class Next extends Some {
   static isMine(v) {
     return v instanceof Next;
   }
 }
 
-class Gone extends None {
+export class Gone extends None {
   static isMine(v) {
     return v instanceof Gone;
   }
 }
 
-class Done {
+export class Done {
   constructor(value) {
     this.value = value;
   }
@@ -40,11 +40,3 @@ class Done {
     return v instanceof Done;
   }
 }
-
-module.exports = {
-  Some,
-  None,
-  Next,
-  Gone,
-  Done
-};

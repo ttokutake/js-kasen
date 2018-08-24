@@ -1,5 +1,5 @@
-const Collection = require("./collection");
-const { Next, Gone } = require("./state");
+import Collection from "./collection";
+import { Next, Gone } from "./state";
 
 class Iterator {
   constructor(array, isReverse) {
@@ -20,7 +20,7 @@ class Iterator {
   }
 }
 
-class KasenArray extends Collection {
+export default class KasenArray extends Collection {
   constructor(array) {
     super(KasenArray, array);
   }
@@ -70,5 +70,3 @@ class KasenArray extends Collection {
     return init === undefined ? array.reduce(func) : array.reduce(func, init);
   }
 }
-
-module.exports = KasenArray;

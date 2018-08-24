@@ -1,6 +1,6 @@
-const clone = require("clone");
+import clone from "clone";
 
-const { Some, None, Next, Gone, Done } = require("./state");
+import { Some, None, Next, Gone, Done } from "./state";
 
 const Methods = {
   map: (func, some, key) => some.set(func(some.value, key)),
@@ -11,7 +11,7 @@ const Methods = {
     func(some.value, key) ? new Done(some.value) : some
 };
 
-class Collection {
+export default class Collection {
   constructor(Self, coll) {
     this.__coll = clone(coll);
     this.__depot = [];
@@ -155,5 +155,3 @@ class Collection {
     return Done.isMine(result) ? result.value : undefined;
   }
 }
-
-module.exports = Collection;
