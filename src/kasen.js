@@ -1,3 +1,3 @@
-import KasenArray from "./array";
+const { default: KasenArray } = require("./array");
 
-export default KasenArray;
+module.exports = KasenArray;
