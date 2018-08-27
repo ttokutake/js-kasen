@@ -6,11 +6,12 @@
   "author": "ttokutake <tadatoshi.tokutake@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
     "build": "npm run clean && webpack",
     "clean": "rm -rf ./dist",
-    "test": "npm run build && jest"
+    "lint": "npm run lint:ci -- --fix",
+    "lint:ci": "eslint .",
+    "test": "npm run build && jest",
+    "test:ci": "jest"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
