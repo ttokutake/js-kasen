@@ -20,6 +20,8 @@ export default class Collection {
     this.Self = Self;
   }
 
+  // TODO: static fromJs()
+
   // static __genIterator(_coll, _isReverse) {
   //   throw new Error('not implemented');
   // }
@@ -55,10 +57,18 @@ export default class Collection {
     return this;
   }
 
+  // TODO: mapIf()
+
+  // TODO: flatten()
+
+  // TODO: flatMap()
+
   filter(func) {
     this.__pile(["filter", func]);
     return this;
   }
+
+  // TODO: filterNot()
 
   take(func) {
     this.__pile(["take", func]);
@@ -75,6 +85,28 @@ export default class Collection {
     this.__collect(func);
     return this;
   }
+
+  // TODO: setAll()
+
+  // TODO: delete()
+
+  // TODO: deleteAll()
+
+  // TODO: clear()
+
+  // TODO: update()
+
+  // TODO: setIn()
+
+  // TODO: deleteIn()
+
+  // TODO: updateIn()
+
+  // TODO: mergeIn()
+
+  // TODO: mergeDeepIn()
+
+  // TODO: groupBy()
 
   __consume(lazyMethod, toggleReverse) {
     const operations = this.__ship(lazyMethod);
@@ -127,9 +159,33 @@ export default class Collection {
     return coll;
   }
 
+  // TODO: isEmpty()
+
+  // TODO: isSubset()
+
+  // TODO: isSuperset()
+
+  // TODO: count()
+
+  // TODO: countBy()
+
+  // TODO: get()
+
+  // TODO: has()
+
+  // TODO: includes()
+
+  // TODO: getIn()
+
+  // TODO: hasIn()
+
   toJs() {
-    return this.__consume(null, false);
+    return this.__consume(null, false); // TODO: Transform deeply
   }
+
+  // TODO: toArray() shallowly
+
+  // TODO: toObject() shallowly
 
   reduce(func, init) {
     const coll = this.__consume(null, false);
@@ -140,10 +196,14 @@ export default class Collection {
   //   throw new Error('not implemented');
   // }
 
+  // TODO: partition() from Scala
+
   every(func) {
     const result = this.__consume(["every", func], false);
     return !Done.isMine(result);
   }
+
+  // TODO: some()
 
   find(func) {
     const result = this.__consume(["find", func], false);
@@ -154,4 +214,36 @@ export default class Collection {
     const result = this.__consume(["find", func], true);
     return Done.isMine(result) ? result.value : undefined;
   }
+
+  // TODO: findEntry()
+
+  // TODO: findLastEntry()
+
+  // TODO: findKey()
+
+  // TODO: findLastKey()
+
+  // TODO: keyOf()
+
+  // TODO: lastKeyOf()
+
+  // TODO: max()
+
+  // TODO: maxBy()
+
+  // TODO: min()
+
+  // TODO: minBy()
+
+  // TODO: equals()
+
+  // TODO: hashCode()
+
+  // TODO: keys()
+
+  // TODO: values()
+
+  // TODO: entries()
+
+  // TODO: forEach()
 }

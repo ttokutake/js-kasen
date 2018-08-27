@@ -53,6 +53,20 @@ export default class KasenArray extends Collection {
     return super.take(func);
   }
 
+  // TODO: takeLast()
+
+  // TODO: takeWhile()
+
+  // TODO: takeUntil()
+
+  // TODO: skip()
+
+  // TODO: skipLast()
+
+  // TODO: skipWhile()
+
+  // TODO: skipUntil()
+
   set(index, value) {
     const func = array => {
       if (index < -array.length || array.length < index) {
@@ -66,7 +80,75 @@ export default class KasenArray extends Collection {
     return super.set(func);
   }
 
+  // TODO: insert()
+
+  // TODO: push()
+
+  // TODO: pop()
+
+  // TODO: unshift()
+
+  // TODO: shift()
+
+  // TODO: concat()
+
+  // TODO: zip()
+
+  // TODO: zipAll()
+
+  // TODO: zipWith()
+
+  // TODO: unzip()
+
+  // TODO: unzipAll()
+
+  // TODO: sort()
+
+  // TODO: sortBy()
+
+  // TODO: interpose()
+
+  // TODO: interleave()
+
+  // TODO: splice()
+
+  // TODO: first() / head()
+
+  // TODO: tail() === shift() from Scala
+
+  // TODO: init() === pop() from Scala
+
+  // TODO: last()
+
+  // TODO: pick() from Lodash
+
+  // TODO: distinct() / unique() from Scala
+
   static reduce(array, func, init) {
     return init === undefined ? array.reduce(func) : array.reduce(func, init);
   }
+
+  // TODO: reduceRight()
+
+  // TODO: scan() from Scala
+
+  // TODO: scanRight() from Scala
+
+  // TODO: sliding() from Scala
+
+  // TODO: splitAt() from Scala
+
+  // TODO: join()
+
+  // TODO: indexOf()
+
+  // TODO: lastIndexOf()
+
+  // TODO: findIndexOf()
+
+  // TODO: findLastIndexOf()
+
+  // TODO?: startsWith()
+
+  // TODO?: endsWith()
 }
