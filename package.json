@@ -8,9 +8,10 @@
   "scripts": {
     "build": "npm run clean && webpack",
     "clean": "rm -rf ./dist",
+    "release": "NODE_ENV=production npm run build",
     "lint": "npm run lint:ci -- --fix",
     "lint:ci": "eslint .",
-    "test": "npm run build && jest",
+    "test": "npm run build && npm run test:ci",
     "test:ci": "jest"
   },
   "devDependencies": {
