@@ -5,6 +5,13 @@
     "jest/globals": true
   },
   "rules": {
-    "no-underscore-dangle": ["error", { "allowAfterThis": true, "allowAfterSuper": true, "allow": ["__genIterator", "__default", "__add"] }]
+    "no-underscore-dangle": [
+      "error",
+      {
+        "allowAfterThis": true,
+        "allowAfterSuper": true,
+        "allow": ["__genIterator", "__default", "__add"]
+      }
+    ]
   }
 }
