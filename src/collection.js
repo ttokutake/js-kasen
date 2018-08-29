@@ -54,6 +54,8 @@ export default class Collection {
     return clone(this);
   }
 
+  // TODO: tap() from Ramda
+
   map(func) {
     this.__pile(["map", func]);
     return this;
@@ -181,6 +183,8 @@ export default class Collection {
 
   // TODO: hasIn()
 
+  // TODO: pluck() from Lodash
+
   toJs() {
     return this.__consume(null, false);
   }
@@ -228,6 +232,8 @@ export default class Collection {
   // TODO: keyOf()
 
   // TODO: lastKeyOf()
+
+  // TODO: sum() from Ramda
 
   // TODO: max()
 

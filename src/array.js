@@ -120,8 +120,6 @@ export default class KasenArray extends Collection {
 
   // TODO: last()
 
-  // TODO: pick() from Lodash
-
   // TODO: distinct() / unique() from Scala
 
   static reduce(array, func, init) {
@@ -129,6 +127,8 @@ export default class KasenArray extends Collection {
   }
 
   // TODO: reduceRight()
+
+  // TODO: reduceWhile() from Elixir
 
   // TODO: scan() from Scala
 
@@ -151,4 +151,6 @@ export default class KasenArray extends Collection {
   // TODO?: startsWith()
 
   // TODO?: endsWith()
+
+  // TODO: range()
 }
