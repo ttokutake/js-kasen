@@ -20,8 +20,6 @@ export default class Collection {
     this.Self = Self;
   }
 
-  // TODO: static fromJs()
-
   // static __genIterator(_coll, _isReverse) {
   //   throw new Error('not implemented');
   // }
@@ -50,6 +48,10 @@ export default class Collection {
     return lazyMethods.length
       ? [...this.__warehouse, [lazyMethods, null]]
       : this.__warehouse;
+  }
+
+  clone() {
+    return clone(this);
   }
 
   map(func) {
@@ -180,12 +182,12 @@ export default class Collection {
   // TODO: hasIn()
 
   toJs() {
-    return this.__consume(null, false); // TODO: Transform deeply
+    return this.__consume(null, false);
   }
 
-  // TODO: toArray() shallowly
+  // TODO: toArray()
 
-  // TODO: toObject() shallowly
+  // TODO: toObject()
 
   reduce(func, init) {
     const coll = this.__consume(null, false);

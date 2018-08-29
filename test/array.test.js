@@ -1,6 +1,15 @@
 import Kasen from "../dist/kasen";
 
 describe("Array", () => {
+  describe("clone()", () => {
+    test("ok", () => {
+      const array = new Kasen([1, 2, 3]).map(v => v + 1);
+      const array2 = array.clone().map(v => v + 1);
+      expect(array.toJs()).toEqual([2, 3, 4]);
+      expect(array2.toJs()).toEqual([3, 4, 5]);
+    });
+  });
+
   describe("map()", () => {
     test("ok", () => {
       const ios = [
