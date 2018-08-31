@@ -70,7 +70,7 @@ export default class KasenArray extends Collection {
   set(index, value) {
     const func = array => {
       if (index < -array.length || array.length < index) {
-        throw new Error("cannot set");
+        throw new Error("cannot set"); // TODO: Create InvalidArgmentError
       }
       const key =
         index < 0 ? array.length + ((index + 1) % array.length) - 1 : index;

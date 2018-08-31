@@ -138,7 +138,7 @@ export default class Collection {
           const [methodName, func] = lazyMethods[j];
           const method = Methods[methodName];
           if (!method) {
-            throw new Error("method not found");
+            throw new Error("method not found"); // TODO: Create CannotHappenError
           }
           state = method(func, state, key);
           if (Done.isMine(state)) {
