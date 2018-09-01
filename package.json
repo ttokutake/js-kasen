@@ -13,7 +13,7 @@
     "format:ci": "npm run format:base -- --list-different",
     "format:base": "prettier **/*.json **/*.yml **/*.md",
     "lint": "npm run lint:ci -- --fix",
-    "lint:ci": "eslint .",
+    "lint:ci": "eslint --ignore-path .gitignore .",
     "test": "npm run build && npm run test:ci",
     "test:ci": "jest"
   },
