@@ -79,6 +79,7 @@ export default class Collection {
     return this;
   }
 
+  // FIX: new _([1, 2, 3]).reverse().take(2).reverse().toJs() ... [1, 2]
   reverse() {
     this.__isReverse = !this.__isReverse;
     this.__pile(["map", v => v]); // TODO: Consider more efficient way
