@@ -69,11 +69,11 @@ export default class KasenArray extends Collection {
 
   set(index, value) {
     const func = array => {
-      if (index < -array.length || array.length < index) {
-        throw new Error("cannot set"); // TODO: Create InvalidArgmentError
+      const { length } = array;
+      if (index < -length || length < index) {
+        throw new RangeError(`Must satisfy ${-length} <= "index" <= ${length}`);
       }
-      const key =
-        index < 0 ? array.length + ((index + 1) % array.length) - 1 : index;
+      const key = index < 0 ? length + ((index + 1) % length) - 1 : index;
       array[key] = value; // eslint-disable-line no-param-reassign
       return array;
     };

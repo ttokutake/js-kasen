@@ -108,7 +108,22 @@ describe("Array", () => {
       // TODO: static method
     });
 
-    // TODO: error
+    test("error", () => {
+      const ios = [
+        [[], -1],
+        [[], 1],
+        [[1], -2],
+        [[1], 2],
+        [[1, 2], -3],
+        [[1, 2], 3]
+      ];
+      ios.forEach(([input, index]) => {
+        const array = new Kasen(input);
+        const run = () => array.set(index, 10).toJs();
+        expect(run).toThrow(RangeError);
+      });
+      // TODO: static method
+    });
   });
 
   describe("reduce()", () => {
