@@ -1,35 +1,25 @@
 import clone from "clone";
 
-import { Some, None, Next, Gone, Done } from "./state";
-
-const Methods = {
-  map: (func, some, key) => some.set(func(some.value, key)),
-  filter: (func, some, key) => (func(some.value, key) ? some : new None()),
-  take: (func, some, key) => func(some, key),
-  every: (func, some, key) => (func(some.value, key) ? some : new Done(false)),
-  find: (func, some, key) =>
-    func(some.value, key) ? new Done(some.value) : some
-};
+import { MapIterator, ReverseIterator } from "./iterator";
 
 export default class Collection {
   constructor(Self, coll) {
     this.__coll = clone(coll);
     this.__depot = [];
     this.__warehouse = [];
-    this.__isReverse = false;
     this.Self = Self;
   }
 
-  // static __genIterator(_coll, _isReverse) {
-  //   throw new Error('not implemented');
+  // static __genIterator(_coll) {
+  //   throw new Error("not implemented");
   // }
 
   // static __default() {
-  //   throw new Error('not implemented');
+  //   throw new Error("not implemented");
   // }
 
   // static __add(_coll, _key, _value) {
-  //   throw new Error('not implemented');
+  //   throw new Error(:not implemented");
   // }
 
   __pile(lazyMethod) {
@@ -57,7 +47,7 @@ export default class Collection {
   // TODO: tap() from Ramda
 
   map(func) {
-    this.__pile(["map", func]);
+    this.__pile([MapIterator, func]);
     return this;
   }
 
@@ -67,29 +57,27 @@ export default class Collection {
 
   // TODO: flatMap()
 
-  filter(func) {
-    this.__pile(["filter", func]);
-    return this;
-  }
+  // filter(func) {
+  //   this.__pile(["filter", func]);
+  //   return this;
+  // }
 
   // TODO: filterNot()
 
-  take(func) {
-    this.__pile(["take", func]);
-    return this;
-  }
+  // take(func) {
+  //   this.__pile(["take", func]);
+  //   return this;
+  // }
 
-  // FIX: new _([1, 2, 3]).reverse().take(2).reverse().toJs() ... [1, 2]
   reverse() {
-    this.__isReverse = !this.__isReverse;
-    this.__pile(["map", v => v]); // TODO: Consider more efficient way
+    this.__pile([ReverseIterator, null]);
     return this;
   }
 
-  set(func) {
-    this.__collect(func);
-    return this;
-  }
+  // set(func) {
+  //   this.__collect(func);
+  //   return this;
+  // }
 
   // TODO: setAll()
 
@@ -113,9 +101,8 @@ export default class Collection {
 
   // TODO: groupBy()
 
-  __consume(lazyMethod, toggleReverse) {
+  __consume(lazyMethod) {
     const operations = this.__ship(lazyMethod);
-    const isReverse = toggleReverse ? !this.__isReverse : this.__isReverse;
 
     let coll = this.__coll;
     for (
@@ -125,39 +112,15 @@ export default class Collection {
     ) {
       const [lazyMethods, layOut] = operations[i];
       const nextColl = this.Self.__default();
-      const iter = this.Self.__genIterator(coll, isReverse);
+      let iter = this.Self.__genIterator(coll);
+      lazyMethods.forEach(([Iter, func]) => {
+        iter = new Iter(iter, func);
+      });
       let key;
       let value;
       // eslint-disable-next-line no-cond-assign
       while (!({ key, value } = iter.next()).done) {
-        let state = new Some(value);
-        for (
-          let j = 0, lazyMethodsLen = lazyMethods.length;
-          j < lazyMethodsLen;
-          j += 1
-        ) {
-          const [methodName, func] = lazyMethods[j];
-          const method = Methods[methodName];
-          if (!method) {
-            throw new Error("Cannot happen");
-          }
-          state = method(func, state, key);
-          if (Done.isMine(state)) {
-            return state;
-          }
-          if (None.isMine(state)) {
-            break;
-          }
-        }
-        if (Some.isMine(state)) {
-          this.Self.__add(nextColl, key, state.value);
-          if (Next.isMine(state)) {
-            break;
-          }
-        }
-        if (Gone.isMine(state)) {
-          break;
-        }
+        this.Self.__add(nextColl, key, value);
       }
       coll = layOut ? layOut(nextColl) : nextColl;
     }
@@ -187,7 +150,7 @@ export default class Collection {
   // TODO: pluck() from Lodash
 
   toJs() {
-    return this.__consume(null, false);
+    return this.__consume(null);
   }
 
   // TODO: toArray()
@@ -195,7 +158,7 @@ export default class Collection {
   // TODO: toObject()
 
   reduce(func, init) {
-    const coll = this.__consume(null, false);
+    const coll = this.__consume(null);
     return this.Self.reduce(coll, func, init);
   }
 
@@ -205,22 +168,22 @@ export default class Collection {
 
   // TODO: partition() from Scala
 
-  every(func) {
-    const result = this.__consume(["every", func], false);
-    return !Done.isMine(result);
-  }
+  // every(func) {
+  //   const result = this.__consume(["every", func]);
+  //   return !Done.isMine(result);
+  // }
 
   // TODO: some()
 
-  find(func) {
-    const result = this.__consume(["find", func], false);
-    return Done.isMine(result) ? result.value : undefined;
-  }
+  // find(func) {
+  //   const result = this.__consume(["find", func]);
+  //   return Done.isMine(result) ? result.value : undefined;
+  // }
 
-  findLast(func) {
-    const result = this.__consume(["find", func], true);
-    return Done.isMine(result) ? result.value : undefined;
-  }
+  // findLast(func) {
+  //   const result = this.__consume(["find", func]);
+  //   return Done.isMine(result) ? result.value : undefined;
+  // }
 
   // TODO: findEntry()
 

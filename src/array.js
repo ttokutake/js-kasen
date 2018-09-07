@@ -1,22 +1,29 @@
 import Collection from "./collection";
-import { Next, Gone } from "./state";
 
-class Iterator {
-  constructor(array, isReverse) {
+class ArrayIterator {
+  constructor(array) {
     this.array = array;
-    this.i = isReverse ? array.length - 1 : 0;
-    this.end = isReverse ? -1 : array.length;
-    this.step = isReverse ? -1 : 1;
+    this.index = null;
+  }
+
+  __base(start, end, step) {
+    if (this.index === null) {
+      this.index = start;
+    }
+    if (this.index === end) {
+      return { done: true };
+    }
+    const key = this.index;
+    this.index += step;
+    return { done: false, key, value: this.array[key] };
   }
 
   next() {
-    if (this.i === this.end) {
-      return { done: true };
-    }
-    const key = this.i;
-    const value = this.array[key];
-    this.i += this.step;
-    return { key, value, done: false };
+    return this.__base(0, this.array.length, 1);
+  }
+
+  prev() {
+    return this.__base(this.array.length - 1, -1, -1);
   }
 }
 
@@ -25,8 +32,8 @@ export default class KasenArray extends Collection {
     super(KasenArray, array);
   }
 
-  static __genIterator(array, isReverse) {
-    return new Iterator(array, isReverse);
+  static __genIterator(array) {
+    return new ArrayIterator(array);
   }
 
   static __default() {
@@ -37,21 +44,21 @@ export default class KasenArray extends Collection {
     array.push(value);
   }
 
-  take(num) {
-    let count = 0;
-    // eslint-disable-next-line no-unused-vars
-    const func = (some, _key) => {
-      count += 1;
-      if (count > num) {
-        return new Gone();
-      }
-      if (count === num) {
-        return new Next(some.value);
-      }
-      return some;
-    };
-    return super.take(func);
-  }
+  // take(num) {
+  //   let count = 0;
+  //   // eslint-disable-next-line no-unused-vars
+  //   const func = (some, _key) => {
+  //     count += 1;
+  //     if (count > num) {
+  //       return new Gone();
+  //     }
+  //     if (count === num) {
+  //       return new Next(some.value);
+  //     }
+  //     return some;
+  //   };
+  //   return super.take(func);
+  // }
 
   // TODO: takeLast()
 
@@ -67,18 +74,18 @@ export default class KasenArray extends Collection {
 
   // TODO: skipUntil()
 
-  set(index, value) {
-    const func = array => {
-      const { length } = array;
-      if (index < -length || length < index) {
-        throw new RangeError(`Must satisfy ${-length} <= "index" <= ${length}`);
-      }
-      const key = index < 0 ? length + ((index + 1) % length) - 1 : index;
-      array[key] = value; // eslint-disable-line no-param-reassign
-      return array;
-    };
-    return super.set(func);
-  }
+  // set(index, value) {
+  //   const func = array => {
+  //     const { length } = array;
+  //     if (index < -length || length < index) {
+  //       throw new RangeError(`Must satisfy ${-length} <= "index" <= ${length}`);
+  //     }
+  //     const key = index < 0 ? length + ((index + 1) % length) - 1 : index;
+  //     array[key] = value; // eslint-disable-line no-param-reassign
+  //     return array;
+  //   };
+  //   return super.set(func);
+  // }
 
   // TODO: insert()
 
