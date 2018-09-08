@@ -27,23 +27,23 @@ describe("Array", () => {
     });
   });
 
-  // describe("filter()", () => {
-  //   test("ok", () => {
-  //     const ios = [
-  //       [[], []],
-  //       [[1], []],
-  //       [[2], [2]],
-  //       [[1, 2], [2]],
-  //       [[1, 2, 3], [2]]
-  //     ];
-  //     ios.forEach(([input, expected]) => {
-  //       const array = new Kasen(input);
-  //       const result = array.filter(v => v % 2 === 0).toJs();
-  //       expect(result).toEqual(expected);
-  //     });
-  //     // TODO: static method
-  //   });
-  // });
+  describe("filter()", () => {
+    test("ok", () => {
+      const ios = [
+        [[], []],
+        [[1], []],
+        [[2], [2]],
+        [[1, 2], [2]],
+        [[1, 2, 3], [2]]
+      ];
+      ios.forEach(([input, expected]) => {
+        const array = new Kasen(input);
+        const result = array.filter(v => v % 2 === 0).toJs();
+        expect(result).toEqual(expected);
+      });
+      // TODO: static method
+    });
+  });
 
   // describe("take()", () => {
   //   test("ok", () => {

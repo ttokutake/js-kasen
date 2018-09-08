@@ -1,6 +1,6 @@
 import clone from "clone";
 
-import { MapIterator, ReverseIterator } from "./iterator";
+import { MapIterator, FilterIterator, ReverseIterator } from "./iterator";
 
 export default class Collection {
   constructor(Self, coll) {
@@ -57,10 +57,10 @@ export default class Collection {
 
   // TODO: flatMap()
 
-  // filter(func) {
-  //   this.__pile(["filter", func]);
-  //   return this;
-  // }
+  filter(func) {
+    this.__pile([FilterIterator, func]);
+    return this;
+  }
 
   // TODO: filterNot()
 
