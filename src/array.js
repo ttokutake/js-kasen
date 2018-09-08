@@ -45,20 +45,19 @@ export default class KasenArray extends Collection {
   }
 
   take(num) {
-    let count = 0;
-    // eslint-disable-next-line no-unused-vars
-    const func = result => {
-      count += 1;
-      if (count > num) {
-        return { done: true };
+    const curate = iter => {
+      const coll = this.Self.__default();
+      let count = 0;
+      let value;
+      // eslint-disable-next-line no-cond-assign
+      while (count < num && !({ value } = iter.next()).done) {
+        count += 1;
+        this.Self.__add(coll, null, value);
       }
-      // TODO: Create new state
-      // if (count === num) {
-      //   result.stop? = true;
-      // }
-      return result;
+      return coll;
     };
-    return super.take(func);
+    this.__collect(curate);
+    return this;
   }
 
   // TODO: takeLast()

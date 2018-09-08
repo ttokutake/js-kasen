@@ -1,11 +1,6 @@
 import clone from "clone";
 
-import {
-  MapIterator,
-  FilterIterator,
-  TakeIterator,
-  ReverseIterator
-} from "./iterator";
+import { MapIterator, FilterIterator, ReverseIterator } from "./iterator";
 
 export default class Collection {
   constructor(Self, coll) {
@@ -69,11 +64,7 @@ export default class Collection {
 
   // TODO: filterNot()
 
-  // FAIL: new _([1, 2, 3, 4, 5]).reverse().take(4).reverse().take(3).toJs() => actual: [1, 2, 3]
-  take(func) {
-    this.__pile([TakeIterator, func]);
-    return this;
-  }
+  // TODO: take() for Object
 
   reverse() {
     this.__pile([ReverseIterator, null]);
@@ -107,28 +98,28 @@ export default class Collection {
 
   // TODO: groupBy()
 
+  __curate(iter) {
+    const coll = this.Self.__default();
+    let key;
+    let value;
+    // eslint-disable-next-line no-cond-assign
+    while (!({ key, value } = iter.next()).done) {
+      this.Self.__add(coll, key, value);
+    }
+    return coll;
+  }
+
   __consume(lazyMethod) {
     const operations = this.__ship(lazyMethod);
 
     let coll = this.__coll;
-    for (
-      let i = 0, operationsLen = operations.length;
-      i < operationsLen;
-      i += 1
-    ) {
-      const [lazyMethods, layOut] = operations[i];
-      const nextColl = this.Self.__default();
+    for (let i = 0; i < operations.length; i += 1) {
+      const [lazyMethods, curate] = operations[i];
       let iter = this.Self.__genIterator(coll);
       lazyMethods.forEach(([Iter, func]) => {
         iter = new Iter(iter, func);
       });
-      let key;
-      let value;
-      // eslint-disable-next-line no-cond-assign
-      while (!({ key, value } = iter.next()).done) {
-        this.Self.__add(nextColl, key, value);
-      }
-      coll = layOut ? layOut(nextColl) : nextColl;
+      coll = curate ? curate(iter) : this.__curate(iter);
     }
     return coll;
   }

@@ -42,16 +42,6 @@ export class FilterIterator extends KasenIterator {
   }
 }
 
-export class TakeIterator extends KasenIterator {
-  __base(direction) {
-    let result = this.iter[direction]();
-    if (!result.done) {
-      result = this.func(result);
-    }
-    return result;
-  }
-}
-
 export class ReverseIterator extends KasenIterator {
   next() {
     return this.iter.prev();
