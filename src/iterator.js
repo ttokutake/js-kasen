@@ -4,14 +4,17 @@ class KasenIterator {
     this.func = func;
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  next() {
+  // eslint-disable-next-line class-methods-use-this, no-unused-vars
+  __base(_direction) {
     throw new Error("not implemented");
   }
 
-  // eslint-disable-next-line class-methods-use-this
+  next() {
+    return this.__base("next");
+  }
+
   prev() {
-    throw new Error("not implemented");
+    return this.__base("prev");
   }
 }
 
@@ -22,14 +25,6 @@ export class MapIterator extends KasenIterator {
       result.value = this.func(result.value, result.key);
     }
     return result;
-  }
-
-  next() {
-    return this.__base("next");
-  }
-
-  prev() {
-    return this.__base("prev");
   }
 }
 
@@ -44,14 +39,6 @@ export class FilterIterator extends KasenIterator {
       }
     }
     return result;
-  }
-
-  next() {
-    return this.__base("next");
-  }
-
-  prev() {
-    return this.__base("prev");
   }
 }
 
