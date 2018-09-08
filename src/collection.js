@@ -53,10 +53,6 @@ export default class Collection {
 
   // TODO: mapIf()
 
-  // TODO: flatten()
-
-  // TODO: flatMap()
-
   filter(func) {
     this.__pile([FilterIterator, func]);
     return this;

@@ -45,6 +45,10 @@ export default class KasenArray extends Collection {
     array.push(value);
   }
 
+  // TODO: flatten()
+
+  // TODO: flatMap()
+
   reverse() {
     this.__pile([ReverseIterator, null]);
     return this;
