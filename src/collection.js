@@ -26,8 +26,8 @@ export default class Collection {
     this.__depot.push(lazyMethod);
   }
 
-  __collect(func) {
-    this.__warehouse.push([this.__depot, func]);
+  __collect(curate) {
+    this.__warehouse.push([this.__depot, curate]);
     this.__depot = [];
   }
 
@@ -62,10 +62,10 @@ export default class Collection {
 
   // TODO: take() for Object
 
-  // set(func) {
-  //   this.__collect(func);
-  //   return this;
-  // }
+  set(curate) {
+    this.__collect(curate);
+    return this;
+  }
 
   // TODO: setAll()
 

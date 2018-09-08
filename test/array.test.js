@@ -87,44 +87,44 @@ describe("Array", () => {
     });
   });
 
-  // describe("set()", () => {
-  //   test("ok", () => {
-  //     const ios = [
-  //       [[], 0, [10]],
-  //       [[1], -1, [10]],
-  //       [[1], 0, [10]],
-  //       [[1], 1, [1, 10]],
-  //       [[1, 2], -2, [10, 2]],
-  //       [[1, 2], -1, [1, 10]],
-  //       [[1, 2], 0, [10, 2]],
-  //       [[1, 2], 1, [1, 10]],
-  //       [[1, 2], 2, [1, 2, 10]]
-  //     ];
-  //     ios.forEach(([input, index, expected]) => {
-  //       const array = new Kasen(input);
-  //       const result = array.set(index, 10).toJs();
-  //       expect(result).toEqual(expected);
-  //     });
-  //     // TODO: static method
-  //   });
+  describe("set()", () => {
+    test("ok", () => {
+      const ios = [
+        [[], 0, [10]],
+        [[1], -1, [10]],
+        [[1], 0, [10]],
+        [[1], 1, [1, 10]],
+        [[1, 2], -2, [10, 2]],
+        [[1, 2], -1, [1, 10]],
+        [[1, 2], 0, [10, 2]],
+        [[1, 2], 1, [1, 10]],
+        [[1, 2], 2, [1, 2, 10]]
+      ];
+      ios.forEach(([input, index, expected]) => {
+        const array = new Kasen(input);
+        const result = array.set(index, 10).toJs();
+        expect(result).toEqual(expected);
+      });
+      // TODO: static method
+    });
 
-  //   test("error", () => {
-  //     const ios = [
-  //       [[], -1],
-  //       [[], 1],
-  //       [[1], -2],
-  //       [[1], 2],
-  //       [[1, 2], -3],
-  //       [[1, 2], 3]
-  //     ];
-  //     ios.forEach(([input, index]) => {
-  //       const array = new Kasen(input);
-  //       const run = () => array.set(index, 10).toJs();
-  //       expect(run).toThrow(RangeError);
-  //     });
-  //     // TODO: static method
-  //   });
-  // });
+    test("error", () => {
+      const ios = [
+        [[], -1],
+        [[], 1],
+        [[1], -2],
+        [[1], 2],
+        [[1, 2], -3],
+        [[1, 2], 3]
+      ];
+      ios.forEach(([input, index]) => {
+        const array = new Kasen(input);
+        const run = () => array.set(index, 10).toJs();
+        expect(run).toThrow(RangeError);
+      });
+      // TODO: static method
+    });
+  });
 
   describe("reduce()", () => {
     test("ok", () => {

@@ -56,15 +56,15 @@ export default class KasenArray extends Collection {
 
   take(num) {
     const curate = iter => {
-      const coll = this.Self.__default();
+      const array = this.Self.__default();
       let count = 0;
       let value;
       // eslint-disable-next-line no-cond-assign
       while (count < num && !({ value } = iter.next()).done) {
         count += 1;
-        this.Self.__add(coll, null, value);
+        this.Self.__add(array, null, value);
       }
-      return coll;
+      return array;
     };
     this.__collect(curate);
     return this;
@@ -84,18 +84,21 @@ export default class KasenArray extends Collection {
 
   // TODO: skipUntil()
 
-  // set(index, value) {
-  //   const func = array => {
-  //     const { length } = array;
-  //     if (index < -length || length < index) {
-  //       throw new RangeError(`Must satisfy ${-length} <= "index" <= ${length}`);
-  //     }
-  //     const key = index < 0 ? length + ((index + 1) % length) - 1 : index;
-  //     array[key] = value; // eslint-disable-line no-param-reassign
-  //     return array;
-  //   };
-  //   return super.set(func);
-  // }
+  set(index, value) {
+    const curate = iter => {
+      const array = this.__curate(iter);
+      const { length } = array;
+      if (index < -length || length < index) {
+        throw new RangeError(
+          `Must satisfy ${-length} <= "index" <= ${length} to use set()`
+        );
+      }
+      const key = index < 0 ? length + ((index + 1) % length) - 1 : index;
+      array[key] = value;
+      return array;
+    };
+    return super.set(curate);
+  }
 
   // TODO: insert()
 
