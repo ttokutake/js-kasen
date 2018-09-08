@@ -1,4 +1,5 @@
 import Collection from "./collection";
+import { ReverseIterator } from "./iterator";
 
 class ArrayIterator {
   constructor(array) {
@@ -42,6 +43,11 @@ export default class KasenArray extends Collection {
 
   static __add(array, _key, value) {
     array.push(value);
+  }
+
+  reverse() {
+    this.__pile([ReverseIterator, null]);
+    return this;
   }
 
   take(num) {
