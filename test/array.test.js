@@ -45,30 +45,30 @@ describe("Array", () => {
     });
   });
 
-  // describe("take()", () => {
-  //   test("ok", () => {
-  //     const ios = [
-  //       [[], 0, []],
-  //       [[1], 0, []],
-  //       [[1, 2], 0, []],
-  //       [[1, 2, 3], 0, []],
-  //       [[], 1, []],
-  //       [[1], 1, [1]],
-  //       [[1, 2], 1, [1]],
-  //       [[1, 2, 3], 1, [1]],
-  //       [[], 2, []],
-  //       [[1], 2, [1]],
-  //       [[1, 2], 2, [1, 2]],
-  //       [[1, 2, 3], 2, [1, 2]]
-  //     ];
-  //     ios.forEach(([input, num, expected]) => {
-  //       const array = new Kasen(input);
-  //       const result = array.take(num).toJs();
-  //       expect(result).toEqual(expected);
-  //     });
-  //     // TODO: static method
-  //   });
-  // });
+  describe("take()", () => {
+    test("ok", () => {
+      const ios = [
+        [[], 0, []],
+        [[1], 0, []],
+        [[1, 2], 0, []],
+        [[1, 2, 3], 0, []],
+        [[], 1, []],
+        [[1], 1, [1]],
+        [[1, 2], 1, [1]],
+        [[1, 2, 3], 1, [1]],
+        [[], 2, []],
+        [[1], 2, [1]],
+        [[1, 2], 2, [1, 2]],
+        [[1, 2, 3], 2, [1, 2]]
+      ];
+      ios.forEach(([input, num, expected]) => {
+        const array = new Kasen(input);
+        const result = array.take(num).toJs();
+        expect(result).toEqual(expected);
+      });
+      // TODO: static method
+    });
+  });
 
   describe("reverse()", () => {
     test("ok", () => {

@@ -44,21 +44,22 @@ export default class KasenArray extends Collection {
     array.push(value);
   }
 
-  // take(num) {
-  //   let count = 0;
-  //   // eslint-disable-next-line no-unused-vars
-  //   const func = (some, _key) => {
-  //     count += 1;
-  //     if (count > num) {
-  //       return new Gone();
-  //     }
-  //     if (count === num) {
-  //       return new Next(some.value);
-  //     }
-  //     return some;
-  //   };
-  //   return super.take(func);
-  // }
+  take(num) {
+    let count = 0;
+    // eslint-disable-next-line no-unused-vars
+    const func = result => {
+      count += 1;
+      if (count > num) {
+        return { done: true };
+      }
+      // TODO: Create new state
+      // if (count === num) {
+      //   result.stop? = true;
+      // }
+      return result;
+    };
+    return super.take(func);
+  }
 
   // TODO: takeLast()
 

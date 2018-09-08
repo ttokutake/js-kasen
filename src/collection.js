@@ -1,6 +1,11 @@
 import clone from "clone";
 
-import { MapIterator, FilterIterator, ReverseIterator } from "./iterator";
+import {
+  MapIterator,
+  FilterIterator,
+  TakeIterator,
+  ReverseIterator
+} from "./iterator";
 
 export default class Collection {
   constructor(Self, coll) {
@@ -64,10 +69,11 @@ export default class Collection {
 
   // TODO: filterNot()
 
-  // take(func) {
-  //   this.__pile(["take", func]);
-  //   return this;
-  // }
+  // FAIL: new _([1, 2, 3, 4, 5]).reverse().take(4).reverse().take(3).toJs() => actual: [1, 2, 3]
+  take(func) {
+    this.__pile([TakeIterator, func]);
+    return this;
+  }
 
   reverse() {
     this.__pile([ReverseIterator, null]);

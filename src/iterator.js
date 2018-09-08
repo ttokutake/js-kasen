@@ -34,9 +34,19 @@ export class FilterIterator extends KasenIterator {
     // eslint-disable-next-line no-cond-assign
     while (!(result = this.iter[direction]()).done) {
       if (this.func(result.value, result.key)) {
-        // TODO: Shrink "key" if Array
+        // TODO: Count index to replace "key" if Array
         break;
       }
+    }
+    return result;
+  }
+}
+
+export class TakeIterator extends KasenIterator {
+  __base(direction) {
+    let result = this.iter[direction]();
+    if (!result.done) {
+      result = this.func(result);
     }
     return result;
   }
