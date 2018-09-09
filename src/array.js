@@ -1,5 +1,5 @@
 import Collection from "./collection";
-import { FilterIteratorForArray, ReverseIterator } from "./iterator";
+import { FilterIteratorForArray } from "./iterator";
 
 class ArrayIterator {
   constructor(array) {
@@ -51,11 +51,6 @@ export default class KasenArray extends Collection {
 
   filter(func) {
     return super.filter(FilterIteratorForArray, func);
-  }
-
-  reverse() {
-    this.__pile([ReverseIterator, null]);
-    return this;
   }
 
   take(num) {
@@ -152,47 +147,12 @@ export default class KasenArray extends Collection {
     return init === undefined ? array.reduce(func) : array.reduce(func, init);
   }
 
-  // TODO: reduceRight()
-
-  // TODO: reduceWhile() from Elixir
-
-  // TODO: scan() from Scala
-
-  // TODO: scanRight() from Scala
-
-  // TODO: sliding() from Scala
-
   // TODO: splitAt() from Scala
 
-  // TODO: join()
-
-  findLast(func) {
-    const finalize = iter => {
-      let key;
-      let value;
-      // eslint-disable-next-line no-cond-assign
-      while (!({ key, value } = iter.prev()).done) {
-        if (func(value, key)) {
-          return value;
-        }
-      }
-      return undefined;
-    };
-    return this.__consume(finalize);
-  }
-
-  // TODO: findLastEntry()
-
-  // TODO: findLastKey()
-
-  // TODO: lastKeyOf()
-
   // TODO: indexOf()
-
   // TODO: lastIndexOf()
 
   // TODO: findIndexOf()
-
   // TODO: findLastIndexOf()
 
   // TODO?: startsWith()
