@@ -31,12 +31,9 @@ export default class Collection {
     this.__depot = [];
   }
 
-  __ship(lazyMethod) {
-    const lazyMethods = lazyMethod
-      ? [...this.__depot, lazyMethod]
-      : this.__depot;
-    return lazyMethods.length
-      ? [...this.__warehouse, [lazyMethods, null]]
+  __ship(finalize) {
+    return this.__depot.length || finalize
+      ? [...this.__warehouse, [this.__depot, finalize]]
       : this.__warehouse;
   }
 
@@ -51,19 +48,19 @@ export default class Collection {
     return coll;
   }
 
-  __consume(lazyMethod) {
-    const operations = this.__ship(lazyMethod);
+  __consume(finalize) {
+    const operations = this.__ship(finalize);
 
-    let coll = this.__coll;
+    let result = this.__coll;
     for (let i = 0; i < operations.length; i += 1) {
       const [lazyMethods, curate] = operations[i];
-      let iter = this.Self.__iterator(coll);
+      let iter = this.Self.__iterator(result);
       lazyMethods.forEach(([Iter, func]) => {
         iter = new Iter(iter, func);
       });
-      coll = curate ? curate(iter) : this.__curate(iter);
+      result = curate ? curate(iter) : this.__curate(iter);
     }
-    return coll;
+    return result;
   }
 
   clone() {
@@ -158,10 +155,20 @@ export default class Collection {
 
   // TODO: partition() from Scala
 
-  // every(func) {
-  //   const result = this.__consume(["every", func]);
-  //   return !Done.isMine(result);
-  // }
+  every(func) {
+    const finalize = iter => {
+      let key;
+      let value;
+      // eslint-disable-next-line no-cond-assign
+      while (!({ key, value } = iter.next()).done) {
+        if (!func(value, key)) {
+          return false;
+        }
+      }
+      return true;
+    };
+    return this.__consume(finalize);
+  }
 
   // TODO: some()
 
