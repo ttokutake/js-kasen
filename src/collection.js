@@ -50,7 +50,6 @@ export default class Collection {
 
   __consume(finalize) {
     const operations = this.__ship(finalize);
-
     let result = this.__coll;
     for (let i = 0; i < operations.length; i += 1) {
       const [lazyMethods, curate] = operations[i];
@@ -172,10 +171,20 @@ export default class Collection {
 
   // TODO: some()
 
-  // find(func) {
-  //   const result = this.__consume(["find", func]);
-  //   return Done.isMine(result) ? result.value : undefined;
-  // }
+  find(func) {
+    const finalize = iter => {
+      let key;
+      let value;
+      // eslint-disable-next-line no-cond-assign
+      while (!({ key, value } = iter.next()).done) {
+        if (func(value, key)) {
+          return value;
+        }
+      }
+      return undefined;
+    };
+    return this.__consume(finalize);
+  }
 
   // findLast(func) {
   //   const result = this.__consume(["find", func]);
