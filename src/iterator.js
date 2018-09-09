@@ -28,13 +28,33 @@ export class MapIterator extends KasenIterator {
   }
 }
 
+// TODO: Used by Object
 export class FilterIterator extends KasenIterator {
   __base(direction) {
     let result;
     // eslint-disable-next-line no-cond-assign
     while (!(result = this.iter[direction]()).done) {
       if (this.func(result.value, result.key)) {
-        // TODO: Count index to replace "key" if Array
+        break;
+      }
+    }
+    return result;
+  }
+}
+
+export class FilterIteratorForArray extends KasenIterator {
+  constructor(iter, func) {
+    super(iter, func);
+    this.index = 0;
+  }
+
+  __base(direction) {
+    let result;
+    // eslint-disable-next-line no-cond-assign
+    while (!(result = this.iter[direction]()).done) {
+      if (this.func(result.value, result.key)) {
+        result.key = this.index;
+        this.index += 1;
         break;
       }
     }

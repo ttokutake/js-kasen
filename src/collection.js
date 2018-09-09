@@ -1,6 +1,6 @@
 import clone from "clone";
 
-import { MapIterator, FilterIterator } from "./iterator";
+import { MapIterator } from "./iterator";
 
 export default class Collection {
   constructor(Self, coll) {
@@ -19,7 +19,7 @@ export default class Collection {
   // }
 
   // static __add(_coll, _key, _value) {
-  //   throw new Error(:not implemented");
+  //   throw new Error("not implemented");
   // }
 
   __pile(lazyMethod) {
@@ -40,6 +40,32 @@ export default class Collection {
       : this.__warehouse;
   }
 
+  __curate(iter) {
+    const coll = this.Self.__default();
+    let key;
+    let value;
+    // eslint-disable-next-line no-cond-assign
+    while (!({ key, value } = iter.next()).done) {
+      this.Self.__add(coll, key, value);
+    }
+    return coll;
+  }
+
+  __consume(lazyMethod) {
+    const operations = this.__ship(lazyMethod);
+
+    let coll = this.__coll;
+    for (let i = 0; i < operations.length; i += 1) {
+      const [lazyMethods, curate] = operations[i];
+      let iter = this.Self.__iterator(coll);
+      lazyMethods.forEach(([Iter, func]) => {
+        iter = new Iter(iter, func);
+      });
+      coll = curate ? curate(iter) : this.__curate(iter);
+    }
+    return coll;
+  }
+
   clone() {
     return clone(this);
   }
@@ -53,8 +79,8 @@ export default class Collection {
 
   // TODO: mapIf()
 
-  filter(func) {
-    this.__pile([FilterIterator, func]);
+  filter(Iter, func) {
+    this.__pile([Iter, func]);
     return this;
   }
 
@@ -89,31 +115,7 @@ export default class Collection {
 
   // TODO: groupBy()
 
-  __curate(iter) {
-    const coll = this.Self.__default();
-    let key;
-    let value;
-    // eslint-disable-next-line no-cond-assign
-    while (!({ key, value } = iter.next()).done) {
-      this.Self.__add(coll, key, value);
-    }
-    return coll;
-  }
-
-  __consume(lazyMethod) {
-    const operations = this.__ship(lazyMethod);
-
-    let coll = this.__coll;
-    for (let i = 0; i < operations.length; i += 1) {
-      const [lazyMethods, curate] = operations[i];
-      let iter = this.Self.__iterator(coll);
-      lazyMethods.forEach(([Iter, func]) => {
-        iter = new Iter(iter, func);
-      });
-      coll = curate ? curate(iter) : this.__curate(iter);
-    }
-    return coll;
-  }
+  /* consumer */
 
   // TODO: isEmpty()
 

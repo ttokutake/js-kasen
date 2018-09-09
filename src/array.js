@@ -1,5 +1,5 @@
 import Collection from "./collection";
-import { ReverseIterator } from "./iterator";
+import { FilterIteratorForArray, ReverseIterator } from "./iterator";
 
 class ArrayIterator {
   constructor(array) {
@@ -48,6 +48,10 @@ export default class KasenArray extends Collection {
   // TODO: flatten()
 
   // TODO: flatMap()
+
+  filter(func) {
+    return super.filter(FilterIteratorForArray, func);
+  }
 
   reverse() {
     this.__pile([ReverseIterator, null]);
@@ -132,6 +136,10 @@ export default class KasenArray extends Collection {
 
   // TODO: splice()
 
+  // TODO: distinct() / unique() from Scala
+
+  /* consumer */
+
   // TODO: first() / head()
 
   // TODO: tail() === shift() from Scala
@@ -139,8 +147,6 @@ export default class KasenArray extends Collection {
   // TODO: init() === pop() from Scala
 
   // TODO: last()
-
-  // TODO: distinct() / unique() from Scala
 
   static reduce(array, func, init) {
     return init === undefined ? array.reduce(func) : array.reduce(func, init);
