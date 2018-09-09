@@ -33,7 +33,7 @@ export default class KasenArray extends Collection {
     super(KasenArray, array);
   }
 
-  static __genIterator(array) {
+  static __iterator(array) {
     return new ArrayIterator(array);
   }
 

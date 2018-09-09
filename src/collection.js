@@ -10,7 +10,7 @@ export default class Collection {
     this.Self = Self;
   }
 
-  // static __genIterator(_coll) {
+  // static __iterator(_coll) {
   //   throw new Error("not implemented");
   // }
 
@@ -106,7 +106,7 @@ export default class Collection {
     let coll = this.__coll;
     for (let i = 0; i < operations.length; i += 1) {
       const [lazyMethods, curate] = operations[i];
-      let iter = this.Self.__genIterator(coll);
+      let iter = this.Self.__iterator(coll);
       lazyMethods.forEach(([Iter, func]) => {
         iter = new Iter(iter, func);
       });
