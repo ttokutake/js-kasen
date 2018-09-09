@@ -186,22 +186,11 @@ export default class Collection {
     return this.__consume(finalize);
   }
 
-  // findLast(func) {
-  //   const result = this.__consume(["find", func]);
-  //   return Done.isMine(result) ? result.value : undefined;
-  // }
-
   // TODO: findEntry()
-
-  // TODO: findLastEntry()
 
   // TODO: findKey()
 
-  // TODO: findLastKey()
-
   // TODO: keyOf()
-
-  // TODO: lastKeyOf()
 
   // TODO: sum() from Ramda
 

@@ -166,6 +166,27 @@ export default class KasenArray extends Collection {
 
   // TODO: join()
 
+  findLast(func) {
+    const finalize = iter => {
+      let key;
+      let value;
+      // eslint-disable-next-line no-cond-assign
+      while (!({ key, value } = iter.prev()).done) {
+        if (func(value, key)) {
+          return value;
+        }
+      }
+      return undefined;
+    };
+    return this.__consume(finalize);
+  }
+
+  // TODO: findLastEntry()
+
+  // TODO: findLastKey()
+
+  // TODO: lastKeyOf()
+
   // TODO: indexOf()
 
   // TODO: lastIndexOf()

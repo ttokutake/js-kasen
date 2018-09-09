@@ -196,25 +196,25 @@ describe("Array", () => {
     });
   });
 
-  // describe("findLast()", () => {
-  //   test("ok", () => {
-  //     const ios = [
-  //       [[], undefined],
-  //       [[1], 1],
-  //       [[2], undefined],
-  //       [[1, 2], 1],
-  //       [[2, 3], 3],
-  //       [[1, 2, 3], 3],
-  //       [[1, 2, 4], 1]
-  //     ];
-  //     ios.forEach(([input, expected]) => {
-  //       const array = new Kasen(input);
-  //       const result = array.findLast(v => v % 2 === 1);
-  //       expect(result).toBe(expected);
-  //     });
-  //     // TODO: static method
-  //   });
-  // });
+  describe("findLast()", () => {
+    test("ok", () => {
+      const ios = [
+        [[], undefined],
+        [[1], 1],
+        [[2], undefined],
+        [[1, 2], 1],
+        [[2, 3], 3],
+        [[1, 2, 3], 3],
+        [[1, 2, 4], 1]
+      ];
+      ios.forEach(([input, expected]) => {
+        const array = new Kasen(input);
+        const result = array.findLast(v => v % 2 === 1);
+        expect(result).toBe(expected);
+      });
+      // TODO: static method
+    });
+  });
 
-  // TODO: combination tests (Some, None, Next, Gone)
+  // TODO: combination tests
 });
