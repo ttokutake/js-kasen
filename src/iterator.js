@@ -62,10 +62,17 @@ export class FilterIteratorForArray extends KasenIterator {
   }
 }
 
-// TODO: Should replace key with new index for Array
-export class ReverseIterator extends KasenIterator {
+export class ReverseIteratorForArray extends KasenIterator {
+  constructor(iter, func) {
+    super(iter, func);
+    this.index = 0;
+  }
+
   next() {
-    return this.iter.prev();
+    const result = this.iter.prev();
+    result.key = this.index;
+    this.index += 1;
+    return result;
   }
 
   prev() {

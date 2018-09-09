@@ -1,6 +1,6 @@
 import clone from "clone";
 
-import { MapIterator, ReverseIterator } from "./iterator";
+import { MapIterator } from "./iterator";
 
 export default class Collection {
   constructor(Self, coll) {
@@ -111,11 +111,6 @@ export default class Collection {
 
   // TODO: groupBy()
 
-  reverse() {
-    this.__pile([ReverseIterator, null]);
-    return this;
-  }
-
   /* consumer */
 
   // TODO: isEmpty()
@@ -157,11 +152,9 @@ export default class Collection {
   //   throw new Error('not implemented');
   // }
 
-  // TODO: reduceRight()
   // TODO: reduceWhile() from Elixir
 
   // TODO: scan() from Scala
-  // TODO: scanRight() from Scala
 
   // TODO: sliding() from Scala
 
@@ -201,29 +194,9 @@ export default class Collection {
     return this.__consume(finalize);
   }
 
-  findLast(func) {
-    const finalize = iter => {
-      let key;
-      let value;
-      // eslint-disable-next-line no-cond-assign
-      while (!({ key, value } = iter.prev()).done) {
-        if (func(value, key)) {
-          return value;
-        }
-      }
-      return undefined;
-    };
-    return this.__consume(finalize);
-  }
-
   // TODO: findEntry()
-  // TODO: findLastEntry()
-
   // TODO: findKey()
-  // TODO: findLastKey()
-
   // TODO: keyOf()
-  // TODO: lastKeyOf()
 
   // TODO: sum() from Ramda
 
