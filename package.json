@@ -59,9 +59,7 @@
           "allowAfterThis": true,
           "allowAfterSuper": true,
           "allow": [
-            "__iterator",
-            "__default",
-            "__add"
+            "__iterator"
           ]
         }
       ]

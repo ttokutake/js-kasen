@@ -4,9 +4,7 @@ import { MapIterator } from "./iterator";
 
 export default class Collection {
   constructor(Self, coll) {
-    this.__coll = clone(coll);
-    this.__depot = [];
-    this.__warehouse = [];
+    this.__iter = Self.__iterator(clone(coll));
     this.Self = Self;
   }
 
@@ -14,52 +12,14 @@ export default class Collection {
   //   throw new Error("not implemented");
   // }
 
-  // static __default() {
-  //   throw new Error("not implemented");
-  // }
-
-  // static __add(_coll, _key, _value) {
-  //   throw new Error("not implemented");
-  // }
-
-  __pile(lazyMethod) {
-    this.__depot.push(lazyMethod);
-  }
-
-  __collect(curate) {
-    this.__warehouse.push([this.__depot, curate]);
-    this.__depot = [];
-  }
-
-  __ship(finalize) {
-    return this.__depot.length || finalize
-      ? [...this.__warehouse, [this.__depot, finalize]]
-      : this.__warehouse;
-  }
-
-  __curate(iter) {
-    const coll = this.Self.__default();
-    let key;
-    let value;
-    // eslint-disable-next-line no-cond-assign
-    while (!({ key, value } = iter.next()).done) {
-      this.Self.__add(coll, key, value);
-    }
-    return coll;
+  __pile(Iter, func) {
+    this.__iter = new Iter(this.__iter, func);
   }
 
   __consume(finalize) {
-    const operations = this.__ship(finalize);
-    let result = this.__coll;
-    for (let i = 0; i < operations.length; i += 1) {
-      const [lazyMethods, curate] = operations[i];
-      let iter = this.Self.__iterator(result);
-      lazyMethods.forEach(([Iter, func]) => {
-        iter = new Iter(iter, func);
-      });
-      result = curate ? curate(iter) : this.__curate(iter);
-    }
-    return result;
+    return finalize
+      ? finalize(this.__iter)
+      : this.__iter.OriginIterator.curate(this.__iter);
   }
 
   clone() {
@@ -69,23 +29,26 @@ export default class Collection {
   // TODO: tap() from Ramda
 
   map(func) {
-    this.__pile([MapIterator, func]);
+    this.__pile(MapIterator, func);
     return this;
   }
 
   // TODO: mapIf()
 
   filter(Iter, func) {
-    this.__pile([Iter, func]);
+    this.__pile(Iter, func);
     return this;
   }
 
   // TODO: filterNot()
 
-  // TODO: take() for Object
+  take(Iter, func) {
+    this.__pile(Iter, func);
+    return this;
+  }
 
-  set(curate) {
-    this.__collect(curate);
+  set(Iter, func) {
+    this.__pile(Iter, func);
     return this;
   }
 

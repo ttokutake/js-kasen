@@ -1,13 +1,38 @@
 import Collection from "./collection";
-import { FilterIteratorForArray, ReverseIteratorForArray } from "./iterator";
+import {
+  FilterIteratorForArray,
+  ReverseIteratorForArray,
+  SetCuratorForArray,
+  TakeCuratorForArray
+} from "./iterator";
 
 class ArrayIterator {
   constructor(array) {
     this.array = array;
     this.index = null;
+    this.OriginIterator = ArrayIterator;
   }
 
-  __base(start, end, step) {
+  static default() {
+    return [];
+  }
+
+  static add(array, _key, value) {
+    array.push(value);
+  }
+
+  static curate(iter) {
+    const coll = iter.OriginIterator.default();
+    let key;
+    let value;
+    // eslint-disable-next-line no-cond-assign
+    while (!({ key, value } = iter.next()).done) {
+      iter.OriginIterator.add(coll, key, value);
+    }
+    return coll;
+  }
+
+  base(start, end, step) {
     if (this.index === null) {
       this.index = start;
     }
@@ -20,11 +45,11 @@ class ArrayIterator {
   }
 
   next() {
-    return this.__base(0, this.array.length, 1);
+    return this.base(0, this.array.length, 1);
   }
 
   prev() {
-    return this.__base(this.array.length - 1, -1, -1);
+    return this.base(this.array.length - 1, -1, -1);
   }
 }
 
@@ -37,14 +62,6 @@ export default class KasenArray extends Collection {
     return new ArrayIterator(array);
   }
 
-  static __default() {
-    return [];
-  }
-
-  static __add(array, _key, value) {
-    array.push(value);
-  }
-
   // TODO: flatten()
 
   // TODO: flatMap()
@@ -54,24 +71,23 @@ export default class KasenArray extends Collection {
   }
 
   reverse() {
-    this.__pile([ReverseIteratorForArray, null]);
+    this.__pile(ReverseIteratorForArray, null);
     return this;
   }
 
   take(num) {
     const curate = iter => {
-      const array = this.Self.__default();
+      const array = iter.OriginIterator.default();
       let count = 0;
       let value;
       // eslint-disable-next-line no-cond-assign
       while (count < num && !({ value } = iter.next()).done) {
         count += 1;
-        this.Self.__add(array, null, value);
+        iter.OriginIterator.add(array, null, value);
       }
       return array;
     };
-    this.__collect(curate);
-    return this;
+    return super.take(TakeCuratorForArray, curate);
   }
 
   // TODO: takeLast()
@@ -90,7 +106,7 @@ export default class KasenArray extends Collection {
 
   set(index, value) {
     const curate = iter => {
-      const array = this.__curate(iter);
+      const array = iter.OriginIterator.curate(iter);
       const { length } = array;
       if (index < -length || length < index) {
         throw new RangeError(
@@ -101,7 +117,7 @@ export default class KasenArray extends Collection {
       array[key] = value;
       return array;
     };
-    return super.set(curate);
+    return super.set(SetCuratorForArray, curate);
   }
 
   // TODO: insert()

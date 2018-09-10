@@ -2,24 +2,42 @@ class KasenIterator {
   constructor(iter, func) {
     this.iter = iter;
     this.func = func;
+    this.OriginIterator = iter.OriginIterator;
   }
 
   // eslint-disable-next-line class-methods-use-this, no-unused-vars
-  __base(_direction) {
+  base(_direction) {
     throw new Error("not implemented");
   }
 
   next() {
-    return this.__base("next");
+    return this.base("next");
   }
 
   prev() {
-    return this.__base("prev");
+    return this.base("prev");
+  }
+}
+
+class Curator extends KasenIterator {
+  constructor(iter, curate) {
+    super(iter, null);
+    this.curate = curate;
+    this.isCurated = false;
+  }
+
+  base(direction) {
+    if (!this.isCurated) {
+      const coll = this.curate(this.iter);
+      this.iter = new this.OriginIterator(coll);
+      this.isCurated = true;
+    }
+    return this.iter[direction]();
   }
 }
 
 export class MapIterator extends KasenIterator {
-  __base(direction) {
+  base(direction) {
     const result = this.iter[direction]();
     if (!result.done) {
       result.value = this.func(result.value, result.key);
@@ -30,7 +48,7 @@ export class MapIterator extends KasenIterator {
 
 // TODO: Used by Object
 export class FilterIterator extends KasenIterator {
-  __base(direction) {
+  base(direction) {
     let result;
     // eslint-disable-next-line no-cond-assign
     while (!(result = this.iter[direction]()).done) {
@@ -48,7 +66,7 @@ export class FilterIteratorForArray extends KasenIterator {
     this.index = 0;
   }
 
-  __base(direction) {
+  base(direction) {
     let result;
     // eslint-disable-next-line no-cond-assign
     while (!(result = this.iter[direction]()).done) {
@@ -79,3 +97,7 @@ export class ReverseIteratorForArray extends KasenIterator {
     return this.iter.next();
   }
 }
+
+export class TakeCuratorForArray extends Curator {}
+
+export class SetCuratorForArray extends Curator {}
