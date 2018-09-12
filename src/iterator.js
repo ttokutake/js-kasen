@@ -1,8 +1,8 @@
 class KasenIterator {
-  constructor(iter, func) {
-    this.iter = iter;
+  constructor(parentIterator, func) {
+    this.parent = parentIterator;
     this.func = func;
-    this.OriginIterator = iter.OriginIterator;
+    this.Origin = parentIterator.Origin;
   }
 
   // eslint-disable-next-line class-methods-use-this, no-unused-vars
@@ -20,25 +20,25 @@ class KasenIterator {
 }
 
 class Curator extends KasenIterator {
-  constructor(iter, curate) {
-    super(iter, null);
+  constructor(parentIterator, curate) {
+    super(parentIterator, null);
     this.curate = curate;
     this.isCurated = false;
   }
 
   base(direction) {
     if (!this.isCurated) {
-      const coll = this.curate(this.iter);
-      this.iter = new this.OriginIterator(coll);
+      const coll = this.curate(this.parent);
+      this.parent = new this.Origin(coll);
       this.isCurated = true;
     }
-    return this.iter[direction]();
+    return this.parent[direction]();
   }
 }
 
 export class MapIterator extends KasenIterator {
   base(direction) {
-    const result = this.iter[direction]();
+    const result = this.parent[direction]();
     if (!result.done) {
       result.value = this.func(result.value, result.key);
     }
@@ -51,7 +51,7 @@ export class FilterIterator extends KasenIterator {
   base(direction) {
     let result;
     // eslint-disable-next-line no-cond-assign
-    while (!(result = this.iter[direction]()).done) {
+    while (!(result = this.parent[direction]()).done) {
       if (this.func(result.value, result.key)) {
         break;
       }
@@ -61,15 +61,15 @@ export class FilterIterator extends KasenIterator {
 }
 
 export class FilterIteratorForArray extends KasenIterator {
-  constructor(iter, func) {
-    super(iter, func);
+  constructor(parentIterator, func) {
+    super(parentIterator, func);
     this.index = 0;
   }
 
   base(direction) {
     let result;
     // eslint-disable-next-line no-cond-assign
-    while (!(result = this.iter[direction]()).done) {
+    while (!(result = this.parent[direction]()).done) {
       if (this.func(result.value, result.key)) {
         result.key = this.index;
         this.index += 1;
@@ -81,20 +81,20 @@ export class FilterIteratorForArray extends KasenIterator {
 }
 
 export class ReverseIteratorForArray extends KasenIterator {
-  constructor(iter, func) {
-    super(iter, func);
+  constructor(parentIterator, func) {
+    super(parentIterator, func);
     this.index = 0;
   }
 
   next() {
-    const result = this.iter.prev();
+    const result = this.parent.prev();
     result.key = this.index;
     this.index += 1;
     return result;
   }
 
   prev() {
-    return this.iter.next();
+    return this.parent.next();
   }
 }
 

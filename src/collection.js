@@ -19,7 +19,7 @@ export default class Collection {
   __consume(finalize) {
     return finalize
       ? finalize(this.__iter)
-      : this.__iter.OriginIterator.curate(this.__iter);
+      : this.__iter.Origin.curate(this.__iter);
   }
 
   clone() {

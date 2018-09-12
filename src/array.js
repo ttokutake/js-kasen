@@ -10,7 +10,7 @@ class ArrayIterator {
   constructor(array) {
     this.array = array;
     this.index = null;
-    this.OriginIterator = ArrayIterator;
+    this.Origin = ArrayIterator;
   }
 
   static default() {
@@ -22,12 +22,12 @@ class ArrayIterator {
   }
 
   static curate(iter) {
-    const coll = iter.OriginIterator.default();
+    const coll = iter.Origin.default();
     let key;
     let value;
     // eslint-disable-next-line no-cond-assign
     while (!({ key, value } = iter.next()).done) {
-      iter.OriginIterator.add(coll, key, value);
+      iter.Origin.add(coll, key, value);
     }
     return coll;
   }
@@ -77,13 +77,13 @@ export default class KasenArray extends Collection {
 
   take(num) {
     const curate = iter => {
-      const array = iter.OriginIterator.default();
+      const array = iter.Origin.default();
       let count = 0;
       let value;
       // eslint-disable-next-line no-cond-assign
       while (count < num && !({ value } = iter.next()).done) {
         count += 1;
-        iter.OriginIterator.add(array, null, value);
+        iter.Origin.add(array, null, value);
       }
       return array;
     };
@@ -106,7 +106,7 @@ export default class KasenArray extends Collection {
 
   set(index, value) {
     const curate = iter => {
-      const array = iter.OriginIterator.curate(iter);
+      const array = iter.Origin.curate(iter);
       const { length } = array;
       if (index < -length || length < index) {
         throw new RangeError(
