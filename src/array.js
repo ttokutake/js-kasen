@@ -9,8 +9,8 @@ import {
 class ArrayIterator {
   constructor(array) {
     this.array = array;
-    this.index = null;
     this.Origin = ArrayIterator;
+    this.reset();
   }
 
   static default() {
@@ -50,6 +50,10 @@ class ArrayIterator {
 
   prev() {
     return this.base(this.array.length - 1, -1, -1);
+  }
+
+  reset() {
+    this.index = null;
   }
 }
 

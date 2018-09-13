@@ -17,6 +17,10 @@ class KasenIterator {
   prev() {
     return this.base("prev");
   }
+
+  reset() {
+    this.parent.reset();
+  }
 }
 
 class Curator extends KasenIterator {

@@ -17,9 +17,11 @@ export default class Collection {
   }
 
   __consume(finalize) {
-    return finalize
+    const result = finalize
       ? finalize(this.__iter)
       : this.__iter.Origin.curate(this.__iter);
+    this.__iter.reset();
+    return result;
   }
 
   clone() {
