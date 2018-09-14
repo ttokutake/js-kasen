@@ -47,10 +47,6 @@ class ArrayIterator extends OriginIterator {
 }
 
 export default class KasenArray extends Collection {
-  constructor(array) {
-    super(KasenArray, array);
-  }
-
   static __iterator(array) {
     return new ArrayIterator(array);
   }

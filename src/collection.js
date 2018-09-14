@@ -3,14 +3,14 @@ import clone from "clone";
 import { MapIterator } from "./iterator";
 
 export default class Collection {
-  constructor(Self, coll) {
-    this.__iter = Self.__iterator(clone(coll));
-    this.Self = Self;
+  constructor(coll) {
+    this.__iter = this.constructor.__iterator(clone(coll));
   }
 
-  // static __iterator(_coll) {
-  //   throw new Error("not implemented");
-  // }
+  // eslint-disable-next-line no-unused-vars
+  static __iterator(_coll) {
+    throw new Error("not implemented");
+  }
 
   __pile(Iter, func) {
     this.__iter = new Iter(this.__iter, func);
@@ -110,12 +110,13 @@ export default class Collection {
 
   reduce(func, init) {
     const coll = this.__consume(null);
-    return this.Self.reduce(coll, func, init);
+    return this.constructor.reduce(coll, func, init);
   }
 
-  // static reduce(_coll, _func, _init) {
-  //   throw new Error('not implemented');
-  // }
+  // eslint-disable-next-line no-unused-vars
+  static reduce(_coll, _func, _init) {
+    throw new Error("not implemented");
+  }
 
   // TODO: reduceWhile() from Elixir
 
