@@ -1,3 +1,45 @@
+export class OriginIterator {
+  constructor(coll, Origin) {
+    this.coll = coll;
+    this.Origin = Origin;
+  }
+
+  static default() {
+    throw new Error("not implemented");
+  }
+
+  // eslint-disable-next-line no-unused-vars
+  static add(_coll, _key, _value) {
+    throw new Error("not implemented");
+  }
+
+  static curate(iter) {
+    const coll = this.default();
+    let key;
+    let value;
+    // eslint-disable-next-line no-cond-assign
+    while (!({ key, value } = iter.next()).done) {
+      this.add(coll, key, value);
+    }
+    return coll;
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  next() {
+    throw new Error("not implemented");
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  prev() {
+    throw new Error("not implemented");
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  reset() {
+    throw new Error("not implemented");
+  }
+}
+
 class KasenIterator {
   constructor(parentIterator, func) {
     this.parent = parentIterator;

@@ -1,15 +1,15 @@
 import Collection from "./collection";
 import {
   FilterIteratorForArray,
+  OriginIterator,
   ReverseIteratorForArray,
   SetCuratorForArray,
   TakeCuratorForArray
 } from "./iterator";
 
-class ArrayIterator {
+class ArrayIterator extends OriginIterator {
   constructor(array) {
-    this.array = array;
-    this.Origin = ArrayIterator;
+    super(array, ArrayIterator);
     this.reset();
   }
 
@@ -21,17 +21,6 @@ class ArrayIterator {
     array.push(value);
   }
 
-  static curate(iter) {
-    const coll = iter.Origin.default();
-    let key;
-    let value;
-    // eslint-disable-next-line no-cond-assign
-    while (!({ key, value } = iter.next()).done) {
-      iter.Origin.add(coll, key, value);
-    }
-    return coll;
-  }
-
   base(start, end, step) {
     if (this.index === null) {
       this.index = start;
@@ -41,15 +30,15 @@ class ArrayIterator {
     }
     const key = this.index;
     this.index += step;
-    return { done: false, key, value: this.array[key] };
+    return { done: false, key, value: this.coll[key] };
   }
 
   next() {
-    return this.base(0, this.array.length, 1);
+    return this.base(0, this.coll.length, 1);
   }
 
   prev() {
-    return this.base(this.array.length - 1, -1, -1);
+    return this.base(this.coll.length - 1, -1, -1);
   }
 
   reset() {
