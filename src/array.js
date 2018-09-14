@@ -70,13 +70,13 @@ export default class KasenArray extends Collection {
 
   take(num) {
     const curate = iter => {
-      const array = iter.Origin.default();
+      const array = ArrayIterator.default();
       let count = 0;
       let value;
       // eslint-disable-next-line no-cond-assign
       while (count < num && !({ value } = iter.next()).done) {
         count += 1;
-        iter.Origin.add(array, null, value);
+        ArrayIterator.add(array, null, value);
       }
       return array;
     };
@@ -99,7 +99,7 @@ export default class KasenArray extends Collection {
 
   set(index, value) {
     const curate = iter => {
-      const array = iter.Origin.curate(iter);
+      const array = ArrayIterator.curate(iter);
       const { length } = array;
       if (index < -length || length < index) {
         throw new RangeError(
