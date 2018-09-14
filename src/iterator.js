@@ -27,16 +27,26 @@ class Curator extends KasenIterator {
   constructor(parentIterator, curate) {
     super(parentIterator, null);
     this.curate = curate;
+    this.rewind();
+  }
+
+  rewind() {
+    this.iter = null;
     this.isCurated = false;
   }
 
   base(direction) {
     if (!this.isCurated) {
       const coll = this.curate(this.parent);
-      this.parent = new this.Origin(coll);
+      this.iter = new this.Origin(coll);
       this.isCurated = true;
     }
-    return this.parent[direction]();
+    return this.iter[direction]();
+  }
+
+  reset() {
+    this.rewind();
+    super.reset();
   }
 }
 
