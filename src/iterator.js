@@ -46,7 +46,7 @@ export class OriginIterator extends BaseIterator {
   }
 }
 
-class KasenIterator extends BaseIterator {
+class ChainIterator extends BaseIterator {
   constructor(parentIterator, func) {
     super(parentIterator.Origin);
     this.parent = parentIterator;
@@ -71,7 +71,7 @@ class KasenIterator extends BaseIterator {
   }
 }
 
-class Curator extends KasenIterator {
+class Curator extends ChainIterator {
   constructor(parentIterator, curate) {
     super(parentIterator, null);
     this.curate = curate;
@@ -98,7 +98,7 @@ class Curator extends KasenIterator {
   }
 }
 
-export class MapIterator extends KasenIterator {
+export class MapIterator extends ChainIterator {
   base(direction) {
     const result = this.parent[direction]();
     if (!result.done) {
@@ -109,7 +109,7 @@ export class MapIterator extends KasenIterator {
 }
 
 // TODO: Used by Object
-export class FilterIterator extends KasenIterator {
+export class FilterIterator extends ChainIterator {
   base(direction) {
     let result;
     // eslint-disable-next-line no-cond-assign
@@ -122,7 +122,7 @@ export class FilterIterator extends KasenIterator {
   }
 }
 
-export class FilterIteratorForArray extends KasenIterator {
+export class FilterIteratorForArray extends ChainIterator {
   constructor(parentIterator, func) {
     super(parentIterator, func);
     this.index = 0;
@@ -142,7 +142,7 @@ export class FilterIteratorForArray extends KasenIterator {
   }
 }
 
-export class ReverseIteratorForArray extends KasenIterator {
+export class ReverseIteratorForArray extends ChainIterator {
   constructor(parentIterator, func) {
     super(parentIterator, func);
     this.index = 0;
