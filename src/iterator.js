@@ -1,7 +1,28 @@
-export class OriginIterator {
-  constructor(coll, Origin) {
+class BaseIterator {
+  constructor(OriginIter) {
+    this.Origin = OriginIter;
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  next() {
+    throw new Error("not implemented");
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  prev() {
+    throw new Error("not implemented");
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  reset() {
+    throw new Error("not implemented");
+  }
+}
+
+export class OriginIterator extends BaseIterator {
+  constructor(coll, OriginIter) {
+    super(OriginIter);
     this.coll = coll;
-    this.Origin = Origin;
   }
 
   static default() {
@@ -23,28 +44,13 @@ export class OriginIterator {
     }
     return coll;
   }
-
-  // eslint-disable-next-line class-methods-use-this
-  next() {
-    throw new Error("not implemented");
-  }
-
-  // eslint-disable-next-line class-methods-use-this
-  prev() {
-    throw new Error("not implemented");
-  }
-
-  // eslint-disable-next-line class-methods-use-this
-  reset() {
-    throw new Error("not implemented");
-  }
 }
 
-class KasenIterator {
+class KasenIterator extends BaseIterator {
   constructor(parentIterator, func) {
+    super(parentIterator.Origin);
     this.parent = parentIterator;
     this.func = func;
-    this.Origin = parentIterator.Origin;
   }
 
   // eslint-disable-next-line class-methods-use-this, no-unused-vars
