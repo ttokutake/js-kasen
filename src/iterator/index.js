@@ -46,7 +46,7 @@ export class OriginIterator extends BaseIterator {
   }
 }
 
-class ChainIterator extends BaseIterator {
+export class ChainIterator extends BaseIterator {
   constructor(parentIterator, func) {
     super(parentIterator.Origin);
     this.parent = parentIterator;
@@ -71,7 +71,7 @@ class ChainIterator extends BaseIterator {
   }
 }
 
-class Curator extends ChainIterator {
+export class Curator extends ChainIterator {
   constructor(parentIterator, curate) {
     super(parentIterator, null);
     this.curate = curate;
@@ -121,45 +121,3 @@ export class FilterIterator extends ChainIterator {
     return result;
   }
 }
-
-export class FilterIteratorForArray extends ChainIterator {
-  constructor(parentIterator, func) {
-    super(parentIterator, func);
-    this.index = 0;
-  }
-
-  base(direction) {
-    let result;
-    // eslint-disable-next-line no-cond-assign
-    while (!(result = this.parent[direction]()).done) {
-      if (this.func(result.value, result.key)) {
-        result.key = this.index;
-        this.index += 1;
-        break;
-      }
-    }
-    return result;
-  }
-}
-
-export class ReverseIteratorForArray extends ChainIterator {
-  constructor(parentIterator, func) {
-    super(parentIterator, func);
-    this.index = 0;
-  }
-
-  next() {
-    const result = this.parent.prev();
-    result.key = this.index;
-    this.index += 1;
-    return result;
-  }
-
-  prev() {
-    return this.parent.next();
-  }
-}
-
-export class TakeCuratorForArray extends Curator {}
-
-export class SetCuratorForArray extends Curator {}

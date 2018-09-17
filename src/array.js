@@ -1,11 +1,11 @@
 import Collection from "./collection";
+import { OriginIterator } from "./iterator/index";
 import {
-  FilterIteratorForArray,
-  OriginIterator,
-  ReverseIteratorForArray,
-  SetCuratorForArray,
-  TakeCuratorForArray
-} from "./iterator";
+  FilterIterator,
+  ReverseIterator,
+  SetCurator,
+  TakeCurator
+} from "./iterator/array";
 
 class ArrayIterator extends OriginIterator {
   constructor(array) {
@@ -56,11 +56,11 @@ export default class KasenArray extends Collection {
   // TODO: flatMap()
 
   filter(func) {
-    return super.filter(FilterIteratorForArray, func);
+    return super.filter(FilterIterator, func);
   }
 
   reverse() {
-    this.__pile(ReverseIteratorForArray, null);
+    this.__pile(ReverseIterator, null);
     return this;
   }
 
@@ -76,7 +76,7 @@ export default class KasenArray extends Collection {
       }
       return array;
     };
-    return super.take(TakeCuratorForArray, curate);
+    return super.take(TakeCurator, curate);
   }
 
   // TODO: takeLast()
@@ -106,7 +106,7 @@ export default class KasenArray extends Collection {
       array[key] = value;
       return array;
     };
-    return super.set(SetCuratorForArray, curate);
+    return super.set(SetCurator, curate);
   }
 
   // TODO: insert()

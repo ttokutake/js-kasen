@@ -1,6 +1,6 @@
 import clone from "clone";
 
-import { MapIterator } from "./iterator";
+import { MapIterator } from "./iterator/index";
 
 export default class Collection {
   constructor(coll) {

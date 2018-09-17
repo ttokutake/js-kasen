@@ -1,5 +1,5 @@
 import Collection from "./collection";
-import { OriginIterator } from "./iterator";
+import { OriginIterator } from "./iterator/index";
 
 class ObjectIterator extends OriginIterator {
   constructor(object) {
