@@ -6,7 +6,6 @@ class ObjectIterator extends OriginIterator {
   constructor(object) {
     super(object, ObjectIterator);
     this.keys = Object.keys(object);
-    this.index = null;
     this.reset();
   }
 
@@ -19,28 +18,17 @@ class ObjectIterator extends OriginIterator {
     object[key] = value;
   }
 
-  base(start, end, step) {
-    if (this.index === null) {
-      this.index = start;
-    }
-    if (this.index === end) {
+  next() {
+    if (this.index === this.keys.length) {
       return { done: true };
     }
     const key = this.keys[this.index];
-    this.index += step;
+    this.index += 1;
     return { done: false, key, value: this.coll[key] };
   }
 
-  next() {
-    return this.base(0, this.keys.length, 1);
-  }
-
-  prev() {
-    return this.base(this.keys.length - 1, -1, -1);
-  }
-
   reset() {
-    this.index = null;
+    this.index = 0;
   }
 }
 
