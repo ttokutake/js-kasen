@@ -1,5 +1,6 @@
 import Collection from "./collection";
 import { OriginIterator } from "./iterator/index";
+import { FilterIterator } from "./iterator/object";
 
 class ObjectIterator extends OriginIterator {
   constructor(object) {
@@ -46,5 +47,9 @@ class ObjectIterator extends OriginIterator {
 export default class KasenObject extends Collection {
   static __iterator(object) {
     return new ObjectIterator(object);
+  }
+
+  filter(func) {
+    return super.filter(FilterIterator, func);
   }
 }

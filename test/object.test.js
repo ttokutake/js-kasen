@@ -27,6 +27,24 @@ describe("Object", () => {
     });
   });
 
+  describe("filter()", () => {
+    test("ok", () => {
+      const ios = [
+        [{}, {}],
+        [{ a: 1 }, {}],
+        [{ b: 2 }, { b: 2 }],
+        [{ a: 1, b: 2 }, { b: 2 }],
+        [{ a: 1, b: 2, c: 3 }, { b: 2 }]
+      ];
+      ios.forEach(([input, expected]) => {
+        const object = Kasen(input);
+        const result = object.filter(v => v % 2 === 0).toJs();
+        expect(result).toEqual(expected);
+      });
+      // TODO: static method
+    });
+  });
+
   describe("every()", () => {
     test("ok", () => {
       const ios = [

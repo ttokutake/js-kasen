@@ -107,17 +107,3 @@ export class MapIterator extends ChainIterator {
     return result;
   }
 }
-
-// TODO: Used by Object
-export class FilterIterator extends ChainIterator {
-  base(direction) {
-    let result;
-    // eslint-disable-next-line no-cond-assign
-    while (!(result = this.parent[direction]()).done) {
-      if (this.func(result.value, result.key)) {
-        break;
-      }
-    }
-    return result;
-  }
-}
