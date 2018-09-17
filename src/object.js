@@ -40,4 +40,12 @@ export default class KasenObject extends Collection {
   filter(func) {
     return super.filter(FilterIterator, func);
   }
+
+  // TODO: take()
+
+  // TODO: set()
+
+  // TODO?: flip()
+
+  // TODO: static reduce()
 }
