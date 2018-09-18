@@ -80,14 +80,12 @@ export class Curator extends ChainIterator {
 
   rewind() {
     this.iter = null;
-    this.isCurated = false;
   }
 
   base(direction) {
-    if (!this.isCurated) {
+    if (!this.iter) {
       const coll = this.curate(this.parent);
       this.iter = new this.Origin(coll);
-      this.isCurated = true;
     }
     return this.iter[direction]();
   }
