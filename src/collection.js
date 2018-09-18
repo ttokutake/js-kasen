@@ -44,11 +44,6 @@ export default class Collection {
 
   // TODO: filterNot()
 
-  take(Iter, func) {
-    this.__pile(Iter, func);
-    return this;
-  }
-
   set(Iter, func) {
     this.__pile(Iter, func);
     return this;

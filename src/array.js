@@ -76,7 +76,8 @@ export default class KasenArray extends Collection {
       }
       return array;
     };
-    return super.take(TakeCurator, curate);
+    this.__pile(TakeCurator, curate);
+    return this;
   }
 
   // TODO: takeLast()
