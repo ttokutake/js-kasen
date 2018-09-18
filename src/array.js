@@ -1,11 +1,6 @@
 import Collection from "./collection";
-import { OriginIterator } from "./iterator/index";
-import {
-  FilterIterator,
-  ReverseIterator,
-  SetCurator,
-  TakeCurator
-} from "./iterator/array";
+import { OriginIterator, Curator } from "./iterator/index";
+import { FilterIterator, ReverseIterator } from "./iterator/array";
 
 class ArrayIterator extends OriginIterator {
   constructor(array) {
@@ -76,7 +71,7 @@ export default class KasenArray extends Collection {
       }
       return array;
     };
-    this.__pile(TakeCurator, curate);
+    this.__pile(Curator, curate);
     return this;
   }
 
@@ -107,7 +102,7 @@ export default class KasenArray extends Collection {
       array[key] = value;
       return array;
     };
-    return super.set(SetCurator, curate);
+    return super.set(Curator, curate);
   }
 
   // TODO: insert()

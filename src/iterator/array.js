@@ -1,4 +1,4 @@
-import { ChainIterator, Curator } from "./index";
+import { ChainIterator } from "./index";
 
 export class FilterIterator extends ChainIterator {
   constructor(parentIterator, func) {
@@ -37,7 +37,3 @@ export class ReverseIterator extends ChainIterator {
     return this.parent.next();
   }
 }
-
-export class TakeCurator extends Curator {}
-
-export class SetCurator extends Curator {}
