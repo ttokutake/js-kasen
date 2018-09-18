@@ -41,7 +41,10 @@ export default class KasenObject extends Collection {
     return super.filter(FilterIterator, func);
   }
 
-  // TODO: pick()
+  pick(keys) {
+    const func = (_value, key) => keys.some(k => k === key);
+    return super.filter(FilterIterator, func);
+  }
 
   // TODO: set()
 

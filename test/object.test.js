@@ -45,6 +45,24 @@ describe("Object", () => {
     });
   });
 
+  describe("pick()", () => {
+    test("ok", () => {
+      const ios = [
+        [{}, {}],
+        [{ a: 1 }, { a: 1 }],
+        [{ b: 2 }, {}],
+        [{ a: 1, b: 2 }, { a: 1 }],
+        [{ a: 1, b: 2, c: 3 }, { a: 1, c: 3 }]
+      ];
+      ios.forEach(([input, expected]) => {
+        const object = Kasen(input);
+        const result = object.pick(["a", "c"]).toJs();
+        expect(result).toEqual(expected);
+      });
+      // TODO: static method
+    });
+  });
+
   describe("every()", () => {
     test("ok", () => {
       const ios = [
