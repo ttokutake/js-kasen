@@ -15,6 +15,9 @@ Kasen.reduce = (coll, func, init) => {
   if (Array.isArray(coll)) {
     return KasenArray.reduce(coll, func, init);
   }
+  if (typeof coll === "object") {
+    return KasenObject.reduce(coll, func, init);
+  }
   throw new TypeError('"coll" must be Array');
 };
 

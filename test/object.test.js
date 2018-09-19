@@ -79,6 +79,47 @@ describe("Object", () => {
     });
   });
 
+  describe("reduce()", () => {
+    test("ok", () => {
+      const ios = [
+        [{}, 0, 0],
+        [{ a: 1 }, undefined, 1],
+        [{ a: 1 }, 10, 11],
+        [{ a: 1, b: 2 }, undefined, 3],
+        [{ a: 1, b: 2 }, 10, 13],
+        [{ a: 1, b: 2, c: 3 }, undefined, 6],
+        [{ a: 1, b: 2, c: 3 }, 10, 16]
+      ];
+      ios.forEach(([input, init, expected]) => {
+        const object = Kasen(input);
+        const result =
+          init === undefined
+            ? object.reduce((acc, v) => acc + v)
+            : object.reduce((acc, v) => acc + v, init);
+        expect(result).toEqual(expected);
+      });
+      ios.forEach(([input, init, expected]) => {
+        const result =
+          init === undefined
+            ? Kasen.reduce(input, (acc, v) => acc + v)
+            : Kasen.reduce(input, (acc, v) => acc + v, init);
+        expect(result).toEqual(expected);
+      });
+    });
+
+    test("error", () => {
+      {
+        const object = Kasen({});
+        const run = () => object.reduce((acc, v) => acc + v);
+        expect(run).toThrow(TypeError);
+      }
+      {
+        const run = () => Kasen.reduce({}, (acc, v) => acc + v);
+        expect(run).toThrow(TypeError);
+      }
+    });
+  });
+
   describe("every()", () => {
     test("ok", () => {
       const ios = [

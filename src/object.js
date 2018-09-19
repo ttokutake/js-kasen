@@ -57,5 +57,19 @@ export default class KasenObject extends Collection {
 
   // TODO?: flip()
 
-  // TODO: static reduce()
+  static reduce(object, func, init) {
+    const keys = Object.keys(object);
+    let acc = init;
+    if (init === undefined) {
+      if (!keys.length) {
+        throw new TypeError("Reduce of empty object with no initial value");
+      }
+      acc = object[keys.pop()];
+    }
+    for (let i = 0, len = keys.length; i < len; i += 1) {
+      const key = keys[i];
+      acc = func(acc, object[key], key);
+    }
+    return acc;
+  }
 }
