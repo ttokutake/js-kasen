@@ -154,7 +154,17 @@ describe("Array", () => {
       });
     });
 
-    // TODO: error
+    test("error", () => {
+      {
+        const array = Kasen([]);
+        const run = () => array.reduce((acc, v) => acc + v);
+        expect(run).toThrow(TypeError);
+      }
+      {
+        const run = () => Kasen.reduce([], (acc, v) => acc + v);
+        expect(run).toThrow(TypeError);
+      }
+    });
   });
 
   describe("every()", () => {
