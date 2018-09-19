@@ -1,5 +1,5 @@
 import Collection from "./collection";
-import { OriginIterator } from "./iterator/index";
+import { OriginIterator, Curator } from "./iterator/index";
 import { FilterIterator } from "./iterator/object";
 
 class ObjectIterator extends OriginIterator {
@@ -46,7 +46,14 @@ export default class KasenObject extends Collection {
     return super.filter(FilterIterator, func);
   }
 
-  // TODO: set()
+  set(key, value) {
+    const curate = iter => {
+      const object = ObjectIterator.curate(iter);
+      ObjectIterator.add(object, key, value);
+      return object;
+    };
+    return super.set(Curator, curate);
+  }
 
   // TODO?: flip()
 

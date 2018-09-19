@@ -63,6 +63,22 @@ describe("Object", () => {
     });
   });
 
+  describe("set()", () => {
+    test("ok", () => {
+      const ios = [
+        [{}, "a", { a: 10 }],
+        [{ a: 1 }, "a", { a: 10 }],
+        [{ a: 1 }, "b", { a: 1, b: 10 }]
+      ];
+      ios.forEach(([input, key, expected]) => {
+        const object = Kasen(input);
+        const result = object.set(key, 10).toJs();
+        expect(result).toEqual(expected);
+      });
+      // TODO: static method
+    });
+  });
+
   describe("every()", () => {
     test("ok", () => {
       const ios = [
