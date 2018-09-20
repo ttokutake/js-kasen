@@ -79,6 +79,16 @@ describe("Object", () => {
     });
   });
 
+  describe("toJs()", () => {
+    test("ok", () => {
+      const inputs = [{}, { a: 1 }, { a: 1, b: 2 }, { a: 1, b: 2, c: 3 }];
+      inputs.forEach(input => {
+        const result = Kasen(input).toJs();
+        expect(result).toEqual(input);
+      });
+    });
+  });
+
   describe("reduce()", () => {
     test("ok", () => {
       const ios = [

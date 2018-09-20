@@ -126,6 +126,16 @@ describe("Array", () => {
     });
   });
 
+  describe("toJs()", () => {
+    test("ok", () => {
+      const inputs = [[], [1], [1, 2], [1, 2, 3]];
+      inputs.forEach(input => {
+        const result = Kasen(input).toJs();
+        expect(result).toEqual(input);
+      });
+    });
+  });
+
   describe("reduce()", () => {
     test("ok", () => {
       const ios = [
@@ -226,5 +236,17 @@ describe("Array", () => {
     });
   });
 
-  // TODO: combination tests
+  describe("combination", () => {
+    test("key of filter()", () => {
+      // TODO: implement
+    });
+
+    test("key of reverse()", () => {
+      // TODO: implement
+    });
+
+    test("double reverse()", () => {
+      // TODO: implement
+    });
+  });
 });
