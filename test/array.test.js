@@ -263,15 +263,29 @@ describe("Array", () => {
 
   describe("combination", () => {
     test("each key after filter()", () => {
-      // TODO: implement
+      const keys = Kasen([1, 2, 3])
+        .filter(v => v % 2 === 1)
+        .map((_v, k) => k)
+        .toJs();
+      expect(keys).toEqual([0, 1]);
     });
 
     test("key after reverse()", () => {
-      // TODO: implement
+      const keys = Kasen([1, 2, 3])
+        .reverse()
+        .map((_v, k) => k)
+        .toJs();
+      expect(keys).toEqual([0, 1, 2]);
     });
 
-    test("double reverse()", () => {
-      // TODO: implement
+    test("double reverse().take()", () => {
+      const result = Kasen([1, 2, 3, 4, 5])
+        .reverse()
+        .take(4)
+        .reverse()
+        .take(3)
+        .toJs();
+      expect(result).toEqual([2, 3, 4]);
     });
   });
 });
