@@ -19,8 +19,9 @@ describe("Object", () => {
         [{ a: 1, b: 2, c: 3 }, { a: 2, b: 3, c: 4 }]
       ];
       ios.forEach(([input, expected]) => {
-        const object = Kasen(input);
-        const result = object.map(v => v + 1).toJs();
+        const result = Kasen(input)
+          .map(v => v + 1)
+          .toJs();
         expect(result).toEqual(expected);
       });
       // TODO: static method
@@ -37,8 +38,9 @@ describe("Object", () => {
         [{ a: 1, b: 2, c: 3 }, { b: 2 }]
       ];
       ios.forEach(([input, expected]) => {
-        const object = Kasen(input);
-        const result = object.filter(v => v % 2 === 0).toJs();
+        const result = Kasen(input)
+          .filter(v => v % 2 === 0)
+          .toJs();
         expect(result).toEqual(expected);
       });
       // TODO: static method
@@ -55,8 +57,9 @@ describe("Object", () => {
         [{ a: 1, b: 2, c: 3 }, { a: 1, c: 3 }]
       ];
       ios.forEach(([input, expected]) => {
-        const object = Kasen(input);
-        const result = object.pick(["a", "c"]).toJs();
+        const result = Kasen(input)
+          .pick(["a", "c"])
+          .toJs();
         expect(result).toEqual(expected);
       });
       // TODO: static method
@@ -71,8 +74,9 @@ describe("Object", () => {
         [{ a: 1 }, "b", { a: 1, b: 10 }]
       ];
       ios.forEach(([input, key, expected]) => {
-        const object = Kasen(input);
-        const result = object.set(key, 10).toJs();
+        const result = Kasen(input)
+          .set(key, 10)
+          .toJs();
         expect(result).toEqual(expected);
       });
       // TODO: static method
@@ -101,11 +105,10 @@ describe("Object", () => {
         [{ a: 1, b: 2, c: 3 }, 10, 16]
       ];
       ios.forEach(([input, init, expected]) => {
-        const object = Kasen(input);
         const result =
           init === undefined
-            ? object.reduce((acc, v) => acc + v)
-            : object.reduce((acc, v) => acc + v, init);
+            ? Kasen(input).reduce((acc, v) => acc + v)
+            : Kasen(input).reduce((acc, v) => acc + v, init);
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, init, expected]) => {
@@ -119,8 +122,7 @@ describe("Object", () => {
 
     test("error", () => {
       {
-        const object = Kasen({});
-        const run = () => object.reduce((acc, v) => acc + v);
+        const run = () => Kasen({}).reduce((acc, v) => acc + v);
         expect(run).toThrow(TypeError);
       }
       {
@@ -141,8 +143,7 @@ describe("Object", () => {
         [{ a: 1, b: 3, c: 5 }, true]
       ];
       ios.forEach(([input, expected]) => {
-        const object = Kasen(input);
-        const result = object.every(v => v % 2 === 1);
+        const result = Kasen(input).every(v => v % 2 === 1);
         expect(result).toBe(expected);
       });
       // TODO: static method
@@ -161,8 +162,7 @@ describe("Object", () => {
         [{ b: 2, d: 4, e: 5 }, 5]
       ];
       ios.forEach(([input, expected]) => {
-        const object = Kasen(input);
-        const result = object.find(v => v % 2 === 1);
+        const result = Kasen(input).find(v => v % 2 === 1);
         expect(result).toBe(expected);
       });
       // TODO: static method
