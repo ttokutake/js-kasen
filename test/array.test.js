@@ -10,6 +10,18 @@ describe("Array", () => {
     });
   });
 
+  describe("tap()", () => {
+    test("ok", () => {
+      const inputs = [[], [1], [1, 2], [1, 2, 3]];
+      inputs.forEach(input => {
+        const result = Kasen(input)
+          .tap(v => v + 1)
+          .toJs();
+        expect(result).toEqual(input);
+      });
+    });
+  });
+
   describe("map()", () => {
     test("ok", () => {
       const ios = [

@@ -96,6 +96,16 @@ export class Curator extends ChainIterator {
   }
 }
 
+export class TapIterator extends ChainIterator {
+  base(direction) {
+    const result = this.parent[direction]();
+    if (!result.done) {
+      this.func(result.value, result.key);
+    }
+    return result;
+  }
+}
+
 export class MapIterator extends ChainIterator {
   base(direction) {
     const result = this.parent[direction]();

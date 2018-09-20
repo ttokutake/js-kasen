@@ -1,6 +1,6 @@
 import clone from "clone";
 
-import { MapIterator } from "./iterator/index";
+import { TapIterator, MapIterator } from "./iterator/index";
 
 export default class Collection {
   constructor(coll) {
@@ -28,7 +28,10 @@ export default class Collection {
     return clone(this);
   }
 
-  // TODO: tap() from Ramda
+  tap(func) {
+    this.__pile(TapIterator, func);
+    return this;
+  }
 
   map(func) {
     this.__pile(MapIterator, func);
