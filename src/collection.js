@@ -180,5 +180,16 @@ export default class Collection {
 
   // TODO: entries()
 
-  // TODO: forEach()
+  forEach(func) {
+    const finalize = iter => {
+      let key;
+      let value;
+      // eslint-disable-next-line no-cond-assign
+      while (!({ key, value } = iter.next()).done) {
+        func(value, key);
+      }
+      return undefined;
+    };
+    return this.__consume(finalize);
+  }
 }

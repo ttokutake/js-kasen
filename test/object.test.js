@@ -180,4 +180,15 @@ describe("Object", () => {
       // TODO: static method
     });
   });
+
+  describe("forEach()", () => {
+    test("ok", () => {
+      const inputs = [{}, { a: 1 }, { a: 1, b: 2 }, { a: 1, b: 2, c: 3 }];
+      inputs.forEach(input => {
+        const result = Kasen(input).forEach(v => v + 1);
+        expect(result).toBeUndefined();
+      });
+      // TODO: static method
+    });
+  });
 });

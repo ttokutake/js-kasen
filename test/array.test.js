@@ -250,12 +250,23 @@ describe("Array", () => {
     });
   });
 
+  describe("forEach()", () => {
+    test("ok", () => {
+      const inputs = [[], [1], [1, 2], [1, 2, 3]];
+      inputs.forEach(input => {
+        const result = Kasen(input).forEach(v => v + 1);
+        expect(result).toBeUndefined();
+      });
+      // TODO: static method
+    });
+  });
+
   describe("combination", () => {
-    test("key of filter()", () => {
+    test("each key after filter()", () => {
       // TODO: implement
     });
 
-    test("key of reverse()", () => {
+    test("key after reverse()", () => {
       // TODO: implement
     });
 
