@@ -79,7 +79,10 @@ describe("Array", () => {
           .toJs();
         expect(result).toEqual(expected);
       });
-      // TODO: static method
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.reverse(input);
+        expect(result).toEqual(expected);
+      });
     });
   });
 

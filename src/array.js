@@ -80,6 +80,15 @@ export default class KasenArray extends Collection {
     return this;
   }
 
+  static reverse(array) {
+    const len = array.length;
+    const result = new Array(len);
+    for (let i = 0, j = len - 1; i < len; i += 1, j -= 1) {
+      result[i] = array[j];
+    }
+    return result;
+  }
+
   take(num) {
     const curate = iter => {
       const array = ArrayIterator.default();

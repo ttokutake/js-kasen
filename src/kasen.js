@@ -1,18 +1,26 @@
 const { default: KasenArray } = require("./array");
 const { default: KasenObject } = require("./object");
 
-function choose(coll) {
-  if (Array.isArray(coll)) {
-    return KasenArray;
-  }
-  if (typeof coll === "object") {
-    return KasenObject;
-  }
-  return null;
+function isArray(v) {
+  return Array.isArray(v);
+}
+
+function isObject(v) {
+  return typeof v === "object";
 }
 
 function isFunction(v) {
   return typeof v === "function";
+}
+
+function choose(coll) {
+  if (isArray(coll)) {
+    return KasenArray;
+  }
+  if (isObject(coll)) {
+    return KasenObject;
+  }
+  return null;
 }
 
 function Kasen(coll) {
@@ -43,6 +51,13 @@ Kasen.filter = (coll, func) => {
     throw new TypeError("2nd argument must be Function");
   }
   return Coll.filter(coll, func);
+};
+
+Kasen.reverse = array => {
+  if (!isArray(array)) {
+    throw new TypeError("1st argument must be Array");
+  }
+  return KasenArray.reverse(array);
 };
 
 Kasen.reduce = (coll, func, init) => {
