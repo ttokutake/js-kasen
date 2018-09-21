@@ -1,3 +1,7 @@
+export function isNumber(v) {
+  return typeof v === "number";
+}
+
 export function isArray(v) {
   return Array.isArray(v);
 }

@@ -1,6 +1,6 @@
 const { default: KasenArray } = require("./array");
 const { default: KasenObject } = require("./object");
-const { isArray, isObject, isFunction } = require("./type");
+const { isNumber, isArray, isObject, isFunction } = require("./type");
 
 function choose(coll) {
   if (isArray(coll)) {
@@ -47,6 +47,16 @@ Kasen.reverse = array => {
     throw new TypeError("1st argument must be Array");
   }
   return KasenArray.reverse(array);
+};
+
+Kasen.take = (array, num) => {
+  if (!isArray(array)) {
+    throw new TypeError("1st argument must be Array");
+  }
+  if (!isNumber(num)) {
+    throw new TypeError("2nd argument must be Number");
+  }
+  return KasenArray.take(array, num);
 };
 
 Kasen.reduce = (coll, func, init) => {

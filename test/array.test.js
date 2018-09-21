@@ -89,6 +89,10 @@ describe("Array", () => {
   describe("take()", () => {
     test("ok", () => {
       const ios = [
+        [[], -1, []],
+        [[1], -1, []],
+        [[1, 2], -1, []],
+        [[1, 2, 3], -1, []],
         [[], 0, []],
         [[1], 0, []],
         [[1, 2], 0, []],
@@ -108,7 +112,10 @@ describe("Array", () => {
           .toJs();
         expect(result).toEqual(expected);
       });
-      // TODO: static method
+      ios.forEach(([input, num, expected]) => {
+        const result = Kasen.take(input, num);
+        expect(result).toEqual(expected);
+      });
     });
   });
 

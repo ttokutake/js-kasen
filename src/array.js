@@ -105,6 +105,10 @@ export default class KasenArray extends Collection {
     return this;
   }
 
+  static take(array, num) {
+    return num < 0 ? [] : array.slice(0, num);
+  }
+
   // TODO: takeLast()
 
   // TODO: takeWhile()
