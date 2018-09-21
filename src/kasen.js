@@ -1,17 +1,6 @@
 const { default: KasenArray } = require("./array");
 const { default: KasenObject } = require("./object");
-
-function isArray(v) {
-  return Array.isArray(v);
-}
-
-function isObject(v) {
-  return typeof v === "object";
-}
-
-function isFunction(v) {
-  return typeof v === "function";
-}
+const { isArray, isObject, isFunction } = require("./type");
 
 function choose(coll) {
   if (isArray(coll)) {
