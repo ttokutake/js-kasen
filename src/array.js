@@ -47,12 +47,7 @@ export default class KasenArray extends Collection {
   }
 
   static map(array, func) {
-    const len = array.length;
-    const result = new Array(len);
-    for (let i = 0; i < len; i += 1) {
-      result[i] = func(array[i], i);
-    }
-    return result;
+    return array.map(func);
   }
 
   // TODO: flatten()
@@ -64,15 +59,7 @@ export default class KasenArray extends Collection {
   }
 
   static filter(array, func) {
-    const result = [];
-    for (let i = 0, j = 0, len = array.length; i < len; i += 1) {
-      const value = array[i];
-      if (func(value, i)) {
-        result[j] = value;
-        j += 1;
-      }
-    }
-    return result;
+    return array.filter(func);
   }
 
   reverse() {
@@ -81,12 +68,7 @@ export default class KasenArray extends Collection {
   }
 
   static reverse(array) {
-    const len = array.length;
-    const result = new Array(len);
-    for (let i = 0, j = len - 1; i < len; i += 1, j -= 1) {
-      result[i] = array[j];
-    }
-    return result;
+    return array.reverse();
   }
 
   take(num) {
