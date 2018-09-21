@@ -151,6 +151,11 @@ export default class Collection {
     return this.__consume(finalize);
   }
 
+  // eslint-disable-next-line no-unused-vars
+  static every(_coll, _func) {
+    throw new Error("not implemented");
+  }
+
   // TODO: some()
 
   find(func) {
@@ -166,6 +171,11 @@ export default class Collection {
       return undefined;
     };
     return this.__consume(finalize);
+  }
+
+  // eslint-disable-next-line no-unused-vars
+  static find(_coll, _func) {
+    throw new Error("not implemented");
   }
 
   // TODO: findEntry()

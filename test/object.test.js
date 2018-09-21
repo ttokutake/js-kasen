@@ -189,7 +189,10 @@ describe("Object", () => {
         const result = Kasen(input).find(v => v % 2 === 1);
         expect(result).toBe(expected);
       });
-      // TODO: static method
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.find(input, v => v % 2 === 1);
+        expect(result).toBe(expected);
+      });
     });
   });
 

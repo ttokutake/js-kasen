@@ -178,6 +178,16 @@ export default class KasenArray extends Collection {
     return array.every(func);
   }
 
+  static find(array, func) {
+    for (let i = 0, len = array.length; i < len; i += 1) {
+      const value = array[i];
+      if (func(value, i)) {
+        return value;
+      }
+    }
+    return undefined;
+  }
+
   findLast(func) {
     const finalize = iter => {
       let key;

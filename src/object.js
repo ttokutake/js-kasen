@@ -111,4 +111,16 @@ export default class KasenObject extends Collection {
     }
     return true;
   }
+
+  static find(object, func) {
+    const keys = Object.keys(object);
+    for (let i = 0, len = keys.length; i < len; i += 1) {
+      const key = keys[i];
+      const value = object[key];
+      if (func(value, key)) {
+        return value;
+      }
+    }
+    return undefined;
+  }
 }
