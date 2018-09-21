@@ -100,4 +100,15 @@ export default class KasenObject extends Collection {
     }
     return acc;
   }
+
+  static every(object, func) {
+    const keys = Object.keys(object);
+    for (let i = 0, len = keys.length; i < len; i += 1) {
+      const key = keys[i];
+      if (!func(object[key], key)) {
+        return false;
+      }
+    }
+    return true;
+  }
 }

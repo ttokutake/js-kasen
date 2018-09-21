@@ -174,6 +174,10 @@ export default class KasenArray extends Collection {
 
   // TODO: splitAt() from Scala
 
+  static every(array, func) {
+    return array.every(func);
+  }
+
   findLast(func) {
     const finalize = iter => {
       let key;

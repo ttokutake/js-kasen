@@ -80,4 +80,15 @@ Kasen.reduce = (coll, func, init) => {
   return Coll.reduce(coll, func, init);
 };
 
+Kasen.every = (coll, func) => {
+  const Coll = choose(coll);
+  if (!Coll) {
+    throw new TypeError("1st argument must be Array or Object");
+  }
+  if (!isFunction(func)) {
+    throw new TypeError("2nd argument must be Function");
+  }
+  return Coll.every(coll, func);
+};
+
 module.exports = Kasen;

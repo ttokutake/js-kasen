@@ -224,7 +224,10 @@ describe("Array", () => {
         const result = Kasen(input).every(v => v % 2 === 1);
         expect(result).toBe(expected);
       });
-      // TODO: static method
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.every(input, v => v % 2 === 1);
+        expect(result).toBe(expected);
+      });
     });
   });
 
