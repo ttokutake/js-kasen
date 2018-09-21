@@ -34,6 +34,17 @@ Kasen.map = (coll, func) => {
   return Coll.map(coll, func);
 };
 
+Kasen.filter = (coll, func) => {
+  const Coll = choose(coll);
+  if (!Coll) {
+    throw new TypeError("1st argument must be Array or Object");
+  }
+  if (!isFunction(func)) {
+    throw new TypeError("2nd argument must be Function");
+  }
+  return Coll.filter(coll, func);
+};
+
 Kasen.reduce = (coll, func, init) => {
   const Coll = choose(coll);
   if (!Coll) {

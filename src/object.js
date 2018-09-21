@@ -51,6 +51,19 @@ export default class KasenObject extends Collection {
     return super.filter(FilterIterator, func);
   }
 
+  static filter(object, func) {
+    const result = {};
+    const keys = Object.keys(object);
+    for (let i = 0, len = keys.length; i < len; i += 1) {
+      const key = keys[i];
+      const value = object[key];
+      if (func(value, key)) {
+        result[key] = value;
+      }
+    }
+    return result;
+  }
+
   pick(keys) {
     const func = (_value, key) => keys.some(k => k === key);
     return super.filter(FilterIterator, func);

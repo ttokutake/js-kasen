@@ -58,7 +58,10 @@ describe("Array", () => {
           .toJs();
         expect(result).toEqual(expected);
       });
-      // TODO: static method
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.filter(input, v => v % 2 === 0);
+        expect(result).toEqual(expected);
+      });
     });
   });
 

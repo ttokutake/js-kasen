@@ -50,6 +50,11 @@ export default class Collection {
     return this;
   }
 
+  // eslint-disable-next-line no-unused-vars
+  static filter(_coll, _func) {
+    throw new Error("not implemented");
+  }
+
   // TODO: filterNot()
 
   set(Iter, func) {

@@ -63,6 +63,18 @@ export default class KasenArray extends Collection {
     return super.filter(FilterIterator, func);
   }
 
+  static filter(array, func) {
+    const result = [];
+    for (let i = 0, j = 0, len = array.length; i < len; i += 1) {
+      const value = array[i];
+      if (func(value, i)) {
+        result[j] = value;
+        j += 1;
+      }
+    }
+    return result;
+  }
+
   reverse() {
     this.__pile(ReverseIterator, null);
     return this;
