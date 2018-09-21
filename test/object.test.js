@@ -80,7 +80,10 @@ describe("Object", () => {
           .toJs();
         expect(result).toEqual(expected);
       });
-      // TODO: static method
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.pick(input, ["a", "c"]);
+        expect(result).toEqual(expected);
+      });
     });
   });
 

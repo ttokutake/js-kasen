@@ -49,6 +49,16 @@ Kasen.reverse = array => {
   return KasenArray.reverse(array);
 };
 
+Kasen.pick = (object, keys) => {
+  if (!isObject(object)) {
+    throw new TypeError("1st argument must be Object");
+  }
+  if (!isArray(keys)) {
+    throw new TypeError("2nd argument must be Array");
+  }
+  return KasenObject.pick(object, keys);
+};
+
 Kasen.take = (array, num) => {
   if (!isArray(array)) {
     throw new TypeError("1st argument must be Array");
