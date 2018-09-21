@@ -37,6 +37,17 @@ export default class KasenObject extends Collection {
     return new ObjectIterator(object);
   }
 
+  static map(object, func) {
+    const result = {};
+    const keys = Object.keys(object);
+    const len = keys.length;
+    for (let i = 0; i < len; i += 1) {
+      const key = keys[i];
+      result[key] = func(object[key], key);
+    }
+    return result;
+  }
+
   filter(func) {
     return super.filter(FilterIterator, func);
   }

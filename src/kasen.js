@@ -11,6 +11,16 @@ function Kasen(coll) {
   throw new TypeError('"coll" must be Array or Object');
 }
 
+Kasen.map = (coll, func) => {
+  if (Array.isArray(coll)) {
+    return KasenArray.map(coll, func);
+  }
+  if (typeof coll === "object") {
+    return KasenObject.map(coll, func);
+  }
+  throw new TypeError('"coll" must be Array or Object');
+};
+
 Kasen.reduce = (coll, func, init) => {
   if (Array.isArray(coll)) {
     return KasenArray.reduce(coll, func, init);
@@ -18,7 +28,7 @@ Kasen.reduce = (coll, func, init) => {
   if (typeof coll === "object") {
     return KasenObject.reduce(coll, func, init);
   }
-  throw new TypeError('"coll" must be Array');
+  throw new TypeError('"coll" must be Array or Object');
 };
 
 module.exports = Kasen;

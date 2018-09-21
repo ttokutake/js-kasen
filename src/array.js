@@ -46,6 +46,15 @@ export default class KasenArray extends Collection {
     return new ArrayIterator(array);
   }
 
+  static map(array, func) {
+    const len = array.length;
+    const result = new Array(len);
+    for (let i = 0; i < len; i += 1) {
+      result[i] = func(array[i], i);
+    }
+    return result;
+  }
+
   // TODO: flatten()
 
   // TODO: flatMap()

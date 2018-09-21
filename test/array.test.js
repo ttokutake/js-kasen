@@ -36,7 +36,10 @@ describe("Array", () => {
           .toJs();
         expect(result).toEqual(expected);
       });
-      // TODO: static method
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.map(input, v => v + 1);
+        expect(result).toEqual(expected);
+      });
     });
   });
 
