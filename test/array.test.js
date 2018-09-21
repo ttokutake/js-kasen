@@ -271,7 +271,7 @@ describe("Array", () => {
   });
 
   describe("combination", () => {
-    test("each key after filter()", () => {
+    test("keys after filter()", () => {
       const keys = Kasen([1, 2, 3])
         .filter(v => v % 2 === 1)
         .map((_v, k) => k)
@@ -279,7 +279,7 @@ describe("Array", () => {
       expect(keys).toEqual([0, 1]);
     });
 
-    test("key after reverse()", () => {
+    test("keys after reverse()", () => {
       const keys = Kasen([1, 2, 3])
         .reverse()
         .map((_v, k) => k)
