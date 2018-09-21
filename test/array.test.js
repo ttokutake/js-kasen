@@ -268,7 +268,10 @@ describe("Array", () => {
         const result = Kasen(input).findLast(v => v % 2 === 1);
         expect(result).toBe(expected);
       });
-      // TODO: static method
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.findLast(input, v => v % 2 === 1);
+        expect(result).toBe(expected);
+      });
     });
   });
 

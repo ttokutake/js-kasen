@@ -203,6 +203,16 @@ export default class KasenArray extends Collection {
     return this.__consume(finalize);
   }
 
+  static findLast(array, func) {
+    for (let i = array.length - 1; i > -1; i -= 1) {
+      const value = array[i];
+      if (func(value, i)) {
+        return value;
+      }
+    }
+    return undefined;
+  }
+
   // TODO: findLastEntry()
   // TODO: findLastKey()
   // TODO: lastKeyOf()

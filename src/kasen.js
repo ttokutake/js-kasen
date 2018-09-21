@@ -102,6 +102,16 @@ Kasen.find = (coll, func) => {
   return Coll.find(coll, func);
 };
 
+Kasen.findLast = (array, func) => {
+  if (!isArray(array)) {
+    throw new TypeError("1st argument must be Array");
+  }
+  if (!isFunction(func)) {
+    throw new TypeError("2nd argument must be Function");
+  }
+  return KasenArray.findLast(array, func);
+};
+
 Kasen.forEach = (coll, func) => {
   const Coll = choose(coll);
   if (!Coll) {
