@@ -40,8 +40,7 @@ export default class KasenObject extends Collection {
   static map(object, func) {
     const result = {};
     const keys = Object.keys(object);
-    const len = keys.length;
-    for (let i = 0; i < len; i += 1) {
+    for (let i = 0, len = keys.length; i < len; i += 1) {
       const key = keys[i];
       result[key] = func(object[key], key);
     }
