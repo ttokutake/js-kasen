@@ -279,7 +279,10 @@ describe("Array", () => {
         const result = Kasen(input).forEach(v => v + 1);
         expect(result).toBeUndefined();
       });
-      // TODO: static method
+      inputs.forEach(input => {
+        const result = Kasen.forEach(input, v => v + 1);
+        expect(result).toBeUndefined();
+      });
     });
   });
 

@@ -102,4 +102,15 @@ Kasen.find = (coll, func) => {
   return Coll.find(coll, func);
 };
 
+Kasen.forEach = (coll, func) => {
+  const Coll = choose(coll);
+  if (!Coll) {
+    throw new TypeError("1st argument must be Array or Object");
+  }
+  if (!isFunction(func)) {
+    throw new TypeError("2nd argument must be Function");
+  }
+  return Coll.forEach(coll, func);
+};
+
 module.exports = Kasen;

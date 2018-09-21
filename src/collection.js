@@ -212,4 +212,9 @@ export default class Collection {
     };
     return this.__consume(finalize);
   }
+
+  // eslint-disable-next-line no-unused-vars
+  static forEach(_coll, _func) {
+    throw new Error("not implemented");
+  }
 }

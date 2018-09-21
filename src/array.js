@@ -218,4 +218,8 @@ export default class KasenArray extends Collection {
   // TODO?: endsWith()
 
   // TODO: range()
+
+  static forEach(array, func) {
+    return array.forEach(func);
+  }
 }

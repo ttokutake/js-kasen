@@ -123,4 +123,13 @@ export default class KasenObject extends Collection {
     }
     return undefined;
   }
+
+  static forEach(object, func) {
+    const keys = Object.keys(object);
+    for (let i = 0, len = keys.length; i < len; i += 1) {
+      const key = keys[i];
+      func(object[key], key);
+    }
+    return undefined;
+  }
 }
