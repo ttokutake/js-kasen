@@ -120,6 +120,10 @@ describe("Object", () => {
           .toJs();
         expect(result).toEqual(expected);
       });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.filterNot(input, v => v % 2 === 1);
+        expect(result).toEqual(expected);
+      });
     });
   });
 
