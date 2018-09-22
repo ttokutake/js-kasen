@@ -44,7 +44,7 @@ export default class Collection {
   }
 
   // eslint-disable-next-line class-methods-use-this, no-unused-vars
-  mapIf(bool, func) {
+  mapIf(_bool, _func) {
     throw new Error("not implemented");
   }
 
@@ -72,6 +72,11 @@ export default class Collection {
 
   // eslint-disable-next-line no-unused-vars
   static set(_coll, _key, _value) {
+    throw new Error("not implemented");
+  }
+
+  // eslint-disable-next-line class-methods-use-this, no-unused-vars
+  setIf(_Iter, _key, _value) {
     throw new Error("not implemented");
   }
 

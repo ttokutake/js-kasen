@@ -207,6 +207,26 @@ describe("Array", () => {
     });
   });
 
+  describe("setIf()", () => {
+    test("ok", () => {
+      {
+        const input = [1, 2];
+        const result = Kasen(input)
+          .setIf(false, 0, 10)
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const input = [1, 2];
+        const expected = [10, 2];
+        const result = Kasen(input)
+          .setIf(true, 0, 10)
+          .toJs();
+        expect(result).toEqual(expected);
+      }
+    });
+  });
+
   describe("toJs()", () => {
     test("ok", () => {
       const inputs = [[], [1], [1, 2], [1, 2, 3]];

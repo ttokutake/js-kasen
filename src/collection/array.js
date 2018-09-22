@@ -167,6 +167,13 @@ export default class KasenArray extends Collection {
     return result;
   }
 
+  setIf(bool, index, value) {
+    if (!isNumber(index)) {
+      throw new TypeError("2nd argument must be Number");
+    }
+    return bool ? this.set(index, value) : this;
+  }
+
   // TODO: insert()
 
   // TODO: push()
