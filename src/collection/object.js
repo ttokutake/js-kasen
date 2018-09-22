@@ -66,7 +66,7 @@ export default class KasenObject extends Collection {
     if (!isFunction(func)) {
       throw new TypeError("2nd argument must be Function");
     }
-    return bool ? this.map(func) : this;
+    return super.mapIf(bool, func);
   }
 
   filter(func) {
@@ -93,7 +93,7 @@ export default class KasenObject extends Collection {
     if (!isFunction(func)) {
       throw new TypeError("2nd argument must be Function");
     }
-    return bool ? this.filter(func) : this;
+    return super.filterIf(bool, func);
   }
 
   pick(keys) {
@@ -138,7 +138,7 @@ export default class KasenObject extends Collection {
     if (!(isNumber(key) || isString(key))) {
       throw new TypeError("2nd argument must be Number or String");
     }
-    return bool ? this.set(key, value) : this;
+    return super.setIf(bool, key, value);
   }
 
   // TODO: deleteAll()

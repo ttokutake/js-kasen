@@ -69,7 +69,7 @@ export default class KasenArray extends Collection {
     if (!isFunction(func)) {
       throw new TypeError("2nd argument must be Function");
     }
-    return bool ? this.map(func) : this;
+    return super.mapIf(bool, func);
   }
 
   // TODO: flatten()
@@ -91,7 +91,7 @@ export default class KasenArray extends Collection {
     if (!isFunction(func)) {
       throw new TypeError("2nd argument must be Function");
     }
-    return bool ? this.filter(func) : this;
+    return super.filterIf(bool, func);
   }
 
   reverse() {
@@ -182,7 +182,7 @@ export default class KasenArray extends Collection {
     if (!isNumber(index)) {
       throw new TypeError("2nd argument must be Number");
     }
-    return bool ? this.set(index, value) : this;
+    return super.setIf(bool, index, value);
   }
 
   // TODO: insert()
