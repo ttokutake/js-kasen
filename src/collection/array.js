@@ -1,6 +1,6 @@
-import Collection from "./collection";
-import { OriginIterator, Curator } from "./iterator/index";
-import { FilterIterator, ReverseIterator } from "./iterator/array";
+import Collection from "./index";
+import { OriginIterator, Curator } from "../iterator/index";
+import { FilterIterator, ReverseIterator } from "../iterator/array";
 
 class ArrayIterator extends OriginIterator {
   constructor(array) {

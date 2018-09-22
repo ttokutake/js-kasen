@@ -1,5 +1,5 @@
-const { default: KasenArray } = require("./array");
-const { default: KasenObject } = require("./object");
+const { default: KasenArray } = require("./collection/array");
+const { default: KasenObject } = require("./collection/object");
 const { isNumber, isString, isObject, isArray, isFunction } = require("./type");
 
 function choose(coll) {

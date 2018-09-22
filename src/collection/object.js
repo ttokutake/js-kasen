@@ -1,6 +1,6 @@
-import Collection from "./collection";
-import { OriginIterator, Curator } from "./iterator/index";
-import { FilterIterator } from "./iterator/object";
+import Collection from "./index";
+import { OriginIterator, Curator } from "../iterator/index";
+import { FilterIterator } from "../iterator/object";
 
 class ObjectIterator extends OriginIterator {
   constructor(object) {
