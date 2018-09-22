@@ -127,6 +127,26 @@ describe("Object", () => {
     });
   });
 
+  describe("pickIf()", () => {
+    test("ok", () => {
+      {
+        const input = { a: 1, b: 2, c: 3 };
+        const result = Kasen(input)
+          .pickIf(false, ["a", "c"])
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const input = { a: 1, b: 2, c: 3 };
+        const expected = { a: 1, c: 3 };
+        const result = Kasen(input)
+          .pickIf(true, ["a", "c"])
+          .toJs();
+        expect(result).toEqual(expected);
+      }
+    });
+  });
+
   describe("set()", () => {
     test("ok", () => {
       const ios = [

@@ -109,6 +109,13 @@ export default class KasenObject extends Collection {
     return this.filter(object, func);
   }
 
+  pickIf(bool, keys) {
+    if (!isArray(keys)) {
+      throw new TypeError("2nd argument must be Array");
+    }
+    return bool ? this.pick(keys) : this;
+  }
+
   set(key, value) {
     if (!(isNumber(key) || isString(key))) {
       throw new TypeError("1st argument must be Number or String");
