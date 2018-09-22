@@ -127,6 +127,26 @@ describe("Object", () => {
     });
   });
 
+  describe("filterNotIf()", () => {
+    test("ok", () => {
+      {
+        const input = { a: 1, b: 2, c: 3 };
+        const result = Kasen(input)
+          .filterNotIf(false, v => v % 2 === 1)
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const input = { a: 1, b: 2, c: 3 };
+        const expected = { b: 2 };
+        const result = Kasen(input)
+          .filterNotIf(true, v => v % 2 === 1)
+          .toJs();
+        expect(result).toEqual(expected);
+      }
+    });
+  });
+
   describe("pick()", () => {
     test("ok", () => {
       const ios = [

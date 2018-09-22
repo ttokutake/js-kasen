@@ -127,6 +127,26 @@ describe("Array", () => {
     });
   });
 
+  describe("filterNotIf()", () => {
+    test("ok", () => {
+      {
+        const input = [1, 2, 3];
+        const result = Kasen(input)
+          .filterNotIf(false, v => v % 2 === 1)
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const input = [1, 2, 3];
+        const expected = [2];
+        const result = Kasen(input)
+          .filterNotIf(true, v => v % 2 === 1)
+          .toJs();
+        expect(result).toEqual(expected);
+      }
+    });
+  });
+
   describe("reverse()", () => {
     test("ok", () => {
       const ios = [
