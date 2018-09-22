@@ -59,7 +59,7 @@ export default class Collection {
   }
 
   // eslint-disable-next-line class-methods-use-this, no-unused-vars
-  filterIf(_bool, _Iter, _func) {
+  filterIf(_bool, _func) {
     throw new Error("not implemented");
   }
 
@@ -76,7 +76,7 @@ export default class Collection {
   }
 
   // eslint-disable-next-line class-methods-use-this, no-unused-vars
-  setIf(_Iter, _key, _value) {
+  setIf(_bool, _key, _value) {
     throw new Error("not implemented");
   }
 
