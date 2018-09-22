@@ -111,7 +111,7 @@ export default class KasenArray extends Collection {
       const { length } = array;
       if (index < -length || length < index) {
         throw new RangeError(
-          `Must satisfy ${-length} <= "index" <= ${length} to use set()`
+          `1st argument must be ${-length} <= arg <= ${length} to use set() for Array of ${length} length`
         );
       }
       const key = index < 0 ? length + ((index + 1) % length) - 1 : index;
@@ -119,6 +119,14 @@ export default class KasenArray extends Collection {
       return array;
     };
     return super.set(Curator, curate);
+  }
+
+  static set(array, index, value) {
+    const result = array.slice();
+    const { length } = array;
+    const key = index < 0 ? length + ((index + 1) % length) - 1 : index;
+    result[key] = value;
+    return result;
   }
 
   // TODO: insert()

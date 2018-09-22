@@ -1,6 +1,6 @@
 const { default: KasenArray } = require("./array");
 const { default: KasenObject } = require("./object");
-const { isNumber, isArray, isObject, isFunction } = require("./type");
+const { isNumber, isString, isObject, isArray, isFunction } = require("./type");
 
 function choose(coll) {
   if (isArray(coll)) {
@@ -67,6 +67,28 @@ Kasen.take = (array, num) => {
     throw new TypeError("2nd argument must be Number");
   }
   return KasenArray.take(array, num);
+};
+
+Kasen.set = (coll, key, value) => {
+  const Coll = choose(coll);
+  if (!Coll) {
+    throw new TypeError("1st argument must be Array or Object");
+  }
+  if (isArray(coll)) {
+    if (!isNumber(key)) {
+      throw new TypeError("2nd argument must be Number");
+    }
+    const { length } = coll;
+    if (key < -length || length < key) {
+      throw new RangeError(
+        `2nd argument must be ${-length} <= arg <= ${length}`
+      );
+    }
+  }
+  if (isObject(coll) && !(isNumber(key) || isString(key))) {
+    throw new TypeError("2nd argument must be Number or String");
+  }
+  return Coll.set(coll, key, value);
 };
 
 Kasen.reduce = (coll, func, init) => {

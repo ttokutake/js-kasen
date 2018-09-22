@@ -83,6 +83,12 @@ export default class KasenObject extends Collection {
     return super.set(Curator, curate);
   }
 
+  static set(object, key, value) {
+    const result = this.map(object, v => v);
+    ObjectIterator.add(result, key, value);
+    return result;
+  }
+
   // TODO?: flip()
 
   static reduce(object, func, init) {

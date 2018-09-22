@@ -100,7 +100,10 @@ describe("Object", () => {
           .toJs();
         expect(result).toEqual(expected);
       });
-      // TODO: static method
+      ios.forEach(([input, key, expected]) => {
+        const result = Kasen.set(input, key, 10);
+        expect(result).toEqual(expected);
+      });
     });
   });
 

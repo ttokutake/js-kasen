@@ -138,7 +138,10 @@ describe("Array", () => {
           .toJs();
         expect(result).toEqual(expected);
       });
-      // TODO: static method
+      ios.forEach(([input, index, expected]) => {
+        const result = Kasen.set(input, index, 10);
+        expect(result).toEqual(expected);
+      });
     });
 
     test("error", () => {
@@ -157,7 +160,10 @@ describe("Array", () => {
             .toJs();
         expect(run).toThrow(RangeError);
       });
-      // TODO: static method
+      ios.forEach(([input, index]) => {
+        const run = () => Kasen.set(input, index, 10);
+        expect(run).toThrow(RangeError);
+      });
     });
   });
 
