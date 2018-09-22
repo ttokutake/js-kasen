@@ -105,6 +105,24 @@ describe("Object", () => {
     });
   });
 
+  describe("filterNot()", () => {
+    test("ok", () => {
+      const ios = [
+        [{}, {}],
+        [{ a: 1 }, {}],
+        [{ b: 2 }, { b: 2 }],
+        [{ a: 1, b: 2 }, { b: 2 }],
+        [{ a: 1, b: 2, c: 3 }, { b: 2 }]
+      ];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input)
+          .filterNot(v => v % 2 === 1)
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
   describe("pick()", () => {
     test("ok", () => {
       const ios = [

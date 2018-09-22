@@ -94,6 +94,13 @@ export default class KasenArray extends Collection {
     return super.filterIf(bool, func);
   }
 
+  filterNot(func) {
+    if (!isFunction(func)) {
+      throw new TypeError("1st argument must be Function");
+    }
+    return super.filterNot(func);
+  }
+
   reverse() {
     this.__pile(ReverseIterator, null);
     return this;

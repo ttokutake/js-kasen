@@ -61,7 +61,9 @@ export default class Collection {
     return bool ? this.filter(func) : this;
   }
 
-  // TODO: filterNot()
+  filterNot(func) {
+    return this.filter((v, k) => !func(v, k));
+  }
 
   set(Iter, func) {
     this.__pile(Iter, func);

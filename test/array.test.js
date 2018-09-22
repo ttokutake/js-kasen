@@ -105,6 +105,24 @@ describe("Array", () => {
     });
   });
 
+  describe("filterNot()", () => {
+    test("ok", () => {
+      const ios = [
+        [[], []],
+        [[1], []],
+        [[2], [2]],
+        [[1, 2], [2]],
+        [[1, 2, 3], [2]]
+      ];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input)
+          .filterNot(v => v % 2 === 1)
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
   describe("reverse()", () => {
     test("ok", () => {
       const ios = [
