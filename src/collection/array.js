@@ -65,6 +65,13 @@ export default class KasenArray extends Collection {
     return array.map(func);
   }
 
+  mapIf(bool, func) {
+    if (!isFunction(func)) {
+      throw new TypeError("2nd argument must be Function");
+    }
+    return super.mapIf(bool, func);
+  }
+
   // TODO: flatten()
 
   // TODO: flatMap()

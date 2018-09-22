@@ -38,11 +38,16 @@ export default class Collection {
     return this;
   }
 
-  // TODO: mapIf()
-
   // eslint-disable-next-line no-unused-vars
   static map(_coll, _func) {
     throw new Error("not implemented");
+  }
+
+  mapIf(bool, func) {
+    if (bool) {
+      this.__pile(MapIterator, func);
+    }
+    return this;
   }
 
   filter(Iter, func) {

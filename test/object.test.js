@@ -43,6 +43,26 @@ describe("Object", () => {
     });
   });
 
+  describe("mapIf()", () => {
+    test("ok", () => {
+      {
+        const input = { a: 1, b: 2, c: 3 };
+        const result = Kasen(input)
+          .mapIf(false, v => v + 1)
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const input = { a: 1, b: 2, c: 3 };
+        const expected = { a: 2, b: 3, c: 4 };
+        const result = Kasen(input)
+          .mapIf(true, v => v + 1)
+          .toJs();
+        expect(result).toEqual(expected);
+      }
+    });
+  });
+
   describe("filter()", () => {
     test("ok", () => {
       const ios = [

@@ -43,6 +43,26 @@ describe("Array", () => {
     });
   });
 
+  describe("mapIf()", () => {
+    test("ok", () => {
+      {
+        const input = [1, 2, 3];
+        const result = Kasen(input)
+          .mapIf(false, v => v + 1)
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const input = [1, 2, 3];
+        const expected = [2, 3, 4];
+        const result = Kasen(input)
+          .mapIf(true, v => v + 1)
+          .toJs();
+        expect(result).toEqual(expected);
+      }
+    });
+  });
+
   describe("filter()", () => {
     test("ok", () => {
       const ios = [
