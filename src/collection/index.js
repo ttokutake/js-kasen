@@ -60,6 +60,13 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
+  filterIf(bool, Iter, func) {
+    if (bool) {
+      this.__pile(Iter, func);
+    }
+    return this;
+  }
+
   // TODO: filterNot()
 
   set(Iter, func) {

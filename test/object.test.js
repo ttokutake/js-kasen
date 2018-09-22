@@ -85,6 +85,26 @@ describe("Object", () => {
     });
   });
 
+  describe("filterIf()", () => {
+    test("ok", () => {
+      {
+        const input = { a: 1, b: 2, c: 3 };
+        const result = Kasen(input)
+          .filterIf(false, v => v % 2 === 0)
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const input = { a: 1, b: 2, c: 3 };
+        const expected = { b: 2 };
+        const result = Kasen(input)
+          .filterIf(true, v => v % 2 === 0)
+          .toJs();
+        expect(result).toEqual(expected);
+      }
+    });
+  });
+
   describe("pick()", () => {
     test("ok", () => {
       const ios = [
