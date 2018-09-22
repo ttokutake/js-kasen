@@ -67,11 +67,7 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
-  // TODO: setAll()
-
   // TODO: delete()
-
-  // TODO: deleteAll()
 
   // TODO: clear()
 
@@ -132,10 +128,6 @@ export default class Collection {
   }
 
   // TODO: reduceWhile() from Elixir
-
-  // TODO: scan() from Scala
-
-  // TODO: sliding() from Scala
 
   // TODO: partition() from Scala
 

@@ -113,6 +113,8 @@ export default class KasenObject extends Collection {
     return result;
   }
 
+  // TODO: deleteAll()
+
   // TODO?: flip()
 
   reduce(func, init) {

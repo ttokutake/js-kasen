@@ -209,7 +209,10 @@ export default class KasenArray extends Collection {
   }
 
   // TODO: reduceRight()
+  // TODO: scan() from Scala
   // TODO: scanRight() from Scala
+
+  // TODO: sliding() from Scala
 
   // TODO: splitAt() from Scala
 
