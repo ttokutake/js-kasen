@@ -126,6 +126,26 @@ describe("Array", () => {
     });
   });
 
+  describe("reverseIf()", () => {
+    test("ok", () => {
+      {
+        const input = [1, 2, 3];
+        const result = Kasen(input)
+          .reverseIf(false)
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const input = [1, 2, 3];
+        const expected = [3, 2, 1];
+        const result = Kasen(input)
+          .reverseIf(true)
+          .toJs();
+        expect(result).toEqual(expected);
+      }
+    });
+  });
+
   describe("take()", () => {
     test("ok", () => {
       const ios = [
@@ -156,6 +176,26 @@ describe("Array", () => {
         const result = Kasen.take(input, num);
         expect(result).toEqual(expected);
       });
+    });
+  });
+
+  describe("takeIf()", () => {
+    test("ok", () => {
+      {
+        const input = [1, 2, 3];
+        const result = Kasen(input)
+          .takeIf(false, 2)
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const input = [1, 2, 3];
+        const expected = [1, 2];
+        const result = Kasen(input)
+          .takeIf(true, 2)
+          .toJs();
+        expect(result).toEqual(expected);
+      }
     });
   });
 

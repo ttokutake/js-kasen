@@ -103,6 +103,10 @@ export default class KasenArray extends Collection {
     return array.reverse();
   }
 
+  reverseIf(bool) {
+    return bool ? this.reverse() : this;
+  }
+
   take(num) {
     if (!isNumber(num)) {
       throw new TypeError("1st argument must be Number");
@@ -124,6 +128,13 @@ export default class KasenArray extends Collection {
 
   static take(array, num) {
     return num < 0 ? [] : array.slice(0, num);
+  }
+
+  takeIf(bool, num) {
+    if (!isNumber(num)) {
+      throw new TypeError("2nd argument must be Number");
+    }
+    return bool ? this.take(num) : this;
   }
 
   // TODO: takeLast()
