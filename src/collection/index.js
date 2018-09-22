@@ -43,11 +43,9 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
+  // eslint-disable-next-line class-methods-use-this, no-unused-vars
   mapIf(bool, func) {
-    if (bool) {
-      this.__pile(MapIterator, func);
-    }
-    return this;
+    throw new Error("not implemented");
   }
 
   filter(Iter, func) {
@@ -60,11 +58,9 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
-  filterIf(bool, Iter, func) {
-    if (bool) {
-      this.__pile(Iter, func);
-    }
-    return this;
+  // eslint-disable-next-line class-methods-use-this, no-unused-vars
+  filterIf(_bool, _Iter, _func) {
+    throw new Error("not implemented");
   }
 
   // TODO: filterNot()

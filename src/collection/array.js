@@ -69,7 +69,7 @@ export default class KasenArray extends Collection {
     if (!isFunction(func)) {
       throw new TypeError("2nd argument must be Function");
     }
-    return super.mapIf(bool, func);
+    return bool ? this.map(func) : this;
   }
 
   // TODO: flatten()
@@ -91,7 +91,7 @@ export default class KasenArray extends Collection {
     if (!isFunction(func)) {
       throw new TypeError("2nd argument must be Function");
     }
-    return super.filterIf(bool, FilterIterator, func);
+    return bool ? this.filter(func) : this;
   }
 
   reverse() {
