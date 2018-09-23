@@ -155,6 +155,21 @@ export default class KasenObject extends Collection {
     return super.setIf(bool, key, value);
   }
 
+  update(key, func) {
+    if (!(isNumber(key) || isString(key))) {
+      throw new TypeError("1st argument must be Number or String");
+    }
+    if (!isFunction(func)) {
+      throw new TypeError("2nd argument must be Function");
+    }
+    const curate = iter => {
+      const object = ObjectIterator.curate(iter);
+      object[key] = func(object[key]);
+      return object;
+    };
+    return super.update(Curator, curate);
+  }
+
   delete(key) {
     if (!(isNumber(key) || isString(key))) {
       throw new TypeError("1st argument must be Number or String");

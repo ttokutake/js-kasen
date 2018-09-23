@@ -219,6 +219,26 @@ describe("Object", () => {
     });
   });
 
+  describe("update()", () => {
+    test("ok", () => {
+      const ios = [
+        [{}, "a", { a: 10 }],
+        [{ a: 1 }, "a", { a: 11 }],
+        [{ a: 1 }, "b", { a: 1, b: 10 }]
+      ];
+      ios.forEach(([input, key, expected]) => {
+        const result = Kasen(input)
+          .update(key, v => (v || 0) + 10)
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+      // ios.forEach(([input, key, expected]) => {
+      //   const result = Kasen.update(input, key, v => (v || 0) + 10);
+      //   expect(result).toEqual(expected);
+      // });
+    });
+  });
+
   describe("delete()", () => {
     test("ok", () => {
       const ios = [
