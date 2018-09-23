@@ -55,7 +55,7 @@ export default class KasenObject extends Collection {
   static map(object, func) {
     const result = {};
     const keys = Object.keys(object);
-    for (let i = 0, len = keys.length; i < len; i += 1) {
+    for (let i = 0, { length } = keys; i < length; i += 1) {
       const key = keys[i];
       result[key] = func(object[key], key);
     }
@@ -79,7 +79,7 @@ export default class KasenObject extends Collection {
   static filter(object, func) {
     const result = {};
     const keys = Object.keys(object);
-    for (let i = 0, len = keys.length; i < len; i += 1) {
+    for (let i = 0, { length } = keys; i < length; i += 1) {
       const key = keys[i];
       const value = object[key];
       if (func(value, key)) {
@@ -175,7 +175,7 @@ export default class KasenObject extends Collection {
       }
       acc = object[keys.pop()];
     }
-    for (let i = 0, len = keys.length; i < len; i += 1) {
+    for (let i = 0, { length } = keys; i < length; i += 1) {
       const key = keys[i];
       acc = func(acc, object[key], key);
     }
@@ -191,7 +191,7 @@ export default class KasenObject extends Collection {
 
   static every(object, func) {
     const keys = Object.keys(object);
-    for (let i = 0, len = keys.length; i < len; i += 1) {
+    for (let i = 0, { length } = keys; i < length; i += 1) {
       const key = keys[i];
       if (!func(object[key], key)) {
         return false;
@@ -209,7 +209,7 @@ export default class KasenObject extends Collection {
 
   static find(object, func) {
     const keys = Object.keys(object);
-    for (let i = 0, len = keys.length; i < len; i += 1) {
+    for (let i = 0, { length } = keys; i < length; i += 1) {
       const key = keys[i];
       const value = object[key];
       if (func(value, key)) {
@@ -228,7 +228,7 @@ export default class KasenObject extends Collection {
 
   static forEach(object, func) {
     const keys = Object.keys(object);
-    for (let i = 0, len = keys.length; i < len; i += 1) {
+    for (let i = 0, { length } = keys; i < length; i += 1) {
       const key = keys[i];
       func(object[key], key);
     }

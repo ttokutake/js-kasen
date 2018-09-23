@@ -280,7 +280,7 @@ export default class KasenArray extends Collection {
   }
 
   static find(array, func) {
-    for (let i = 0, len = array.length; i < len; i += 1) {
+    for (let i = 0, { length } = array; i < length; i += 1) {
       const value = array[i];
       if (func(value, i)) {
         return value;
