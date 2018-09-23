@@ -172,13 +172,10 @@ export default class KasenArray extends Collection {
     const curate = iter => {
       const array = ArrayIterator.curate(iter);
       const { length } = array;
-      if (index < -length || length < index) {
-        throw new RangeError(
-          `1st argument must be ${-length} <= arg <= ${length} to use set() for Array of ${length} length`
-        );
+      if (-length <= index && index < length) {
+        const key = index < 0 ? length + ((index + 1) % length) - 1 : index;
+        array[key] = value;
       }
-      const key = index < 0 ? length + ((index + 1) % length) - 1 : index;
-      array[key] = value;
       return array;
     };
     return super.set(Curator, curate);
@@ -187,8 +184,10 @@ export default class KasenArray extends Collection {
   static set(array, index, value) {
     const result = array.slice();
     const { length } = array;
-    const key = index < 0 ? length + ((index + 1) % length) - 1 : index;
-    result[key] = value;
+    if (-length <= index && index < length) {
+      const key = index < 0 ? length + ((index + 1) % length) - 1 : index;
+      result[key] = value;
+    }
     return result;
   }
 

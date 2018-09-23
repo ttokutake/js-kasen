@@ -244,15 +244,18 @@ describe("Array", () => {
   describe("set()", () => {
     test("ok", () => {
       const ios = [
-        [[], 0, [10]],
+        [[], -1, []],
+        [[], 0, []],
+        [[1], -2, [1]],
         [[1], -1, [10]],
         [[1], 0, [10]],
-        [[1], 1, [1, 10]],
+        [[1], 1, [1]],
+        [[1, 2], -3, [1, 2]],
         [[1, 2], -2, [10, 2]],
         [[1, 2], -1, [1, 10]],
         [[1, 2], 0, [10, 2]],
         [[1, 2], 1, [1, 10]],
-        [[1, 2], 2, [1, 2, 10]]
+        [[1, 2], 2, [1, 2]]
       ];
       ios.forEach(([input, index, expected]) => {
         const result = Kasen(input)
@@ -263,28 +266,6 @@ describe("Array", () => {
       ios.forEach(([input, index, expected]) => {
         const result = Kasen.set(input, index, 10);
         expect(result).toEqual(expected);
-      });
-    });
-
-    test("error", () => {
-      const ios = [
-        [[], -1],
-        [[], 1],
-        [[1], -2],
-        [[1], 2],
-        [[1, 2], -3],
-        [[1, 2], 3]
-      ];
-      ios.forEach(([input, index]) => {
-        const run = () =>
-          Kasen(input)
-            .set(index, 10)
-            .toJs();
-        expect(run).toThrow(RangeError);
-      });
-      ios.forEach(([input, index]) => {
-        const run = () => Kasen.set(input, index, 10);
-        expect(run).toThrow(RangeError);
       });
     });
   });

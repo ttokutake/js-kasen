@@ -85,16 +85,8 @@ Kasen.set = (coll, key, value) => {
   if (!Coll) {
     throw new TypeError("1st argument must be Array or Object");
   }
-  if (isArray(coll)) {
-    if (!isNumber(key)) {
-      throw new TypeError("2nd argument must be Number");
-    }
-    const { length } = coll;
-    if (key < -length || length < key) {
-      throw new RangeError(
-        `2nd argument must be ${-length} <= arg <= ${length}`
-      );
-    }
+  if (isArray(coll) && !isNumber(key)) {
+    throw new TypeError("2nd argument must be Number");
   }
   if (isObject(coll) && !(isNumber(key) || isString(key))) {
     throw new TypeError("2nd argument must be Number or String");
