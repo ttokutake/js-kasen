@@ -106,6 +106,10 @@ export default class Collection {
     return this;
   }
 
+  clearIf(bool) {
+    return bool ? this.clear() : this;
+  }
+
   // TODO: update()
 
   // TODO: setIn()
