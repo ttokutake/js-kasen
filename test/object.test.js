@@ -45,20 +45,18 @@ describe("Object", () => {
 
   describe("mapIf()", () => {
     test("ok", () => {
+      const input = { a: 1, b: 2, c: 3 };
       {
-        const input = { a: 1, b: 2, c: 3 };
         const result = Kasen(input)
           .mapIf(false, v => v + 1)
           .toJs();
         expect(result).toEqual(input);
       }
       {
-        const input = { a: 1, b: 2, c: 3 };
-        const expected = { a: 2, b: 3, c: 4 };
         const result = Kasen(input)
           .mapIf(true, v => v + 1)
           .toJs();
-        expect(result).toEqual(expected);
+        expect(result).toEqual({ a: 2, b: 3, c: 4 });
       }
     });
   });
@@ -87,20 +85,18 @@ describe("Object", () => {
 
   describe("filterIf()", () => {
     test("ok", () => {
+      const input = { a: 1, b: 2, c: 3 };
       {
-        const input = { a: 1, b: 2, c: 3 };
         const result = Kasen(input)
           .filterIf(false, v => v % 2 === 0)
           .toJs();
         expect(result).toEqual(input);
       }
       {
-        const input = { a: 1, b: 2, c: 3 };
-        const expected = { b: 2 };
         const result = Kasen(input)
           .filterIf(true, v => v % 2 === 0)
           .toJs();
-        expect(result).toEqual(expected);
+        expect(result).toEqual({ b: 2 });
       }
     });
   });
@@ -129,20 +125,18 @@ describe("Object", () => {
 
   describe("filterNotIf()", () => {
     test("ok", () => {
+      const input = { a: 1, b: 2, c: 3 };
       {
-        const input = { a: 1, b: 2, c: 3 };
         const result = Kasen(input)
           .filterNotIf(false, v => v % 2 === 1)
           .toJs();
         expect(result).toEqual(input);
       }
       {
-        const input = { a: 1, b: 2, c: 3 };
-        const expected = { b: 2 };
         const result = Kasen(input)
           .filterNotIf(true, v => v % 2 === 1)
           .toJs();
-        expect(result).toEqual(expected);
+        expect(result).toEqual({ b: 2 });
       }
     });
   });
@@ -171,20 +165,18 @@ describe("Object", () => {
 
   describe("pickIf()", () => {
     test("ok", () => {
+      const input = { a: 1, b: 2, c: 3 };
       {
-        const input = { a: 1, b: 2, c: 3 };
         const result = Kasen(input)
           .pickIf(false, ["a", "c"])
           .toJs();
         expect(result).toEqual(input);
       }
       {
-        const input = { a: 1, b: 2, c: 3 };
-        const expected = { a: 1, c: 3 };
         const result = Kasen(input)
           .pickIf(true, ["a", "c"])
           .toJs();
-        expect(result).toEqual(expected);
+        expect(result).toEqual({ a: 1, c: 3 });
       }
     });
   });
@@ -211,20 +203,18 @@ describe("Object", () => {
 
   describe("setIf()", () => {
     test("ok", () => {
+      const input = { a: 1 };
       {
-        const input = { a: 1 };
         const result = Kasen(input)
           .setIf(false, "a", 10)
           .toJs();
         expect(result).toEqual(input);
       }
       {
-        const input = { a: 1 };
-        const expected = { a: 10 };
         const result = Kasen(input)
           .setIf(true, "a", 10)
           .toJs();
-        expect(result).toEqual(expected);
+        expect(result).toEqual({ a: 10 });
       }
     });
   });
@@ -251,20 +241,18 @@ describe("Object", () => {
 
   describe("deleteIf()", () => {
     test("ok", () => {
+      const input = { a: 1 };
       {
-        const input = { a: 1 };
         const result = Kasen(input)
           .deleteIf(false, "a")
           .toJs();
         expect(result).toEqual(input);
       }
       {
-        const input = { a: 1 };
-        const expected = {};
         const result = Kasen(input)
           .deleteIf(true, "a")
           .toJs();
-        expect(result).toEqual(expected);
+        expect(result).toEqual({});
       }
     });
   });

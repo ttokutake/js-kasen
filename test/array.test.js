@@ -45,20 +45,18 @@ describe("Array", () => {
 
   describe("mapIf()", () => {
     test("ok", () => {
+      const input = [1, 2, 3];
       {
-        const input = [1, 2, 3];
         const result = Kasen(input)
           .mapIf(false, v => v + 1)
           .toJs();
         expect(result).toEqual(input);
       }
       {
-        const input = [1, 2, 3];
-        const expected = [2, 3, 4];
         const result = Kasen(input)
           .mapIf(true, v => v + 1)
           .toJs();
-        expect(result).toEqual(expected);
+        expect(result).toEqual([2, 3, 4]);
       }
     });
   });
@@ -87,20 +85,18 @@ describe("Array", () => {
 
   describe("filterIf()", () => {
     test("ok", () => {
+      const input = [1, 2, 3];
       {
-        const input = [1, 2, 3];
         const result = Kasen(input)
           .filterIf(false, v => v % 2 === 0)
           .toJs();
         expect(result).toEqual(input);
       }
       {
-        const input = [1, 2, 3];
-        const expected = [2];
         const result = Kasen(input)
           .filterIf(true, v => v % 2 === 0)
           .toJs();
-        expect(result).toEqual(expected);
+        expect(result).toEqual([2]);
       }
     });
   });
@@ -129,20 +125,18 @@ describe("Array", () => {
 
   describe("filterNotIf()", () => {
     test("ok", () => {
+      const input = [1, 2, 3];
       {
-        const input = [1, 2, 3];
         const result = Kasen(input)
           .filterNotIf(false, v => v % 2 === 1)
           .toJs();
         expect(result).toEqual(input);
       }
       {
-        const input = [1, 2, 3];
-        const expected = [2];
         const result = Kasen(input)
           .filterNotIf(true, v => v % 2 === 1)
           .toJs();
-        expect(result).toEqual(expected);
+        expect(result).toEqual([2]);
       }
     });
   });
@@ -170,20 +164,18 @@ describe("Array", () => {
 
   describe("reverseIf()", () => {
     test("ok", () => {
+      const input = [1, 2, 3];
       {
-        const input = [1, 2, 3];
         const result = Kasen(input)
           .reverseIf(false)
           .toJs();
         expect(result).toEqual(input);
       }
       {
-        const input = [1, 2, 3];
-        const expected = [3, 2, 1];
         const result = Kasen(input)
           .reverseIf(true)
           .toJs();
-        expect(result).toEqual(expected);
+        expect(result).toEqual([3, 2, 1]);
       }
     });
   });
@@ -223,20 +215,18 @@ describe("Array", () => {
 
   describe("takeIf()", () => {
     test("ok", () => {
+      const input = [1, 2, 3];
       {
-        const input = [1, 2, 3];
         const result = Kasen(input)
           .takeIf(false, 2)
           .toJs();
         expect(result).toEqual(input);
       }
       {
-        const input = [1, 2, 3];
-        const expected = [1, 2];
         const result = Kasen(input)
           .takeIf(true, 2)
           .toJs();
-        expect(result).toEqual(expected);
+        expect(result).toEqual([1, 2]);
       }
     });
   });
@@ -272,20 +262,18 @@ describe("Array", () => {
 
   describe("setIf()", () => {
     test("ok", () => {
+      const input = [1, 2];
       {
-        const input = [1, 2];
         const result = Kasen(input)
           .setIf(false, 0, 10)
           .toJs();
         expect(result).toEqual(input);
       }
       {
-        const input = [1, 2];
-        const expected = [10, 2];
         const result = Kasen(input)
           .setIf(true, 0, 10)
           .toJs();
-        expect(result).toEqual(expected);
+        expect(result).toEqual([10, 2]);
       }
     });
   });
@@ -321,20 +309,18 @@ describe("Array", () => {
 
   describe("deleteIf()", () => {
     test("ok", () => {
+      const input = [1, 2];
       {
-        const input = [1, 2];
         const result = Kasen(input)
           .deleteIf(false, 0)
           .toJs();
         expect(result).toEqual(input);
       }
       {
-        const input = [1, 2];
-        const expected = [2];
         const result = Kasen(input)
           .deleteIf(true, 0)
           .toJs();
-        expect(result).toEqual(expected);
+        expect(result).toEqual([2]);
       }
     });
   });
