@@ -319,6 +319,26 @@ describe("Array", () => {
     });
   });
 
+  describe("deleteIf()", () => {
+    test("ok", () => {
+      {
+        const input = [1, 2];
+        const result = Kasen(input)
+          .deleteIf(false, 0)
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const input = [1, 2];
+        const expected = [2];
+        const result = Kasen(input)
+          .deleteIf(true, 0)
+          .toJs();
+        expect(result).toEqual(expected);
+      }
+    });
+  });
+
   describe("toJs()", () => {
     test("ok", () => {
       const inputs = [[], [1], [1, 2], [1, 2, 3]];

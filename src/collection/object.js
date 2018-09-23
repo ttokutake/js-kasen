@@ -173,6 +173,13 @@ export default class KasenObject extends Collection {
     return result;
   }
 
+  deleteIf(bool, key) {
+    if (!(isNumber(key) || isString(key))) {
+      throw new TypeError("2nd argument must be Number or String");
+    }
+    return super.deleteIf(bool, key);
+  }
+
   // TODO: deleteAll()
 
   // TODO?: flip()

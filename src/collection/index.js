@@ -97,6 +97,10 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
+  deleteIf(bool, key) {
+    return bool ? this.delete(key) : this;
+  }
+
   // TODO: clear()
 
   // TODO: update()

@@ -227,6 +227,13 @@ export default class KasenArray extends Collection {
     return array;
   }
 
+  deleteIf(bool, index) {
+    if (!isNumber(index)) {
+      throw new TypeError("2nd argument must be Number");
+    }
+    return super.deleteIf(bool, index);
+  }
+
   // TODO: insert()
 
   // TODO: push()

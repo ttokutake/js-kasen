@@ -249,6 +249,26 @@ describe("Object", () => {
     });
   });
 
+  describe("deleteIf()", () => {
+    test("ok", () => {
+      {
+        const input = { a: 1 };
+        const result = Kasen(input)
+          .deleteIf(false, "a")
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const input = { a: 1 };
+        const expected = {};
+        const result = Kasen(input)
+          .deleteIf(true, "a")
+          .toJs();
+        expect(result).toEqual(expected);
+      }
+    });
+  });
+
   describe("toJs()", () => {
     test("ok", () => {
       const inputs = [{}, { a: 1 }, { a: 1, b: 2 }, { a: 1, b: 2, c: 3 }];
