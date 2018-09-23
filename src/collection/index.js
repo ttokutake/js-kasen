@@ -87,6 +87,11 @@ export default class Collection {
     return bool ? this.set(key, value) : this;
   }
 
+  update(Iter, func) {
+    this.__pile(Iter, func);
+    return this;
+  }
+
   delete(Iter, func) {
     this.__pile(Iter, func);
     return this;
@@ -109,8 +114,6 @@ export default class Collection {
   clearIf(bool) {
     return bool ? this.clear() : this;
   }
-
-  // TODO: update()
 
   // TODO: merge()
 

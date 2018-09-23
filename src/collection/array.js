@@ -9,10 +9,6 @@ class ArrayIterator extends OriginIterator {
     this.reset();
   }
 
-  static key(index, length) {
-    return index < 0 ? length + ((index + 1) % length) - 1 : index;
-  }
-
   static default() {
     return [];
   }
@@ -44,6 +40,10 @@ class ArrayIterator extends OriginIterator {
   reset() {
     this.index = null;
   }
+}
+
+function correctIndex(index, length) {
+  return index < 0 ? length + ((index + 1) % length) - 1 : index;
 }
 
 export default class KasenArray extends Collection {
@@ -173,7 +173,7 @@ export default class KasenArray extends Collection {
       const array = ArrayIterator.curate(iter);
       const { length } = array;
       if (-length <= index && index < length) {
-        const key = ArrayIterator.key(index, length);
+        const key = correctIndex(index, length);
         array[key] = value;
       }
       return array;
@@ -185,7 +185,7 @@ export default class KasenArray extends Collection {
     const result = array.slice();
     const { length } = array;
     if (-length <= index && index < length) {
-      const key = ArrayIterator.key(index, length);
+      const key = correctIndex(index, length);
       result[key] = value;
     }
     return result;
@@ -198,6 +198,25 @@ export default class KasenArray extends Collection {
     return super.setIf(bool, index, value);
   }
 
+  update(index, func) {
+    if (!isNumber(index)) {
+      throw new TypeError("1st argument must be Number");
+    }
+    if (!isFunction(func)) {
+      throw new TypeError("2nd argument must be Function");
+    }
+    const curate = iter => {
+      const array = ArrayIterator.curate(iter);
+      const { length } = array;
+      if (-length <= index && index < length) {
+        const key = correctIndex(index, length);
+        array[key] = func(array[key]);
+      }
+      return array;
+    };
+    return super.update(Curator, curate);
+  }
+
   delete(index) {
     if (!isNumber(index)) {
       throw new TypeError("1st argument must be Number");
@@ -206,7 +225,7 @@ export default class KasenArray extends Collection {
       const array = ArrayIterator.curate(iter);
       const { length } = array;
       if (-length <= index && index < length) {
-        const key = ArrayIterator.key(index, length);
+        const key = correctIndex(index, length);
         return array.filter((v, i) => i !== key);
       }
       return array;
@@ -217,7 +236,7 @@ export default class KasenArray extends Collection {
   static delete(array, index) {
     const { length } = array;
     if (-length <= index && index < length) {
-      const key = ArrayIterator.key(index, length);
+      const key = correctIndex(index, length);
       return array.filter((v, i) => i !== key);
     }
     return array;
@@ -292,6 +311,8 @@ export default class KasenArray extends Collection {
   // TODO: sliding() from Scala
 
   // TODO: splitAt() from Scala
+
+  // TODO: chunk() (paging method)
 
   every(func) {
     if (!isFunction(func)) {

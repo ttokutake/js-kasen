@@ -278,6 +278,35 @@ describe("Array", () => {
     });
   });
 
+  describe("update()", () => {
+    test("ok", () => {
+      const ios = [
+        [[], -1, []],
+        [[], 0, []],
+        [[1], -2, [1]],
+        [[1], -1, [11]],
+        [[1], 0, [11]],
+        [[1], 1, [1]],
+        [[1, 2], -3, [1, 2]],
+        [[1, 2], -2, [11, 2]],
+        [[1, 2], -1, [1, 12]],
+        [[1, 2], 0, [11, 2]],
+        [[1, 2], 1, [1, 12]],
+        [[1, 2], 2, [1, 2]]
+      ];
+      ios.forEach(([input, index, expected]) => {
+        const result = Kasen(input)
+          .update(index, v => v + 10)
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+      // ios.forEach(([input, index, expected]) => {
+      //   const result = Kasen.update(input, index, v => v + 10);
+      //   expect(result).toEqual(expected);
+      // });
+    });
+  });
+
   describe("delete()", () => {
     test("ok", () => {
       const ios = [
