@@ -94,6 +94,23 @@ Kasen.set = (coll, key, value) => {
   return Coll.set(coll, key, value);
 };
 
+Kasen.update = (coll, key, func) => {
+  const Coll = choose(coll);
+  if (!Coll) {
+    throw new TypeError("1st argument must be Array or Object");
+  }
+  if (isArray(coll) && !isNumber(key)) {
+    throw new TypeError("2nd argument must be Number");
+  }
+  if (isObject(coll) && !(isNumber(key) || isString(key))) {
+    throw new TypeError("2nd argument must be Number or String");
+  }
+  if (!isFunction(func)) {
+    throw new TypeError("3rd argument must be Function");
+  }
+  return Coll.update(coll, key, func);
+};
+
 Kasen.delete = (coll, key) => {
   const Coll = choose(coll);
   if (!Coll) {

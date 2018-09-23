@@ -217,6 +217,16 @@ export default class KasenArray extends Collection {
     return super.update(Curator, curate);
   }
 
+  static update(array, index, func) {
+    const result = array.slice();
+    const { length } = array;
+    if (-length <= index && index < length) {
+      const key = correctIndex(index, length);
+      result[key] = func(array[key]);
+    }
+    return result;
+  }
+
   delete(index) {
     if (!isNumber(index)) {
       throw new TypeError("1st argument must be Number");

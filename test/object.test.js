@@ -232,10 +232,10 @@ describe("Object", () => {
           .toJs();
         expect(result).toEqual(expected);
       });
-      // ios.forEach(([input, key, expected]) => {
-      //   const result = Kasen.update(input, key, v => (v || 0) + 10);
-      //   expect(result).toEqual(expected);
-      // });
+      ios.forEach(([input, key, expected]) => {
+        const result = Kasen.update(input, key, v => (v || 0) + 10);
+        expect(result).toEqual(expected);
+      });
     });
   });
 

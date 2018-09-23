@@ -170,6 +170,12 @@ export default class KasenObject extends Collection {
     return super.update(Curator, curate);
   }
 
+  static update(object, key, func) {
+    const result = this.filter(object, () => true);
+    result[key] = func(object[key]);
+    return result;
+  }
+
   delete(key) {
     if (!(isNumber(key) || isString(key))) {
       throw new TypeError("1st argument must be Number or String");

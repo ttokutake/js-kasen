@@ -92,6 +92,11 @@ export default class Collection {
     return this;
   }
 
+  // eslint-disable-next-line no-unused-vars
+  static update(_coll, _key, _func) {
+    throw new Error("not implemented");
+  }
+
   delete(Iter, func) {
     this.__pile(Iter, func);
     return this;

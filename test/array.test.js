@@ -300,10 +300,10 @@ describe("Array", () => {
           .toJs();
         expect(result).toEqual(expected);
       });
-      // ios.forEach(([input, index, expected]) => {
-      //   const result = Kasen.update(input, index, v => v + 10);
-      //   expect(result).toEqual(expected);
-      // });
+      ios.forEach(([input, index, expected]) => {
+        const result = Kasen.update(input, index, v => v + 10);
+        expect(result).toEqual(expected);
+      });
     });
   });
 
