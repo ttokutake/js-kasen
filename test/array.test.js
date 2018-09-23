@@ -290,6 +290,31 @@ describe("Array", () => {
     });
   });
 
+  describe("delete()", () => {
+    test("ok", () => {
+      const ios = [
+        [[], -1, []],
+        [[], 0, []],
+        [[1], -2, [1]],
+        [[1], -1, []],
+        [[1], 0, []],
+        [[1], 1, [1]],
+        [[1, 2], -3, [1, 2]],
+        [[1, 2], -2, [2]],
+        [[1, 2], -1, [1]],
+        [[1, 2], 0, [2]],
+        [[1, 2], 1, [1]],
+        [[1, 2], 2, [1, 2]]
+      ];
+      ios.forEach(([input, index, expected]) => {
+        const result = Kasen(input)
+          .delete(index)
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
   describe("toJs()", () => {
     test("ok", () => {
       const inputs = [[], [1], [1, 2], [1, 2, 3]];

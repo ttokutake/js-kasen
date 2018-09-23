@@ -87,7 +87,10 @@ export default class Collection {
     return bool ? this.set(key, value) : this;
   }
 
-  // TODO: delete()
+  delete(Iter, func) {
+    this.__pile(Iter, func);
+    return this;
+  }
 
   // TODO: clear()
 

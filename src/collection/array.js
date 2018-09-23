@@ -202,6 +202,22 @@ export default class KasenArray extends Collection {
     return super.setIf(bool, index, value);
   }
 
+  delete(index) {
+    if (!isNumber(index)) {
+      throw new TypeError("1st argument must be Number");
+    }
+    const curate = iter => {
+      const array = ArrayIterator.curate(iter);
+      const { length } = array;
+      if (-length <= index && index < length) {
+        const key = ArrayIterator.key(index, length);
+        return array.filter((v, i) => i !== key);
+      }
+      return array;
+    };
+    return super.delete(Curator, curate);
+  }
+
   // TODO: insert()
 
   // TODO: push()
