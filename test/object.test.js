@@ -229,6 +229,22 @@ describe("Object", () => {
     });
   });
 
+  describe("delete()", () => {
+    test("ok", () => {
+      const ios = [
+        [{}, "a", {}],
+        [{ a: 1 }, "a", {}],
+        [{ a: 1 }, "b", { a: 1 }]
+      ];
+      ios.forEach(([input, key, expected]) => {
+        const result = Kasen(input)
+          .delete(key)
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
   describe("toJs()", () => {
     test("ok", () => {
       const inputs = [{}, { a: 1 }, { a: 1, b: 2 }, { a: 1, b: 2, c: 3 }];

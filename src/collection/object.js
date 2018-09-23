@@ -155,6 +155,18 @@ export default class KasenObject extends Collection {
     return super.setIf(bool, key, value);
   }
 
+  delete(key) {
+    if (!(isNumber(key) || isString(key))) {
+      throw new TypeError("1st argument must be Number or String");
+    }
+    const curate = iter => {
+      const object = ObjectIterator.curate(iter);
+      delete object[key];
+      return object;
+    };
+    return super.delete(Curator, curate);
+  }
+
   // TODO: deleteAll()
 
   // TODO?: flip()
