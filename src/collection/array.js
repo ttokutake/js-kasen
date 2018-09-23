@@ -9,6 +9,10 @@ class ArrayIterator extends OriginIterator {
     this.reset();
   }
 
+  static key(index, length) {
+    return index < 0 ? length + ((index + 1) % length) - 1 : index;
+  }
+
   static default() {
     return [];
   }
@@ -173,7 +177,7 @@ export default class KasenArray extends Collection {
       const array = ArrayIterator.curate(iter);
       const { length } = array;
       if (-length <= index && index < length) {
-        const key = index < 0 ? length + ((index + 1) % length) - 1 : index;
+        const key = ArrayIterator.key(index, length);
         array[key] = value;
       }
       return array;
@@ -185,7 +189,7 @@ export default class KasenArray extends Collection {
     const result = array.slice();
     const { length } = array;
     if (-length <= index && index < length) {
-      const key = index < 0 ? length + ((index + 1) % length) - 1 : index;
+      const key = ArrayIterator.key(index, length);
       result[key] = value;
     }
     return result;
