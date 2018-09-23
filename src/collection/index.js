@@ -1,6 +1,6 @@
 import clone from "clone";
 
-import { TapIterator, MapIterator } from "../iterator/index";
+import { TapIterator, MapIterator, ClearCurator } from "../iterator/index";
 
 export default class Collection {
   constructor(coll) {
@@ -101,7 +101,10 @@ export default class Collection {
     return bool ? this.delete(key) : this;
   }
 
-  // TODO: clear()
+  clear() {
+    this.__pile(ClearCurator, null);
+    return this;
+  }
 
   // TODO: update()
 

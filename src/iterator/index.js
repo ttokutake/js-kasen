@@ -115,3 +115,13 @@ export class MapIterator extends ChainIterator {
     return result;
   }
 }
+
+export class ClearCurator extends Curator {
+  base(direction) {
+    if (!this.iter) {
+      const coll = this.Origin.default();
+      this.iter = new this.Origin(coll);
+    }
+    return this.iter[direction]();
+  }
+}

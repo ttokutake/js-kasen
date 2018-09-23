@@ -269,6 +269,18 @@ describe("Object", () => {
     });
   });
 
+  describe("clear()", () => {
+    test("ok", () => {
+      const inputs = [{}, { a: 1 }];
+      inputs.forEach(input => {
+        const result = Kasen(input)
+          .clear()
+          .toJs();
+        expect(result).toEqual({});
+      });
+    });
+  });
+
   describe("toJs()", () => {
     test("ok", () => {
       const inputs = [{}, { a: 1 }, { a: 1, b: 2 }, { a: 1, b: 2, c: 3 }];

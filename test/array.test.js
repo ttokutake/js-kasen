@@ -339,6 +339,18 @@ describe("Array", () => {
     });
   });
 
+  describe("clear()", () => {
+    test("ok()", () => {
+      const inputs = [[], [1]];
+      inputs.forEach(input => {
+        const result = Kasen(input)
+          .clear()
+          .toJs();
+        expect(result).toEqual([]);
+      });
+    });
+  });
+
   describe("toJs()", () => {
     test("ok", () => {
       const inputs = [[], [1], [1, 2], [1, 2, 3]];
