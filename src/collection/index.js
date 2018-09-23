@@ -112,6 +112,8 @@ export default class Collection {
 
   // TODO: update()
 
+  // TODO: merge()
+
   // TODO: setIn()
 
   // TODO: deleteIn()
@@ -119,7 +121,6 @@ export default class Collection {
   // TODO: updateIn()
 
   // TODO: mergeIn()
-
   // TODO: mergeDeepIn()
 
   // TODO: groupBy()
@@ -133,7 +134,6 @@ export default class Collection {
   // TODO: isSuperset()
 
   // TODO: count()
-
   // TODO: countBy()
 
   // TODO: get()

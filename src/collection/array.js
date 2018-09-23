@@ -76,10 +76,6 @@ export default class KasenArray extends Collection {
     return super.mapIf(bool, func);
   }
 
-  // TODO: flatten()
-
-  // TODO: flatMap()
-
   filter(func) {
     if (!isFunction(func)) {
       throw new TypeError("1st argument must be Function");
@@ -244,20 +240,20 @@ export default class KasenArray extends Collection {
 
   // TODO: shift()
 
-  // TODO: concat()
+  // TODO: concat() (alias of merge())
+
+  // TODO: flatten()
+
+  // TODO: flatMap()
 
   // TODO: zip()
-
   // TODO: zipAll()
-
   // TODO: zipWith()
 
   // TODO: unzip()
-
   // TODO: unzipAll()
 
   // TODO: sort()
-
   // TODO: sortBy()
 
   // TODO: interpose()
