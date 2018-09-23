@@ -307,6 +307,24 @@ describe("Array", () => {
     });
   });
 
+  describe("updateIf()", () => {
+    test("ok", () => {
+      const input = [1, 2];
+      {
+        const result = Kasen(input)
+          .updateIf(false, 0, v => v + 10)
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const result = Kasen(input)
+          .updateIf(true, 0, v => v + 10)
+          .toJs();
+        expect(result).toEqual([11, 2]);
+      }
+    });
+  });
+
   describe("delete()", () => {
     test("ok", () => {
       const ios = [

@@ -239,6 +239,24 @@ describe("Object", () => {
     });
   });
 
+  describe("updateIf()", () => {
+    test("ok", () => {
+      const input = { a: 1 };
+      {
+        const result = Kasen(input)
+          .updateIf(false, "a", v => v + 10)
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const result = Kasen(input)
+          .updateIf(true, "a", v => v + 10)
+          .toJs();
+        expect(result).toEqual({ a: 11 });
+      }
+    });
+  });
+
   describe("delete()", () => {
     test("ok", () => {
       const ios = [

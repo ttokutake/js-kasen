@@ -227,6 +227,16 @@ export default class KasenArray extends Collection {
     return result;
   }
 
+  updateIf(bool, index, func) {
+    if (!isNumber(index)) {
+      throw new TypeError("2nd argument must be Number");
+    }
+    if (!isFunction(func)) {
+      throw new TypeError("3rd argument must be Function");
+    }
+    return super.updateIf(bool, index, func);
+  }
+
   delete(index) {
     if (!isNumber(index)) {
       throw new TypeError("1st argument must be Number");
