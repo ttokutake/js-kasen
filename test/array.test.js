@@ -312,6 +312,10 @@ describe("Array", () => {
           .toJs();
         expect(result).toEqual(expected);
       });
+      ios.forEach(([input, index, expected]) => {
+        const result = Kasen.delete(input, index);
+        expect(result).toEqual(expected);
+      });
     });
   });
 

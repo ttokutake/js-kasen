@@ -242,6 +242,10 @@ describe("Object", () => {
           .toJs();
         expect(result).toEqual(expected);
       });
+      ios.forEach(([input, key, expected]) => {
+        const result = Kasen.delete(input, key);
+        expect(result).toEqual(expected);
+      });
     });
   });
 

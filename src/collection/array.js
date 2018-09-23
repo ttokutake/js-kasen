@@ -218,6 +218,15 @@ export default class KasenArray extends Collection {
     return super.delete(Curator, curate);
   }
 
+  static delete(array, index) {
+    const { length } = array;
+    if (-length <= index && index < length) {
+      const key = ArrayIterator.key(index, length);
+      return array.filter((v, i) => i !== key);
+    }
+    return array;
+  }
+
   // TODO: insert()
 
   // TODO: push()

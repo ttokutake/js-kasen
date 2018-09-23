@@ -136,15 +136,15 @@ export default class KasenObject extends Collection {
     }
     const curate = iter => {
       const object = ObjectIterator.curate(iter);
-      ObjectIterator.add(object, key, value);
+      object[key] = value;
       return object;
     };
     return super.set(Curator, curate);
   }
 
   static set(object, key, value) {
-    const result = this.map(object, v => v);
-    ObjectIterator.add(result, key, value);
+    const result = this.filter(object, () => true);
+    result[key] = value;
     return result;
   }
 
@@ -165,6 +165,12 @@ export default class KasenObject extends Collection {
       return object;
     };
     return super.delete(Curator, curate);
+  }
+
+  static delete(object, key) {
+    const result = this.filter(object, () => true);
+    delete result[key];
+    return result;
   }
 
   // TODO: deleteAll()

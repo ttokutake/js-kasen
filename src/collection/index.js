@@ -92,6 +92,11 @@ export default class Collection {
     return this;
   }
 
+  // eslint-disable-next-line no-unused-vars
+  static delete(_coll, _key) {
+    throw new Error("not implemented");
+  }
+
   // TODO: clear()
 
   // TODO: update()
