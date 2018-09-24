@@ -203,18 +203,7 @@ export default class Collection {
   }
 
   some(func) {
-    const finalize = iter => {
-      let key;
-      let value;
-      // eslint-disable-next-line no-cond-assign
-      while (!({ key, value } = iter.next()).done) {
-        if (func(value, key)) {
-          return true;
-        }
-      }
-      return false;
-    };
-    return this.__consume(finalize);
+    return !this.every((v, k) => !func(v, k));
   }
 
   // eslint-disable-next-line no-unused-vars

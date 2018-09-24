@@ -303,14 +303,7 @@ export default class KasenObject extends Collection {
   }
 
   static some(object, func) {
-    const keys = Object.keys(object);
-    for (let i = 0, { length } = keys; i < length; i += 1) {
-      const key = keys[i];
-      if (func(object[key], key)) {
-        return true;
-      }
-    }
-    return false;
+    return !this.every(object, (v, k) => !func(v, k));
   }
 
   find(func) {
