@@ -287,6 +287,17 @@ export default class KasenArray extends Collection {
     return [].concat(...arrays);
   }
 
+  concatIf(bool, ...arrays) {
+    for (let i = 0, { length } = arrays; i < length; i += 1) {
+      if (!isArray(arrays[i])) {
+        throw new TypeError(
+          "Each argument excluding 1st argument must be Array"
+        );
+      }
+    }
+    return bool ? this.concat(...arrays) : this;
+  }
+
   // TODO: insert()
 
   // TODO: push()
