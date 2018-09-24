@@ -1,7 +1,7 @@
 import Collection from "./index";
 import { OriginIterator, Curator } from "../iterator/index";
 import { FilterIterator, ReverseIterator } from "../iterator/array";
-import { isNumber, isFunction } from "../type";
+import { isNumber, isArray, isFunction } from "../type";
 
 class ArrayIterator extends OriginIterator {
   constructor(array) {
@@ -269,6 +269,21 @@ export default class KasenArray extends Collection {
     return super.deleteIf(bool, index);
   }
 
+  merge(...arrays) {
+    for (let i = 0, { length } = arrays; i < length; i += 1) {
+      if (!isArray(arrays[i])) {
+        throw new TypeError("Each argument must be Array");
+      }
+    }
+    const curate = iter => {
+      const array = ArrayIterator.curate(iter);
+      return array.concat(...arrays);
+    };
+    return super.merge(Curator, curate);
+  }
+
+  // TODO: concat() (alias of merge())
+
   // TODO: insert()
 
   // TODO: push()
@@ -278,8 +293,6 @@ export default class KasenArray extends Collection {
   // TODO: unshift()
 
   // TODO: shift()
-
-  // TODO: concat() (alias of merge())
 
   // TODO: flatten()
 
