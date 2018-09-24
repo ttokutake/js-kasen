@@ -402,7 +402,7 @@ describe("Array", () => {
     });
   });
 
-  describe("merge()", () => {
+  describe("concat()", () => {
     test("ok()", () => {
       const ios = [
         [[], [[]], []],
@@ -414,7 +414,7 @@ describe("Array", () => {
       ];
       ios.forEach(([input, arrays, expected]) => {
         const result = Kasen(input)
-          .merge(...arrays)
+          .concat(...arrays)
           .toJs();
         expect(result).toEqual(expected);
       });

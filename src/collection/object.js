@@ -231,7 +231,8 @@ export default class KasenObject extends Collection {
       }
       return object;
     };
-    return super.merge(Curator, curate);
+    this.__pile(Curator, curate);
+    return this;
   }
 
   // TODO?: mergeBy()

@@ -124,11 +124,6 @@ export default class Collection {
     return bool ? this.clear() : this;
   }
 
-  merge(Iter, func) {
-    this.__pile(Iter, func);
-    return this;
-  }
-
   // TODO: setIn()
 
   // TODO: updateIn()

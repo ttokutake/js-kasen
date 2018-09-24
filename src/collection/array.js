@@ -269,7 +269,7 @@ export default class KasenArray extends Collection {
     return super.deleteIf(bool, index);
   }
 
-  merge(...arrays) {
+  concat(...arrays) {
     for (let i = 0, { length } = arrays; i < length; i += 1) {
       if (!isArray(arrays[i])) {
         throw new TypeError("Each argument must be Array");
@@ -279,10 +279,9 @@ export default class KasenArray extends Collection {
       const array = ArrayIterator.curate(iter);
       return array.concat(...arrays);
     };
-    return super.merge(Curator, curate);
+    this.__pile(Curator, curate);
+    return this;
   }
-
-  // TODO: concat() (alias of merge())
 
   // TODO: insert()
 
