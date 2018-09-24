@@ -1,7 +1,7 @@
 import Collection from "./index";
 import { OriginIterator, Curator } from "../iterator/index";
 import { FilterIterator } from "../iterator/object";
-import { isNumber, isString, isArray, isFunction } from "../type";
+import { isNumber, isString, isObject, isArray, isFunction } from "../type";
 
 class ObjectIterator extends OriginIterator {
   constructor(object) {
@@ -212,6 +212,29 @@ export default class KasenObject extends Collection {
   }
 
   // TODO: deleteAll()
+
+  merge(...objects) {
+    for (let i = 0, { length } = objects; i < length; i += 1) {
+      if (!isObject(objects[i])) {
+        throw new TypeError("Each argument must be Object");
+      }
+    }
+    const curate = iter => {
+      const object = ObjectIterator.curate(iter);
+      for (let i = 0, { length } = objects; i < length; i += 1) {
+        const obj = objects[i];
+        const keys = Object.keys(obj);
+        for (let j = 0, len = keys.length; j < len; j += 1) {
+          const key = keys[j];
+          object[key] = obj[key];
+        }
+      }
+      return object;
+    };
+    return super.merge(Curator, curate);
+  }
+
+  // TODO?: mergeBy()
 
   // TODO?: flip()
 
