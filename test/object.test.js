@@ -350,6 +350,25 @@ describe("Object", () => {
     });
   });
 
+  describe("mergeIf()", () => {
+    test("ok()", () => {
+      const input = { a: 1 };
+      const objects = [{ b: 2 }, { c: 3 }];
+      {
+        const result = Kasen(input)
+          .mergeIf(false, ...objects)
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const result = Kasen(input)
+          .mergeIf(true, ...objects)
+          .toJs();
+        expect(result).toEqual({ a: 1, b: 2, c: 3 });
+      }
+    });
+  });
+
   describe("toJs()", () => {
     test("ok", () => {
       const inputs = [{}, { a: 1 }, { a: 1, b: 2 }, { a: 1, b: 2, c: 3 }];

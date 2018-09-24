@@ -248,6 +248,17 @@ export default class KasenObject extends Collection {
     return result;
   }
 
+  mergeIf(bool, ...objects) {
+    for (let i = 0, { length } = objects; i < length; i += 1) {
+      if (!isObject(objects[i])) {
+        throw new TypeError(
+          "Each argument excluding 1st argument must be Object"
+        );
+      }
+    }
+    return bool ? this.merge(...objects) : this;
+  }
+
   // TODO?: mergeBy()
 
   // TODO?: flip()
