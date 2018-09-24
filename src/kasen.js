@@ -125,6 +125,15 @@ Kasen.delete = (coll, key) => {
   return Coll.delete(coll, key);
 };
 
+Kasen.concat = (...arrays) => {
+  for (let i = 0, { length } = arrays; i < length; i += 1) {
+    if (!isArray(arrays[i])) {
+      throw new TypeError("Each argument must be Array");
+    }
+  }
+  return KasenArray.concat(arrays);
+};
+
 Kasen.reduce = (coll, func, init) => {
   const Coll = choose(coll);
   if (!Coll) {

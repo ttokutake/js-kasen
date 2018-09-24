@@ -283,6 +283,10 @@ export default class KasenArray extends Collection {
     return this;
   }
 
+  static concat(arrays) {
+    return [].concat(...arrays);
+  }
+
   // TODO: insert()
 
   // TODO: push()

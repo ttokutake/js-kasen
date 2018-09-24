@@ -418,6 +418,10 @@ describe("Array", () => {
           .toJs();
         expect(result).toEqual(expected);
       });
+      ios.forEach(([input, arrays, expected]) => {
+        const result = Kasen.concat(input, ...arrays);
+        expect(result).toEqual(expected);
+      });
     });
   });
 
