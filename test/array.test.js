@@ -487,10 +487,10 @@ describe("Array", () => {
         const result = Kasen(input).some(v => v % 2 === 1);
         expect(result).toBe(expected);
       });
-      // ios.forEach(([input, expected]) => {
-      //   const result = Kasen.some(input, v => v % 2 === 1);
-      //   expect(result).toBe(expected);
-      // });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.some(input, v => v % 2 === 1);
+        expect(result).toBe(expected);
+      });
     });
   });
 

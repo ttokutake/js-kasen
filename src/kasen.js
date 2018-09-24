@@ -147,6 +147,17 @@ Kasen.every = (coll, func) => {
   return Coll.every(coll, func);
 };
 
+Kasen.some = (coll, func) => {
+  const Coll = choose(coll);
+  if (!Coll) {
+    throw new TypeError("1st argument must be Array or Object");
+  }
+  if (!isFunction(func)) {
+    throw new TypeError("2nd argument must be Function");
+  }
+  return Coll.some(coll, func);
+};
+
 Kasen.find = (coll, func) => {
   const Coll = choose(coll);
   if (!Coll) {

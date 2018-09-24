@@ -352,6 +352,10 @@ export default class KasenArray extends Collection {
     return super.some(func);
   }
 
+  static some(array, func) {
+    return array.some(func);
+  }
+
   find(func) {
     if (!isFunction(func)) {
       throw new TypeError("1st argument must be Function");

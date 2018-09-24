@@ -263,6 +263,17 @@ export default class KasenObject extends Collection {
     return super.some(func);
   }
 
+  static some(object, func) {
+    const keys = Object.keys(object);
+    for (let i = 0, { length } = keys; i < length; i += 1) {
+      const key = keys[i];
+      if (func(object[key], key)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   find(func) {
     if (!isFunction(func)) {
       throw new TypeError("1st argument must be Function");
