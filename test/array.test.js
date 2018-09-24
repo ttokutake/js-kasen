@@ -472,6 +472,28 @@ describe("Array", () => {
     });
   });
 
+  describe("some()", () => {
+    test("ok", () => {
+      const ios = [
+        [[], false],
+        [[1], true],
+        [[2], false],
+        [[1, 2], true],
+        [[2, 4], false],
+        [[2, 3, 4], true],
+        [[2, 4, 6], false]
+      ];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input).some(v => v % 2 === 1);
+        expect(result).toBe(expected);
+      });
+      // ios.forEach(([input, expected]) => {
+      //   const result = Kasen.some(input, v => v % 2 === 1);
+      //   expect(result).toBe(expected);
+      // });
+    });
+  });
+
   describe("find()", () => {
     test("ok", () => {
       const ios = [

@@ -128,9 +128,9 @@ export default class Collection {
 
   // TODO: setIn()
 
-  // TODO: deleteIn()
-
   // TODO: updateIn()
+
+  // TODO: deleteIn()
 
   // TODO: mergeIn()
   // TODO: mergeDeepIn()
@@ -204,7 +204,20 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
-  // TODO: some()
+  some(func) {
+    const finalize = iter => {
+      let key;
+      let value;
+      // eslint-disable-next-line no-cond-assign
+      while (!({ key, value } = iter.next()).done) {
+        if (func(value, key)) {
+          return true;
+        }
+      }
+      return false;
+    };
+    return this.__consume(finalize);
+  }
 
   find(func) {
     const finalize = iter => {

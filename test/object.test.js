@@ -395,6 +395,28 @@ describe("Object", () => {
     });
   });
 
+  describe("some()", () => {
+    test("ok", () => {
+      const ios = [
+        [{}, false],
+        [{ a: 1 }, true],
+        [{ b: 2 }, false],
+        [{ a: 1, b: 2 }, true],
+        [{ b: 2, d: 4 }, false],
+        [{ b: 2, c: 3, d: 4 }, true],
+        [{ b: 2, d: 4, f: 6 }, false]
+      ];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input).some(v => v % 2 === 1);
+        expect(result).toBe(expected);
+      });
+      // ios.forEach(([input, expected]) => {
+      //   const result = Kasen.some(input, v => v % 2 === 1);
+      //   expect(result).toBe(expected);
+      // });
+    });
+  });
+
   describe("find()", () => {
     test("ok", () => {
       const ios = [

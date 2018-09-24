@@ -256,6 +256,13 @@ export default class KasenObject extends Collection {
     return true;
   }
 
+  some(func) {
+    if (!isFunction(func)) {
+      throw new TypeError("1st argument must be Function");
+    }
+    return super.some(func);
+  }
+
   find(func) {
     if (!isFunction(func)) {
       throw new TypeError("1st argument must be Function");
