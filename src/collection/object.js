@@ -235,6 +235,19 @@ export default class KasenObject extends Collection {
     return this;
   }
 
+  static merge(objects) {
+    const result = {};
+    for (let i = 0, { length } = objects; i < length; i += 1) {
+      const obj = objects[i];
+      const keys = Object.keys(obj);
+      for (let j = 0, len = keys.length; j < len; j += 1) {
+        const key = keys[j];
+        result[key] = obj[key];
+      }
+    }
+    return result;
+  }
+
   // TODO?: mergeBy()
 
   // TODO?: flip()

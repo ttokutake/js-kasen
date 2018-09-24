@@ -343,6 +343,10 @@ describe("Object", () => {
           .toJs();
         expect(result).toEqual(expected);
       });
+      ios.forEach(([input, objects, expected]) => {
+        const result = Kasen.merge(input, ...objects);
+        expect(result).toEqual(expected);
+      });
     });
   });
 
