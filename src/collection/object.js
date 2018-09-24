@@ -134,18 +134,11 @@ export default class KasenObject extends Collection {
     if (!(isNumber(key) || isString(key))) {
       throw new TypeError("1st argument must be Number or String");
     }
-    const curate = iter => {
-      const object = ObjectIterator.curate(iter);
-      object[key] = value;
-      return object;
-    };
-    return super.set(Curator, curate);
+    return this.update(key, () => value);
   }
 
   static set(object, key, value) {
-    const result = this.filter(object, () => true);
-    result[key] = value;
-    return result;
+    return this.update(object, key, () => value);
   }
 
   setIf(bool, key, value) {

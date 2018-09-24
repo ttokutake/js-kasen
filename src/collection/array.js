@@ -169,26 +169,11 @@ export default class KasenArray extends Collection {
     if (!isNumber(index)) {
       throw new TypeError("1st argument must be Number");
     }
-    const curate = iter => {
-      const array = ArrayIterator.curate(iter);
-      const { length } = array;
-      if (-length <= index && index < length) {
-        const key = correctIndex(index, length);
-        array[key] = value;
-      }
-      return array;
-    };
-    return super.set(Curator, curate);
+    return this.update(index, () => value);
   }
 
   static set(array, index, value) {
-    const result = array.slice();
-    const { length } = array;
-    if (-length <= index && index < length) {
-      const key = correctIndex(index, length);
-      result[key] = value;
-    }
-    return result;
+    return this.update(array, index, () => value);
   }
 
   setIf(bool, index, value) {

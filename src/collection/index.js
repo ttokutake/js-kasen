@@ -73,9 +73,9 @@ export default class Collection {
     return bool ? this.filterNot(func) : this;
   }
 
-  set(Iter, func) {
-    this.__pile(Iter, func);
-    return this;
+  // eslint-disable-next-line class-methods-use-this, no-unused-vars
+  set(_key, _value) {
+    throw new Error("not implemented");
   }
 
   // eslint-disable-next-line no-unused-vars
