@@ -257,10 +257,10 @@ describe("Array", () => {
           .toJs();
         expect(result).toEqual(expected);
       });
-      // ios.forEach(([input, num, expected]) => {
-      //   const result = Kasen.takeLast(input, num);
-      //   expect(result).toEqual(expected);
-      // });
+      ios.forEach(([input, num, expected]) => {
+        const result = Kasen.takeLast(input, num);
+        expect(result).toEqual(expected);
+      });
     });
   });
 

@@ -80,6 +80,16 @@ Kasen.take = (array, num) => {
   return KasenArray.take(array, num);
 };
 
+Kasen.takeLast = (array, num) => {
+  if (!isArray(array)) {
+    throw new TypeError("1st argument must be Array");
+  }
+  if (!isNumber(num)) {
+    throw new TypeError("2nd argument must be Number");
+  }
+  return KasenArray.takeLast(array, num);
+};
+
 Kasen.set = (coll, key, value) => {
   const Coll = choose(coll);
   if (!Coll) {

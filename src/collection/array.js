@@ -170,6 +170,11 @@ export default class KasenArray extends Collection {
     return this;
   }
 
+  static takeLast(array, num) {
+    const { length } = array;
+    return num < 0 ? [] : array.slice(length - num, length);
+  }
+
   // TODO: takeWhile()
 
   // TODO: takeUntil()
