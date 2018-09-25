@@ -313,6 +313,10 @@ describe("Object", () => {
           .toJs();
         expect(result).toEqual(expected);
       });
+      ios.forEach(([input, keys, expected]) => {
+        const result = Kasen.deleteAll(input, keys);
+        expect(result).toEqual(expected);
+      });
     });
   });
 

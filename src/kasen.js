@@ -125,6 +125,16 @@ Kasen.delete = (coll, key) => {
   return Coll.delete(coll, key);
 };
 
+Kasen.deleteAll = (object, keys) => {
+  if (!isObject(object)) {
+    throw new TypeError("1st argument must be Object");
+  }
+  if (!isArray(keys)) {
+    throw new TypeError("2nd argument must be Array");
+  }
+  return KasenObject.deleteAll(object, keys);
+};
+
 Kasen.concat = (...arrays) => {
   for (let i = 0, { length } = arrays; i < length; i += 1) {
     if (!isArray(arrays[i])) {

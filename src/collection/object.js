@@ -219,6 +219,14 @@ export default class KasenObject extends Collection {
     return this;
   }
 
+  static deleteAll(object, keys) {
+    const result = this.filter(object, () => true);
+    keys.forEach(key => {
+      delete result[key];
+    });
+    return result;
+  }
+
   merge(...objects) {
     for (let i = 0, { length } = objects; i < length; i += 1) {
       if (!isObject(objects[i])) {
