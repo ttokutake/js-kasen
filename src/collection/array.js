@@ -132,7 +132,7 @@ export default class KasenArray extends Collection {
       // eslint-disable-next-line no-cond-assign
       while (count < num && !({ value } = iter.next()).done) {
         count += 1;
-        ArrayIterator.add(array, null, value);
+        array.push(value);
       }
       return array;
     };
@@ -151,7 +151,24 @@ export default class KasenArray extends Collection {
     return bool ? this.take(num) : this;
   }
 
-  // TODO: takeLast()
+  takeLast(num) {
+    if (!isNumber(num)) {
+      throw new TypeError("1st argument must be Number");
+    }
+    const curate = iter => {
+      const array = ArrayIterator.default();
+      let count = 0;
+      let value;
+      // eslint-disable-next-line no-cond-assign
+      while (count < num && !({ value } = iter.prev()).done) {
+        count += 1;
+        array.unshift(value);
+      }
+      return array;
+    };
+    this.__pile(Curator, curate);
+    return this;
+  }
 
   // TODO: takeWhile()
 

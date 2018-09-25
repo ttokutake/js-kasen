@@ -231,6 +231,39 @@ describe("Array", () => {
     });
   });
 
+  describe("takeLast()", () => {
+    test("ok", () => {
+      const ios = [
+        [[], -1, []],
+        [[1], -1, []],
+        [[1, 2], -1, []],
+        [[1, 2, 3], -1, []],
+        [[], 0, []],
+        [[1], 0, []],
+        [[1, 2], 0, []],
+        [[1, 2, 3], 0, []],
+        [[], 1, []],
+        [[1], 1, [1]],
+        [[1, 2], 1, [2]],
+        [[1, 2, 3], 1, [3]],
+        [[], 2, []],
+        [[1], 2, [1]],
+        [[1, 2], 2, [1, 2]],
+        [[1, 2, 3], 2, [2, 3]]
+      ];
+      ios.forEach(([input, num, expected]) => {
+        const result = Kasen(input)
+          .takeLast(num)
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+      // ios.forEach(([input, num, expected]) => {
+      //   const result = Kasen.takeLast(input, num);
+      //   expect(result).toEqual(expected);
+      // });
+    });
+  });
+
   describe("set()", () => {
     test("ok", () => {
       const ios = [
