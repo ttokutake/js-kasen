@@ -5,7 +5,6 @@ import { ChainIterator } from ".";
 export class FilterIterator extends ChainIterator {
   next() {
     let result;
-    // eslint-disable-next-line no-cond-assign
     while (!(result = this.parent.next()).done) {
       if (this.func(result.value, result.key)) {
         break;

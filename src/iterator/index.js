@@ -38,7 +38,6 @@ export class OriginIterator extends BaseIterator {
     const coll = this.default();
     let key;
     let value;
-    // eslint-disable-next-line no-cond-assign
     while (!({ key, value } = iter.next()).done) {
       this.add(coll, key, value);
     }

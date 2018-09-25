@@ -62,6 +62,10 @@
             "__iterator"
           ]
         }
+      ],
+      "no-cond-assign": [
+        "error",
+        "except-parens"
       ]
     }
   }

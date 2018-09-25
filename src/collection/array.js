@@ -129,7 +129,6 @@ export default class KasenArray extends Collection {
       const array = ArrayIterator.default();
       let count = 0;
       let value;
-      // eslint-disable-next-line no-cond-assign
       while (count < num && !({ value } = iter.next()).done) {
         count += 1;
         array.push(value);
@@ -159,7 +158,6 @@ export default class KasenArray extends Collection {
       const array = ArrayIterator.default();
       let count = 0;
       let value;
-      // eslint-disable-next-line no-cond-assign
       while (count < num && !({ value } = iter.prev()).done) {
         count += 1;
         array.unshift(value);
@@ -419,7 +417,6 @@ export default class KasenArray extends Collection {
     const finalize = iter => {
       let key;
       let value;
-      // eslint-disable-next-line no-cond-assign
       while (!({ key, value } = iter.prev()).done) {
         if (func(value, key)) {
           return value;

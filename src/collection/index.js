@@ -186,7 +186,6 @@ export default class Collection {
     const finalize = iter => {
       let key;
       let value;
-      // eslint-disable-next-line no-cond-assign
       while (!({ key, value } = iter.next()).done) {
         if (!func(value, key)) {
           return false;
@@ -215,7 +214,6 @@ export default class Collection {
     const finalize = iter => {
       let key;
       let value;
-      // eslint-disable-next-line no-cond-assign
       while (!({ key, value } = iter.next()).done) {
         if (func(value, key)) {
           return value;
@@ -257,7 +255,6 @@ export default class Collection {
     const finalize = iter => {
       let key;
       let value;
-      // eslint-disable-next-line no-cond-assign
       while (!({ key, value } = iter.next()).done) {
         func(value, key);
       }

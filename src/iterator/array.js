@@ -8,7 +8,6 @@ export class FilterIterator extends ChainIterator {
 
   base(direction) {
     let result;
-    // eslint-disable-next-line no-cond-assign
     while (!(result = this.parent[direction]()).done) {
       if (this.func(result.value, result.key)) {
         result.key = this.index;
