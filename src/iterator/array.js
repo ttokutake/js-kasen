@@ -1,4 +1,4 @@
-import { ChainIterator } from "./index";
+import { ChainIterator } from ".";
 
 export class FilterIterator extends ChainIterator {
   constructor(parentIterator, func) {

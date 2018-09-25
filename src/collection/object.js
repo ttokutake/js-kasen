@@ -1,5 +1,5 @@
-import Collection from "./index";
-import { OriginIterator, Curator } from "../iterator/index";
+import Collection from ".";
+import { OriginIterator, Curator } from "../iterator";
 import { FilterIterator } from "../iterator/object";
 import { isNumber, isString, isObject, isArray, isFunction } from "../type";
 

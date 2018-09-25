@@ -1,6 +1,6 @@
 import clone from "clone";
 
-import { TapIterator, MapIterator, ClearCurator } from "../iterator/index";
+import { TapIterator, MapIterator, ClearCurator } from "../iterator";
 
 export default class Collection {
   constructor(coll) {

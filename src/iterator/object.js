@@ -1,4 +1,4 @@
-import { ChainIterator } from "./index";
+import { ChainIterator } from ".";
 
 // TODO: Delete below line
 // eslint-disable-next-line import/prefer-default-export

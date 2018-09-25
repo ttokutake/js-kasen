@@ -1,7 +1,7 @@
 {
   "name": "kasen",
   "version": "0.0.1",
-  "main": "kasen.js",
+  "main": "index.js",
   "repository": "git@github.com:ttokutake/js-kasen.git",
   "author": "ttokutake <tadatoshi.tokutake@gmail.com>",
   "license": "MIT",
