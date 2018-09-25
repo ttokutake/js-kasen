@@ -295,6 +295,27 @@ describe("Object", () => {
     });
   });
 
+  describe("deleteAll()", () => {
+    test("ok", () => {
+      const ios = [
+        [{}, [], {}],
+        [{}, ["a"], {}],
+        [{ a: 1 }, [], { a: 1 }],
+        [{ a: 1 }, ["a"], {}],
+        [{ a: 1 }, ["b"], { a: 1 }],
+        [{ a: 1, b: 2 }, [], { a: 1, b: 2 }],
+        [{ a: 1, b: 2 }, ["a"], { b: 2 }],
+        [{ a: 1, b: 2 }, ["a", "b"], {}]
+      ];
+      ios.forEach(([input, keys, expected]) => {
+        const result = Kasen(input)
+          .deleteAll(keys)
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
   describe("clear()", () => {
     test("ok", () => {
       const inputs = [{}, { a: 1 }];

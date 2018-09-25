@@ -204,7 +204,20 @@ export default class KasenObject extends Collection {
     return super.deleteIf(bool, key);
   }
 
-  // TODO: deleteAll()
+  deleteAll(keys) {
+    if (!isArray(keys)) {
+      throw new TypeError("1st argument must be Array");
+    }
+    const curate = iter => {
+      const object = ObjectIterator.curate(iter);
+      keys.forEach(key => {
+        delete object[key];
+      });
+      return object;
+    };
+    this.__pile(Curator, curate);
+    return this;
+  }
 
   merge(...objects) {
     for (let i = 0, { length } = objects; i < length; i += 1) {
