@@ -227,6 +227,13 @@ export default class KasenObject extends Collection {
     return result;
   }
 
+  deleteAllIf(bool, keys) {
+    if (!isArray(keys)) {
+      throw new TypeError("2nd argument must be Array");
+    }
+    return bool ? this.deleteAll(keys) : this;
+  }
+
   merge(...objects) {
     for (let i = 0, { length } = objects; i < length; i += 1) {
       if (!isObject(objects[i])) {

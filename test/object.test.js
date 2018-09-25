@@ -320,6 +320,25 @@ describe("Object", () => {
     });
   });
 
+  describe("deleteAll()", () => {
+    test("ok", () => {
+      const input = { a: 1, b: 2 };
+      const keys = ["a"];
+      {
+        const result = Kasen(input)
+          .deleteAllIf(false, keys)
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const result = Kasen(input)
+          .deleteAllIf(true, keys)
+          .toJs();
+        expect(result).toEqual({ b: 2 });
+      }
+    });
+  });
+
   describe("clear()", () => {
     test("ok", () => {
       const inputs = [{}, { a: 1 }];
