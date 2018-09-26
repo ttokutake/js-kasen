@@ -308,6 +308,24 @@ describe("Array", () => {
     });
   });
 
+  describe("takeWhileIf()", () => {
+    test("ok", () => {
+      const input = [1, 3, 4];
+      {
+        const result = Kasen(input)
+          .takeWhileIf(false, v => v % 2 === 1)
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const result = Kasen(input)
+          .takeWhileIf(true, v => v % 2 === 1)
+          .toJs();
+        expect(result).toEqual([1, 3]);
+      }
+    });
+  });
+
   describe("set()", () => {
     test("ok", () => {
       const ios = [

@@ -209,6 +209,13 @@ export default class KasenArray extends Collection {
     return result;
   }
 
+  takeWhileIf(bool, func) {
+    if (!isFunction(func)) {
+      throw new TypeError("2nd argument must be Function");
+    }
+    return bool ? this.takeWhile(func) : this;
+  }
+
   // TODO: takeUntil()
 
   // TODO: skip()
