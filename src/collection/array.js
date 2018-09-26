@@ -159,8 +159,8 @@ export default class KasenArray extends Collection {
       let count = 0;
       let value;
       while (count < num && !({ value } = iter.prev()).done) {
-        count += 1;
         array.unshift(value);
+        count += 1;
       }
       return array;
     };
@@ -234,7 +234,25 @@ export default class KasenArray extends Collection {
     return bool ? this.takeUntil(func) : this;
   }
 
-  // TODO: skip()
+  skip(num) {
+    if (!isNumber(num)) {
+      throw new TypeError("1st argument must be Number");
+    }
+    const curate = iter => {
+      const array = [];
+      let count = 0;
+      let value;
+      while (!({ value } = iter.next()).done) {
+        if (count >= num) {
+          array.push(value);
+        }
+        count += 1;
+      }
+      return array;
+    };
+    this.__pile(Curator, curate);
+    return this;
+  }
 
   // TODO: skipLast()
 
