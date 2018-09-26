@@ -110,6 +110,16 @@ Kasen.takeUntil = (array, func) => {
   return KasenArray.takeUntil(array, func);
 };
 
+Kasen.skip = (array, num) => {
+  if (!isArray(array)) {
+    throw new TypeError("1st argument must be Array");
+  }
+  if (!isNumber(num)) {
+    throw new TypeError("2nd argument must be Number");
+  }
+  return KasenArray.skip(array, num);
+};
+
 Kasen.set = (coll, key, value) => {
   const Coll = choose(coll);
   if (!Coll) {
