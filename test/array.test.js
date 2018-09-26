@@ -301,6 +301,10 @@ describe("Array", () => {
           .toJs();
         expect(result).toEqual(expected);
       });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.takeWhile(input, v => v % 2 === 1);
+        expect(result).toEqual(expected);
+      });
     });
   });
 

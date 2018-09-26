@@ -197,6 +197,18 @@ export default class KasenArray extends Collection {
     return this;
   }
 
+  static takeWhile(array, func) {
+    const result = [];
+    for (let i = 0, { length } = array; i < length; i += 1) {
+      const value = array[i];
+      if (!func(value, i)) {
+        break;
+      }
+      result.push(value);
+    }
+    return result;
+  }
+
   // TODO: takeUntil()
 
   // TODO: skip()
