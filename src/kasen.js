@@ -100,6 +100,16 @@ Kasen.takeWhile = (array, func) => {
   return KasenArray.takeWhile(array, func);
 };
 
+Kasen.takeUntil = (array, func) => {
+  if (!isArray(array)) {
+    throw new TypeError("1st argument must be Array");
+  }
+  if (!isFunction(func)) {
+    throw new TypeError("2nd argument must be Function");
+  }
+  return KasenArray.takeUntil(array, func);
+};
+
 Kasen.set = (coll, key, value) => {
   const Coll = choose(coll);
   if (!Coll) {

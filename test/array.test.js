@@ -326,6 +326,50 @@ describe("Array", () => {
     });
   });
 
+  describe("takeUntil()", () => {
+    test("ok", () => {
+      const ios = [
+        [[], []],
+        [[1], [1]],
+        [[2], []],
+        [[1, 2], [1]],
+        [[1, 3], [1, 3]],
+        [[2, 3], []],
+        [[1, 2, 3], [1]],
+        [[1, 3, 4], [1, 3]],
+        [[1, 3, 5], [1, 3, 5]]
+      ];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input)
+          .takeUntil(v => v % 2 === 0)
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.takeUntil(input, v => v % 2 === 0);
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
+  describe("takeUntilIf()", () => {
+    test("ok", () => {
+      const input = [1, 3, 4];
+      {
+        const result = Kasen(input)
+          .takeUntilIf(false, v => v % 2 === 0)
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const result = Kasen(input)
+          .takeUntilIf(true, v => v % 2 === 0)
+          .toJs();
+        expect(result).toEqual([1, 3]);
+      }
+    });
+  });
+
   describe("set()", () => {
     test("ok", () => {
       const ios = [
