@@ -180,7 +180,22 @@ export default class KasenArray extends Collection {
     return bool ? this.takeLast(num) : this;
   }
 
-  // TODO: takeWhile()
+  takeWhile(func) {
+    if (!isFunction(func)) {
+      throw new TypeError("1st argument must be Function");
+    }
+    const curate = iter => {
+      const array = [];
+      let key;
+      let value;
+      while (!({ key, value } = iter.next()).done && func(value, key)) {
+        array.push(value);
+      }
+      return array;
+    };
+    this.__pile(Curator, curate);
+    return this;
+  }
 
   // TODO: takeUntil()
 

@@ -282,6 +282,28 @@ describe("Array", () => {
     });
   });
 
+  describe("takeWhile()", () => {
+    test("ok", () => {
+      const ios = [
+        [[], []],
+        [[1], [1]],
+        [[2], []],
+        [[1, 2], [1]],
+        [[1, 3], [1, 3]],
+        [[2, 3], []],
+        [[1, 2, 3], [1]],
+        [[1, 3, 4], [1, 3]],
+        [[1, 3, 5], [1, 3, 5]]
+      ];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input)
+          .takeWhile(v => v % 2 === 1)
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
   describe("set()", () => {
     test("ok", () => {
       const ios = [
