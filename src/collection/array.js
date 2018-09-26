@@ -126,7 +126,7 @@ export default class KasenArray extends Collection {
       throw new TypeError("1st argument must be Number");
     }
     const curate = iter => {
-      const array = ArrayIterator.default();
+      const array = [];
       let count = 0;
       let value;
       while (count < num && !({ value } = iter.next()).done) {
@@ -155,7 +155,7 @@ export default class KasenArray extends Collection {
       throw new TypeError("1st argument must be Number");
     }
     const curate = iter => {
-      const array = ArrayIterator.default();
+      const array = [];
       let count = 0;
       let value;
       while (count < num && !({ value } = iter.prev()).done) {
