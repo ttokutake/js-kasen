@@ -258,6 +258,13 @@ export default class KasenArray extends Collection {
     return array.slice(num < 0 ? 0 : num);
   }
 
+  skipIf(bool, num) {
+    if (!isNumber(num)) {
+      throw new TypeError("2nd argument must be Number");
+    }
+    return bool ? this.skip(num) : this;
+  }
+
   // TODO: skipLast()
 
   // TODO: skipWhile()

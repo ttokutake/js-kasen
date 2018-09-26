@@ -403,6 +403,24 @@ describe("Array", () => {
     });
   });
 
+  describe("skipIf()", () => {
+    test("ok", () => {
+      const input = [1, 2, 3];
+      {
+        const result = Kasen(input)
+          .skipIf(false, 2)
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const result = Kasen(input)
+          .skipIf(true, 2)
+          .toJs();
+        expect(result).toEqual([3]);
+      }
+    });
+  });
+
   describe("set()", () => {
     test("ok", () => {
       const ios = [
