@@ -454,6 +454,24 @@ describe("Array", () => {
     });
   });
 
+  describe("skipLastIf()", () => {
+    test("ok", () => {
+      const input = [1, 2, 3];
+      {
+        const result = Kasen(input)
+          .skipLastIf(false, 2)
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const result = Kasen(input)
+          .skipLastIf(true, 2)
+          .toJs();
+        expect(result).toEqual([1]);
+      }
+    });
+  });
+
   describe("set()", () => {
     test("ok", () => {
       const ios = [
