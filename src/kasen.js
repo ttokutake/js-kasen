@@ -140,6 +140,16 @@ Kasen.skipWhile = (array, func) => {
   return KasenArray.skipWhile(array, func);
 };
 
+Kasen.skipUntil = (array, func) => {
+  if (!isArray(array)) {
+    throw new TypeError("1st argument must be Array");
+  }
+  if (!isFunction(func)) {
+    throw new TypeError("2nd argument must be Function");
+  }
+  return KasenArray.skipUntil(array, func);
+};
+
 Kasen.set = (coll, key, value) => {
   const Coll = choose(coll);
   if (!Coll) {
