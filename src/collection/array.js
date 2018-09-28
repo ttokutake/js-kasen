@@ -220,11 +220,11 @@ export default class KasenArray extends Collection {
     if (!isFunction(func)) {
       throw new TypeError("1st argument must be Function");
     }
-    return this.takeWhile((v, k) => !func(v, k));
+    return this.takeWhile((v, i) => !func(v, i));
   }
 
   static takeUntil(array, func) {
-    return this.takeWhile(array, (v, k) => !func(v, k));
+    return this.takeWhile(array, (v, i) => !func(v, i));
   }
 
   takeUntilIf(bool, func) {
