@@ -297,7 +297,28 @@ export default class KasenArray extends Collection {
     return bool ? this.skipLast(num) : this;
   }
 
-  // TODO: skipWhile()
+  skipWhile(func) {
+    if (!isFunction(func)) {
+      throw new TypeError("1st argument must be Function");
+    }
+    const curate = iter => {
+      const array = [];
+      let key;
+      let value;
+      let skipped = true;
+      while (!({ key, value } = iter.next()).done) {
+        if (skipped && !func(value, key)) {
+          skipped = false;
+        }
+        if (!skipped) {
+          array.push(value);
+        }
+      }
+      return array;
+    };
+    this.__pile(Curator, curate);
+    return this;
+  }
 
   // TODO: skipUntil()
 

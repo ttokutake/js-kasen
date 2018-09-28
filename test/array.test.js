@@ -472,6 +472,32 @@ describe("Array", () => {
     });
   });
 
+  describe("skipWhile()", () => {
+    test("ok", () => {
+      const ios = [
+        [[], []],
+        [[1], []],
+        [[2], [2]],
+        [[1, 2], [2]],
+        [[1, 3], []],
+        [[2, 3], [2, 3]],
+        [[1, 2, 3], [2, 3]],
+        [[1, 3, 4], [4]],
+        [[1, 3, 5], []]
+      ];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input)
+          .skipWhile(v => v % 2 === 1)
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+      // ios.forEach(([input, expected]) => {
+      //   const result = Kasen.skipWhile(input, v => v % 2 === 1);
+      //   expect(result).toEqual(expected);
+      // });
+    });
+  });
+
   describe("set()", () => {
     test("ok", () => {
       const ios = [
