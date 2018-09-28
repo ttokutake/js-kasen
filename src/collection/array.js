@@ -399,7 +399,7 @@ export default class KasenArray extends Collection {
 
   static update(array, index, func) {
     const result = array.slice();
-    const { length } = array;
+    const { length } = result;
     if (-length <= index && index < length) {
       const key = correctIndex(index, length);
       result[key] = func(array[key]);
