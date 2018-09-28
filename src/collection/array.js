@@ -320,6 +320,21 @@ export default class KasenArray extends Collection {
     return this;
   }
 
+  static skipWhile(array, func) {
+    const result = [];
+    let skipped = true;
+    for (let i = 0, { length } = array; i < length; i += 1) {
+      const value = array[i];
+      if (skipped && !func(value, i)) {
+        skipped = false;
+      }
+      if (!skipped) {
+        result.push(value);
+      }
+    }
+    return result;
+  }
+
   // TODO: skipUntil()
 
   set(index, value) {
