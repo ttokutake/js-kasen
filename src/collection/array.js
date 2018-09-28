@@ -426,7 +426,8 @@ export default class KasenArray extends Collection {
       const { length } = array;
       if (-length <= index && index < length) {
         const key = correctIndex(index, length);
-        return array.filter((v, i) => i !== key);
+        array.splice(key, 1);
+        return array;
       }
       return array;
     };
@@ -434,12 +435,13 @@ export default class KasenArray extends Collection {
   }
 
   static delete(array, index) {
-    const { length } = array;
+    const result = array.slice();
+    const { length } = result;
     if (-length <= index && index < length) {
       const key = correctIndex(index, length);
-      return array.filter((v, i) => i !== key);
+      result.splice(key, 1);
     }
-    return array;
+    return result;
   }
 
   deleteIf(bool, index) {
