@@ -285,6 +285,11 @@ export default class KasenArray extends Collection {
     return this;
   }
 
+  static skipLast(array, num) {
+    const { length } = array;
+    return num >= length ? [] : array.slice(0, array.length - num);
+  }
+
   // TODO: skipWhile()
 
   // TODO: skipUntil()
