@@ -498,6 +498,24 @@ describe("Array", () => {
     });
   });
 
+  describe("skipWhileIf()", () => {
+    test("ok", () => {
+      const input = [1, 3, 4];
+      {
+        const result = Kasen(input)
+          .skipWhileIf(false, v => v % 2 === 1)
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const result = Kasen(input)
+          .skipWhileIf(true, v => v % 2 === 1)
+          .toJs();
+        expect(result).toEqual([4]);
+      }
+    });
+  });
+
   describe("set()", () => {
     test("ok", () => {
       const ios = [
