@@ -875,6 +875,40 @@ describe("Array", () => {
     });
   });
 
+  describe("shift()", () => {
+    test("ok", () => {
+      const ios = [[[], []], [[1], []], [[1, 2], [2]]];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input)
+          .shift()
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.shift(input);
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
+  describe("shiftIf()", () => {
+    test("ok", () => {
+      const input = [1, 2];
+      {
+        const result = Kasen(input)
+          .shiftIf(false)
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const result = Kasen(input)
+          .shiftIf(true)
+          .toJs();
+        expect(result).toEqual([2]);
+      }
+    });
+  });
+
   describe("toJs()", () => {
     test("ok", () => {
       const inputs = [[], [1], [1, 2], [1, 2, 3]];

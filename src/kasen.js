@@ -244,6 +244,13 @@ Kasen.unshift = (array, value) => {
   return KasenArray.unshift(array, value);
 };
 
+Kasen.shift = array => {
+  if (!isArray(array)) {
+    throw new TypeError("1st argument must be Array");
+  }
+  return KasenArray.shift(array);
+};
+
 Kasen.reduce = (coll, func, init) => {
   const Coll = choose(coll);
   if (!Coll) {

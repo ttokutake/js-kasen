@@ -540,7 +540,25 @@ export default class KasenArray extends Collection {
     return bool ? this.unshift(value) : this;
   }
 
-  // TODO: shift()
+  shift() {
+    const curate = iter => {
+      const array = ArrayIterator.curate(iter);
+      array.shift();
+      return array;
+    };
+    this.__pile(Curator, curate);
+    return this;
+  }
+
+  static shift(array) {
+    const result = array.slice();
+    result.shift();
+    return result;
+  }
+
+  shiftIf(bool) {
+    return bool ? this.shift() : this;
+  }
 
   // TODO: flatten()
 
