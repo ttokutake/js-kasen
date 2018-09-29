@@ -223,6 +223,13 @@ Kasen.merge = (...objects) => {
   return KasenObject.merge(objects);
 };
 
+Kasen.push = (array, value) => {
+  if (!isArray(array)) {
+    throw new TypeError("1st argument must be Array");
+  }
+  return KasenArray.push(array, value);
+};
+
 Kasen.reduce = (coll, func, init) => {
   const Coll = choose(coll);
   if (!Coll) {

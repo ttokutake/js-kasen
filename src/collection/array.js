@@ -480,7 +480,25 @@ export default class KasenArray extends Collection {
 
   // TODO: insert()
 
-  // TODO: push()
+  push(value) {
+    const curate = iter => {
+      const array = ArrayIterator.curate(iter);
+      array.push(value);
+      return array;
+    };
+    this.__pile(Curator, curate);
+    return this;
+  }
+
+  static push(array, value) {
+    const result = array.slice();
+    result.push(value);
+    return result;
+  }
+
+  pushIf(bool, value) {
+    return bool ? this.push(value) : this;
+  }
 
   // TODO: pop()
 
