@@ -237,6 +237,13 @@ Kasen.pop = array => {
   return KasenArray.pop(array);
 };
 
+Kasen.unshift = (array, value) => {
+  if (!isArray(array)) {
+    throw new TypeError("1st argument must be Array");
+  }
+  return KasenArray.unshift(array, value);
+};
+
 Kasen.reduce = (coll, func, init) => {
   const Coll = choose(coll);
   if (!Coll) {
