@@ -133,7 +133,7 @@ export default class Collection {
   // TODO: mergeIn()
   // TODO: mergeDeepIn()
 
-  // TODO: groupBy()
+  // TODO: pluck() from Lodash
 
   /* consumer */
 
@@ -155,8 +155,6 @@ export default class Collection {
   // TODO: getIn()
 
   // TODO: hasIn()
-
-  // TODO: pluck() from Lodash
 
   toJs() {
     return this.__consume(null);
@@ -181,6 +179,8 @@ export default class Collection {
   // TODO: partition() from Scala
 
   // TODO: join()
+
+  // TODO: groupBy()
 
   every(func) {
     const finalize = iter => {

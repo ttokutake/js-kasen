@@ -582,6 +582,12 @@ export default class KasenArray extends Collection {
 
   // TODO: distinct() / unique() from Scala
 
+  // TODO: chunk() (paging method)
+
+  // TODO: sliding() from Scala
+
+  // TODO: static range()
+
   /* consumer */
 
   // TODO: first() / head()
@@ -607,11 +613,7 @@ export default class KasenArray extends Collection {
   // TODO: scan() from Scala
   // TODO: scanRight() from Scala
 
-  // TODO: sliding() from Scala
-
   // TODO: splitAt() from Scala
-
-  // TODO: chunk() (paging method)
 
   every(func) {
     if (!isFunction(func)) {
@@ -692,8 +694,6 @@ export default class KasenArray extends Collection {
   // TODO?: startsWith()
 
   // TODO?: endsWith()
-
-  // TODO: range()
 
   forEach(func) {
     if (!isFunction(func)) {
