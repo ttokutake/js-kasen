@@ -278,6 +278,8 @@ export default class KasenObject extends Collection {
     return bool ? this.merge(...objects) : this;
   }
 
+  // TODO: assign() (alias of merge())
+
   // TODO?: mergeBy()
 
   // TODO?: flip()
