@@ -934,6 +934,10 @@ describe("Array", () => {
           .toJs();
         expect(result).toEqual(expected);
       });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.flatten(input);
+        expect(result).toEqual(expected);
+      });
     });
   });
 

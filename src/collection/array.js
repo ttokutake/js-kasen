@@ -577,6 +577,19 @@ export default class KasenArray extends Collection {
     return this;
   }
 
+  static flatten(array) {
+    let result = [];
+    for (let i = 0, { length } = array; i < length; i += 1) {
+      const value = array[i];
+      if (isArray(value)) {
+        result = result.concat(value);
+      } else {
+        result.push(value);
+      }
+    }
+    return result;
+  }
+
   // TODO: flatMap()
 
   // TODO: zip()

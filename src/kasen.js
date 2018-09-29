@@ -251,6 +251,13 @@ Kasen.shift = array => {
   return KasenArray.shift(array);
 };
 
+Kasen.flatten = array => {
+  if (!isArray(array)) {
+    throw new TypeError("1st argument must be Array");
+  }
+  return KasenArray.flatten(array);
+};
+
 Kasen.reduce = (coll, func, init) => {
   const Coll = choose(coll);
   if (!Coll) {
