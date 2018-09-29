@@ -807,6 +807,40 @@ describe("Array", () => {
     });
   });
 
+  describe("pop()", () => {
+    test("ok", () => {
+      const ios = [[[], []], [[1], []], [[1, 2], [1]]];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input)
+          .pop()
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.pop(input);
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
+  describe("popIf()", () => {
+    test("ok", () => {
+      const input = [1, 2];
+      {
+        const result = Kasen(input)
+          .popIf(false)
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const result = Kasen(input)
+          .popIf(true)
+          .toJs();
+        expect(result).toEqual([1]);
+      }
+    });
+  });
+
   describe("toJs()", () => {
     test("ok", () => {
       const inputs = [[], [1], [1, 2], [1, 2, 3]];

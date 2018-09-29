@@ -230,6 +230,13 @@ Kasen.push = (array, value) => {
   return KasenArray.push(array, value);
 };
 
+Kasen.pop = array => {
+  if (!isArray(array)) {
+    throw new TypeError("1st argument must be Array");
+  }
+  return KasenArray.pop(array);
+};
+
 Kasen.reduce = (coll, func, init) => {
   const Coll = choose(coll);
   if (!Coll) {
