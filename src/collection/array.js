@@ -560,7 +560,22 @@ export default class KasenArray extends Collection {
     return bool ? this.shift() : this;
   }
 
-  // TODO: flatten()
+  flatten() {
+    const curate = iter => {
+      let array = [];
+      let value;
+      while (!({ value } = iter.next()).done) {
+        if (isArray(value)) {
+          array = array.concat(value);
+        } else {
+          array.push(value);
+        }
+      }
+      return array;
+    };
+    this.__pile(Curator, curate);
+    return this;
+  }
 
   // TODO: flatMap()
 
