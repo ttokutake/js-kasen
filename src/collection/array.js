@@ -590,6 +590,10 @@ export default class KasenArray extends Collection {
     return result;
   }
 
+  flattenIf(bool) {
+    return bool ? this.flatten() : this;
+  }
+
   // TODO: flatMap()
 
   // TODO: zip()

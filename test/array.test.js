@@ -941,6 +941,24 @@ describe("Array", () => {
     });
   });
 
+  describe("flattenIf()", () => {
+    test("ok", () => {
+      const input = [[1], 2, [3]];
+      {
+        const result = Kasen(input)
+          .flattenIf(false)
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const result = Kasen(input)
+          .flattenIf(true)
+          .toJs();
+        expect(result).toEqual([1, 2, 3]);
+      }
+    });
+  });
+
   describe("toJs()", () => {
     test("ok", () => {
       const inputs = [[], [1], [1, 2], [1, 2, 3]];
