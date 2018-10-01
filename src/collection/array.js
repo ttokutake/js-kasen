@@ -629,6 +629,13 @@ export default class KasenArray extends Collection {
     return result;
   }
 
+  flatMapIf(bool, func) {
+    if (!isFunction(func)) {
+      throw new TypeError("2nd argument must be Function");
+    }
+    return bool ? this.flatMap(func) : this;
+  }
+
   // TODO: zip()
   // TODO: zipAll()
   // TODO: zipWith()
