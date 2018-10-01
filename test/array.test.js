@@ -959,6 +959,23 @@ describe("Array", () => {
     });
   });
 
+  describe("flatMap()", () => {
+    test("ok", () => {
+      const ios = [
+        [[], []],
+        [[1], [1]],
+        [[1, 2], [1, 1, 1]],
+        [[1, 2, 3], [1, 1, 1, 1, 1, 1]]
+      ];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input)
+          .flatMap(v => Array(v).fill(1))
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
   describe("toJs()", () => {
     test("ok", () => {
       const inputs = [[], [1], [1, 2], [1, 2, 3]];

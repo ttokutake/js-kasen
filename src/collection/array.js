@@ -594,7 +594,27 @@ export default class KasenArray extends Collection {
     return bool ? this.flatten() : this;
   }
 
-  // TODO: flatMap()
+  flatMap(func) {
+    if (!isFunction(func)) {
+      throw new TypeError("1st argument must be Function");
+    }
+    const curate = iter => {
+      let array = [];
+      let key;
+      let value;
+      while (!({ key, value } = iter.next()).done) {
+        const val = func(value, key);
+        if (isArray(val)) {
+          array = array.concat(val);
+        } else {
+          array.push(val);
+        }
+      }
+      return array;
+    };
+    this.__pile(Curator, curate);
+    return this;
+  }
 
   // TODO: zip()
   // TODO: zipAll()
