@@ -258,6 +258,16 @@ Kasen.flatten = array => {
   return KasenArray.flatten(array);
 };
 
+Kasen.flatMap = (array, func) => {
+  if (!isArray(array)) {
+    throw new TypeError("1st argument must be Array");
+  }
+  if (!isFunction(func)) {
+    throw new TypeError("2nd argument must be Function");
+  }
+  return KasenArray.flatMap(array, func);
+};
+
 Kasen.reduce = (coll, func, init) => {
   const Coll = choose(coll);
   if (!Coll) {

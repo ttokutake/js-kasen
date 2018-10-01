@@ -616,6 +616,19 @@ export default class KasenArray extends Collection {
     return this;
   }
 
+  static flatMap(array, func) {
+    let result = [];
+    for (let i = 0, { length } = array; i < length; i += 1) {
+      const value = func(array[i], i);
+      if (isArray(value)) {
+        result = result.concat(value);
+      } else {
+        result.push(value);
+      }
+    }
+    return result;
+  }
+
   // TODO: zip()
   // TODO: zipAll()
   // TODO: zipWith()

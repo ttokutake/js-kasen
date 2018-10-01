@@ -973,6 +973,10 @@ describe("Array", () => {
           .toJs();
         expect(result).toEqual(expected);
       });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.flatMap(input, v => Array(v).fill(1));
+        expect(result).toEqual(expected);
+      });
     });
   });
 
