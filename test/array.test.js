@@ -734,16 +734,24 @@ describe("Array", () => {
   describe("concat()", () => {
     test("ok()", () => {
       const ios = [
+        [[], [], []],
         [[], [[]], []],
+        [[], [1], [1]],
         [[], [[1]], [1]],
+        [[], [1, [2]], [1, 2]],
+        [[], [[1], 2], [1, 2]],
         [[], [[1], [2]], [1, 2]],
+        [[1], [], [1]],
         [[1], [[]], [1]],
+        [[1], [2], [1, 2]],
         [[1], [[2]], [1, 2]],
+        [[1], [2, [3]], [1, 2, 3]],
+        [[1], [[2], 3], [1, 2, 3]],
         [[1], [[2], [3]], [1, 2, 3]]
       ];
-      ios.forEach(([input, arrays, expected]) => {
+      ios.forEach(([input, values, expected]) => {
         const result = Kasen(input)
-          .concat(...arrays)
+          .concat(...values)
           .toJs();
         expect(result).toEqual(expected);
       });

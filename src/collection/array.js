@@ -451,31 +451,21 @@ export default class KasenArray extends Collection {
     return super.deleteIf(bool, index);
   }
 
-  concat(...arrays) {
-    for (let i = 0, { length } = arrays; i < length; i += 1) {
-      if (!isArray(arrays[i])) {
-        throw new TypeError("Each argument must be Array");
-      }
-    }
+  concat(...values) {
     const curate = iter => {
       const array = ArrayIterator.curate(iter);
-      return array.concat(...arrays);
+      return array.concat(...values);
     };
     this.__pile(Curator, curate);
     return this;
   }
 
-  static concat(arrays) {
-    return [].concat(...arrays);
+  static concat(array, values) {
+    return array.concat(...values);
   }
 
-  concatIf(bool, ...arrays) {
-    for (let i = 0, { length } = arrays; i < length; i += 1) {
-      if (!isArray(arrays[i])) {
-        throw new TypeError("Each argument except 1st one must be Array");
-      }
-    }
-    return bool ? this.concat(...arrays) : this;
+  concatIf(bool, ...values) {
+    return bool ? this.concat(...values) : this;
   }
 
   // TODO: insert()

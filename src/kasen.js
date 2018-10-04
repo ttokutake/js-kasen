@@ -205,13 +205,11 @@ Kasen.deleteAll = (object, keys) => {
   return KasenObject.deleteAll(object, keys);
 };
 
-Kasen.concat = (...arrays) => {
-  for (let i = 0, { length } = arrays; i < length; i += 1) {
-    if (!isArray(arrays[i])) {
-      throw new TypeError("Each argument must be Array");
-    }
+Kasen.concat = (array, ...values) => {
+  if (!isArray(array)) {
+    throw new TypeError("1st argument must be Array");
   }
-  return KasenArray.concat(arrays);
+  return KasenArray.concat(array, values);
 };
 
 Kasen.merge = (...objects) => {
