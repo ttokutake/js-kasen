@@ -51,6 +51,10 @@ export default class Collection {
     return this.map(v => v[key]);
   }
 
+  static pluck(coll, key) {
+    return this.map(coll, v => v[key]);
+  }
+
   filter(Iter, func) {
     this.__pile(Iter, func);
     return this;

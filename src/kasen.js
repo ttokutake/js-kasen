@@ -31,6 +31,17 @@ Kasen.map = (coll, func) => {
   return Coll.map(coll, func);
 };
 
+Kasen.pluck = (coll, key) => {
+  const Coll = choose(coll);
+  if (!Coll) {
+    throw new TypeError("1st argument must be Array or Object");
+  }
+  if (!(isNumber(key) || isString(key))) {
+    throw new TypeError("2nd argument must be Number or String");
+  }
+  return Coll.pluck(coll, key);
+};
+
 Kasen.filter = (coll, func) => {
   const Coll = choose(coll);
   if (!Coll) {

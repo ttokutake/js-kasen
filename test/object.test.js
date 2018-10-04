@@ -74,6 +74,10 @@ describe("Object", () => {
           .toJs();
         expect(result).toEqual(expected);
       });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.pluck(input, "a");
+        expect(result).toEqual(expected);
+      });
     });
   });
 
