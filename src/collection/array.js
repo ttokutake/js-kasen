@@ -76,6 +76,13 @@ export default class KasenArray extends Collection {
     return super.pluck(key);
   }
 
+  pluckIf(bool, key) {
+    if (!(isNumber(key) || isString(key))) {
+      throw new TypeError("2nd argument must be Number or String");
+    }
+    return super.pluckIf(bool, key);
+  }
+
   mapIf(bool, func) {
     if (!isFunction(func)) {
       throw new TypeError("2nd argument must be Function");

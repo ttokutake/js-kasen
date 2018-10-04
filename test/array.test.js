@@ -77,6 +77,24 @@ describe("Array", () => {
     });
   });
 
+  describe("pluckIf()", () => {
+    test("ok", () => {
+      const input = [{ a: 1 }, { a: 2 }];
+      {
+        const result = Kasen(input)
+          .pluckIf(false, "a")
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const result = Kasen(input)
+          .pluckIf(true, "a")
+          .toJs();
+        expect(result).toEqual([1, 2]);
+      }
+    });
+  });
+
   describe("filter()", () => {
     test("ok", () => {
       const ios = [
