@@ -61,6 +61,22 @@ describe("Object", () => {
     });
   });
 
+  describe("pluck()", () => {
+    test("ok", () => {
+      const ios = [
+        [{}, {}],
+        [{ a: { a: 1 } }, { a: 1 }],
+        [{ a: { a: 1 }, b: { a: 1 } }, { a: 1, b: 1 }]
+      ];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input)
+          .pluck("a")
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
   describe("filter()", () => {
     test("ok", () => {
       const ios = [

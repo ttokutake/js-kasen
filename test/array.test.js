@@ -61,6 +61,18 @@ describe("Array", () => {
     });
   });
 
+  describe("pluck()", () => {
+    test("ok", () => {
+      const ios = [[[], []], [[{ a: 1 }], [1]], [[{ a: 1 }, { a: 2 }], [1, 2]]];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input)
+          .pluck("a")
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
   describe("filter()", () => {
     test("ok", () => {
       const ios = [

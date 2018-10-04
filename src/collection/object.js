@@ -69,6 +69,13 @@ export default class KasenObject extends Collection {
     return super.mapIf(bool, func);
   }
 
+  pluck(key) {
+    if (!(isNumber(key) || isString(key))) {
+      throw new TypeError("1st argument must be Number or String");
+    }
+    return super.pluck(key);
+  }
+
   filter(func) {
     if (!isFunction(func)) {
       throw new TypeError("1st argument must be Function");

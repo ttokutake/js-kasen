@@ -1,7 +1,7 @@
 import Collection from ".";
 import { OriginIterator, Curator } from "../iterator";
 import { FilterIterator, ReverseIterator } from "../iterator/array";
-import { isNumber, isArray, isFunction } from "../type";
+import { isNumber, isString, isArray, isFunction } from "../type";
 
 class ArrayIterator extends OriginIterator {
   constructor(array) {
@@ -67,6 +67,13 @@ export default class KasenArray extends Collection {
 
   static map(array, func) {
     return array.map(func);
+  }
+
+  pluck(key) {
+    if (!(isNumber(key) || isString(key))) {
+      throw new TypeError("1st argument must be Number or String");
+    }
+    return super.pluck(key);
   }
 
   mapIf(bool, func) {

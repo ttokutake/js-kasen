@@ -47,6 +47,10 @@ export default class Collection {
     return bool ? this.map(func) : this;
   }
 
+  pluck(key) {
+    return this.map(v => v[key]);
+  }
+
   filter(Iter, func) {
     this.__pile(Iter, func);
     return this;
@@ -132,8 +136,6 @@ export default class Collection {
 
   // TODO: mergeIn()
   // TODO: mergeDeepIn()
-
-  // TODO: pluck() from Lodash
 
   /* consumer */
 
@@ -234,6 +236,7 @@ export default class Collection {
   // TODO: keyOf()
 
   // TODO: sum() from Ramda
+  // TODO: sumBy()
 
   // TODO: max()
   // TODO: maxBy()
