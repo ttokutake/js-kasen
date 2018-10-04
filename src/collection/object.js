@@ -148,11 +148,7 @@ export default class KasenObject extends Collection {
     if (!(isNumber(key) || isString(key))) {
       throw new TypeError("1st argument must be Number or String");
     }
-    return this.update(key, () => value);
-  }
-
-  static set(object, key, value) {
-    return this.update(object, key, () => value);
+    return super.set(key, value);
   }
 
   setIf(bool, key, value) {

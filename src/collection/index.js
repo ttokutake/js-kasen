@@ -85,14 +85,12 @@ export default class Collection {
     return bool ? this.filterNot(func) : this;
   }
 
-  // eslint-disable-next-line class-methods-use-this, no-unused-vars
-  set(_key, _value) {
-    throw new Error("not implemented");
+  set(key, value) {
+    return this.update(key, () => value);
   }
 
-  // eslint-disable-next-line no-unused-vars
-  static set(_coll, _key, _value) {
-    throw new Error("not implemented");
+  static set(coll, key, value) {
+    return this.update(coll, key, () => value);
   }
 
   setIf(bool, key, value) {

@@ -378,11 +378,7 @@ export default class KasenArray extends Collection {
     if (!isNumber(index)) {
       throw new TypeError("1st argument must be Number");
     }
-    return this.update(index, () => value);
-  }
-
-  static set(array, index, value) {
-    return this.update(array, index, () => value);
+    return super.set(index, value);
   }
 
   setIf(bool, index, value) {
