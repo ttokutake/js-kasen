@@ -51,6 +51,10 @@ export default class KasenArray extends Collection {
     return new ArrayIterator(array);
   }
 
+  static copy(array) {
+    return array.slice();
+  }
+
   tap(func) {
     if (!isFunction(func)) {
       throw new TypeError("1st argument must be Function");
@@ -408,7 +412,7 @@ export default class KasenArray extends Collection {
   }
 
   static update(array, index, func) {
-    const result = array.slice();
+    const result = this.copy(array);
     const { length } = result;
     if (-length <= index && index < length) {
       const key = correctIndex(index, length);
@@ -445,7 +449,7 @@ export default class KasenArray extends Collection {
   }
 
   static delete(array, index) {
-    const result = array.slice();
+    const result = this.copy(array);
     const { length } = result;
     if (-length <= index && index < length) {
       const key = correctIndex(index, length);
@@ -491,7 +495,7 @@ export default class KasenArray extends Collection {
   }
 
   static push(array, value) {
-    const result = array.slice();
+    const result = this.copy(array);
     result.push(value);
     return result;
   }
@@ -511,7 +515,7 @@ export default class KasenArray extends Collection {
   }
 
   static pop(array) {
-    const result = array.slice();
+    const result = this.copy(array);
     result.pop();
     return result;
   }
@@ -531,7 +535,7 @@ export default class KasenArray extends Collection {
   }
 
   static unshift(array, value) {
-    const result = array.slice();
+    const result = this.copy(array);
     result.unshift(value);
     return result;
   }
@@ -551,7 +555,7 @@ export default class KasenArray extends Collection {
   }
 
   static shift(array) {
-    const result = array.slice();
+    const result = this.copy(array);
     result.shift();
     return result;
   }

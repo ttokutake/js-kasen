@@ -38,6 +38,10 @@ export default class KasenObject extends Collection {
     return new ObjectIterator(object);
   }
 
+  static copy(object) {
+    return this.filter(object, () => true);
+  }
+
   tap(func) {
     if (!isFunction(func)) {
       throw new TypeError("1st argument must be Function");
@@ -174,7 +178,7 @@ export default class KasenObject extends Collection {
   }
 
   static update(object, key, func) {
-    const result = this.filter(object, () => true);
+    const result = this.copy(object);
     result[key] = func(object[key]);
     return result;
   }
@@ -202,7 +206,7 @@ export default class KasenObject extends Collection {
   }
 
   static delete(object, key) {
-    const result = this.filter(object, () => true);
+    const result = this.copy(object);
     delete result[key];
     return result;
   }
@@ -230,7 +234,7 @@ export default class KasenObject extends Collection {
   }
 
   static deleteAll(object, keys) {
-    const result = this.filter(object, () => true);
+    const result = this.copy(object);
     keys.forEach(key => {
       delete result[key];
     });

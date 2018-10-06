@@ -24,6 +24,11 @@ export default class Collection {
     return result;
   }
 
+  // eslint-disable-next-line no-unused-vars
+  static copy(_coll) {
+    throw new Error("not implemented");
+  }
+
   clone() {
     return clone(this);
   }
@@ -151,6 +156,8 @@ export default class Collection {
     this.__pile(Curator, curate);
     return this;
   }
+
+  // TODO: static setIn()
 
   // TODO: updateIn()
 
