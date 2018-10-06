@@ -451,6 +451,22 @@ describe("Object", () => {
     });
   });
 
+  describe("setIn()", () => {
+    test("ok", () => {
+      const ios = [
+        [{}, ["a"], { a: 10 }],
+        [{ a: [] }, ["a", 0], { a: [10] }],
+        [{ a: [{}] }, ["a", 0, "a"], { a: [{ a: 10 }] }]
+      ];
+      ios.forEach(([input, keys, expected]) => {
+        const result = Kasen(input)
+          .setIn(keys, 10)
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
   describe("toJs()", () => {
     test("ok", () => {
       const inputs = [{}, { a: 1 }, { a: 1, b: 2 }, { a: 1, b: 2, c: 3 }];

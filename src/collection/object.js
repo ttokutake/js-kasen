@@ -292,6 +292,13 @@ export default class KasenObject extends Collection {
 
   // TODO?: mergeBy()
 
+  setIn(keys, value) {
+    if (!isArray(keys)) {
+      throw new TypeError("1st argument must be Array");
+    }
+    return super.setIn(keys, value);
+  }
+
   // TODO?: flip()
 
   reduce(func, init) {

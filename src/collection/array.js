@@ -560,6 +560,13 @@ export default class KasenArray extends Collection {
     return bool ? this.shift() : this;
   }
 
+  setIn(keys, value) {
+    if (!isArray(keys)) {
+      throw new TypeError("1st argument must be Array");
+    }
+    return super.setIn(keys, value);
+  }
+
   flatten() {
     const curate = iter => {
       let array = [];

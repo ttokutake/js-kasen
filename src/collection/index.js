@@ -1,6 +1,6 @@
 import clone from "clone";
 
-import { TapIterator, MapIterator, ClearCurator } from "../iterator";
+import { TapIterator, MapIterator, Curator, ClearCurator } from "../iterator";
 
 export default class Collection {
   constructor(coll) {
@@ -134,7 +134,23 @@ export default class Collection {
     return bool ? this.clear() : this;
   }
 
-  // TODO: setIn()
+  setIn(keys, value) {
+    const curate = iter => {
+      const coll = iter.Origin.curate(iter);
+      let nextColl = coll;
+      for (let i = 0, { length } = keys; i < length; i += 1) {
+        const key = keys[i];
+        if (i >= length - 1) {
+          nextColl[key] = value;
+        } else {
+          nextColl = nextColl[key];
+        }
+      }
+      return coll;
+    };
+    this.__pile(Curator, curate);
+    return this;
+  }
 
   // TODO: updateIn()
 

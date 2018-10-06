@@ -951,6 +951,22 @@ describe("Array", () => {
     });
   });
 
+  describe("setIn()", () => {
+    test("ok", () => {
+      const ios = [
+        [[], [0], [10]],
+        [[{}], [0, "a"], [{ a: 10 }]],
+        [[{ a: [] }], [0, "a", 0], [{ a: [10] }]]
+      ];
+      ios.forEach(([input, keys, expected]) => {
+        const result = Kasen(input)
+          .setIn(keys, 10)
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
   describe("flatten()", () => {
     test("ok", () => {
       const ios = [
