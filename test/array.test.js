@@ -971,6 +971,24 @@ describe("Array", () => {
     });
   });
 
+  describe("setInIf()", () => {
+    test("ok", () => {
+      const input = [{ a: [] }];
+      {
+        const result = Kasen(input)
+          .setInIf(false, [0, "a", 0], 10)
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const result = Kasen(input)
+          .setInIf(true, [0, "a", 0], 10)
+          .toJs();
+        expect(result).toEqual([{ a: [10] }]);
+      }
+    });
+  });
+
   describe("flatten()", () => {
     test("ok", () => {
       const ios = [

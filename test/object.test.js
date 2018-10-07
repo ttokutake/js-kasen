@@ -471,6 +471,24 @@ describe("Object", () => {
     });
   });
 
+  describe("setInIf()", () => {
+    test("ok", () => {
+      const input = { a: [{}] };
+      {
+        const result = Kasen(input)
+          .setInIf(false, ["a", 0, "a"], 10)
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const result = Kasen(input)
+          .setInIf(true, ["a", 0, "a"], 10)
+          .toJs();
+        expect(result).toEqual({ a: [{ a: 10 }] });
+      }
+    });
+  });
+
   describe("toJs()", () => {
     test("ok", () => {
       const inputs = [{}, { a: 1 }, { a: 1, b: 2 }, { a: 1, b: 2, c: 3 }];

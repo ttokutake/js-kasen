@@ -570,6 +570,13 @@ export default class KasenArray extends Collection {
     return super.setIn(keys, value);
   }
 
+  setInIf(bool, keys, value) {
+    if (!isArray(keys)) {
+      throw new TypeError("2nd argument must be Array");
+    }
+    return super.setInIf(bool, keys, value);
+  }
+
   flatten() {
     const curate = iter => {
       let array = [];

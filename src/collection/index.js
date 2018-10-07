@@ -172,6 +172,10 @@ export default class Collection {
     return result;
   }
 
+  setInIf(bool, keys, value) {
+    return bool ? this.setIn(keys, value) : this;
+  }
+
   // TODO: updateIn()
 
   // TODO: deleteIn()
