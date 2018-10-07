@@ -58,11 +58,9 @@ export default class KasenObject extends Collection {
 
   static map(object, func) {
     const result = {};
-    const keys = Object.keys(object);
-    for (let i = 0, { length } = keys; i < length; i += 1) {
-      const key = keys[i];
+    Object.keys(object).forEach(key => {
       result[key] = func(object[key], key);
-    }
+    });
     return result;
   }
 
@@ -96,14 +94,12 @@ export default class KasenObject extends Collection {
 
   static filter(object, func) {
     const result = {};
-    const keys = Object.keys(object);
-    for (let i = 0, { length } = keys; i < length; i += 1) {
-      const key = keys[i];
+    Object.keys(object).forEach(key => {
       const value = object[key];
       if (func(value, key)) {
         result[key] = value;
       }
-    }
+    });
     return result;
   }
 
@@ -256,14 +252,11 @@ export default class KasenObject extends Collection {
     }
     const curate = iter => {
       const object = ObjectIterator.curate(iter);
-      for (let i = 0, { length } = objects; i < length; i += 1) {
-        const obj = objects[i];
-        const keys = Object.keys(obj);
-        for (let j = 0, len = keys.length; j < len; j += 1) {
-          const key = keys[j];
+      objects.forEach(obj => {
+        Object.keys(obj).forEach(key => {
           object[key] = obj[key];
-        }
-      }
+        });
+      });
       return object;
     };
     this.__pile(Curator, curate);
@@ -272,14 +265,11 @@ export default class KasenObject extends Collection {
 
   static merge(objects) {
     const result = {};
-    for (let i = 0, { length } = objects; i < length; i += 1) {
-      const obj = objects[i];
-      const keys = Object.keys(obj);
-      for (let j = 0, len = keys.length; j < len; j += 1) {
-        const key = keys[j];
-        result[key] = obj[key];
-      }
-    }
+    objects.forEach(object => {
+      Object.keys(object).forEach(key => {
+        result[key] = object[key];
+      });
+    });
     return result;
   }
 
@@ -321,10 +311,9 @@ export default class KasenObject extends Collection {
       }
       acc = object[keys.pop()];
     }
-    for (let i = 0, { length } = keys; i < length; i += 1) {
-      const key = keys[i];
+    keys.forEach(key => {
       acc = func(acc, object[key], key);
-    }
+    });
     return acc;
   }
 
@@ -384,11 +373,9 @@ export default class KasenObject extends Collection {
   }
 
   static forEach(object, func) {
-    const keys = Object.keys(object);
-    for (let i = 0, { length } = keys; i < length; i += 1) {
-      const key = keys[i];
+    Object.keys(object).forEach(key => {
       func(object[key], key);
-    }
+    });
     return undefined;
   }
 }

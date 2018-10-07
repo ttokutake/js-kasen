@@ -341,15 +341,14 @@ export default class KasenArray extends Collection {
   static skipWhile(array, func) {
     const result = [];
     let skipped = true;
-    for (let i = 0, { length } = array; i < length; i += 1) {
-      const value = array[i];
+    array.forEach((value, i) => {
       if (skipped && !func(value, i)) {
         skipped = false;
       }
       if (!skipped) {
         result.push(value);
       }
-    }
+    });
     return result;
   }
 
@@ -590,14 +589,13 @@ export default class KasenArray extends Collection {
 
   static flatten(array) {
     let result = [];
-    for (let i = 0, { length } = array; i < length; i += 1) {
-      const value = array[i];
+    array.forEach(value => {
       if (isArray(value)) {
         result = result.concat(value);
       } else {
         result.push(value);
       }
-    }
+    });
     return result;
   }
 
@@ -629,14 +627,14 @@ export default class KasenArray extends Collection {
 
   static flatMap(array, func) {
     let result = [];
-    for (let i = 0, { length } = array; i < length; i += 1) {
-      const value = func(array[i], i);
+    array.forEach((v, i) => {
+      const value = func(v, i);
       if (isArray(value)) {
         result = result.concat(value);
       } else {
         result.push(value);
       }
-    }
+    });
     return result;
   }
 
