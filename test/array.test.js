@@ -964,6 +964,10 @@ describe("Array", () => {
           .toJs();
         expect(result).toEqual(expected);
       });
+      ios.forEach(([input, keys, expected]) => {
+        const result = Kasen.setIn(input, keys, 10);
+        expect(result).toEqual(expected);
+      });
     });
   });
 

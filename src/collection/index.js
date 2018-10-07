@@ -157,7 +157,20 @@ export default class Collection {
     return this;
   }
 
-  // TODO: static setIn()
+  // TODO: Need to be immutable
+  static setIn(array, keys, value) {
+    const result = this.copy(array);
+    let nextColl = result;
+    for (let i = 0, { length } = keys; i < length; i += 1) {
+      const key = keys[i];
+      if (i >= length - 1) {
+        nextColl[key] = value;
+      } else {
+        nextColl = nextColl[key];
+      }
+    }
+    return result;
+  }
 
   // TODO: updateIn()
 
