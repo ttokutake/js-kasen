@@ -407,7 +407,7 @@ describe("Object", () => {
     });
   });
 
-  describe("merge()", () => {
+  describe("merge() (assign())", () => {
     test("ok()", () => {
       const ios = [
         [{}, [{}], {}],
@@ -429,10 +429,20 @@ describe("Object", () => {
         const result = Kasen.merge(input, ...objects);
         expect(result).toEqual(expected);
       });
+      ios.forEach(([input, objects, expected]) => {
+        const result = Kasen(input)
+          .assign(...objects)
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+      ios.forEach(([input, objects, expected]) => {
+        const result = Kasen.assign(input, ...objects);
+        expect(result).toEqual(expected);
+      });
     });
   });
 
-  describe("mergeIf()", () => {
+  describe("mergeIf() (assignIf())", () => {
     test("ok()", () => {
       const input = { a: 1 };
       const objects = [{ b: 2 }, { c: 3 }];
@@ -445,6 +455,18 @@ describe("Object", () => {
       {
         const result = Kasen(input)
           .mergeIf(true, ...objects)
+          .toJs();
+        expect(result).toEqual({ a: 1, b: 2, c: 3 });
+      }
+      {
+        const result = Kasen(input)
+          .assignIf(false, ...objects)
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const result = Kasen(input)
+          .assignIf(true, ...objects)
           .toJs();
         expect(result).toEqual({ a: 1, b: 2, c: 3 });
       }
