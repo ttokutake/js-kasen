@@ -473,6 +473,29 @@ describe("Object", () => {
     });
   });
 
+  describe("mergeWith()", () => {
+    test("ok", () => {
+      const ios = [
+        [{}, [], {}],
+        [{}, [{}], {}],
+        [{}, [{}, {}], {}],
+        [{ a: 1 }, [], { a: 1 }],
+        [{ a: 1 }, [{}], { a: 1 }],
+        [{ a: 1 }, [{}, {}], { a: 1 }],
+        [{ a: 1, b: 1 }, [], { a: 1, b: 1 }],
+        [{ a: 1, b: 1 }, [{ a: 1 }], { a: 2, b: 1 }],
+        [{ a: 1, b: 1 }, [{ a: 1 }, { a: 1 }], { a: 3, b: 1 }],
+        [{ a: 1, b: 1 }, [{ a: 1 }, { b: 1 }], { a: 2, b: 2 }]
+      ];
+      ios.forEach(([input, args, expected]) => {
+        const result = Kasen(input)
+          .mergeWith((left, right) => left + right, ...args)
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
   describe("setIn()", () => {
     test("ok", () => {
       const ios = [

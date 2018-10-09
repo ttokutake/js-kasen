@@ -300,7 +300,29 @@ export default class KasenObject extends Collection {
     return this.mergeIf(bool, ...objects);
   }
 
-  // TODO?: mergeBy()
+  mergeWith(func, ...objects) {
+    if (!isFunction(func)) {
+      throw new TypeError("1st argument must be Function");
+    }
+    for (let i = 0, { length } = objects; i < length; i += 1) {
+      if (!isObject(objects[i])) {
+        throw new TypeError("Each argument except 1st one must be Object");
+      }
+    }
+    const curate = iter => {
+      const object = ObjectIterator.curate(iter);
+      objects.forEach(obj => {
+        Object.keys(obj).forEach(key => {
+          object[key] = Object.prototype.hasOwnProperty.call(object, key)
+            ? func(object[key], obj[key], key)
+            : obj[key];
+        });
+      });
+      return object;
+    };
+    this.__pile(Curator, curate);
+    return this;
+  }
 
   setIn(keys, value) {
     if (!isArray(keys)) {
