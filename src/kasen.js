@@ -241,6 +241,21 @@ Kasen.assign = (...objects) => {
   return KasenObject.merge(objects);
 };
 
+Kasen.mergeWith = (object, func, ...objects) => {
+  if (!isObject(object)) {
+    throw new TypeError("1st argument must be Object");
+  }
+  if (!isFunction(func)) {
+    throw new TypeError("2nd argument must be Function");
+  }
+  for (let i = 0, { length } = objects; i < length; i += 1) {
+    if (!isObject(objects[i])) {
+      throw new TypeError("Each argument except 2nd one must be Object");
+    }
+  }
+  return KasenObject.mergeWith(object, func, objects);
+};
+
 Kasen.push = (array, value) => {
   if (!isArray(array)) {
     throw new TypeError("1st argument must be Array");

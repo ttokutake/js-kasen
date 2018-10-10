@@ -324,6 +324,18 @@ export default class KasenObject extends Collection {
     return this;
   }
 
+  static mergeWith(object, func, objects) {
+    const result = this.copy(object);
+    objects.forEach(obj => {
+      Object.keys(obj).forEach(key => {
+        result[key] = Object.prototype.hasOwnProperty.call(result, key)
+          ? func(result[key], obj[key], key)
+          : obj[key];
+      });
+    });
+    return result;
+  }
+
   setIn(keys, value) {
     if (!isArray(keys)) {
       throw new TypeError("1st argument must be Array");
