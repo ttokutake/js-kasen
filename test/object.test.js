@@ -504,6 +504,24 @@ describe("Object", () => {
     });
   });
 
+  describe("mergeWithIf()", () => {
+    test("ok", () => {
+      const input = { a: 1, b: 1 };
+      {
+        const result = Kasen(input)
+          .mergeWithIf(false, (left, right) => left + right, { a: 1 }, { b: 1 })
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const result = Kasen(input)
+          .mergeWithIf(true, (left, right) => left + right, { a: 1 }, { b: 1 })
+          .toJs();
+        expect(result).toEqual({ a: 2, b: 2 });
+      }
+    });
+  });
+
   describe("setIn()", () => {
     test("ok", () => {
       const ios = [

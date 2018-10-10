@@ -336,6 +336,18 @@ export default class KasenObject extends Collection {
     return result;
   }
 
+  mergeWithIf(bool, func, ...objects) {
+    if (!isFunction(func)) {
+      throw new TypeError("2nd argument must be Function");
+    }
+    for (let i = 0, { length } = objects; i < length; i += 1) {
+      if (!isObject(objects[i])) {
+        throw new TypeError("Each argument except 2nd one must be Object");
+      }
+    }
+    return bool ? this.mergeWith(func, ...objects) : this;
+  }
+
   setIn(keys, value) {
     if (!isArray(keys)) {
       throw new TypeError("1st argument must be Array");
