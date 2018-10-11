@@ -3,10 +3,19 @@ import Kasen from "../dist/kasen";
 describe("Array", () => {
   describe("copy()", () => {
     test("ok", () => {
-      const array = Kasen([1, 2, 3]).map(v => v + 1);
-      const array2 = array.copy().map(v => v + 1);
-      expect(array.toJs()).toEqual([2, 3, 4]);
-      expect(array2.toJs()).toEqual([3, 4, 5]);
+      {
+        const array = Kasen([1, 2, 3]).map(v => v + 1);
+        const array2 = array.copy().map(v => v + 1);
+        expect(array.toJs()).toEqual([2, 3, 4]);
+        expect(array2.toJs()).toEqual([3, 4, 5]);
+      }
+      {
+        const array = [1, 2, 3];
+        const array2 = Kasen.copy(array);
+        array[0] = 10;
+        expect(array).toEqual([10, 2, 3]);
+        expect(array2).toEqual([1, 2, 3]);
+      }
     });
   });
 

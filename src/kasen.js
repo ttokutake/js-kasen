@@ -20,6 +20,14 @@ function Kasen(coll) {
   return new Coll(coll, null);
 }
 
+Kasen.copy = coll => {
+  const Coll = choose(coll);
+  if (!Coll) {
+    throw new TypeError("1st argument must be Array or Object");
+  }
+  return Coll.copy(coll);
+};
+
 Kasen.map = (coll, func) => {
   const Coll = choose(coll);
   if (!Coll) {
