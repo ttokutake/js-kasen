@@ -23,13 +23,13 @@ export default class Collection {
     return result;
   }
 
+  copy() {
+    return new this.constructor(this.__coll, this.__iter);
+  }
+
   // eslint-disable-next-line no-unused-vars
   static copy(_coll) {
     throw new Error("not implemented");
-  }
-
-  clone() {
-    return new this.constructor(this.__coll, this.__iter);
   }
 
   tap(func) {

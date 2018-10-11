@@ -1,10 +1,10 @@
 import Kasen from "../dist/kasen";
 
 describe("Object", () => {
-  describe("clone()", () => {
+  describe("copy()", () => {
     test("ok", () => {
       const object = Kasen({ a: 1, b: 2, c: 3 }).map(v => v + 1);
-      const object2 = object.clone().map(v => v + 1);
+      const object2 = object.copy().map(v => v + 1);
       expect(object.toJs()).toEqual({ a: 2, b: 3, c: 4 });
       expect(object2.toJs()).toEqual({ a: 3, b: 4, c: 5 });
     });
