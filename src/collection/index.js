@@ -1,10 +1,9 @@
-import clone from "clone";
-
 import { TapIterator, MapIterator, Curator, ClearCurator } from "../iterator";
 
 export default class Collection {
-  constructor(coll) {
-    this.__iter = this.constructor.__iterator(clone(coll));
+  constructor(coll, iter) {
+    this.__coll = this.constructor.copy(coll);
+    this.__iter = iter || this.constructor.__iterator(this.__coll);
   }
 
   // eslint-disable-next-line no-unused-vars
@@ -30,7 +29,7 @@ export default class Collection {
   }
 
   clone() {
-    return clone(this);
+    return new this.constructor(this.__coll, this.__iter);
   }
 
   tap(func) {

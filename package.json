@@ -17,9 +17,7 @@
     "test": "npm run build && npm run test:ci",
     "test:ci": "jest"
   },
-  "dependencies": {
-    "clone": "^2.1.2"
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",

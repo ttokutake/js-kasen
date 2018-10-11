@@ -17,7 +17,7 @@ function Kasen(coll) {
   if (!Coll) {
     throw new TypeError("1st argument must be Array or Object");
   }
-  return new Coll(coll);
+  return new Coll(coll, null);
 }
 
 Kasen.map = (coll, func) => {
