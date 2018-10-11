@@ -838,6 +838,10 @@ describe("Array", () => {
           .toJs();
         expect(result).toEqual(expected);
       });
+      ios.forEach(([input, index, expected]) => {
+        const result = Kasen.insert(input, index, 10);
+        expect(result).toEqual(expected);
+      });
     });
   });
 

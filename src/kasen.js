@@ -256,6 +256,16 @@ Kasen.mergeWith = (object, func, ...objects) => {
   return KasenObject.mergeWith(object, func, objects);
 };
 
+Kasen.insert = (array, index, value) => {
+  if (!isArray(array)) {
+    throw new TypeError("1st argument must be Array");
+  }
+  if (!isNumber(index)) {
+    throw new TypeError("2nd argument must be Number");
+  }
+  return KasenArray.insert(array, index, value);
+};
+
 Kasen.push = (array, value) => {
   if (!isArray(array)) {
     throw new TypeError("1st argument must be Array");

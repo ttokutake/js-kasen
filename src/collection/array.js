@@ -498,6 +498,16 @@ export default class KasenArray extends Collection {
     return this;
   }
 
+  static insert(array, index, value) {
+    const result = this.copy(array);
+    const { length } = result;
+    if (-length <= index && index <= length) {
+      const key = correctIndex(index, length);
+      result.splice(key, 0, value);
+    }
+    return result;
+  }
+
   push(value) {
     const curate = iter => {
       const array = ArrayIterator.curate(iter);
