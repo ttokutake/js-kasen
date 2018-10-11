@@ -845,6 +845,24 @@ describe("Array", () => {
     });
   });
 
+  describe("insertIf()", () => {
+    test("ok", () => {
+      const input = [1, 2];
+      {
+        const result = Kasen(input)
+          .insertIf(false, 1, 10)
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const result = Kasen(input)
+          .insertIf(true, 1, 10)
+          .toJs();
+        expect(result).toEqual([1, 10, 2]);
+      }
+    });
+  });
+
   describe("push()", () => {
     test("ok", () => {
       const ios = [[[], [10]], [[1], [1, 10]], [[1, 2], [1, 2, 10]]];

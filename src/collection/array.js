@@ -508,6 +508,13 @@ export default class KasenArray extends Collection {
     return result;
   }
 
+  insertIf(bool, index, value) {
+    if (!isNumber(index)) {
+      throw new TypeError("2nd argument must be Number");
+    }
+    return bool ? this.insert(index, value) : this;
+  }
+
   push(value) {
     const curate = iter => {
       const array = ArrayIterator.curate(iter);
