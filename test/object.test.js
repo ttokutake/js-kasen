@@ -90,18 +90,18 @@ describe("Object", () => {
     });
   });
 
-  describe("pluckIf()", () => {
+  describe("pluck.if()", () => {
     test("ok", () => {
       const input = { a: { a: 1 }, b: { a: 1 } };
       {
         const result = Kasen(input)
-          .pluckIf(false, "a")
+          .pluck.if(false, "a")
           .toJs();
         expect(result).toEqual(input);
       }
       {
         const result = Kasen(input)
-          .pluckIf(true, "a")
+          .pluck.if(true, "a")
           .toJs();
         expect(result).toEqual({ a: 1, b: 1 });
       }

@@ -86,18 +86,18 @@ describe("Array", () => {
     });
   });
 
-  describe("pluckIf()", () => {
+  describe("pluck.if()", () => {
     test("ok", () => {
       const input = [{ a: 1 }, { a: 2 }];
       {
         const result = Kasen(input)
-          .pluckIf(false, "a")
+          .pluck.if(false, "a")
           .toJs();
         expect(result).toEqual(input);
       }
       {
         const result = Kasen(input)
-          .pluckIf(true, "a")
+          .pluck.if(true, "a")
           .toJs();
         expect(result).toEqual([1, 2]);
       }

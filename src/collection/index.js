@@ -1,5 +1,5 @@
 import { TapIterator, MapIterator, Curator, ClearCurator } from "../iterator";
-import { isFunction } from "../type";
+import { isNumber, isString, isFunction } from "../type";
 
 export default class Collection {
   constructor(coll, iter) {
@@ -11,6 +11,13 @@ export default class Collection {
         throw new TypeError("2nd argument must be Function");
       }
       return bool ? this.map(func) : this;
+    };
+
+    this.pluck.if = (bool, key) => {
+      if (!(isNumber(key) || isString(key))) {
+        throw new TypeError("2nd argument must be Number or String");
+      }
+      return bool ? this.pluck(key) : this;
     };
   }
 
@@ -61,10 +68,6 @@ export default class Collection {
 
   static pluck(coll, key) {
     return this.map(coll, v => v[key]);
-  }
-
-  pluckIf(bool, key) {
-    return bool ? this.pluck(key) : this;
   }
 
   filter(Iter, func) {
