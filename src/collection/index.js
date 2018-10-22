@@ -1,9 +1,17 @@
 import { TapIterator, MapIterator, Curator, ClearCurator } from "../iterator";
+import { isFunction } from "../type";
 
 export default class Collection {
   constructor(coll, iter) {
     this.__coll = this.constructor.copy(coll);
     this.__iter = iter || this.constructor.__iterator(this.__coll);
+
+    this.map.if = (bool, func) => {
+      if (!isFunction(func)) {
+        throw new TypeError("2nd argument must be Function");
+      }
+      return bool ? this.map(func) : this;
+    };
   }
 
   // eslint-disable-next-line no-unused-vars
@@ -45,10 +53,6 @@ export default class Collection {
   // eslint-disable-next-line no-unused-vars
   static map(_coll, _func) {
     throw new Error("not implemented");
-  }
-
-  mapIf(bool, func) {
-    return bool ? this.map(func) : this;
   }
 
   pluck(key) {

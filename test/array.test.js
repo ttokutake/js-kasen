@@ -52,18 +52,18 @@ describe("Array", () => {
     });
   });
 
-  describe("mapIf()", () => {
+  describe("map.if()", () => {
     test("ok", () => {
       const input = [1, 2, 3];
       {
         const result = Kasen(input)
-          .mapIf(false, v => v + 1)
+          .map.if(false, v => v + 1)
           .toJs();
         expect(result).toEqual(input);
       }
       {
         const result = Kasen(input)
-          .mapIf(true, v => v + 1)
+          .map.if(true, v => v + 1)
           .toJs();
         expect(result).toEqual([2, 3, 4]);
       }

@@ -87,13 +87,6 @@ export default class KasenArray extends Collection {
     return super.pluckIf(bool, key);
   }
 
-  mapIf(bool, func) {
-    if (!isFunction(func)) {
-      throw new TypeError("2nd argument must be Function");
-    }
-    return super.mapIf(bool, func);
-  }
-
   filter(func) {
     if (!isFunction(func)) {
       throw new TypeError("1st argument must be Function");
