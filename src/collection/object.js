@@ -89,13 +89,6 @@ export default class KasenObject extends Collection {
     return result;
   }
 
-  filterIf(bool, func) {
-    if (!isFunction(func)) {
-      throw new TypeError("2nd argument must be Function");
-    }
-    return super.filterIf(bool, func);
-  }
-
   filterNot(func) {
     if (!isFunction(func)) {
       throw new TypeError("1st argument must be Function");
