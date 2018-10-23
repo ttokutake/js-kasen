@@ -166,18 +166,18 @@ describe("Array", () => {
     });
   });
 
-  describe("filterNotIf()", () => {
+  describe("filterNot.if()", () => {
     test("ok", () => {
       const input = [1, 2, 3];
       {
         const result = Kasen(input)
-          .filterNotIf(false, v => v % 2 === 1)
+          .filterNot.if(false, v => v % 2 === 1)
           .toJs();
         expect(result).toEqual(input);
       }
       {
         const result = Kasen(input)
-          .filterNotIf(true, v => v % 2 === 1)
+          .filterNot.if(true, v => v % 2 === 1)
           .toJs();
         expect(result).toEqual([2]);
       }

@@ -26,6 +26,13 @@ export default class Collection {
       }
       return bool ? this.filter(func) : this;
     };
+
+    this.filterNot.if = (bool, func) => {
+      if (!isFunction(func)) {
+        throw new TypeError("2nd argument must be Function");
+      }
+      return bool ? this.filterNot(func) : this;
+    };
   }
 
   // eslint-disable-next-line no-unused-vars
@@ -93,10 +100,6 @@ export default class Collection {
 
   static filterNot(coll, func) {
     return this.filter(coll, (v, k) => !func(v, k));
-  }
-
-  filterNotIf(bool, func) {
-    return bool ? this.filterNot(func) : this;
   }
 
   set(key, value) {
