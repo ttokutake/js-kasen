@@ -34,6 +34,17 @@ class ObjectIterator extends OriginIterator {
 }
 
 export default class KasenObject extends Collection {
+  constructor(object, iter) {
+    super(object, iter);
+
+    this.set.if = (bool, key, value) => {
+      if (!(isNumber(key) || isString(key))) {
+        throw new TypeError("2nd argument must be Number or String");
+      }
+      return bool ? this.set(key, value) : this;
+    };
+  }
+
   static __iterator(object) {
     return new ObjectIterator(object);
   }
@@ -121,13 +132,6 @@ export default class KasenObject extends Collection {
       throw new TypeError("1st argument must be Number or String");
     }
     return super.set(key, value);
-  }
-
-  setIf(bool, key, value) {
-    if (!(isNumber(key) || isString(key))) {
-      throw new TypeError("2nd argument must be Number or String");
-    }
-    return super.setIf(bool, key, value);
   }
 
   update(key, func) {

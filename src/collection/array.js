@@ -47,6 +47,17 @@ function correctIndex(index, length) {
 }
 
 export default class KasenArray extends Collection {
+  constructor(array, iter) {
+    super(array, iter);
+
+    this.set.if = (bool, index, value) => {
+      if (!isNumber(index)) {
+        throw new TypeError("2nd argument must be Number");
+      }
+      return bool ? this.set(index, value) : this;
+    };
+  }
+
   static __iterator(array) {
     return new ArrayIterator(array);
   }
@@ -354,13 +365,6 @@ export default class KasenArray extends Collection {
       throw new TypeError("1st argument must be Number");
     }
     return super.set(index, value);
-  }
-
-  setIf(bool, index, value) {
-    if (!isNumber(index)) {
-      throw new TypeError("2nd argument must be Number");
-    }
-    return super.setIf(bool, index, value);
   }
 
   update(index, func) {

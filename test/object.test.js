@@ -248,18 +248,18 @@ describe("Object", () => {
     });
   });
 
-  describe("setIf()", () => {
+  describe("set.if()", () => {
     test("ok", () => {
       const input = { a: 1 };
       {
         const result = Kasen(input)
-          .setIf(false, "a", 10)
+          .set.if(false, "a", 10)
           .toJs();
         expect(result).toEqual(input);
       }
       {
         const result = Kasen(input)
-          .setIf(true, "a", 10)
+          .set.if(true, "a", 10)
           .toJs();
         expect(result).toEqual({ a: 10 });
       }

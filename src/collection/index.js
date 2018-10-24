@@ -110,10 +110,6 @@ export default class Collection {
     return this.update(coll, key, () => value);
   }
 
-  setIf(bool, key, value) {
-    return bool ? this.set(key, value) : this;
-  }
-
   update(Iter, func) {
     this.__pile(Iter, func);
     return this;

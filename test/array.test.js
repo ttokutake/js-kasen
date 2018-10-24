@@ -632,18 +632,18 @@ describe("Array", () => {
     });
   });
 
-  describe("setIf()", () => {
+  describe("set.if()", () => {
     test("ok", () => {
       const input = [1, 2];
       {
         const result = Kasen(input)
-          .setIf(false, 0, 10)
+          .set.if(false, 0, 10)
           .toJs();
         expect(result).toEqual(input);
       }
       {
         const result = Kasen(input)
-          .setIf(true, 0, 10)
+          .set.if(true, 0, 10)
           .toJs();
         expect(result).toEqual([10, 2]);
       }
