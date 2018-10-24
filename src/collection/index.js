@@ -130,10 +130,6 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
-  deleteIf(bool, key) {
-    return bool ? this.delete(key) : this;
-  }
-
   clear() {
     this.__pile(ClearCurator, null);
     return this;

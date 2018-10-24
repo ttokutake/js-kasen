@@ -66,6 +66,13 @@ export default class KasenArray extends Collection {
       }
       return bool ? this.update(index, func) : this;
     };
+
+    this.delete.if = (bool, index) => {
+      if (!isNumber(index)) {
+        throw new TypeError("2nd argument must be Number");
+      }
+      return bool ? this.delete(index) : this;
+    };
   }
 
   static __iterator(array) {
@@ -431,13 +438,6 @@ export default class KasenArray extends Collection {
       result.splice(key, 1);
     }
     return result;
-  }
-
-  deleteIf(bool, index) {
-    if (!isNumber(index)) {
-      throw new TypeError("2nd argument must be Number");
-    }
-    return super.deleteIf(bool, index);
   }
 
   concat(...values) {

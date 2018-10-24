@@ -726,18 +726,18 @@ describe("Array", () => {
     });
   });
 
-  describe("deleteIf()", () => {
+  describe("delete.if()", () => {
     test("ok", () => {
       const input = [1, 2];
       {
         const result = Kasen(input)
-          .deleteIf(false, 0)
+          .delete.if(false, 0)
           .toJs();
         expect(result).toEqual(input);
       }
       {
         const result = Kasen(input)
-          .deleteIf(true, 0)
+          .delete.if(true, 0)
           .toJs();
         expect(result).toEqual([2]);
       }

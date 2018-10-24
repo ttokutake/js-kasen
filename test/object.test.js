@@ -324,18 +324,18 @@ describe("Object", () => {
     });
   });
 
-  describe("deleteIf()", () => {
+  describe("delete.if()", () => {
     test("ok", () => {
       const input = { a: 1 };
       {
         const result = Kasen(input)
-          .deleteIf(false, "a")
+          .delete.if(false, "a")
           .toJs();
         expect(result).toEqual(input);
       }
       {
         const result = Kasen(input)
-          .deleteIf(true, "a")
+          .delete.if(true, "a")
           .toJs();
         expect(result).toEqual({});
       }

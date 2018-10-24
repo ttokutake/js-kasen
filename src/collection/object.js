@@ -53,6 +53,13 @@ export default class KasenObject extends Collection {
       }
       return bool ? this.update(key, func) : this;
     };
+
+    this.delete.if = (bool, key) => {
+      if (!(isNumber(key) || isString(key))) {
+        throw new TypeError("2nd argument must be Number or String");
+      }
+      return bool ? this.delete(key) : this;
+    };
   }
 
   static __iterator(object) {
@@ -181,13 +188,6 @@ export default class KasenObject extends Collection {
     const result = this.copy(object);
     delete result[key];
     return result;
-  }
-
-  deleteIf(bool, key) {
-    if (!(isNumber(key) || isString(key))) {
-      throw new TypeError("2nd argument must be Number or String");
-    }
-    return super.deleteIf(bool, key);
   }
 
   deleteAll(keys) {
