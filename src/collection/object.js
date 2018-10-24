@@ -43,6 +43,16 @@ export default class KasenObject extends Collection {
       }
       return bool ? this.set(key, value) : this;
     };
+
+    this.update.if = (bool, key, func) => {
+      if (!(isNumber(key) || isString(key))) {
+        throw new TypeError("2nd argument must be Number or String");
+      }
+      if (!isFunction(func)) {
+        throw new TypeError("3rd argument must be Function");
+      }
+      return bool ? this.update(key, func) : this;
+    };
   }
 
   static __iterator(object) {
@@ -153,16 +163,6 @@ export default class KasenObject extends Collection {
     const result = this.copy(object);
     result[key] = func(object[key]);
     return result;
-  }
-
-  updateIf(bool, key, func) {
-    if (!(isNumber(key) || isString(key))) {
-      throw new TypeError("2nd argument must be Number or String");
-    }
-    if (!isFunction(func)) {
-      throw new TypeError("3rd argument must be Function");
-    }
-    return super.updateIf(bool, key, func);
   }
 
   delete(key) {

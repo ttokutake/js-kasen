@@ -679,18 +679,18 @@ describe("Array", () => {
     });
   });
 
-  describe("updateIf()", () => {
+  describe("update.if()", () => {
     test("ok", () => {
       const input = [1, 2];
       {
         const result = Kasen(input)
-          .updateIf(false, 0, v => v + 10)
+          .update.if(false, 0, v => v + 10)
           .toJs();
         expect(result).toEqual(input);
       }
       {
         const result = Kasen(input)
-          .updateIf(true, 0, v => v + 10)
+          .update.if(true, 0, v => v + 10)
           .toJs();
         expect(result).toEqual([11, 2]);
       }

@@ -120,10 +120,6 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
-  updateIf(bool, key, func) {
-    return bool ? this.update(key, func) : this;
-  }
-
   delete(Iter, func) {
     this.__pile(Iter, func);
     return this;

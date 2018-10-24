@@ -56,6 +56,16 @@ export default class KasenArray extends Collection {
       }
       return bool ? this.set(index, value) : this;
     };
+
+    this.update.if = (bool, index, func) => {
+      if (!isNumber(index)) {
+        throw new TypeError("2nd argument must be Number");
+      }
+      if (!isFunction(func)) {
+        throw new TypeError("3rd argument must be Function");
+      }
+      return bool ? this.update(index, func) : this;
+    };
   }
 
   static __iterator(array) {
@@ -394,16 +404,6 @@ export default class KasenArray extends Collection {
       result[key] = func(array[key]);
     }
     return result;
-  }
-
-  updateIf(bool, index, func) {
-    if (!isNumber(index)) {
-      throw new TypeError("2nd argument must be Number");
-    }
-    if (!isFunction(func)) {
-      throw new TypeError("3rd argument must be Function");
-    }
-    return super.updateIf(bool, index, func);
   }
 
   delete(index) {

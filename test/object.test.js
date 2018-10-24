@@ -286,18 +286,18 @@ describe("Object", () => {
     });
   });
 
-  describe("updateIf()", () => {
+  describe("update.if()", () => {
     test("ok", () => {
       const input = { a: 1 };
       {
         const result = Kasen(input)
-          .updateIf(false, "a", v => v + 10)
+          .update.if(false, "a", v => v + 10)
           .toJs();
         expect(result).toEqual(input);
       }
       {
         const result = Kasen(input)
-          .updateIf(true, "a", v => v + 10)
+          .update.if(true, "a", v => v + 10)
           .toJs();
         expect(result).toEqual({ a: 11 });
       }
