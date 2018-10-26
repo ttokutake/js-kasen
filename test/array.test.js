@@ -990,18 +990,18 @@ describe("Array", () => {
     });
   });
 
-  describe("shiftIf()", () => {
+  describe("shift.if()", () => {
     test("ok", () => {
       const input = [1, 2];
       {
         const result = Kasen(input)
-          .shiftIf(false)
+          .shift.if(false)
           .toJs();
         expect(result).toEqual(input);
       }
       {
         const result = Kasen(input)
-          .shiftIf(true)
+          .shift.if(true)
           .toJs();
         expect(result).toEqual([2]);
       }
