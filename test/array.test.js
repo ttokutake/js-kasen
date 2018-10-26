@@ -541,18 +541,18 @@ describe("Array", () => {
     });
   });
 
-  describe("skipWhileIf()", () => {
+  describe("skipWhile.if()", () => {
     test("ok", () => {
       const input = [1, 3, 4];
       {
         const result = Kasen(input)
-          .skipWhileIf(false, v => v % 2 === 1)
+          .skipWhile.if(false, v => v % 2 === 1)
           .toJs();
         expect(result).toEqual(input);
       }
       {
         const result = Kasen(input)
-          .skipWhileIf(true, v => v % 2 === 1)
+          .skipWhile.if(true, v => v % 2 === 1)
           .toJs();
         expect(result).toEqual([4]);
       }

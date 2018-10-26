@@ -94,6 +94,13 @@ export default class KasenArray extends Collection {
       return bool ? this.skipLast(num) : this;
     };
 
+    this.skipWhile.if = (bool, func) => {
+      if (!isFunction(func)) {
+        throw new TypeError("2nd argument must be Function");
+      }
+      return bool ? this.skipWhile(func) : this;
+    };
+
     this.set.if = (bool, index, value) => {
       if (!isNumber(index)) {
         throw new TypeError("2nd argument must be Number");
@@ -348,13 +355,6 @@ export default class KasenArray extends Collection {
       }
     });
     return result;
-  }
-
-  skipWhileIf(bool, func) {
-    if (!isFunction(func)) {
-      throw new TypeError("2nd argument must be Function");
-    }
-    return bool ? this.skipWhile(func) : this;
   }
 
   skipUntil(func) {
