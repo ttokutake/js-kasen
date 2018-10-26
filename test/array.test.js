@@ -256,18 +256,18 @@ describe("Array", () => {
     });
   });
 
-  describe("takeIf()", () => {
+  describe("take.if()", () => {
     test("ok", () => {
       const input = [1, 2, 3];
       {
         const result = Kasen(input)
-          .takeIf(false, 2)
+          .take.if(false, 2)
           .toJs();
         expect(result).toEqual(input);
       }
       {
         const result = Kasen(input)
-          .takeIf(true, 2)
+          .take.if(true, 2)
           .toJs();
         expect(result).toEqual([1, 2]);
       }

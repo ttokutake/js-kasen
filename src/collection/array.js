@@ -52,6 +52,13 @@ export default class KasenArray extends Collection {
 
     this.reverse.if = bool => (bool ? this.reverse() : this);
 
+    this.take.if = (bool, num) => {
+      if (!isNumber(num)) {
+        throw new TypeError("2nd argument must be Number");
+      }
+      return bool ? this.take(num) : this;
+    };
+
     this.set.if = (bool, index, value) => {
       if (!isNumber(index)) {
         throw new TypeError("2nd argument must be Number");
@@ -157,13 +164,6 @@ export default class KasenArray extends Collection {
 
   static take(array, num) {
     return num < 0 ? [] : array.slice(0, num);
-  }
-
-  takeIf(bool, num) {
-    if (!isNumber(num)) {
-      throw new TypeError("2nd argument must be Number");
-    }
-    return bool ? this.take(num) : this;
   }
 
   takeLast(num) {
