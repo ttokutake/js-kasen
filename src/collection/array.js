@@ -80,6 +80,13 @@ export default class KasenArray extends Collection {
       return bool ? this.takeUntil(func) : this;
     };
 
+    this.skip.if = (bool, num) => {
+      if (!isNumber(num)) {
+        throw new TypeError("2nd argument must be Number");
+      }
+      return bool ? this.skip(num) : this;
+    };
+
     this.set.if = (bool, index, value) => {
       if (!isNumber(index)) {
         throw new TypeError("2nd argument must be Number");
@@ -272,13 +279,6 @@ export default class KasenArray extends Collection {
 
   static skip(array, num) {
     return array.slice(num < 0 ? 0 : num);
-  }
-
-  skipIf(bool, num) {
-    if (!isNumber(num)) {
-      throw new TypeError("2nd argument must be Number");
-    }
-    return bool ? this.skip(num) : this;
   }
 
   skipLast(num) {

@@ -446,18 +446,18 @@ describe("Array", () => {
     });
   });
 
-  describe("skipIf()", () => {
+  describe("skip.if()", () => {
     test("ok", () => {
       const input = [1, 2, 3];
       {
         const result = Kasen(input)
-          .skipIf(false, 2)
+          .skip.if(false, 2)
           .toJs();
         expect(result).toEqual(input);
       }
       {
         const result = Kasen(input)
-          .skipIf(true, 2)
+          .skip.if(true, 2)
           .toJs();
         expect(result).toEqual([3]);
       }
