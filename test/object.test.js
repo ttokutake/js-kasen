@@ -367,19 +367,19 @@ describe("Object", () => {
     });
   });
 
-  describe("deleteAll()", () => {
+  describe("deleteAll.if()", () => {
     test("ok", () => {
       const input = { a: 1, b: 2 };
       const keys = ["a"];
       {
         const result = Kasen(input)
-          .deleteAllIf(false, keys)
+          .deleteAll.if(false, keys)
           .toJs();
         expect(result).toEqual(input);
       }
       {
         const result = Kasen(input)
-          .deleteAllIf(true, keys)
+          .deleteAll.if(true, keys)
           .toJs();
         expect(result).toEqual({ b: 2 });
       }

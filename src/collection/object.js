@@ -67,6 +67,13 @@ export default class KasenObject extends Collection {
       }
       return bool ? this.delete(key) : this;
     };
+
+    this.deleteAll.if = (bool, keys) => {
+      if (!isArray(keys)) {
+        throw new TypeError("2nd argument must be Array");
+      }
+      return bool ? this.deleteAll(keys) : this;
+    };
   }
 
   static __iterator(object) {
@@ -211,13 +218,6 @@ export default class KasenObject extends Collection {
       delete result[key];
     });
     return result;
-  }
-
-  deleteAllIf(bool, keys) {
-    if (!isArray(keys)) {
-      throw new TypeError("2nd argument must be Array");
-    }
-    return bool ? this.deleteAll(keys) : this;
   }
 
   merge(...objects) {
