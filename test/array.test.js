@@ -351,18 +351,18 @@ describe("Array", () => {
     });
   });
 
-  describe("takeWhileIf()", () => {
+  describe("takeWhile.if()", () => {
     test("ok", () => {
       const input = [1, 3, 4];
       {
         const result = Kasen(input)
-          .takeWhileIf(false, v => v % 2 === 1)
+          .takeWhile.if(false, v => v % 2 === 1)
           .toJs();
         expect(result).toEqual(input);
       }
       {
         const result = Kasen(input)
-          .takeWhileIf(true, v => v % 2 === 1)
+          .takeWhile.if(true, v => v % 2 === 1)
           .toJs();
         expect(result).toEqual([1, 3]);
       }
