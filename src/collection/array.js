@@ -149,6 +149,8 @@ export default class KasenArray extends Collection {
     this.unshift.if = (bool, value) => (bool ? this.unshift(value) : this);
 
     this.shift.if = bool => (bool ? this.shift() : this);
+
+    this.flatten.if = bool => (bool ? this.flatten() : this);
   }
 
   static __iterator(array) {
@@ -594,10 +596,6 @@ export default class KasenArray extends Collection {
       }
     });
     return result;
-  }
-
-  flattenIf(bool) {
-    return bool ? this.flatten() : this;
   }
 
   flatMap(func) {

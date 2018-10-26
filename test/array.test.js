@@ -1078,18 +1078,18 @@ describe("Array", () => {
     });
   });
 
-  describe("flattenIf()", () => {
+  describe("flatten.if()", () => {
     test("ok", () => {
       const input = [[1], 2, [3]];
       {
         const result = Kasen(input)
-          .flattenIf(false)
+          .flatten.if(false)
           .toJs();
         expect(result).toEqual(input);
       }
       {
         const result = Kasen(input)
-          .flattenIf(true)
+          .flatten.if(true)
           .toJs();
         expect(result).toEqual([1, 2, 3]);
       }
