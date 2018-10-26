@@ -497,18 +497,18 @@ describe("Array", () => {
     });
   });
 
-  describe("skipLastIf()", () => {
+  describe("skipLast.if()", () => {
     test("ok", () => {
       const input = [1, 2, 3];
       {
         const result = Kasen(input)
-          .skipLastIf(false, 2)
+          .skipLast.if(false, 2)
           .toJs();
         expect(result).toEqual(input);
       }
       {
         const result = Kasen(input)
-          .skipLastIf(true, 2)
+          .skipLast.if(true, 2)
           .toJs();
         expect(result).toEqual([1]);
       }
