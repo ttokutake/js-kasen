@@ -50,6 +50,8 @@ export default class KasenArray extends Collection {
   constructor(array, iter) {
     super(array, iter);
 
+    this.reverse.if = bool => (bool ? this.reverse() : this);
+
     this.set.if = (bool, index, value) => {
       if (!isNumber(index)) {
         throw new TypeError("2nd argument must be Number");
@@ -133,10 +135,6 @@ export default class KasenArray extends Collection {
 
   static reverse(array) {
     return array.reverse();
-  }
-
-  reverseIf(bool) {
-    return bool ? this.reverse() : this;
   }
 
   take(num) {

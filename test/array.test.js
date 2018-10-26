@@ -205,18 +205,18 @@ describe("Array", () => {
     });
   });
 
-  describe("reverseIf()", () => {
+  describe("reverse.if()", () => {
     test("ok", () => {
       const input = [1, 2, 3];
       {
         const result = Kasen(input)
-          .reverseIf(false)
+          .reverse.if(false)
           .toJs();
         expect(result).toEqual(input);
       }
       {
         const result = Kasen(input)
-          .reverseIf(true)
+          .reverse.if(true)
           .toJs();
         expect(result).toEqual([3, 2, 1]);
       }
