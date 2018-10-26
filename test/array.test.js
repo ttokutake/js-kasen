@@ -1117,18 +1117,18 @@ describe("Array", () => {
     });
   });
 
-  describe("flatMap()", () => {
+  describe("flatMap.if()", () => {
     test("ok", () => {
       const input = [1, 2, 3];
       {
         const result = Kasen(input)
-          .flatMapIf(false, v => Array(v).fill(1))
+          .flatMap.if(false, v => Array(v).fill(1))
           .toJs();
         expect(result).toEqual(input);
       }
       {
         const result = Kasen(input)
-          .flatMapIf(true, v => Array(v).fill(1))
+          .flatMap.if(true, v => Array(v).fill(1))
           .toJs();
         expect(result).toEqual([1, 1, 1, 1, 1, 1]);
       }

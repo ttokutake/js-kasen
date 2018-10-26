@@ -151,6 +151,13 @@ export default class KasenArray extends Collection {
     this.shift.if = bool => (bool ? this.shift() : this);
 
     this.flatten.if = bool => (bool ? this.flatten() : this);
+
+    this.flatMap.if = (bool, func) => {
+      if (!isFunction(func)) {
+        throw new TypeError("2nd argument must be Function");
+      }
+      return bool ? this.flatMap(func) : this;
+    };
   }
 
   static __iterator(array) {
@@ -631,13 +638,6 @@ export default class KasenArray extends Collection {
       }
     });
     return result;
-  }
-
-  flatMapIf(bool, func) {
-    if (!isFunction(func)) {
-      throw new TypeError("2nd argument must be Function");
-    }
-    return bool ? this.flatMap(func) : this;
   }
 
   // TODO: zip()
