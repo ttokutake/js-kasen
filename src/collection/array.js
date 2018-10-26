@@ -131,6 +131,9 @@ export default class KasenArray extends Collection {
       }
       return bool ? this.delete(index) : this;
     };
+
+    this.concat.if = (bool, ...values) =>
+      bool ? this.concat(...values) : this;
   }
 
   static __iterator(array) {
@@ -449,10 +452,6 @@ export default class KasenArray extends Collection {
 
   static concat(array, values) {
     return array.concat(...values);
-  }
-
-  concatIf(bool, ...values) {
-    return bool ? this.concat(...values) : this;
   }
 
   insert(index, value) {
