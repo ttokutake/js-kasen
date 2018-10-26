@@ -307,18 +307,18 @@ describe("Array", () => {
     });
   });
 
-  describe("takeLastIf()", () => {
+  describe("takeLast.if()", () => {
     test("ok", () => {
       const input = [1, 2, 3];
       {
         const result = Kasen(input)
-          .takeLastIf(false, 2)
+          .takeLast.if(false, 2)
           .toJs();
         expect(result).toEqual(input);
       }
       {
         const result = Kasen(input)
-          .takeLastIf(true, 2)
+          .takeLast.if(true, 2)
           .toJs();
         expect(result).toEqual([2, 3]);
       }

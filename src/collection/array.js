@@ -59,6 +59,13 @@ export default class KasenArray extends Collection {
       return bool ? this.take(num) : this;
     };
 
+    this.takeLast.if = (bool, num) => {
+      if (!isNumber(num)) {
+        throw new TypeError("2nd argument must be Number");
+      }
+      return bool ? this.takeLast(num) : this;
+    };
+
     this.set.if = (bool, index, value) => {
       if (!isNumber(index)) {
         throw new TypeError("2nd argument must be Number");
@@ -187,13 +194,6 @@ export default class KasenArray extends Collection {
   static takeLast(array, num) {
     const { length } = array;
     return num < 0 ? [] : array.slice(length - num, length);
-  }
-
-  takeLastIf(bool, num) {
-    if (!isNumber(num)) {
-      throw new TypeError("2nd argument must be Number");
-    }
-    return bool ? this.takeLast(num) : this;
   }
 
   takeWhile(func) {
