@@ -109,33 +109,12 @@ export default class KasenObject extends Collection {
     return this.filter(object, () => true);
   }
 
-  tap(func) {
-    if (!isFunction(func)) {
-      throw new TypeError("1st argument must be Function");
-    }
-    return super.tap(func);
-  }
-
-  map(func) {
-    if (!isFunction(func)) {
-      throw new TypeError("1st argument must be Function");
-    }
-    return super.map(func);
-  }
-
   static map(object, func) {
     const result = {};
     Object.keys(object).forEach(key => {
       result[key] = func(object[key], key);
     });
     return result;
-  }
-
-  pluck(key) {
-    if (!(isNumber(key) || isString(key))) {
-      throw new TypeError("1st argument must be Number or String");
-    }
-    return super.pluck(key);
   }
 
   filter(func) {
@@ -319,21 +298,7 @@ export default class KasenObject extends Collection {
     return result;
   }
 
-  setIn(keys, value) {
-    if (!isArray(keys)) {
-      throw new TypeError("1st argument must be Array");
-    }
-    return super.setIn(keys, value);
-  }
-
   // TODO?: flip()
-
-  reduce(func, init) {
-    if (!isFunction(func)) {
-      throw new TypeError("1st argument must be Function");
-    }
-    return super.reduce(func, init);
-  }
 
   static reduce(object, func, init) {
     const keys = Object.keys(object);
@@ -350,13 +315,6 @@ export default class KasenObject extends Collection {
     return acc;
   }
 
-  every(func) {
-    if (!isFunction(func)) {
-      throw new TypeError("1st argument must be Function");
-    }
-    return super.every(func);
-  }
-
   static every(object, func) {
     const keys = Object.keys(object);
     for (let i = 0, { length } = keys; i < length; i += 1) {
@@ -368,22 +326,8 @@ export default class KasenObject extends Collection {
     return true;
   }
 
-  some(func) {
-    if (!isFunction(func)) {
-      throw new TypeError("1st argument must be Function");
-    }
-    return super.some(func);
-  }
-
   static some(object, func) {
     return !this.every(object, (v, k) => !func(v, k));
-  }
-
-  find(func) {
-    if (!isFunction(func)) {
-      throw new TypeError("1st argument must be Function");
-    }
-    return super.find(func);
   }
 
   static find(object, func) {
@@ -396,13 +340,6 @@ export default class KasenObject extends Collection {
       }
     }
     return undefined;
-  }
-
-  forEach(func) {
-    if (!isFunction(func)) {
-      throw new TypeError("1st argument must be Function");
-    }
-    return super.forEach(func);
   }
 
   static forEach(object, func) {

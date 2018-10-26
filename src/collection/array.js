@@ -1,7 +1,7 @@
 import Collection from ".";
 import { OriginIterator, Curator } from "../iterator";
 import { FilterIterator, ReverseIterator } from "../iterator/array";
-import { isNumber, isString, isArray, isFunction } from "../type";
+import { isNumber, isArray, isFunction } from "../type";
 
 class ArrayIterator extends OriginIterator {
   constructor(array) {
@@ -168,29 +168,8 @@ export default class KasenArray extends Collection {
     return array.slice();
   }
 
-  tap(func) {
-    if (!isFunction(func)) {
-      throw new TypeError("1st argument must be Function");
-    }
-    return super.tap(func);
-  }
-
-  map(func) {
-    if (!isFunction(func)) {
-      throw new TypeError("1st argument must be Function");
-    }
-    return super.map(func);
-  }
-
   static map(array, func) {
     return array.map(func);
-  }
-
-  pluck(key) {
-    if (!(isNumber(key) || isString(key))) {
-      throw new TypeError("1st argument must be Number or String");
-    }
-    return super.pluck(key);
   }
 
   filter(func) {
@@ -569,13 +548,6 @@ export default class KasenArray extends Collection {
     return result;
   }
 
-  setIn(keys, value) {
-    if (!isArray(keys)) {
-      throw new TypeError("1st argument must be Array");
-    }
-    return super.setIn(keys, value);
-  }
-
   flatten() {
     const curate = iter => {
       let array = [];
@@ -674,13 +646,6 @@ export default class KasenArray extends Collection {
 
   // TODO: last()
 
-  reduce(func, init) {
-    if (!isFunction(func)) {
-      throw new TypeError("1st argument must be Function");
-    }
-    return super.reduce(func, init);
-  }
-
   static reduce(array, func, init) {
     return init === undefined ? array.reduce(func) : array.reduce(func, init);
   }
@@ -691,33 +656,12 @@ export default class KasenArray extends Collection {
 
   // TODO: splitAt() from Scala
 
-  every(func) {
-    if (!isFunction(func)) {
-      throw new TypeError("1st argument must be Function");
-    }
-    return super.every(func);
-  }
-
   static every(array, func) {
     return array.every(func);
   }
 
-  some(func) {
-    if (!isFunction(func)) {
-      throw new TypeError("1st argument must be Function");
-    }
-    return super.some(func);
-  }
-
   static some(array, func) {
     return array.some(func);
-  }
-
-  find(func) {
-    if (!isFunction(func)) {
-      throw new TypeError("1st argument must be Function");
-    }
-    return super.find(func);
   }
 
   static find(array, func) {
@@ -770,13 +714,6 @@ export default class KasenArray extends Collection {
   // TODO?: startsWith()
 
   // TODO?: endsWith()
-
-  forEach(func) {
-    if (!isFunction(func)) {
-      throw new TypeError("1st argument must be Function");
-    }
-    return super.forEach(func);
-  }
 
   static forEach(array, func) {
     return array.forEach(func);

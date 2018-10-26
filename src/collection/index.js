@@ -71,11 +71,17 @@ export default class Collection {
   }
 
   tap(func) {
+    if (!isFunction(func)) {
+      throw new TypeError("1st argument must be Function");
+    }
     this.__pile(TapIterator, func);
     return this;
   }
 
   map(func) {
+    if (!isFunction(func)) {
+      throw new TypeError("1st argument must be Function");
+    }
     this.__pile(MapIterator, func);
     return this;
   }
@@ -86,6 +92,9 @@ export default class Collection {
   }
 
   pluck(key) {
+    if (!(isNumber(key) || isString(key))) {
+      throw new TypeError("1st argument must be Number or String");
+    }
     return this.map(v => v[key]);
   }
 
@@ -145,6 +154,9 @@ export default class Collection {
   }
 
   setIn(keys, value) {
+    if (!isArray(keys)) {
+      throw new TypeError("1st argument must be Array");
+    }
     const curate = iter => {
       const coll = iter.Origin.curate(iter);
       let nextColl = coll;
@@ -214,6 +226,9 @@ export default class Collection {
   // TODO: toObject()
 
   reduce(func, init) {
+    if (!isFunction(func)) {
+      throw new TypeError("1st argument must be Function");
+    }
     const coll = this.__consume(null);
     return this.constructor.reduce(coll, func, init);
   }
@@ -232,6 +247,9 @@ export default class Collection {
   // TODO: groupBy()
 
   every(func) {
+    if (!isFunction(func)) {
+      throw new TypeError("1st argument must be Function");
+    }
     const finalize = iter => {
       let key;
       let value;
@@ -251,6 +269,9 @@ export default class Collection {
   }
 
   some(func) {
+    if (!isFunction(func)) {
+      throw new TypeError("1st argument must be Function");
+    }
     return !this.every((v, k) => !func(v, k));
   }
 
@@ -260,6 +281,9 @@ export default class Collection {
   }
 
   find(func) {
+    if (!isFunction(func)) {
+      throw new TypeError("1st argument must be Function");
+    }
     const finalize = iter => {
       let key;
       let value;
@@ -302,6 +326,9 @@ export default class Collection {
   // TODO: entries()
 
   forEach(func) {
+    if (!isFunction(func)) {
+      throw new TypeError("1st argument must be Function");
+    }
     const finalize = iter => {
       let key;
       let value;
