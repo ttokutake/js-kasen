@@ -74,6 +74,15 @@ export default class KasenObject extends Collection {
       }
       return bool ? this.deleteAll(keys) : this;
     };
+
+    this.merge.if = (bool, ...objects) => {
+      for (let i = 0, { length } = objects; i < length; i += 1) {
+        if (!isObject(objects[i])) {
+          throw new TypeError("Each argument except 1st one must be Object");
+        }
+      }
+      return bool ? this.merge(...objects) : this;
+    };
   }
 
   static __iterator(object) {
@@ -249,15 +258,6 @@ export default class KasenObject extends Collection {
     return result;
   }
 
-  mergeIf(bool, ...objects) {
-    for (let i = 0, { length } = objects; i < length; i += 1) {
-      if (!isObject(objects[i])) {
-        throw new TypeError("Each argument except 1st one must be Object");
-      }
-    }
-    return bool ? this.merge(...objects) : this;
-  }
-
   assign(...objects) {
     for (let i = 0, { length } = objects; i < length; i += 1) {
       if (!isObject(objects[i])) {
@@ -273,7 +273,7 @@ export default class KasenObject extends Collection {
         throw new TypeError("Each argument except 1st one must be Object");
       }
     }
-    return this.mergeIf(bool, ...objects);
+    return this.merge.if(bool, ...objects);
   }
 
   mergeWith(func, ...objects) {

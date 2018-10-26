@@ -451,19 +451,19 @@ describe("Object", () => {
     });
   });
 
-  describe("mergeIf() (assignIf())", () => {
+  describe("merge.if() (assignIf())", () => {
     test("ok()", () => {
       const input = { a: 1 };
       const objects = [{ b: 2 }, { c: 3 }];
       {
         const result = Kasen(input)
-          .mergeIf(false, ...objects)
+          .merge.if(false, ...objects)
           .toJs();
         expect(result).toEqual(input);
       }
       {
         const result = Kasen(input)
-          .mergeIf(true, ...objects)
+          .merge.if(true, ...objects)
           .toJs();
         expect(result).toEqual({ a: 1, b: 2, c: 3 });
       }
