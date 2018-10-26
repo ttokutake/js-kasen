@@ -37,6 +37,13 @@ export default class KasenObject extends Collection {
   constructor(object, iter) {
     super(object, iter);
 
+    this.pick.if = (bool, keys) => {
+      if (!isArray(keys)) {
+        throw new TypeError("2nd argument must be Array");
+      }
+      return bool ? this.pick(keys) : this;
+    };
+
     this.set.if = (bool, key, value) => {
       if (!(isNumber(key) || isString(key))) {
         throw new TypeError("2nd argument must be Number or String");
@@ -135,13 +142,6 @@ export default class KasenObject extends Collection {
   static pick(object, keys) {
     const func = (_value, key) => keys.some(k => k === key);
     return this.filter(object, func);
-  }
-
-  pickIf(bool, keys) {
-    if (!isArray(keys)) {
-      throw new TypeError("2nd argument must be Array");
-    }
-    return bool ? this.pick(keys) : this;
   }
 
   set(key, value) {

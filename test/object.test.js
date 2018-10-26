@@ -210,18 +210,18 @@ describe("Object", () => {
     });
   });
 
-  describe("pickIf()", () => {
+  describe("pick.if()", () => {
     test("ok", () => {
       const input = { a: 1, b: 2, c: 3 };
       {
         const result = Kasen(input)
-          .pickIf(false, ["a", "c"])
+          .pick.if(false, ["a", "c"])
           .toJs();
         expect(result).toEqual(input);
       }
       {
         const result = Kasen(input)
-          .pickIf(true, ["a", "c"])
+          .pick.if(true, ["a", "c"])
           .toJs();
         expect(result).toEqual({ a: 1, c: 3 });
       }
