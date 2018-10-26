@@ -888,18 +888,18 @@ describe("Array", () => {
     });
   });
 
-  describe("pushIf()", () => {
+  describe("push.if()", () => {
     test("ok", () => {
       const input = [1, 2];
       {
         const result = Kasen(input)
-          .pushIf(false, 10)
+          .push.if(false, 10)
           .toJs();
         expect(result).toEqual(input);
       }
       {
         const result = Kasen(input)
-          .pushIf(true, 10)
+          .push.if(true, 10)
           .toJs();
         expect(result).toEqual([1, 2, 10]);
       }
