@@ -134,6 +134,13 @@ export default class KasenArray extends Collection {
 
     this.concat.if = (bool, ...values) =>
       bool ? this.concat(...values) : this;
+
+    this.insert.if = (bool, index, value) => {
+      if (!isNumber(index)) {
+        throw new TypeError("2nd argument must be Number");
+      }
+      return bool ? this.insert(index, value) : this;
+    };
   }
 
   static __iterator(array) {
@@ -479,13 +486,6 @@ export default class KasenArray extends Collection {
       result.splice(key, 0, value);
     }
     return result;
-  }
-
-  insertIf(bool, index, value) {
-    if (!isNumber(index)) {
-      throw new TypeError("2nd argument must be Number");
-    }
-    return bool ? this.insert(index, value) : this;
   }
 
   push(value) {
