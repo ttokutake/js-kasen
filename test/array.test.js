@@ -756,18 +756,18 @@ describe("Array", () => {
     });
   });
 
-  describe("clearIf()", () => {
+  describe("clear.if()", () => {
     test("ok()", () => {
       const input = [1];
       {
         const result = Kasen(input)
-          .clearIf(false)
+          .clear.if(false)
           .toJs();
         expect(result).toEqual(input);
       }
       {
         const result = Kasen(input)
-          .clearIf(true)
+          .clear.if(true)
           .toJs();
         expect(result).toEqual([]);
       }

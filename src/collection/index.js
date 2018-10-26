@@ -33,6 +33,8 @@ export default class Collection {
       }
       return bool ? this.filterNot(func) : this;
     };
+
+    this.clear.if = bool => (bool ? this.clear() : this);
   }
 
   // eslint-disable-next-line no-unused-vars
@@ -133,10 +135,6 @@ export default class Collection {
   clear() {
     this.__pile(ClearCurator, null);
     return this;
-  }
-
-  clearIf(bool) {
-    return bool ? this.clear() : this;
   }
 
   setIn(keys, value) {
