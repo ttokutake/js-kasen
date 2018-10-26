@@ -922,18 +922,18 @@ describe("Array", () => {
     });
   });
 
-  describe("popIf()", () => {
+  describe("pop.if()", () => {
     test("ok", () => {
       const input = [1, 2];
       {
         const result = Kasen(input)
-          .popIf(false)
+          .pop.if(false)
           .toJs();
         expect(result).toEqual(input);
       }
       {
         const result = Kasen(input)
-          .popIf(true)
+          .pop.if(true)
           .toJs();
         expect(result).toEqual([1]);
       }
