@@ -145,6 +145,8 @@ export default class KasenArray extends Collection {
     this.push.if = (bool, value) => (bool ? this.push(value) : this);
 
     this.pop.if = bool => (bool ? this.pop() : this);
+
+    this.unshift.if = (bool, value) => (bool ? this.unshift(value) : this);
   }
 
   static __iterator(array) {
@@ -538,10 +540,6 @@ export default class KasenArray extends Collection {
     const result = this.copy(array);
     result.unshift(value);
     return result;
-  }
-
-  unshiftIf(bool, value) {
-    return bool ? this.unshift(value) : this;
   }
 
   shift() {

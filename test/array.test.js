@@ -956,18 +956,18 @@ describe("Array", () => {
     });
   });
 
-  describe("unshiftIf()", () => {
+  describe("unshift.if()", () => {
     test("ok", () => {
       const input = [1, 2];
       {
         const result = Kasen(input)
-          .unshiftIf(false, 10)
+          .unshift.if(false, 10)
           .toJs();
         expect(result).toEqual(input);
       }
       {
         const result = Kasen(input)
-          .unshiftIf(true, 10)
+          .unshift.if(true, 10)
           .toJs();
         expect(result).toEqual([10, 1, 2]);
       }
