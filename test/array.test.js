@@ -585,18 +585,18 @@ describe("Array", () => {
     });
   });
 
-  describe("skipUntilIf()", () => {
+  describe("skipUntil.if()", () => {
     test("ok", () => {
       const input = [1, 3, 4];
       {
         const result = Kasen(input)
-          .skipUntilIf(false, v => v % 2 === 0)
+          .skipUntil.if(false, v => v % 2 === 0)
           .toJs();
         expect(result).toEqual(input);
       }
       {
         const result = Kasen(input)
-          .skipUntilIf(true, v => v % 2 === 0)
+          .skipUntil.if(true, v => v % 2 === 0)
           .toJs();
         expect(result).toEqual([4]);
       }
