@@ -331,13 +331,6 @@ export default class KasenObject extends Collection {
     return super.setIn(keys, value);
   }
 
-  setInIf(bool, keys, value) {
-    if (!isArray(keys)) {
-      throw new TypeError("2nd argument must be Array");
-    }
-    return super.setInIf(bool, keys, value);
-  }
-
   // TODO?: flip()
 
   reduce(func, init) {

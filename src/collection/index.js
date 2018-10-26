@@ -1,5 +1,5 @@
 import { TapIterator, MapIterator, Curator, ClearCurator } from "../iterator";
-import { isNumber, isString, isFunction } from "../type";
+import { isNumber, isString, isArray, isFunction } from "../type";
 
 export default class Collection {
   constructor(coll, iter) {
@@ -35,6 +35,13 @@ export default class Collection {
     };
 
     this.clear.if = bool => (bool ? this.clear() : this);
+
+    this.setIn.if = (bool, keys, value) => {
+      if (!isArray(keys)) {
+        throw new TypeError("2nd argument must be Array");
+      }
+      return bool ? this.setIn(keys, value) : this;
+    };
   }
 
   // eslint-disable-next-line no-unused-vars
@@ -168,10 +175,6 @@ export default class Collection {
       }
     }
     return result;
-  }
-
-  setInIf(bool, keys, value) {
-    return bool ? this.setIn(keys, value) : this;
   }
 
   // TODO: updateIn()

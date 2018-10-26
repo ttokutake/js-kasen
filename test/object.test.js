@@ -551,18 +551,18 @@ describe("Object", () => {
     });
   });
 
-  describe("setInIf()", () => {
+  describe("setIn.if()", () => {
     test("ok", () => {
       const input = { a: [{}] };
       {
         const result = Kasen(input)
-          .setInIf(false, ["a", 0, "a"], 10)
+          .setIn.if(false, ["a", 0, "a"], 10)
           .toJs();
         expect(result).toEqual(input);
       }
       {
         const result = Kasen(input)
-          .setInIf(true, ["a", 0, "a"], 10)
+          .setIn.if(true, ["a", 0, "a"], 10)
           .toJs();
         expect(result).toEqual({ a: [{ a: 10 }] });
       }
