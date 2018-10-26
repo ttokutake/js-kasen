@@ -451,7 +451,7 @@ describe("Object", () => {
     });
   });
 
-  describe("merge.if() (assignIf())", () => {
+  describe("merge.if() (assign.if())", () => {
     test("ok()", () => {
       const input = { a: 1 };
       const objects = [{ b: 2 }, { c: 3 }];
@@ -469,13 +469,13 @@ describe("Object", () => {
       }
       {
         const result = Kasen(input)
-          .assignIf(false, ...objects)
+          .assign.if(false, ...objects)
           .toJs();
         expect(result).toEqual(input);
       }
       {
         const result = Kasen(input)
-          .assignIf(true, ...objects)
+          .assign.if(true, ...objects)
           .toJs();
         expect(result).toEqual({ a: 1, b: 2, c: 3 });
       }

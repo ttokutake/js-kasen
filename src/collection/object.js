@@ -83,6 +83,8 @@ export default class KasenObject extends Collection {
       }
       return bool ? this.merge(...objects) : this;
     };
+
+    this.assign.if = this.merge.if;
   }
 
   static __iterator(object) {
@@ -265,15 +267,6 @@ export default class KasenObject extends Collection {
       }
     }
     return this.merge(...objects);
-  }
-
-  assignIf(bool, ...objects) {
-    for (let i = 0, { length } = objects; i < length; i += 1) {
-      if (!isObject(objects[i])) {
-        throw new TypeError("Each argument except 1st one must be Object");
-      }
-    }
-    return this.merge.if(bool, ...objects);
   }
 
   mergeWith(func, ...objects) {
