@@ -395,18 +395,18 @@ describe("Array", () => {
     });
   });
 
-  describe("takeUntilIf()", () => {
+  describe("takeUntil.if()", () => {
     test("ok", () => {
       const input = [1, 3, 4];
       {
         const result = Kasen(input)
-          .takeUntilIf(false, v => v % 2 === 0)
+          .takeUntil.if(false, v => v % 2 === 0)
           .toJs();
         expect(result).toEqual(input);
       }
       {
         const result = Kasen(input)
-          .takeUntilIf(true, v => v % 2 === 0)
+          .takeUntil.if(true, v => v % 2 === 0)
           .toJs();
         expect(result).toEqual([1, 3]);
       }

@@ -73,6 +73,13 @@ export default class KasenArray extends Collection {
       return bool ? this.takeWhile(func) : this;
     };
 
+    this.takeUntil.if = (bool, func) => {
+      if (!isFunction(func)) {
+        throw new TypeError("2nd argument must be Function");
+      }
+      return bool ? this.takeUntil(func) : this;
+    };
+
     this.set.if = (bool, index, value) => {
       if (!isNumber(index)) {
         throw new TypeError("2nd argument must be Number");
@@ -241,13 +248,6 @@ export default class KasenArray extends Collection {
 
   static takeUntil(array, func) {
     return this.takeWhile(array, (v, i) => !func(v, i));
-  }
-
-  takeUntilIf(bool, func) {
-    if (!isFunction(func)) {
-      throw new TypeError("2nd argument must be Function");
-    }
-    return bool ? this.takeUntil(func) : this;
   }
 
   skip(num) {
