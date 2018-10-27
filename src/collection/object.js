@@ -121,7 +121,8 @@ export default class KasenObject extends Collection {
     if (!isFunction(func)) {
       throw new TypeError("1st argument must be Function");
     }
-    return super.filter(FilterIterator, func);
+    this.__pile(FilterIterator, func);
+    return this;
   }
 
   static filter(object, func) {
@@ -147,7 +148,7 @@ export default class KasenObject extends Collection {
       throw new TypeError("1st argument must be Array");
     }
     const func = (_value, key) => keys.some(k => k === key);
-    return super.filter(FilterIterator, func);
+    return this.filter(func);
   }
 
   static pick(object, keys) {

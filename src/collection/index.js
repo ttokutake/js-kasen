@@ -102,9 +102,9 @@ export default class Collection {
     return this.map(coll, v => v[key]);
   }
 
-  filter(Iter, func) {
-    this.__pile(Iter, func);
-    return this;
+  // eslint-disable-next-line class-methods-use-this, no-unused-vars
+  filter(_func) {
+    throw new Error("not implemented");
   }
 
   // eslint-disable-next-line no-unused-vars

@@ -176,7 +176,8 @@ export default class KasenArray extends Collection {
     if (!isFunction(func)) {
       throw new TypeError("1st argument must be Function");
     }
-    return super.filter(FilterIterator, func);
+    this.__pile(FilterIterator, func);
+    return this;
   }
 
   static filter(array, func) {
