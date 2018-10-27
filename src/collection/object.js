@@ -106,7 +106,11 @@ export default class KasenObject extends Collection {
   }
 
   static copy(object) {
-    return this.filter(object, () => true);
+    const result = {};
+    Object.keys(object).forEach(key => {
+      result[key] = object[key];
+    });
+    return result;
   }
 
   static map(object, func) {
