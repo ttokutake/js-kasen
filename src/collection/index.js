@@ -131,9 +131,9 @@ export default class Collection {
     return this.update(coll, key, () => value);
   }
 
-  update(Iter, func) {
-    this.__pile(Iter, func);
-    return this;
+  // eslint-disable-next-line class-methods-use-this, no-unused-vars
+  update(_func) {
+    throw new Error("not implemented");
   }
 
   // eslint-disable-next-line no-unused-vars
@@ -141,9 +141,9 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
-  delete(Iter, func) {
-    this.__pile(Iter, func);
-    return this;
+  // eslint-disable-next-line class-methods-use-this, no-unused-vars
+  delete(_func) {
+    throw new Error("not implemented");
   }
 
   // eslint-disable-next-line no-unused-vars

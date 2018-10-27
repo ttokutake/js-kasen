@@ -398,7 +398,8 @@ export default class KasenArray extends Collection {
       }
       return array;
     };
-    return super.update(Curator, curate);
+    this.__pile(Curator, curate);
+    return this;
   }
 
   static update(array, index, func) {
@@ -425,7 +426,8 @@ export default class KasenArray extends Collection {
       }
       return array;
     };
-    return super.delete(Curator, curate);
+    this.__pile(Curator, curate);
+    return this;
   }
 
   static delete(array, index) {

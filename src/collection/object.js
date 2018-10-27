@@ -168,7 +168,8 @@ export default class KasenObject extends Collection {
       object[key] = func(object[key]);
       return object;
     };
-    return super.update(Curator, curate);
+    this.__pile(Curator, curate);
+    return this;
   }
 
   static update(object, key, func) {
@@ -186,7 +187,8 @@ export default class KasenObject extends Collection {
       delete object[key];
       return object;
     };
-    return super.delete(Curator, curate);
+    this.__pile(Curator, curate);
+    return this;
   }
 
   static delete(object, key) {
