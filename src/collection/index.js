@@ -1,5 +1,6 @@
 import { TapIterator, MapIterator, Curator, ClearCurator } from "../iterator";
 import { isNumber, isString, isArray, isFunction } from "../type";
+import { copyArray, copyObject } from "../utils";
 
 export default class Collection {
   constructor(coll, iter) {
@@ -177,15 +178,16 @@ export default class Collection {
     return this;
   }
 
-  // TODO: Need to be immutable
-  static setIn(array, keys, value) {
-    const result = this.copy(array);
+  static setIn(coll, keys, value) {
+    const result = this.copy(coll);
     let nextColl = result;
     for (let i = 0, { length } = keys; i < length; i += 1) {
       const key = keys[i];
       if (i >= length - 1) {
         nextColl[key] = value;
       } else {
+        const c = nextColl[key];
+        nextColl[key] = isArray(c) ? copyArray(c) : copyObject(c);
         nextColl = nextColl[key];
       }
     }

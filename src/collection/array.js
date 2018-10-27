@@ -2,6 +2,7 @@ import Collection from ".";
 import { OriginIterator, Curator } from "../iterator";
 import { FilterIterator, ReverseIterator } from "../iterator/array";
 import { isNumber, isArray, isFunction } from "../type";
+import { copyArray } from "../utils";
 
 class ArrayIterator extends OriginIterator {
   constructor(array) {
@@ -165,7 +166,7 @@ export default class KasenArray extends Collection {
   }
 
   static copy(array) {
-    return array.slice();
+    return copyArray(array);
   }
 
   static map(array, func) {
