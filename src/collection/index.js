@@ -113,6 +113,9 @@ export default class Collection {
   }
 
   filterNot(func) {
+    if (!isFunction(func)) {
+      throw new TypeError("1st argument must be Function");
+    }
     return this.filter((v, k) => !func(v, k));
   }
 
