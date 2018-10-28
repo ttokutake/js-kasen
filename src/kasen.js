@@ -313,6 +313,20 @@ Kasen.setIn = (coll, keys, value) => {
   return Coll.setIn(coll, keys, value);
 };
 
+Kasen.updateIn = (coll, keys, func) => {
+  const Coll = choose(coll);
+  if (!Coll) {
+    throw new TypeError("1st argument must be Array or Object");
+  }
+  if (!isArray(keys)) {
+    throw new TypeError("2nd argument must be Array");
+  }
+  if (!isFunction(func)) {
+    throw new TypeError("3rd argument must be Function");
+  }
+  return Coll.updateIn(coll, keys, func);
+};
+
 Kasen.flatten = array => {
   if (!isArray(array)) {
     throw new TypeError("1st argument must be Array");

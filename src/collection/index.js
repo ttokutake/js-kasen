@@ -43,6 +43,16 @@ export default class Collection {
       }
       return bool ? this.setIn(keys, value) : this;
     };
+
+    this.updateIn.if = (bool, keys, func) => {
+      if (!isArray(keys)) {
+        throw new TypeError("2nd argument must be Array");
+      }
+      if (!isFunction(func)) {
+        throw new TypeError("3rd argument must be Function");
+      }
+      return bool ? this.updateIn(keys, func) : this;
+    };
   }
 
   // eslint-disable-next-line no-unused-vars
@@ -157,9 +167,25 @@ export default class Collection {
     return this;
   }
 
+  // EXPERIMENTAL
   setIn(keys, value) {
     if (!isArray(keys)) {
       throw new TypeError("1st argument must be Array");
+    }
+    return this.updateIn(keys, () => value);
+  }
+
+  static setIn(coll, keys, value) {
+    return this.updateIn(coll, keys, () => value);
+  }
+
+  // EXPERIMENTAL
+  updateIn(keys, func) {
+    if (!isArray(keys)) {
+      throw new TypeError("1st argument must be Array");
+    }
+    if (!isFunction(func)) {
+      throw new TypeError("2nd argument must be Function");
     }
     const curate = iter => {
       const coll = iter.Origin.curate(iter);
@@ -167,8 +193,10 @@ export default class Collection {
       for (let i = 0, { length } = keys; i < length; i += 1) {
         const key = keys[i];
         if (i >= length - 1) {
-          nextColl[key] = value;
+          nextColl[key] = func(nextColl[key], key);
         } else {
+          const c = nextColl[key];
+          nextColl[key] = isArray(c) ? copyArray(c) : copyObject(c);
           nextColl = nextColl[key];
         }
       }
@@ -178,13 +206,13 @@ export default class Collection {
     return this;
   }
 
-  static setIn(coll, keys, value) {
+  static updateIn(coll, keys, func) {
     const result = this.copy(coll);
     let nextColl = result;
     for (let i = 0, { length } = keys; i < length; i += 1) {
       const key = keys[i];
       if (i >= length - 1) {
-        nextColl[key] = value;
+        nextColl[key] = func(nextColl[key], key);
       } else {
         const c = nextColl[key];
         nextColl[key] = isArray(c) ? copyArray(c) : copyObject(c);
@@ -193,8 +221,6 @@ export default class Collection {
     }
     return result;
   }
-
-  // TODO: updateIn()
 
   // TODO: deleteIn()
 

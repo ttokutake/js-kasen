@@ -574,6 +574,44 @@ describe("Object", () => {
     });
   });
 
+  describe("updateIn()", () => {
+    test("ok", () => {
+      const ios = [
+        [{ a: 1 }, ["a"], { a: 11 }],
+        [{ a: [1] }, ["a", 0], { a: [11] }],
+        [{ a: [{ a: 1 }] }, ["a", 0, "a"], { a: [{ a: 11 }] }]
+      ];
+      ios.forEach(([input, keys, expected]) => {
+        const result = Kasen(input)
+          .updateIn(keys, v => v + 10)
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+      ios.forEach(([input, keys, expected]) => {
+        const result = Kasen.updateIn(input, keys, v => v + 10);
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
+  describe("updateIn.if()", () => {
+    test("ok", () => {
+      const input = { a: [{ a: 1 }] };
+      {
+        const result = Kasen(input)
+          .updateIn.if(false, ["a", 0, "a"], v => v + 10)
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const result = Kasen(input)
+          .updateIn.if(true, ["a", 0, "a"], v => v + 10)
+          .toJs();
+        expect(result).toEqual({ a: [{ a: 11 }] });
+      }
+    });
+  });
+
   describe("toJs()", () => {
     test("ok", () => {
       const inputs = [{}, { a: 1 }, { a: 1, b: 2 }, { a: 1, b: 2, c: 3 }];

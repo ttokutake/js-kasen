@@ -1046,6 +1046,44 @@ describe("Array", () => {
     });
   });
 
+  describe("updateIn()", () => {
+    test("ok", () => {
+      const ios = [
+        [[1], [0], [11]],
+        [[{ a: 1 }], [0, "a"], [{ a: 11 }]],
+        [[{ a: [1] }], [0, "a", 0], [{ a: [11] }]]
+      ];
+      ios.forEach(([input, keys, expected]) => {
+        const result = Kasen(input)
+          .updateIn(keys, v => v + 10)
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+      ios.forEach(([input, keys, expected]) => {
+        const result = Kasen.updateIn(input, keys, v => v + 10);
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
+  describe("updateIn.if()", () => {
+    test("ok", () => {
+      const input = [{ a: [1] }];
+      {
+        const result = Kasen(input)
+          .updateIn.if(false, [0, "a", 0], v => v + 10)
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const result = Kasen(input)
+          .updateIn.if(true, [0, "a", 0], v => v + 10)
+          .toJs();
+        expect(result).toEqual([{ a: [11] }]);
+      }
+    });
+  });
+
   describe("flatten()", () => {
     test("ok", () => {
       const ios = [
