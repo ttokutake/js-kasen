@@ -1084,6 +1084,44 @@ describe("Array", () => {
     });
   });
 
+  describe("deleteIn()", () => {
+    test("ok", () => {
+      const ios = [
+        [[1], [0], []],
+        [[{ a: 1 }], [0, "a"], [{}]],
+        [[{ a: [1] }], [0, "a", 0], [{ a: [] }]]
+      ];
+      ios.forEach(([input, keys, expected]) => {
+        const result = Kasen(input)
+          .deleteIn(keys)
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+      ios.forEach(([input, keys, expected]) => {
+        const result = Kasen.deleteIn(input, keys);
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
+  describe("deleteIn.if()", () => {
+    test("ok", () => {
+      const input = [{ a: [1] }];
+      {
+        const result = Kasen(input)
+          .deleteIn.if(false, [0, "a", 0])
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const result = Kasen(input)
+          .deleteIn.if(true, [0, "a", 0])
+          .toJs();
+        expect(result).toEqual([{ a: [] }]);
+      }
+    });
+  });
+
   describe("flatten()", () => {
     test("ok", () => {
       const ios = [

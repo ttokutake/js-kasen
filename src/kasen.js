@@ -327,6 +327,17 @@ Kasen.updateIn = (coll, keys, func) => {
   return Coll.updateIn(coll, keys, func);
 };
 
+Kasen.deleteIn = (coll, keys) => {
+  const Coll = choose(coll);
+  if (!Coll) {
+    throw new TypeError("1st argument must be Array or Object");
+  }
+  if (!isArray(keys)) {
+    throw new TypeError("2nd argument must be Array");
+  }
+  return Coll.deleteIn(coll, keys);
+};
+
 Kasen.flatten = array => {
   if (!isArray(array)) {
     throw new TypeError("1st argument must be Array");

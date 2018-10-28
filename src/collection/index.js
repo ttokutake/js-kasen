@@ -53,6 +53,13 @@ export default class Collection {
       }
       return bool ? this.updateIn(keys, func) : this;
     };
+
+    this.deleteIn.if = (bool, keys) => {
+      if (!isArray(keys)) {
+        throw new TypeError("2nd argument must be Array");
+      }
+      return bool ? this.deleteIn(keys) : this;
+    };
   }
 
   // eslint-disable-next-line no-unused-vars
@@ -222,7 +229,53 @@ export default class Collection {
     return result;
   }
 
-  // TODO: deleteIn()
+  // EXPERIMENTAL
+  deleteIn(keys) {
+    if (!isArray(keys)) {
+      throw new TypeError("1st argument must be Array");
+    }
+    const curate = iter => {
+      const coll = iter.Origin.curate(iter);
+      let nextColl = coll;
+      for (let i = 0, { length } = keys; i < length; i += 1) {
+        const key = keys[i];
+        if (i >= length - 1) {
+          if (isArray(nextColl)) {
+            nextColl.splice(key, 1);
+          } else {
+            delete nextColl[key];
+          }
+        } else {
+          const c = nextColl[key];
+          nextColl[key] = isArray(c) ? copyArray(c) : copyObject(c);
+          nextColl = nextColl[key];
+        }
+      }
+      return coll;
+    };
+    this.__pile(Curator, curate);
+    return this;
+  }
+
+  static deleteIn(coll, keys) {
+    const result = this.copy(coll);
+    let nextColl = result;
+    for (let i = 0, { length } = keys; i < length; i += 1) {
+      const key = keys[i];
+      if (i >= length - 1) {
+        if (isArray(nextColl)) {
+          nextColl.splice(key, 1);
+        } else {
+          delete nextColl[key];
+        }
+      } else {
+        const c = nextColl[key];
+        nextColl[key] = isArray(c) ? copyArray(c) : copyObject(c);
+        nextColl = nextColl[key];
+      }
+    }
+    return result;
+  }
 
   // TODO: mergeIn()
   // TODO: mergeDeepIn()
