@@ -295,7 +295,11 @@ export default class KasenObject extends Collection {
     return result;
   }
 
-  // TODO?: flip()
+  // TODO: mergeDeep()
+  // TODO: mergeDeepWith()
+
+  // TODO: flip()
+  // TODO: flipWith()
 
   static reduce(object, func, init) {
     const keys = Object.keys(object);

@@ -277,9 +277,6 @@ export default class Collection {
     return result;
   }
 
-  // TODO: mergeIn()
-  // TODO: mergeDeepIn()
-
   /* consumer */
 
   // TODO: isEmpty()

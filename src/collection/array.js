@@ -481,6 +481,7 @@ export default class KasenArray extends Collection {
     return result;
   }
 
+  // TODO: Allow to accept multiple values
   push(value) {
     const curate = iter => {
       const array = ArrayIterator.curate(iter);
@@ -513,6 +514,7 @@ export default class KasenArray extends Collection {
     return result;
   }
 
+  // TODO: Allow to accept multiple values
   unshift(value) {
     const curate = iter => {
       const array = ArrayIterator.curate(iter);
@@ -613,25 +615,26 @@ export default class KasenArray extends Collection {
   // TODO: zipAll()
   // TODO: zipWith()
 
-  // TODO: unzip()
-  // TODO: unzipAll()
-
   // TODO: sort()
   // TODO: sortBy()
 
-  // TODO: interpose()
-
-  // TODO: interleave()
+  // TODO?: interpose()
+  // TODO?: interleave()
 
   // TODO: splice()
 
   // TODO: distinct() / unique() from Scala
+  // TODO: distinctBy() / uniqueBy()
 
   // TODO: chunk() (paging method)
 
   // TODO: sliding() from Scala
 
+  // TODO: static range.kasen()
   // TODO: static range()
+
+  // TODO: static repeat.kasen()
+  // TODO: static repeat()
 
   /* consumer */
 
@@ -651,7 +654,9 @@ export default class KasenArray extends Collection {
   // TODO: scan() from Scala
   // TODO: scanRight() from Scala
 
-  // TODO: splitAt() from Scala
+  // TODO?: splitAt() from Scala
+  // TODO?: unzip() from Scala
+  // TODO?: unzipAll() from Scala?
 
   static every(array, func) {
     return array.every(func);
@@ -708,9 +713,8 @@ export default class KasenArray extends Collection {
   // TODO: findIndexOf()
   // TODO: findLastIndexOf()
 
-  // TODO?: startsWith()
-
-  // TODO?: endsWith()
+  // TODO?: startsWith() from Scala
+  // TODO?: endsWith() from Scala
 
   static forEach(array, func) {
     return array.forEach(func);
