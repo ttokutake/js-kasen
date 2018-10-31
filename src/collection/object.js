@@ -2,7 +2,6 @@ import Collection from ".";
 import { OriginIterator, Curator } from "../iterator";
 import { FilterIterator } from "../iterator/object";
 import { isNumber, isString, isObject, isArray, isFunction } from "../type";
-import { copyObject } from "../utils";
 
 class ObjectIterator extends OriginIterator {
   constructor(object) {
@@ -107,7 +106,11 @@ export default class KasenObject extends Collection {
   }
 
   static copy(object) {
-    return copyObject(object);
+    const result = {};
+    Object.keys(object).forEach(key => {
+      result[key] = object[key];
+    });
+    return result;
   }
 
   static map(object, func) {

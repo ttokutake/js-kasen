@@ -1,6 +1,23 @@
 import { TapIterator, MapIterator, Curator, ClearCurator } from "../iterator";
-import { isNumber, isString, isArray, isFunction } from "../type";
-import { copyArray, copyObject } from "../utils";
+import { isNumber, isString, isObject, isArray, isFunction } from "../type";
+
+function copy(type, coll) {
+  switch (type) {
+    case "array": {
+      return isArray(coll) ? coll.slice() : [];
+    }
+    default: {
+      if (!isObject(coll)) {
+        return {};
+      }
+      const object = {};
+      Object.keys(coll).forEach(key => {
+        object[key] = coll[key];
+      });
+      return object;
+    }
+  }
+}
 
 export default class Collection {
   constructor(coll, iter) {
@@ -202,8 +219,10 @@ export default class Collection {
         if (i >= length - 1) {
           nextColl[key] = func(nextColl[key], key);
         } else {
-          const c = nextColl[key];
-          nextColl[key] = isArray(c) ? copyArray(c) : copyObject(c);
+          nextColl[key] = copy(
+            isNumber(keys[i + 1]) ? "array" : "object",
+            nextColl[key]
+          );
           nextColl = nextColl[key];
         }
       }
@@ -221,8 +240,10 @@ export default class Collection {
       if (i >= length - 1) {
         nextColl[key] = func(nextColl[key], key);
       } else {
-        const c = nextColl[key];
-        nextColl[key] = isArray(c) ? copyArray(c) : copyObject(c);
+        nextColl[key] = copy(
+          isNumber(keys[i + 1]) ? "array" : "object",
+          nextColl[key]
+        );
         nextColl = nextColl[key];
       }
     }
@@ -246,8 +267,10 @@ export default class Collection {
             delete nextColl[key];
           }
         } else {
-          const c = nextColl[key];
-          nextColl[key] = isArray(c) ? copyArray(c) : copyObject(c);
+          nextColl[key] = copy(
+            isNumber(keys[i + 1]) ? "array" : "object",
+            nextColl[key]
+          );
           nextColl = nextColl[key];
         }
       }
@@ -269,8 +292,10 @@ export default class Collection {
           delete nextColl[key];
         }
       } else {
-        const c = nextColl[key];
-        nextColl[key] = isArray(c) ? copyArray(c) : copyObject(c);
+        nextColl[key] = copy(
+          isNumber(keys[i + 1]) ? "array" : "object",
+          nextColl[key]
+        );
         nextColl = nextColl[key];
       }
     }
