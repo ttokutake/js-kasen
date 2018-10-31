@@ -142,11 +142,12 @@ export default class KasenArray extends Collection {
       return bool ? this.insert(index, value) : this;
     };
 
-    this.push.if = (bool, value) => (bool ? this.push(value) : this);
+    this.push.if = (bool, ...values) => (bool ? this.push(...values) : this);
 
     this.pop.if = bool => (bool ? this.pop() : this);
 
-    this.unshift.if = (bool, value) => (bool ? this.unshift(value) : this);
+    this.unshift.if = (bool, ...values) =>
+      bool ? this.unshift(...values) : this;
 
     this.shift.if = bool => (bool ? this.shift() : this);
 
@@ -480,21 +481,17 @@ export default class KasenArray extends Collection {
     return result;
   }
 
-  // TODO: Allow to accept multiple values
-  push(value) {
+  push(...values) {
     const curate = iter => {
       const array = ArrayIterator.curate(iter);
-      array.push(value);
-      return array;
+      return array.concat(values);
     };
     this.__pile(Curator, curate);
     return this;
   }
 
-  static push(array, value) {
-    const result = this.copy(array);
-    result.push(value);
-    return result;
+  static push(array, values) {
+    return array.concat(values);
   }
 
   pop() {
@@ -513,21 +510,17 @@ export default class KasenArray extends Collection {
     return result;
   }
 
-  // TODO: Allow to accept multiple values
-  unshift(value) {
+  unshift(...values) {
     const curate = iter => {
       const array = ArrayIterator.curate(iter);
-      array.unshift(value);
-      return array;
+      return values.concat(array);
     };
     this.__pile(Curator, curate);
     return this;
   }
 
-  static unshift(array, value) {
-    const result = this.copy(array);
-    result.unshift(value);
-    return result;
+  static unshift(array, values) {
+    return values.concat(array);
   }
 
   shift() {

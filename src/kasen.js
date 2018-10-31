@@ -274,11 +274,11 @@ Kasen.insert = (array, index, value) => {
   return KasenArray.insert(array, index, value);
 };
 
-Kasen.push = (array, value) => {
+Kasen.push = (array, ...values) => {
   if (!isArray(array)) {
     throw new TypeError("1st argument must be Array");
   }
-  return KasenArray.push(array, value);
+  return KasenArray.push(array, values);
 };
 
 Kasen.pop = array => {
@@ -288,11 +288,11 @@ Kasen.pop = array => {
   return KasenArray.pop(array);
 };
 
-Kasen.unshift = (array, value) => {
+Kasen.unshift = (array, ...values) => {
   if (!isArray(array)) {
     throw new TypeError("1st argument must be Array");
   }
-  return KasenArray.unshift(array, value);
+  return KasenArray.unshift(array, values);
 };
 
 Kasen.shift = array => {

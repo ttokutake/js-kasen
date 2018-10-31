@@ -874,15 +874,22 @@ describe("Array", () => {
 
   describe("push()", () => {
     test("ok", () => {
-      const ios = [[[], [10]], [[1], [1, 10]], [[1, 2], [1, 2, 10]]];
-      ios.forEach(([input, expected]) => {
+      const ios = [
+        [[], [10], [10]],
+        [[], [10, 11], [10, 11]],
+        [[1], [10], [1, 10]],
+        [[1], [10, 11], [1, 10, 11]],
+        [[1, 2], [10], [1, 2, 10]],
+        [[1, 2], [10, 11], [1, 2, 10, 11]]
+      ];
+      ios.forEach(([input, args, expected]) => {
         const result = Kasen(input)
-          .push(10)
+          .push(...args)
           .toJs();
         expect(result).toEqual(expected);
       });
-      ios.forEach(([input, expected]) => {
-        const result = Kasen.push(input, 10);
+      ios.forEach(([input, args, expected]) => {
+        const result = Kasen.push(input, ...args);
         expect(result).toEqual(expected);
       });
     });
@@ -893,15 +900,15 @@ describe("Array", () => {
       const input = [1, 2];
       {
         const result = Kasen(input)
-          .push.if(false, 10)
+          .push.if(false, 10, 11)
           .toJs();
         expect(result).toEqual(input);
       }
       {
         const result = Kasen(input)
-          .push.if(true, 10)
+          .push.if(true, 10, 11)
           .toJs();
-        expect(result).toEqual([1, 2, 10]);
+        expect(result).toEqual([1, 2, 10, 11]);
       }
     });
   });
@@ -942,15 +949,22 @@ describe("Array", () => {
 
   describe("unshift()", () => {
     test("ok", () => {
-      const ios = [[[], [10]], [[1], [10, 1]], [[1, 2], [10, 1, 2]]];
-      ios.forEach(([input, expected]) => {
+      const ios = [
+        [[], [10], [10]],
+        [[], [10, 11], [10, 11]],
+        [[1], [10], [10, 1]],
+        [[1], [10, 11], [10, 11, 1]],
+        [[1, 2], [10], [10, 1, 2]],
+        [[1, 2], [10, 11], [10, 11, 1, 2]]
+      ];
+      ios.forEach(([input, args, expected]) => {
         const result = Kasen(input)
-          .unshift(10)
+          .unshift(...args)
           .toJs();
         expect(result).toEqual(expected);
       });
-      ios.forEach(([input, expected]) => {
-        const result = Kasen.unshift(input, 10);
+      ios.forEach(([input, args, expected]) => {
+        const result = Kasen.unshift(input, ...args);
         expect(result).toEqual(expected);
       });
     });
@@ -961,15 +975,15 @@ describe("Array", () => {
       const input = [1, 2];
       {
         const result = Kasen(input)
-          .unshift.if(false, 10)
+          .unshift.if(false, 10, 11)
           .toJs();
         expect(result).toEqual(input);
       }
       {
         const result = Kasen(input)
-          .unshift.if(true, 10)
+          .unshift.if(true, 10, 11)
           .toJs();
-        expect(result).toEqual([10, 1, 2]);
+        expect(result).toEqual([10, 11, 1, 2]);
       }
     });
   });
