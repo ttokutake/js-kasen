@@ -304,7 +304,10 @@ export default class Collection {
 
   /* consumer */
 
-  // TODO: isEmpty()
+  isEmpty() {
+    const finalize = iter => iter.next().done;
+    return this.__consume(finalize);
+  }
 
   // TODO: isSubset()
 

@@ -612,6 +612,16 @@ describe("Object", () => {
     });
   });
 
+  describe("isEmpty()", () => {
+    test("ok", () => {
+      const inputs = [[{}, true], [{ a: 1 }, false], [{ a: 1, b: 2 }, false]];
+      inputs.forEach(([input, expected]) => {
+        const result = Kasen(input).isEmpty();
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
   describe("toJs()", () => {
     test("ok", () => {
       const inputs = [{}, { a: 1 }, { a: 1, b: 2 }, { a: 1, b: 2, c: 3 }];

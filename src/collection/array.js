@@ -630,6 +630,9 @@ export default class KasenArray extends Collection {
 
   /* consumer */
 
+  // TODO?: startsWith() from Scala
+  // TODO?: endsWith() from Scala
+
   // TODO: first() / head()
 
   // TODO: tail() === shift() from Scala
@@ -704,9 +707,6 @@ export default class KasenArray extends Collection {
 
   // TODO: findIndexOf()
   // TODO: findLastIndexOf()
-
-  // TODO?: startsWith() from Scala
-  // TODO?: endsWith() from Scala
 
   static forEach(array, func) {
     return array.forEach(func);

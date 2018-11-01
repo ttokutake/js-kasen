@@ -1225,6 +1225,16 @@ describe("Array", () => {
     });
   });
 
+  describe("isEmpty()", () => {
+    test("ok", () => {
+      const inputs = [[[], true], [[1], false], [[1, 2], false]];
+      inputs.forEach(([input, expected]) => {
+        const result = Kasen(input).isEmpty();
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
   describe("toJs()", () => {
     test("ok", () => {
       const inputs = [[], [1], [1, 2], [1, 2, 3]];
