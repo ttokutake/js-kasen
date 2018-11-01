@@ -619,6 +619,10 @@ describe("Object", () => {
         const result = Kasen(input).isEmpty();
         expect(result).toEqual(expected);
       });
+      inputs.forEach(([input, expected]) => {
+        const result = Kasen.isEmpty(input);
+        expect(result).toEqual(expected);
+      });
     });
   });
 

@@ -630,6 +630,10 @@ export default class KasenArray extends Collection {
 
   /* consumer */
 
+  static isEmpty(array) {
+    return !array.length;
+  }
+
   // TODO?: startsWith() from Scala
   // TODO?: endsWith() from Scala
 

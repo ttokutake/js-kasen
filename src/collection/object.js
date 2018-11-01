@@ -304,6 +304,12 @@ export default class KasenObject extends Collection {
   // TODO: flip()
   // TODO: flipWith()
 
+  /* consumer */
+
+  static isEmpty(object) {
+    return !Object.keys(object).length;
+  }
+
   static reduce(object, func, init) {
     const keys = Object.keys(object);
     let acc = init;

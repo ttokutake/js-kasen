@@ -309,6 +309,11 @@ export default class Collection {
     return this.__consume(finalize);
   }
 
+  // eslint-disable-next-line no-unused-vars
+  static isEmpty(_coll) {
+    throw new Error("not implemented");
+  }
+
   // TODO: isSubset()
 
   // TODO: isSuperset()

@@ -355,6 +355,14 @@ Kasen.flatMap = (array, func) => {
   return KasenArray.flatMap(array, func);
 };
 
+Kasen.isEmpty = coll => {
+  const Coll = choose(coll);
+  if (!Coll) {
+    throw new TypeError("1st argument must be Array or Object");
+  }
+  return Coll.isEmpty(coll);
+};
+
 Kasen.reduce = (coll, func, init) => {
   const Coll = choose(coll);
   if (!Coll) {
