@@ -626,6 +626,16 @@ describe("Object", () => {
     });
   });
 
+  describe("count()", () => {
+    test("ok", () => {
+      const inputs = [[{}, 0], [{ a: 1 }, 1], [{ a: 1, b: 2 }, 2]];
+      inputs.forEach(([input, expected]) => {
+        const result = Kasen(input).count();
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
   describe("toJs()", () => {
     test("ok", () => {
       const inputs = [{}, { a: 1 }, { a: 1, b: 2 }, { a: 1, b: 2, c: 3 }];

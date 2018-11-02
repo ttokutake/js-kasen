@@ -1239,6 +1239,16 @@ describe("Array", () => {
     });
   });
 
+  describe("count()", () => {
+    test("ok", () => {
+      const inputs = [[[], 0], [[1], 1], [[1, 2], 2]];
+      inputs.forEach(([input, expected]) => {
+        const result = Kasen(input).count();
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
   describe("toJs()", () => {
     test("ok", () => {
       const inputs = [[], [1], [1, 2], [1, 2, 3]];

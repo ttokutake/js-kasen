@@ -314,11 +314,21 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
-  // TODO: isSubset()
+  // TODO?: isSubset()
 
-  // TODO: isSuperset()
+  // TODO?: isSuperset()
 
-  // TODO: count()
+  count() {
+    const finalize = iter => {
+      let counter = 0;
+      while (!iter.next().done) {
+        counter += 1;
+      }
+      return counter;
+    };
+    return this.__consume(finalize);
+  }
+
   // TODO: countBy()
 
   // TODO: get()
