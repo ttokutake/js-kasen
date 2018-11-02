@@ -310,6 +310,10 @@ export default class KasenObject extends Collection {
     return !Object.keys(object).length;
   }
 
+  static count(object) {
+    return Object.keys(object).length;
+  }
+
   static reduce(object, func, init) {
     const keys = Object.keys(object);
     let acc = init;

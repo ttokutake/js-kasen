@@ -1246,6 +1246,10 @@ describe("Array", () => {
         const result = Kasen(input).count();
         expect(result).toEqual(expected);
       });
+      inputs.forEach(([input, expected]) => {
+        const result = Kasen.count(input);
+        expect(result).toEqual(expected);
+      });
     });
   });
 

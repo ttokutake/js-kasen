@@ -329,6 +329,11 @@ export default class Collection {
     return this.__consume(finalize);
   }
 
+  // eslint-disable-next-line no-unused-vars
+  static count(_coll) {
+    throw new Error("not implemented");
+  }
+
   // TODO: countBy()
 
   // TODO: get()

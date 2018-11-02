@@ -634,6 +634,10 @@ export default class KasenArray extends Collection {
     return !array.length;
   }
 
+  static count(array) {
+    return array.length;
+  }
+
   // TODO?: startsWith() from Scala
   // TODO?: endsWith() from Scala
 
