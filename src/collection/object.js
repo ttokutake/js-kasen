@@ -327,7 +327,17 @@ export default class KasenObject extends Collection {
     if (!(isNumber(key) || isString(key))) {
       throw new TypeError("1st argument must be Number or String");
     }
-    return super.get(key, protection);
+    const finalize = iter => {
+      let k;
+      let value;
+      while (!({ key: k, value } = iter.next()).done) {
+        if (k === key) {
+          return value;
+        }
+      }
+      return protection;
+    };
+    return this.__consume(finalize);
   }
 
   static get(object, key, protection) {

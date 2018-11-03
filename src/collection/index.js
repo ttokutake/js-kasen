@@ -342,18 +342,9 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
-  get(key, protection) {
-    const finalize = iter => {
-      let k;
-      let value;
-      while (!({ key: k, value } = iter.next()).done) {
-        if (k === key) {
-          return value;
-        }
-      }
-      return protection;
-    };
-    return this.__consume(finalize);
+  // eslint-disable-next-line class-methods-use-this, no-unused-vars
+  get(_key, _protection) {
+    throw new Error("not implemented");
   }
 
   // eslint-disable-next-line no-unused-vars

@@ -652,12 +652,15 @@ export default class KasenArray extends Collection {
     if (!isNumber(index)) {
       throw new TypeError("1st argument must be Number");
     }
-    return super.get(index, protection);
+    const array = this.__consume(null);
+    return this.constructor.get(array, index, protection);
   }
 
   static get(array, index, protection) {
-    if (index >= 0 && index < array.length) {
-      return array[index];
+    const { length } = array;
+    if (-length <= index && index < length) {
+      const key = correctIndex(index, length);
+      return array[key];
     }
     return protection;
   }
