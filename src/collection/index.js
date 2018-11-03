@@ -318,11 +318,19 @@ export default class Collection {
 
   // TODO?: isSuperset()
 
-  count() {
+  count(func) {
+    if (!(isFunction(func) || func === undefined)) {
+      throw new TypeError("1st argument must be Function or Undefined");
+    }
+    const fn = func || (() => true);
     const finalize = iter => {
       let counter = 0;
-      while (!iter.next().done) {
-        counter += 1;
+      let key;
+      let value;
+      while (!({ key, value } = iter.next()).done) {
+        if (fn(value, key)) {
+          counter += 1;
+        }
       }
       return counter;
     };
@@ -330,11 +338,9 @@ export default class Collection {
   }
 
   // eslint-disable-next-line no-unused-vars
-  static count(_coll) {
+  static count(_coll, _func) {
     throw new Error("not implemented");
   }
-
-  // TODO: countBy()
 
   // TODO: get()
 

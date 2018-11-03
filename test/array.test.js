@@ -1241,13 +1241,24 @@ describe("Array", () => {
 
   describe("count()", () => {
     test("ok", () => {
-      const inputs = [[[], 0], [[1], 1], [[1, 2], 2]];
-      inputs.forEach(([input, expected]) => {
-        const result = Kasen(input).count();
+      const inputs = [
+        [[], undefined, 0],
+        [[], v => v % 2 === 1, 0],
+        [[1], undefined, 1],
+        [[1], v => v % 2 === 1, 1],
+        [[1, 2], undefined, 2],
+        [[1, 2], v => v % 2 === 1, 1],
+        [[1, 2, 3], undefined, 3],
+        [[1, 2, 3], v => v % 2 === 1, 2]
+      ];
+      inputs.forEach(([input, func, expected]) => {
+        const result =
+          func === undefined ? Kasen(input).count() : Kasen(input).count(func);
         expect(result).toEqual(expected);
       });
-      inputs.forEach(([input, expected]) => {
-        const result = Kasen.count(input);
+      inputs.forEach(([input, func, expected]) => {
+        const result =
+          func === undefined ? Kasen.count(input) : Kasen.count(input, func);
         expect(result).toEqual(expected);
       });
     });

@@ -634,8 +634,17 @@ export default class KasenArray extends Collection {
     return !array.length;
   }
 
-  static count(array) {
-    return array.length;
+  static count(array, func) {
+    if (func === undefined) {
+      return array.length;
+    }
+    let counter = 0;
+    array.forEach((value, key) => {
+      if (func(value, key)) {
+        counter += 1;
+      }
+    });
+    return counter;
   }
 
   // TODO?: startsWith() from Scala

@@ -363,12 +363,15 @@ Kasen.isEmpty = coll => {
   return Coll.isEmpty(coll);
 };
 
-Kasen.count = coll => {
+Kasen.count = (coll, func) => {
   const Coll = choose(coll);
   if (!Coll) {
     throw new TypeError("1st argument must be Array or Object");
   }
-  return Coll.count(coll);
+  if (!(isFunction(func) || func === undefined)) {
+    throw new TypeError("2nd argument must be Function or Undefined");
+  }
+  return Coll.count(coll, func);
 };
 
 Kasen.reduce = (coll, func, init) => {
