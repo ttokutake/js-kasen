@@ -607,16 +607,14 @@ export default class KasenArray extends Collection {
   // TODO: zipAll()
   // TODO: zipWith()
 
-  // TODO: sort()
-  // TODO: sortBy()
+  // TODO: sort(func)
 
   // TODO?: interpose()
   // TODO?: interleave()
 
   // TODO: splice()
 
-  // TODO: distinct() / unique() from Scala
-  // TODO: distinctBy() / uniqueBy()
+  // TODO: distinct(func) / unique(func) from Scala
 
   // TODO: chunk() (paging method)
 

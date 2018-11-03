@@ -441,14 +441,11 @@ export default class Collection {
   // TODO: findKey()
   // TODO: keyOf()
 
-  // TODO: sum() from Ramda
-  // TODO: sumBy()
+  // TODO: sum(func) from Ramda
 
-  // TODO: max()
-  // TODO: maxBy()
+  // TODO: max(func)
 
-  // TODO: min()
-  // TODO: minBy()
+  // TODO: min(func)
 
   // TODO: equals()
 
