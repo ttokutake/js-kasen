@@ -173,6 +173,7 @@ export default class KasenArray extends Collection {
     return array.map(func);
   }
 
+  // TODO: Allow to specify func=undefined
   filter(func) {
     if (!isFunction(func)) {
       throw new TypeError("1st argument must be Function");
