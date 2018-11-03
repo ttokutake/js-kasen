@@ -632,6 +632,9 @@ export default class KasenArray extends Collection {
     return !array.length;
   }
 
+  // TODO?: startsWith() from Scala
+  // TODO?: endsWith() from Scala
+
   static count(array, func) {
     if (func === undefined) {
       return array.length;
@@ -645,8 +648,12 @@ export default class KasenArray extends Collection {
     return counter;
   }
 
-  // TODO?: startsWith() from Scala
-  // TODO?: endsWith() from Scala
+  get(index, protection) {
+    if (!isNumber(index)) {
+      throw new TypeError("1st argument must be Number");
+    }
+    return super.get(index, protection);
+  }
 
   // TODO: first() / head()
 

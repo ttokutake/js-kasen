@@ -1264,6 +1264,32 @@ describe("Array", () => {
     });
   });
 
+  describe("get()", () => {
+    test("ok", () => {
+      const inputs = [
+        [[], [0, undefined], undefined],
+        [[], [0, 10], 10],
+        [[1], [0, undefined], 1],
+        [[1], [0, 10], 1],
+        [[1], [1, undefined], undefined],
+        [[1], [1, 10], 10],
+        [[1, 2], [0, undefined], 1],
+        [[1, 2], [0, 10], 1],
+        [[1, 2], [1, undefined], 2],
+        [[1, 2], [1, 10], 2],
+        [[1, 2], [2, undefined], undefined],
+        [[1, 2], [2, 10], 10]
+      ];
+      inputs.forEach(([input, [index, protection], expected]) => {
+        const result =
+          protection === undefined
+            ? Kasen(input).get(index)
+            : Kasen(input).get(index, protection);
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
   describe("toJs()", () => {
     test("ok", () => {
       const inputs = [[], [1], [1, 2], [1, 2, 3]];

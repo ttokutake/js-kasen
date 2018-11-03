@@ -651,6 +651,32 @@ describe("Object", () => {
     });
   });
 
+  describe("get()", () => {
+    test("ok", () => {
+      const inputs = [
+        [{}, ["a", undefined], undefined],
+        [{}, ["a", 10], 10],
+        [{ a: 1 }, ["a", undefined], 1],
+        [{ a: 1 }, ["a", 10], 1],
+        [{ a: 1 }, ["b", undefined], undefined],
+        [{ a: 1 }, ["b", 10], 10],
+        [{ a: 1, b: 2 }, ["a", undefined], 1],
+        [{ a: 1, b: 2 }, ["a", 10], 1],
+        [{ a: 1, b: 2 }, ["b", undefined], 2],
+        [{ a: 1, b: 2 }, ["b", 10], 2],
+        [{ a: 1, b: 2 }, ["c", undefined], undefined],
+        [{ a: 1, b: 2 }, ["c", 10], 10]
+      ];
+      inputs.forEach(([input, [index, protection], expected]) => {
+        const result =
+          protection === undefined
+            ? Kasen(input).get(index)
+            : Kasen(input).get(index, protection);
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
   describe("toJs()", () => {
     test("ok", () => {
       const inputs = [{}, { a: 1 }, { a: 1, b: 2 }, { a: 1, b: 2, c: 3 }];

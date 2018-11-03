@@ -342,7 +342,19 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
-  // TODO: get()
+  get(key, protection) {
+    const finalize = iter => {
+      let k;
+      let value;
+      while (!({ key: k, value } = iter.next()).done) {
+        if (k === key) {
+          return value;
+        }
+      }
+      return protection;
+    };
+    return this.__consume(finalize);
+  }
 
   // TODO: has()
 
