@@ -1287,6 +1287,13 @@ describe("Array", () => {
             : Kasen(input).get(index, protection);
         expect(result).toEqual(expected);
       });
+      inputs.forEach(([input, [index, protection], expected]) => {
+        const result =
+          protection === undefined
+            ? Kasen.get(input, index)
+            : Kasen.get(input, index, protection);
+        expect(result).toEqual(expected);
+      });
     });
   });
 

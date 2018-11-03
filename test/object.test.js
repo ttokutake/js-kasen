@@ -667,11 +667,18 @@ describe("Object", () => {
         [{ a: 1, b: 2 }, ["c", undefined], undefined],
         [{ a: 1, b: 2 }, ["c", 10], 10]
       ];
-      inputs.forEach(([input, [index, protection], expected]) => {
+      inputs.forEach(([input, [key, protection], expected]) => {
         const result =
           protection === undefined
-            ? Kasen(input).get(index)
-            : Kasen(input).get(index, protection);
+            ? Kasen(input).get(key)
+            : Kasen(input).get(key, protection);
+        expect(result).toEqual(expected);
+      });
+      inputs.forEach(([input, [key, protection], expected]) => {
+        const result =
+          protection === undefined
+            ? Kasen.get(input, key)
+            : Kasen.get(input, key, protection);
         expect(result).toEqual(expected);
       });
     });

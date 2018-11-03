@@ -330,6 +330,17 @@ export default class KasenObject extends Collection {
     return super.get(key, protection);
   }
 
+  static get(object, key, protection) {
+    const keys = Object.keys(object);
+    for (let i = 0, { length } = keys; i < length; i += 1) {
+      const k = keys[i];
+      if (k === key) {
+        return object[key];
+      }
+    }
+    return protection;
+  }
+
   static reduce(object, func, init) {
     const keys = Object.keys(object);
     let acc = init;

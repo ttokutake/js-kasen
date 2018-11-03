@@ -655,6 +655,13 @@ export default class KasenArray extends Collection {
     return super.get(index, protection);
   }
 
+  static get(array, index, protection) {
+    if (index >= 0 && index < array.length) {
+      return array[index];
+    }
+    return protection;
+  }
+
   // TODO: first() / head()
 
   // TODO: tail() === shift() from Scala

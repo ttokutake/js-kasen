@@ -356,6 +356,11 @@ export default class Collection {
     return this.__consume(finalize);
   }
 
+  // eslint-disable-next-line no-unused-vars
+  static get(_coll, _key, _protection) {
+    throw new Error("not implemented");
+  }
+
   // TODO: has()
 
   // TODO: includes()
