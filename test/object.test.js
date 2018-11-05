@@ -109,7 +109,26 @@ describe("Object", () => {
   });
 
   describe("filter()", () => {
-    test("ok", () => {
+    test("func is undefined", () => {
+      const ios = [
+        [{}, {}],
+        [{ a: 1 }, { a: 1 }],
+        [{ a: null }, {}],
+        [{ a: 1, b: null }, { a: 1 }]
+      ];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input)
+          .filter()
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.filter(input);
+        expect(result).toEqual(expected);
+      });
+    });
+
+    test("func is specified", () => {
       const ios = [
         [{}, {}],
         [{ a: 1 }, {}],

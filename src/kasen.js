@@ -55,10 +55,11 @@ Kasen.filter = (coll, func) => {
   if (!Coll) {
     throw new TypeError("1st argument must be Array or Object");
   }
-  if (!isFunction(func)) {
-    throw new TypeError("2nd argument must be Function");
+  if (!(isFunction(func) || func === undefined)) {
+    throw new TypeError("2nd argument must be Function or Undefined");
   }
-  return Coll.filter(coll, func);
+  const fn = func || (v => v);
+  return Coll.filter(coll, fn);
 };
 
 Kasen.filterNot = (coll, func) => {

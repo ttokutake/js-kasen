@@ -105,7 +105,21 @@ describe("Array", () => {
   });
 
   describe("filter()", () => {
-    test("ok", () => {
+    test("func is undefined", () => {
+      const ios = [[[], []], [[1], [1]], [[null], []], [[1, null], [1]]];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input)
+          .filter()
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.filter(input);
+        expect(result).toEqual(expected);
+      });
+    });
+
+    test("func is specified", () => {
       const ios = [
         [[], []],
         [[1], []],

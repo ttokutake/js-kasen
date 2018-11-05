@@ -122,10 +122,11 @@ export default class KasenObject extends Collection {
   }
 
   filter(func) {
-    if (!isFunction(func)) {
-      throw new TypeError("1st argument must be Function");
+    if (!(isFunction(func) || func === undefined)) {
+      throw new TypeError("1st argument must be Function or Undefined");
     }
-    this.__pile(FilterIterator, func);
+    const fn = func || (v => v);
+    this.__pile(FilterIterator, fn);
     return this;
   }
 
