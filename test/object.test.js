@@ -725,28 +725,35 @@ describe("Object", () => {
   });
 
   describe("reduce()", () => {
-    test("ok", () => {
+    test("init is undefined", () => {
       const ios = [
-        [{}, 0, 0],
-        [{ a: 1 }, undefined, 1],
-        [{ a: 1 }, 10, 11],
-        [{ a: 1, b: 2 }, undefined, 3],
-        [{ a: 1, b: 2 }, 10, 13],
-        [{ a: 1, b: 2, c: 3 }, undefined, 6],
-        [{ a: 1, b: 2, c: 3 }, 10, 16]
+        [{ a: 1 }, 1],
+        [{ a: 1, b: 2 }, 3],
+        [{ a: 1, b: 2, c: 3 }, 6]
       ];
-      ios.forEach(([input, init, expected]) => {
-        const result =
-          init === undefined
-            ? Kasen(input).reduce((acc, v) => acc + v)
-            : Kasen(input).reduce((acc, v) => acc + v, init);
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input).reduce((acc, v) => acc + v);
         expect(result).toEqual(expected);
       });
-      ios.forEach(([input, init, expected]) => {
-        const result =
-          init === undefined
-            ? Kasen.reduce(input, (acc, v) => acc + v)
-            : Kasen.reduce(input, (acc, v) => acc + v, init);
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.reduce(input, (acc, v) => acc + v);
+        expect(result).toEqual(expected);
+      });
+    });
+
+    test("init is specified", () => {
+      const ios = [
+        [{}, 10],
+        [{ a: 1 }, 11],
+        [{ a: 1, b: 2 }, 13],
+        [{ a: 1, b: 2, c: 3 }, 16]
+      ];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input).reduce((acc, v) => acc + v, 10);
+        expect(result).toEqual(expected);
+      });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.reduce(input, (acc, v) => acc + v, 10);
         expect(result).toEqual(expected);
       });
     });
