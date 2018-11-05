@@ -682,33 +682,40 @@ describe("Object", () => {
   });
 
   describe("get()", () => {
-    test("ok", () => {
+    test("protection is undefined", () => {
       const inputs = [
-        [{}, ["a", undefined], undefined],
-        [{}, ["a", 10], 10],
-        [{ a: 1 }, ["a", undefined], 1],
-        [{ a: 1 }, ["a", 10], 1],
-        [{ a: 1 }, ["b", undefined], undefined],
-        [{ a: 1 }, ["b", 10], 10],
-        [{ a: 1, b: 2 }, ["a", undefined], 1],
-        [{ a: 1, b: 2 }, ["a", 10], 1],
-        [{ a: 1, b: 2 }, ["b", undefined], 2],
-        [{ a: 1, b: 2 }, ["b", 10], 2],
-        [{ a: 1, b: 2 }, ["c", undefined], undefined],
-        [{ a: 1, b: 2 }, ["c", 10], 10]
+        [{}, "a", undefined],
+        [{ a: 1 }, "a", 1],
+        [{ a: 1 }, "b", undefined],
+        [{ a: 1, b: 2 }, "a", 1],
+        [{ a: 1, b: 2 }, "b", 2],
+        [{ a: 1, b: 2 }, "c", undefined]
       ];
-      inputs.forEach(([input, [key, protection], expected]) => {
-        const result =
-          protection === undefined
-            ? Kasen(input).get(key)
-            : Kasen(input).get(key, protection);
+      inputs.forEach(([input, key, expected]) => {
+        const result = Kasen(input).get(key);
         expect(result).toEqual(expected);
       });
-      inputs.forEach(([input, [key, protection], expected]) => {
-        const result =
-          protection === undefined
-            ? Kasen.get(input, key)
-            : Kasen.get(input, key, protection);
+      inputs.forEach(([input, key, expected]) => {
+        const result = Kasen.get(input, key);
+        expect(result).toEqual(expected);
+      });
+    });
+
+    test("protection is specified", () => {
+      const inputs = [
+        [{}, "a", 10],
+        [{ a: 1 }, "a", 1],
+        [{ a: 1 }, "b", 10],
+        [{ a: 1, b: 2 }, "a", 1],
+        [{ a: 1, b: 2 }, "b", 2],
+        [{ a: 1, b: 2 }, "c", 10]
+      ];
+      inputs.forEach(([input, key, expected]) => {
+        const result = Kasen(input).get(key, 10);
+        expect(result).toEqual(expected);
+      });
+      inputs.forEach(([input, key, expected]) => {
+        const result = Kasen.get(input, key, 10);
         expect(result).toEqual(expected);
       });
     });

@@ -1280,45 +1280,52 @@ describe("Array", () => {
   });
 
   describe("get()", () => {
-    test("ok", () => {
+    test("protection is undefined", () => {
       const inputs = [
-        [[], [-1, undefined], undefined],
-        [[], [-1, 10], 10],
-        [[], [0, undefined], undefined],
-        [[], [0, 10], 10],
-        [[1], [-2, undefined], undefined],
-        [[1], [-2, 10], 10],
-        [[1], [-1, undefined], 1],
-        [[1], [-1, 10], 1],
-        [[1], [0, undefined], 1],
-        [[1], [0, 10], 1],
-        [[1], [1, undefined], undefined],
-        [[1], [1, 10], 10],
-        [[1, 2], [-3, undefined], undefined],
-        [[1, 2], [-3, 10], 10],
-        [[1, 2], [-2, undefined], 1],
-        [[1, 2], [-2, 10], 1],
-        [[1, 2], [-1, undefined], 2],
-        [[1, 2], [-1, 10], 2],
-        [[1, 2], [0, undefined], 1],
-        [[1, 2], [0, 10], 1],
-        [[1, 2], [1, undefined], 2],
-        [[1, 2], [1, 10], 2],
-        [[1, 2], [2, undefined], undefined],
-        [[1, 2], [2, 10], 10]
+        [[], -1, undefined],
+        [[], 0, undefined],
+        [[1], -2, undefined],
+        [[1], -1, 1],
+        [[1], 0, 1],
+        [[1], 1, undefined],
+        [[1, 2], -3, undefined],
+        [[1, 2], -2, 1],
+        [[1, 2], -1, 2],
+        [[1, 2], 0, 1],
+        [[1, 2], 1, 2],
+        [[1, 2], 2, undefined]
       ];
-      inputs.forEach(([input, [index, protection], expected]) => {
-        const result =
-          protection === undefined
-            ? Kasen(input).get(index)
-            : Kasen(input).get(index, protection);
+      inputs.forEach(([input, index, expected]) => {
+        const result = Kasen(input).get(index);
         expect(result).toEqual(expected);
       });
-      inputs.forEach(([input, [index, protection], expected]) => {
-        const result =
-          protection === undefined
-            ? Kasen.get(input, index)
-            : Kasen.get(input, index, protection);
+      inputs.forEach(([input, index, expected]) => {
+        const result = Kasen.get(input, index);
+        expect(result).toEqual(expected);
+      });
+    });
+
+    test("protection is specified", () => {
+      const inputs = [
+        [[], -1, 10],
+        [[], 0, 10],
+        [[1], -2, 10],
+        [[1], -1, 1],
+        [[1], 0, 1],
+        [[1], 1, 10],
+        [[1, 2], -3, 10],
+        [[1, 2], -2, 1],
+        [[1, 2], -1, 2],
+        [[1, 2], 0, 1],
+        [[1, 2], 1, 2],
+        [[1, 2], 2, 10]
+      ];
+      inputs.forEach(([input, index, expected]) => {
+        const result = Kasen(input).get(index, 10);
+        expect(result).toEqual(expected);
+      });
+      inputs.forEach(([input, index, expected]) => {
+        const result = Kasen.get(input, index, 10);
         expect(result).toEqual(expected);
       });
     });
