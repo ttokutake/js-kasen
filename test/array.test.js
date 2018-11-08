@@ -1244,11 +1244,11 @@ describe("Array", () => {
       const inputs = [[[], true], [[1], false], [[1, 2], false]];
       inputs.forEach(([input, expected]) => {
         const result = Kasen(input).isEmpty();
-        expect(result).toEqual(expected);
+        expect(result).toBe(expected);
       });
       inputs.forEach(([input, expected]) => {
         const result = Kasen.isEmpty(input);
-        expect(result).toEqual(expected);
+        expect(result).toBe(expected);
       });
     });
   });
@@ -1258,11 +1258,11 @@ describe("Array", () => {
       const inputs = [[[], 0], [[1], 1], [[1, 2], 2], [[1, 2, 3], 3]];
       inputs.forEach(([input, expected]) => {
         const result = Kasen(input).count();
-        expect(result).toEqual(expected);
+        expect(result).toBe(expected);
       });
       inputs.forEach(([input, expected]) => {
         const result = Kasen.count(input);
-        expect(result).toEqual(expected);
+        expect(result).toBe(expected);
       });
     });
 
@@ -1270,11 +1270,11 @@ describe("Array", () => {
       const inputs = [[[], 0], [[1], 1], [[1, 2], 1], [[1, 2, 3], 2]];
       inputs.forEach(([input, expected]) => {
         const result = Kasen(input).count(v => v % 2 === 1);
-        expect(result).toEqual(expected);
+        expect(result).toBe(expected);
       });
       inputs.forEach(([input, expected]) => {
         const result = Kasen.count(input, v => v % 2 === 1);
-        expect(result).toEqual(expected);
+        expect(result).toBe(expected);
       });
     });
   });
@@ -1297,11 +1297,11 @@ describe("Array", () => {
       ];
       inputs.forEach(([input, index, expected]) => {
         const result = Kasen(input).get(index);
-        expect(result).toEqual(expected);
+        expect(result).toBe(expected);
       });
       inputs.forEach(([input, index, expected]) => {
         const result = Kasen.get(input, index);
-        expect(result).toEqual(expected);
+        expect(result).toBe(expected);
       });
     });
 
@@ -1322,11 +1322,11 @@ describe("Array", () => {
       ];
       inputs.forEach(([input, index, expected]) => {
         const result = Kasen(input).get(index, 10);
-        expect(result).toEqual(expected);
+        expect(result).toBe(expected);
       });
       inputs.forEach(([input, index, expected]) => {
         const result = Kasen.get(input, index, 10);
-        expect(result).toEqual(expected);
+        expect(result).toBe(expected);
       });
     });
   });
@@ -1346,11 +1346,11 @@ describe("Array", () => {
       ];
       inputs.forEach(([input, index, expected]) => {
         const result = Kasen(input).has(index);
-        expect(result).toEqual(expected);
+        expect(result).toBe(expected);
       });
       inputs.forEach(([input, index, expected]) => {
         const result = Kasen.has(input, index);
-        expect(result).toEqual(expected);
+        expect(result).toBe(expected);
       });
     });
   });
@@ -1370,11 +1370,11 @@ describe("Array", () => {
       const ios = [[[1], 1], [[1, 2], 3], [[1, 2, 3], 6]];
       ios.forEach(([input, expected]) => {
         const result = Kasen(input).reduce((acc, v) => acc + v);
-        expect(result).toEqual(expected);
+        expect(result).toBe(expected);
       });
       ios.forEach(([input, expected]) => {
         const result = Kasen.reduce(input, (acc, v) => acc + v);
-        expect(result).toEqual(expected);
+        expect(result).toBe(expected);
       });
     });
 
@@ -1382,11 +1382,11 @@ describe("Array", () => {
       const ios = [[[], 10], [[1], 11], [[1, 2], 13], [[1, 2, 3], 16]];
       ios.forEach(([input, expected]) => {
         const result = Kasen(input).reduce((acc, v) => acc + v, 10);
-        expect(result).toEqual(expected);
+        expect(result).toBe(expected);
       });
       ios.forEach(([input, expected]) => {
         const result = Kasen.reduce(input, (acc, v) => acc + v, 10);
-        expect(result).toEqual(expected);
+        expect(result).toBe(expected);
       });
     });
 
