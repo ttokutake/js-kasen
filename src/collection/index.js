@@ -352,7 +352,24 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
-  // TODO: has()
+  // eslint-disable-next-line class-methods-use-this, no-unused-vars
+  has(key) {
+    const finalize = iter => {
+      let k;
+      while (!({ key: k } = iter.next()).done) {
+        if (k === key) {
+          return true;
+        }
+      }
+      return false;
+    };
+    return this.__consume(finalize);
+  }
+
+  // eslint-disable-next-line no-unused-vars
+  static has(_coll, _key) {
+    throw new Error("not implemented");
+  }
 
   // TODO: includes()
 

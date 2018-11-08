@@ -721,6 +721,27 @@ describe("Object", () => {
     });
   });
 
+  describe("has()", () => {
+    test("ok", () => {
+      const inputs = [
+        [{}, "a", false],
+        [{ a: 1 }, "a", true],
+        [{ a: 1 }, "b", false],
+        [{ a: 1, b: 2 }, "a", true],
+        [{ a: 1, b: 2 }, "b", true],
+        [{ a: 1, b: 2 }, "c", false]
+      ];
+      inputs.forEach(([input, index, expected]) => {
+        const result = Kasen(input).has(index);
+        expect(result).toEqual(expected);
+      });
+      inputs.forEach(([input, index, expected]) => {
+        const result = Kasen.has(input, index);
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
   describe("toJs()", () => {
     test("ok", () => {
       const inputs = [{}, { a: 1 }, { a: 1, b: 2 }, { a: 1, b: 2, c: 3 }];

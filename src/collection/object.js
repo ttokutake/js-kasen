@@ -352,6 +352,23 @@ export default class KasenObject extends Collection {
     return protection;
   }
 
+  has(key) {
+    if (!(isNumber(key) || isString(key))) {
+      throw new TypeError("1st argument must be Number or String");
+    }
+    return super.has(key);
+  }
+
+  static has(object, key) {
+    const keys = Object.keys(object);
+    for (let i = 0, { length } = keys; i < length; i += 1) {
+      if (keys[i] === key) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   static reduce(object, func, init) {
     const keys = Object.keys(object);
     let acc = init;

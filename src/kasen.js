@@ -389,6 +389,20 @@ Kasen.get = (coll, key, protection) => {
   return Coll.get(coll, key, protection);
 };
 
+Kasen.has = (coll, key) => {
+  const Coll = choose(coll);
+  if (!Coll) {
+    throw new TypeError("1st argument must be Array or Object");
+  }
+  if (isArray(coll) && !isNumber(key)) {
+    throw new TypeError("2nd argument must be Number");
+  }
+  if (isObject(coll) && !(isNumber(key) || isString(key))) {
+    throw new TypeError("2nd argument must be Number or String");
+  }
+  return Coll.has(coll, key);
+};
+
 Kasen.reduce = (coll, func, init) => {
   const Coll = choose(coll);
   if (!Coll) {

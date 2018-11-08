@@ -1331,6 +1331,30 @@ describe("Array", () => {
     });
   });
 
+  describe("has()", () => {
+    test("ok", () => {
+      const inputs = [
+        [[], -1, false],
+        [[], 0, false],
+        [[1], -1, false],
+        [[1], 0, true],
+        [[1], 1, false],
+        [[1, 2], -1, false],
+        [[1, 2], 0, true],
+        [[1, 2], 1, true],
+        [[1, 2], 2, false]
+      ];
+      inputs.forEach(([input, index, expected]) => {
+        const result = Kasen(input).has(index);
+        expect(result).toEqual(expected);
+      });
+      inputs.forEach(([input, index, expected]) => {
+        const result = Kasen.has(input, index);
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
   describe("toJs()", () => {
     test("ok", () => {
       const inputs = [[], [1], [1, 2], [1, 2, 3]];

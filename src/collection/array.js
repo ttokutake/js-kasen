@@ -666,6 +666,17 @@ export default class KasenArray extends Collection {
     return protection;
   }
 
+  has(index) {
+    if (!isNumber(index)) {
+      throw new TypeError("1st argument must be Number");
+    }
+    return super.has(index);
+  }
+
+  static has(array, index) {
+    return index >= 0 && index < array.length;
+  }
+
   // TODO: first() / head()
 
   // TODO: tail() === shift() from Scala
