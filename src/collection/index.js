@@ -371,7 +371,23 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
-  // TODO: includes()
+  includes(value) {
+    const finalize = iter => {
+      let v;
+      while (!({ value: v } = iter.next()).done) {
+        if (v === value) {
+          return true;
+        }
+      }
+      return false;
+    };
+    return this.__consume(finalize);
+  }
+
+  // eslint-disable-next-line no-unused-vars
+  static includes(_coll, _value) {
+    throw new Error("not implemented");
+  }
 
   // TODO: getIn()
 

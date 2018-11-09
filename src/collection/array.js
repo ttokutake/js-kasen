@@ -677,6 +677,15 @@ export default class KasenArray extends Collection {
     return index >= 0 && index < array.length;
   }
 
+  static includes(array, value) {
+    for (let i = 0, { length } = array; i < length; i += 1) {
+      if (array[i] === value) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   // TODO: first() / head()
 
   // TODO: tail() === shift() from Scala

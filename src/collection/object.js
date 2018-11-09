@@ -369,6 +369,17 @@ export default class KasenObject extends Collection {
     return false;
   }
 
+  static includes(object, value) {
+    const keys = Object.keys(object);
+    for (let i = 0, { length } = keys; i < length; i += 1) {
+      const key = keys[i];
+      if (object[key] === value) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   static reduce(object, func, init) {
     const keys = Object.keys(object);
     let acc = init;

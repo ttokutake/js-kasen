@@ -1355,6 +1355,27 @@ describe("Array", () => {
     });
   });
 
+  describe("includes()", () => {
+    test("ok", () => {
+      const inputs = [
+        [[], 0, false],
+        [[1], 0, false],
+        [[1], 1, true],
+        [[1, 2], 0, false],
+        [[1, 2], 1, true],
+        [[1, 2], 2, true]
+      ];
+      inputs.forEach(([input, value, expected]) => {
+        const result = Kasen(input).includes(value);
+        expect(result).toBe(expected);
+      });
+      inputs.forEach(([input, value, expected]) => {
+        const result = Kasen.includes(input, value);
+        expect(result).toBe(expected);
+      });
+    });
+  });
+
   describe("toJs()", () => {
     test("ok", () => {
       const inputs = [[], [1], [1, 2], [1, 2, 3]];

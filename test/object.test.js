@@ -742,6 +742,27 @@ describe("Object", () => {
     });
   });
 
+  describe("includes()", () => {
+    test("ok", () => {
+      const inputs = [
+        [{}, 0, false],
+        [{ a: 1 }, 0, false],
+        [{ a: 1 }, 1, true],
+        [{ a: 1, b: 2 }, 0, false],
+        [{ a: 1, b: 2 }, 1, true],
+        [{ a: 1, b: 2 }, 2, true]
+      ];
+      inputs.forEach(([input, value, expected]) => {
+        const result = Kasen(input).includes(value);
+        expect(result).toBe(expected);
+      });
+      inputs.forEach(([input, value, expected]) => {
+        const result = Kasen.includes(input, value);
+        expect(result).toBe(expected);
+      });
+    });
+  });
+
   describe("toJs()", () => {
     test("ok", () => {
       const inputs = [{}, { a: 1 }, { a: 1, b: 2 }, { a: 1, b: 2, c: 3 }];

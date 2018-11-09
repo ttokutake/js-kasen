@@ -403,6 +403,14 @@ Kasen.has = (coll, key) => {
   return Coll.has(coll, key);
 };
 
+Kasen.includes = (coll, value) => {
+  const Coll = choose(coll);
+  if (!Coll) {
+    throw new TypeError("1st argument must be Array or Object");
+  }
+  return Coll.includes(coll, value);
+};
+
 Kasen.reduce = (coll, func, init) => {
   const Coll = choose(coll);
   if (!Coll) {
