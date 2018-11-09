@@ -360,13 +360,7 @@ export default class KasenObject extends Collection {
   }
 
   static has(object, key) {
-    const keys = Object.keys(object);
-    for (let i = 0, { length } = keys; i < length; i += 1) {
-      if (keys[i] === key) {
-        return true;
-      }
-    }
-    return false;
+    return Object.prototype.hasOwnProperty.call(object, key);
   }
 
   static includes(object, value) {
