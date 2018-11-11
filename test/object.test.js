@@ -109,7 +109,7 @@ describe("Object", () => {
   });
 
   describe("filter()", () => {
-    test("func is undefined", () => {
+    test("fun is undefined", () => {
       const ios = [
         [{}, {}],
         [{ a: 1 }, { a: 1 }],
@@ -128,7 +128,7 @@ describe("Object", () => {
       });
     });
 
-    test("func is specified", () => {
+    test("fun is specified", () => {
       const ios = [
         [{}, {}],
         [{ a: 1 }, {}],
@@ -646,7 +646,7 @@ describe("Object", () => {
   });
 
   describe("count()", () => {
-    test("func is undefined", () => {
+    test("fun is undefined", () => {
       const inputs = [
         [{}, 0],
         [{ a: 1 }, 1],
@@ -663,7 +663,7 @@ describe("Object", () => {
       });
     });
 
-    test("func is specified", () => {
+    test("fun is specified", () => {
       const inputs = [
         [{}, 0],
         [{ a: 1 }, 1],

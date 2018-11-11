@@ -51,14 +51,14 @@ export default class KasenObject extends Collection {
       return bool ? this.set(key, value) : this;
     };
 
-    this.update.if = (bool, key, func) => {
+    this.update.if = (bool, key, fun) => {
       if (!(isNumber(key) || isString(key))) {
         throw new TypeError("2nd argument must be Number or String");
       }
-      if (!isFunction(func)) {
+      if (!isFunction(fun)) {
         throw new TypeError("3rd argument must be Function");
       }
-      return bool ? this.update(key, func) : this;
+      return bool ? this.update(key, fun) : this;
     };
 
     this.delete.if = (bool, key) => {
@@ -86,8 +86,8 @@ export default class KasenObject extends Collection {
 
     this.assign.if = this.merge.if;
 
-    this.mergeWith.if = (bool, func, ...objects) => {
-      if (!isFunction(func)) {
+    this.mergeWith.if = (bool, fun, ...objects) => {
+      if (!isFunction(fun)) {
         throw new TypeError("2nd argument must be Function");
       }
       for (let i = 0, { length } = objects; i < length; i += 1) {
@@ -97,7 +97,7 @@ export default class KasenObject extends Collection {
           );
         }
       }
-      return bool ? this.mergeWith(func, ...objects) : this;
+      return bool ? this.mergeWith(fun, ...objects) : this;
     };
   }
 
@@ -113,28 +113,28 @@ export default class KasenObject extends Collection {
     return result;
   }
 
-  static map(object, func) {
+  static map(object, fun) {
     const result = {};
     Object.keys(object).forEach(key => {
-      result[key] = func(object[key], key);
+      result[key] = fun(object[key], key);
     });
     return result;
   }
 
-  filter(func) {
-    if (!(isFunction(func) || func === undefined)) {
+  filter(fun) {
+    if (!(isFunction(fun) || fun === undefined)) {
       throw new TypeError("1st argument must be Function or Undefined");
     }
-    const fn = func || (v => v);
+    const fn = fun || (v => v);
     this.__pile(FilterIterator, fn);
     return this;
   }
 
-  static filter(object, func) {
+  static filter(object, fun) {
     const result = {};
     Object.keys(object).forEach(key => {
       const value = object[key];
-      if (func(value, key)) {
+      if (fun(value, key)) {
         result[key] = value;
       }
     });
@@ -145,13 +145,13 @@ export default class KasenObject extends Collection {
     if (!isArray(keys)) {
       throw new TypeError("1st argument must be Array");
     }
-    const func = (_value, key) => keys.some(k => k === key);
-    return this.filter(func);
+    const fun = (_value, key) => keys.some(k => k === key);
+    return this.filter(fun);
   }
 
   static pick(object, keys) {
-    const func = (_value, key) => keys.some(k => k === key);
-    return this.filter(object, func);
+    const fun = (_value, key) => keys.some(k => k === key);
+    return this.filter(object, fun);
   }
 
   set(key, value) {
@@ -161,25 +161,25 @@ export default class KasenObject extends Collection {
     return super.set(key, value);
   }
 
-  update(key, func) {
+  update(key, fun) {
     if (!(isNumber(key) || isString(key))) {
       throw new TypeError("1st argument must be Number or String");
     }
-    if (!isFunction(func)) {
+    if (!isFunction(fun)) {
       throw new TypeError("2nd argument must be Function");
     }
     const curate = iter => {
       const object = ObjectIterator.curate(iter);
-      object[key] = func(object[key]);
+      object[key] = fun(object[key]);
       return object;
     };
     this.__pile(Curator, curate);
     return this;
   }
 
-  static update(object, key, func) {
+  static update(object, key, fun) {
     const result = this.copy(object);
-    result[key] = func(object[key]);
+    result[key] = fun(object[key]);
     return result;
   }
 
@@ -263,8 +263,8 @@ export default class KasenObject extends Collection {
     return this.merge(...objects);
   }
 
-  mergeWith(func, ...objects) {
-    if (!isFunction(func)) {
+  mergeWith(fun, ...objects) {
+    if (!isFunction(fun)) {
       throw new TypeError("1st argument must be Function");
     }
     for (let i = 0, { length } = objects; i < length; i += 1) {
@@ -277,7 +277,7 @@ export default class KasenObject extends Collection {
       objects.forEach(obj => {
         Object.keys(obj).forEach(key => {
           object[key] = Object.prototype.hasOwnProperty.call(object, key)
-            ? func(object[key], obj[key], key)
+            ? fun(object[key], obj[key], key)
             : obj[key];
         });
       });
@@ -287,12 +287,12 @@ export default class KasenObject extends Collection {
     return this;
   }
 
-  static mergeWith(object, func, objects) {
+  static mergeWith(object, fun, objects) {
     const result = this.copy(object);
     objects.forEach(obj => {
       Object.keys(obj).forEach(key => {
         result[key] = Object.prototype.hasOwnProperty.call(result, key)
-          ? func(result[key], obj[key], key)
+          ? fun(result[key], obj[key], key)
           : obj[key];
       });
     });
@@ -311,13 +311,13 @@ export default class KasenObject extends Collection {
     return !Object.keys(object).length;
   }
 
-  static count(object, func) {
-    if (func === undefined) {
+  static count(object, fun) {
+    if (fun === undefined) {
       return Object.keys(object).length;
     }
     let counter = 0;
     Object.keys(object).forEach(key => {
-      if (func(object[key], key)) {
+      if (fun(object[key], key)) {
         counter += 1;
       }
     });
@@ -386,7 +386,7 @@ export default class KasenObject extends Collection {
     return this.copy(object);
   }
 
-  static reduce(object, func, init) {
+  static reduce(object, fun, init) {
     const keys = Object.keys(object);
     let acc = init;
     if (init === undefined) {
@@ -396,41 +396,41 @@ export default class KasenObject extends Collection {
       acc = object[keys.pop()];
     }
     keys.forEach(key => {
-      acc = func(acc, object[key], key);
+      acc = fun(acc, object[key], key);
     });
     return acc;
   }
 
-  static every(object, func) {
+  static every(object, fun) {
     const keys = Object.keys(object);
     for (let i = 0, { length } = keys; i < length; i += 1) {
       const key = keys[i];
-      if (!func(object[key], key)) {
+      if (!fun(object[key], key)) {
         return false;
       }
     }
     return true;
   }
 
-  static some(object, func) {
-    return !this.every(object, (v, k) => !func(v, k));
+  static some(object, fun) {
+    return !this.every(object, (v, k) => !fun(v, k));
   }
 
-  static find(object, func) {
+  static find(object, fun) {
     const keys = Object.keys(object);
     for (let i = 0, { length } = keys; i < length; i += 1) {
       const key = keys[i];
       const value = object[key];
-      if (func(value, key)) {
+      if (fun(value, key)) {
         return value;
       }
     }
     return undefined;
   }
 
-  static forEach(object, func) {
+  static forEach(object, fun) {
     Object.keys(object).forEach(key => {
-      func(object[key], key);
+      fun(object[key], key);
     });
     return undefined;
   }

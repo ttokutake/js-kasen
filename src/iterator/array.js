@@ -1,15 +1,15 @@
 import { ChainIterator } from ".";
 
 export class FilterIterator extends ChainIterator {
-  constructor(parentIterator, func) {
-    super(parentIterator, func);
+  constructor(parentIterator, fun) {
+    super(parentIterator, fun);
     this.index = 0;
   }
 
   base(direction) {
     let result;
     while (!(result = this.parent[direction]()).done) {
-      if (this.func(result.value, result.key)) {
+      if (this.fun(result.value, result.key)) {
         result.key = this.index;
         this.index += 1;
         break;
@@ -20,8 +20,8 @@ export class FilterIterator extends ChainIterator {
 }
 
 export class ReverseIterator extends ChainIterator {
-  constructor(parentIterator, func) {
-    super(parentIterator, func);
+  constructor(parentIterator, fun) {
+    super(parentIterator, fun);
     this.index = 0;
   }
 

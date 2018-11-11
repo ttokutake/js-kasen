@@ -24,11 +24,11 @@ export default class Collection {
     this.__coll = this.constructor.copy(coll);
     this.__iter = iter || this.constructor.__iterator(this.__coll);
 
-    this.map.if = (bool, func) => {
-      if (!isFunction(func)) {
+    this.map.if = (bool, fun) => {
+      if (!isFunction(fun)) {
         throw new TypeError("2nd argument must be Function");
       }
-      return bool ? this.map(func) : this;
+      return bool ? this.map(fun) : this;
     };
 
     this.pluck.if = (bool, key) => {
@@ -38,18 +38,18 @@ export default class Collection {
       return bool ? this.pluck(key) : this;
     };
 
-    this.filter.if = (bool, func) => {
-      if (!isFunction(func)) {
+    this.filter.if = (bool, fun) => {
+      if (!isFunction(fun)) {
         throw new TypeError("2nd argument must be Function");
       }
-      return bool ? this.filter(func) : this;
+      return bool ? this.filter(fun) : this;
     };
 
-    this.filterNot.if = (bool, func) => {
-      if (!isFunction(func)) {
+    this.filterNot.if = (bool, fun) => {
+      if (!isFunction(fun)) {
         throw new TypeError("2nd argument must be Function");
       }
-      return bool ? this.filterNot(func) : this;
+      return bool ? this.filterNot(fun) : this;
     };
 
     this.clear.if = bool => (bool ? this.clear() : this);
@@ -61,14 +61,14 @@ export default class Collection {
       return bool ? this.setIn(keys, value) : this;
     };
 
-    this.updateIn.if = (bool, keys, func) => {
+    this.updateIn.if = (bool, keys, fun) => {
       if (!isArray(keys)) {
         throw new TypeError("2nd argument must be Array");
       }
-      if (!isFunction(func)) {
+      if (!isFunction(fun)) {
         throw new TypeError("3rd argument must be Function");
       }
-      return bool ? this.updateIn(keys, func) : this;
+      return bool ? this.updateIn(keys, fun) : this;
     };
 
     this.deleteIn.if = (bool, keys) => {
@@ -84,8 +84,8 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
-  __pile(Iter, func) {
-    this.__iter = new Iter(this.__iter, func);
+  __pile(Iter, fun) {
+    this.__iter = new Iter(this.__iter, fun);
   }
 
   __consume(finalize) {
@@ -105,24 +105,24 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
-  tap(func) {
-    if (!isFunction(func)) {
+  tap(fun) {
+    if (!isFunction(fun)) {
       throw new TypeError("1st argument must be Function");
     }
-    this.__pile(TapIterator, func);
+    this.__pile(TapIterator, fun);
     return this;
   }
 
-  map(func) {
-    if (!isFunction(func)) {
+  map(fun) {
+    if (!isFunction(fun)) {
       throw new TypeError("1st argument must be Function");
     }
-    this.__pile(MapIterator, func);
+    this.__pile(MapIterator, fun);
     return this;
   }
 
   // eslint-disable-next-line no-unused-vars
-  static map(_coll, _func) {
+  static map(_coll, _fun) {
     throw new Error("not implemented");
   }
 
@@ -138,24 +138,24 @@ export default class Collection {
   }
 
   // eslint-disable-next-line class-methods-use-this, no-unused-vars
-  filter(_func) {
+  filter(_fun) {
     throw new Error("not implemented");
   }
 
   // eslint-disable-next-line no-unused-vars
-  static filter(_coll, _func) {
+  static filter(_coll, _fun) {
     throw new Error("not implemented");
   }
 
-  filterNot(func) {
-    if (!isFunction(func)) {
+  filterNot(fun) {
+    if (!isFunction(fun)) {
       throw new TypeError("1st argument must be Function");
     }
-    return this.filter((v, k) => !func(v, k));
+    return this.filter((v, k) => !fun(v, k));
   }
 
-  static filterNot(coll, func) {
-    return this.filter(coll, (v, k) => !func(v, k));
+  static filterNot(coll, fun) {
+    return this.filter(coll, (v, k) => !fun(v, k));
   }
 
   set(key, value) {
@@ -167,17 +167,17 @@ export default class Collection {
   }
 
   // eslint-disable-next-line class-methods-use-this, no-unused-vars
-  update(_func) {
+  update(_fun) {
     throw new Error("not implemented");
   }
 
   // eslint-disable-next-line no-unused-vars
-  static update(_coll, _key, _func) {
+  static update(_coll, _key, _fun) {
     throw new Error("not implemented");
   }
 
   // eslint-disable-next-line class-methods-use-this, no-unused-vars
-  delete(_func) {
+  delete(_fun) {
     throw new Error("not implemented");
   }
 
@@ -204,11 +204,11 @@ export default class Collection {
   }
 
   // EXPERIMENTAL
-  updateIn(keys, func) {
+  updateIn(keys, fun) {
     if (!isArray(keys)) {
       throw new TypeError("1st argument must be Array");
     }
-    if (!isFunction(func)) {
+    if (!isFunction(fun)) {
       throw new TypeError("2nd argument must be Function");
     }
     const curate = iter => {
@@ -217,7 +217,7 @@ export default class Collection {
       for (let i = 0, { length } = keys; i < length; i += 1) {
         const key = keys[i];
         if (i >= length - 1) {
-          nextColl[key] = func(nextColl[key], key);
+          nextColl[key] = fun(nextColl[key], key);
         } else {
           nextColl[key] = copy(
             isNumber(keys[i + 1]) ? "array" : "object",
@@ -232,13 +232,13 @@ export default class Collection {
     return this;
   }
 
-  static updateIn(coll, keys, func) {
+  static updateIn(coll, keys, fun) {
     const result = this.copy(coll);
     let nextColl = result;
     for (let i = 0, { length } = keys; i < length; i += 1) {
       const key = keys[i];
       if (i >= length - 1) {
-        nextColl[key] = func(nextColl[key], key);
+        nextColl[key] = fun(nextColl[key], key);
       } else {
         nextColl[key] = copy(
           isNumber(keys[i + 1]) ? "array" : "object",
@@ -318,11 +318,11 @@ export default class Collection {
 
   // TODO?: isSuperset()
 
-  count(func) {
-    if (!(isFunction(func) || func === undefined)) {
+  count(fun) {
+    if (!(isFunction(fun) || fun === undefined)) {
       throw new TypeError("1st argument must be Function or Undefined");
     }
-    const fn = func || (() => true);
+    const fn = fun || (() => true);
     const finalize = iter => {
       let counter = 0;
       let key;
@@ -338,7 +338,7 @@ export default class Collection {
   }
 
   // eslint-disable-next-line no-unused-vars
-  static count(_coll, _func) {
+  static count(_coll, _fun) {
     throw new Error("not implemented");
   }
 
@@ -432,16 +432,16 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
-  reduce(func, init) {
-    if (!isFunction(func)) {
+  reduce(fun, init) {
+    if (!isFunction(fun)) {
       throw new TypeError("1st argument must be Function");
     }
     const coll = this.__consume(null);
-    return this.constructor.reduce(coll, func, init);
+    return this.constructor.reduce(coll, fun, init);
   }
 
   // eslint-disable-next-line no-unused-vars
-  static reduce(_coll, _func, _init) {
+  static reduce(_coll, _fun, _init) {
     throw new Error("not implemented");
   }
 
@@ -453,15 +453,15 @@ export default class Collection {
 
   // TODO: groupBy()
 
-  every(func) {
-    if (!isFunction(func)) {
+  every(fun) {
+    if (!isFunction(fun)) {
       throw new TypeError("1st argument must be Function");
     }
     const finalize = iter => {
       let key;
       let value;
       while (!({ key, value } = iter.next()).done) {
-        if (!func(value, key)) {
+        if (!fun(value, key)) {
           return false;
         }
       }
@@ -471,31 +471,31 @@ export default class Collection {
   }
 
   // eslint-disable-next-line no-unused-vars
-  static every(_coll, _func) {
+  static every(_coll, _fun) {
     throw new Error("not implemented");
   }
 
-  some(func) {
-    if (!isFunction(func)) {
+  some(fun) {
+    if (!isFunction(fun)) {
       throw new TypeError("1st argument must be Function");
     }
-    return !this.every((v, k) => !func(v, k));
+    return !this.every((v, k) => !fun(v, k));
   }
 
   // eslint-disable-next-line no-unused-vars
-  static some(_coll, _func) {
+  static some(_coll, _fun) {
     throw new Error("not implemented");
   }
 
-  find(func) {
-    if (!isFunction(func)) {
+  find(fun) {
+    if (!isFunction(fun)) {
       throw new TypeError("1st argument must be Function");
     }
     const finalize = iter => {
       let key;
       let value;
       while (!({ key, value } = iter.next()).done) {
-        if (func(value, key)) {
+        if (fun(value, key)) {
           return value;
         }
       }
@@ -505,7 +505,7 @@ export default class Collection {
   }
 
   // eslint-disable-next-line no-unused-vars
-  static find(_coll, _func) {
+  static find(_coll, _fun) {
     throw new Error("not implemented");
   }
 
@@ -513,11 +513,11 @@ export default class Collection {
   // TODO: findKey()
   // TODO: keyOf()
 
-  // TODO: sum(func) from Ramda
+  // TODO: sum(fun) from Ramda
 
-  // TODO: max(func)
+  // TODO: max(fun)
 
-  // TODO: min(func)
+  // TODO: min(fun)
 
   // TODO: equals()
 
@@ -529,15 +529,15 @@ export default class Collection {
 
   // TODO: entries()
 
-  forEach(func) {
-    if (!isFunction(func)) {
+  forEach(fun) {
+    if (!isFunction(fun)) {
       throw new TypeError("1st argument must be Function");
     }
     const finalize = iter => {
       let key;
       let value;
       while (!({ key, value } = iter.next()).done) {
-        func(value, key);
+        fun(value, key);
       }
       return undefined;
     };
@@ -545,7 +545,7 @@ export default class Collection {
   }
 
   // eslint-disable-next-line no-unused-vars
-  static forEach(_coll, _func) {
+  static forEach(_coll, _fun) {
     throw new Error("not implemented");
   }
 }

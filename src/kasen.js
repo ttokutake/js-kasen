@@ -28,15 +28,15 @@ Kasen.copy = coll => {
   return Coll.copy(coll);
 };
 
-Kasen.map = (coll, func) => {
+Kasen.map = (coll, fun) => {
   const Coll = choose(coll);
   if (!Coll) {
     throw new TypeError("1st argument must be Array or Object");
   }
-  if (!isFunction(func)) {
+  if (!isFunction(fun)) {
     throw new TypeError("2nd argument must be Function");
   }
-  return Coll.map(coll, func);
+  return Coll.map(coll, fun);
 };
 
 Kasen.pluck = (coll, key) => {
@@ -50,27 +50,27 @@ Kasen.pluck = (coll, key) => {
   return Coll.pluck(coll, key);
 };
 
-Kasen.filter = (coll, func) => {
+Kasen.filter = (coll, fun) => {
   const Coll = choose(coll);
   if (!Coll) {
     throw new TypeError("1st argument must be Array or Object");
   }
-  if (!(isFunction(func) || func === undefined)) {
+  if (!(isFunction(fun) || fun === undefined)) {
     throw new TypeError("2nd argument must be Function or Undefined");
   }
-  const fn = func || (v => v);
+  const fn = fun || (v => v);
   return Coll.filter(coll, fn);
 };
 
-Kasen.filterNot = (coll, func) => {
+Kasen.filterNot = (coll, fun) => {
   const Coll = choose(coll);
   if (!Coll) {
     throw new TypeError("1st argument must be Array or Object");
   }
-  if (!isFunction(func)) {
+  if (!isFunction(fun)) {
     throw new TypeError("2nd argument must be Function");
   }
-  return Coll.filterNot(coll, func);
+  return Coll.filterNot(coll, fun);
 };
 
 Kasen.reverse = array => {
@@ -110,24 +110,24 @@ Kasen.takeLast = (array, num) => {
   return KasenArray.takeLast(array, num);
 };
 
-Kasen.takeWhile = (array, func) => {
+Kasen.takeWhile = (array, fun) => {
   if (!isArray(array)) {
     throw new TypeError("1st argument must be Array");
   }
-  if (!isFunction(func)) {
+  if (!isFunction(fun)) {
     throw new TypeError("2nd argument must be Function");
   }
-  return KasenArray.takeWhile(array, func);
+  return KasenArray.takeWhile(array, fun);
 };
 
-Kasen.takeUntil = (array, func) => {
+Kasen.takeUntil = (array, fun) => {
   if (!isArray(array)) {
     throw new TypeError("1st argument must be Array");
   }
-  if (!isFunction(func)) {
+  if (!isFunction(fun)) {
     throw new TypeError("2nd argument must be Function");
   }
-  return KasenArray.takeUntil(array, func);
+  return KasenArray.takeUntil(array, fun);
 };
 
 Kasen.skip = (array, num) => {
@@ -150,24 +150,24 @@ Kasen.skipLast = (array, num) => {
   return KasenArray.skipLast(array, num);
 };
 
-Kasen.skipWhile = (array, func) => {
+Kasen.skipWhile = (array, fun) => {
   if (!isArray(array)) {
     throw new TypeError("1st argument must be Array");
   }
-  if (!isFunction(func)) {
+  if (!isFunction(fun)) {
     throw new TypeError("2nd argument must be Function");
   }
-  return KasenArray.skipWhile(array, func);
+  return KasenArray.skipWhile(array, fun);
 };
 
-Kasen.skipUntil = (array, func) => {
+Kasen.skipUntil = (array, fun) => {
   if (!isArray(array)) {
     throw new TypeError("1st argument must be Array");
   }
-  if (!isFunction(func)) {
+  if (!isFunction(fun)) {
     throw new TypeError("2nd argument must be Function");
   }
-  return KasenArray.skipUntil(array, func);
+  return KasenArray.skipUntil(array, fun);
 };
 
 Kasen.set = (coll, key, value) => {
@@ -184,7 +184,7 @@ Kasen.set = (coll, key, value) => {
   return Coll.set(coll, key, value);
 };
 
-Kasen.update = (coll, key, func) => {
+Kasen.update = (coll, key, fun) => {
   const Coll = choose(coll);
   if (!Coll) {
     throw new TypeError("1st argument must be Array or Object");
@@ -195,10 +195,10 @@ Kasen.update = (coll, key, func) => {
   if (isObject(coll) && !(isNumber(key) || isString(key))) {
     throw new TypeError("2nd argument must be Number or String");
   }
-  if (!isFunction(func)) {
+  if (!isFunction(fun)) {
     throw new TypeError("3rd argument must be Function");
   }
-  return Coll.update(coll, key, func);
+  return Coll.update(coll, key, fun);
 };
 
 Kasen.delete = (coll, key) => {
@@ -250,11 +250,11 @@ Kasen.assign = (...objects) => {
   return KasenObject.merge(objects);
 };
 
-Kasen.mergeWith = (object, func, ...objects) => {
+Kasen.mergeWith = (object, fun, ...objects) => {
   if (!isObject(object)) {
     throw new TypeError("1st argument must be Object");
   }
-  if (!isFunction(func)) {
+  if (!isFunction(fun)) {
     throw new TypeError("2nd argument must be Function");
   }
   for (let i = 0, { length } = objects; i < length; i += 1) {
@@ -262,7 +262,7 @@ Kasen.mergeWith = (object, func, ...objects) => {
       throw new TypeError("Each argument except 2nd one must be Object");
     }
   }
-  return KasenObject.mergeWith(object, func, objects);
+  return KasenObject.mergeWith(object, fun, objects);
 };
 
 Kasen.insert = (array, index, value) => {
@@ -314,7 +314,7 @@ Kasen.setIn = (coll, keys, value) => {
   return Coll.setIn(coll, keys, value);
 };
 
-Kasen.updateIn = (coll, keys, func) => {
+Kasen.updateIn = (coll, keys, fun) => {
   const Coll = choose(coll);
   if (!Coll) {
     throw new TypeError("1st argument must be Array or Object");
@@ -322,10 +322,10 @@ Kasen.updateIn = (coll, keys, func) => {
   if (!isArray(keys)) {
     throw new TypeError("2nd argument must be Array");
   }
-  if (!isFunction(func)) {
+  if (!isFunction(fun)) {
     throw new TypeError("3rd argument must be Function");
   }
-  return Coll.updateIn(coll, keys, func);
+  return Coll.updateIn(coll, keys, fun);
 };
 
 Kasen.deleteIn = (coll, keys) => {
@@ -346,14 +346,14 @@ Kasen.flatten = array => {
   return KasenArray.flatten(array);
 };
 
-Kasen.flatMap = (array, func) => {
+Kasen.flatMap = (array, fun) => {
   if (!isArray(array)) {
     throw new TypeError("1st argument must be Array");
   }
-  if (!isFunction(func)) {
+  if (!isFunction(fun)) {
     throw new TypeError("2nd argument must be Function");
   }
-  return KasenArray.flatMap(array, func);
+  return KasenArray.flatMap(array, fun);
 };
 
 Kasen.isEmpty = coll => {
@@ -364,15 +364,15 @@ Kasen.isEmpty = coll => {
   return Coll.isEmpty(coll);
 };
 
-Kasen.count = (coll, func) => {
+Kasen.count = (coll, fun) => {
   const Coll = choose(coll);
   if (!Coll) {
     throw new TypeError("1st argument must be Array or Object");
   }
-  if (!(isFunction(func) || func === undefined)) {
+  if (!(isFunction(fun) || fun === undefined)) {
     throw new TypeError("2nd argument must be Function or Undefined");
   }
-  return Coll.count(coll, func);
+  return Coll.count(coll, fun);
 };
 
 Kasen.get = (coll, key, protection) => {
@@ -427,69 +427,69 @@ Kasen.toObject = coll => {
   return Coll.toObject(coll);
 };
 
-Kasen.reduce = (coll, func, init) => {
+Kasen.reduce = (coll, fun, init) => {
   const Coll = choose(coll);
   if (!Coll) {
     throw new TypeError("1st argument must be Array or Object");
   }
-  if (!isFunction(func)) {
+  if (!isFunction(fun)) {
     throw new TypeError("2nd argument must be Function");
   }
-  return Coll.reduce(coll, func, init);
+  return Coll.reduce(coll, fun, init);
 };
 
-Kasen.every = (coll, func) => {
+Kasen.every = (coll, fun) => {
   const Coll = choose(coll);
   if (!Coll) {
     throw new TypeError("1st argument must be Array or Object");
   }
-  if (!isFunction(func)) {
+  if (!isFunction(fun)) {
     throw new TypeError("2nd argument must be Function");
   }
-  return Coll.every(coll, func);
+  return Coll.every(coll, fun);
 };
 
-Kasen.some = (coll, func) => {
+Kasen.some = (coll, fun) => {
   const Coll = choose(coll);
   if (!Coll) {
     throw new TypeError("1st argument must be Array or Object");
   }
-  if (!isFunction(func)) {
+  if (!isFunction(fun)) {
     throw new TypeError("2nd argument must be Function");
   }
-  return Coll.some(coll, func);
+  return Coll.some(coll, fun);
 };
 
-Kasen.find = (coll, func) => {
+Kasen.find = (coll, fun) => {
   const Coll = choose(coll);
   if (!Coll) {
     throw new TypeError("1st argument must be Array or Object");
   }
-  if (!isFunction(func)) {
+  if (!isFunction(fun)) {
     throw new TypeError("2nd argument must be Function");
   }
-  return Coll.find(coll, func);
+  return Coll.find(coll, fun);
 };
 
-Kasen.findLast = (array, func) => {
+Kasen.findLast = (array, fun) => {
   if (!isArray(array)) {
     throw new TypeError("1st argument must be Array");
   }
-  if (!isFunction(func)) {
+  if (!isFunction(fun)) {
     throw new TypeError("2nd argument must be Function");
   }
-  return KasenArray.findLast(array, func);
+  return KasenArray.findLast(array, fun);
 };
 
-Kasen.forEach = (coll, func) => {
+Kasen.forEach = (coll, fun) => {
   const Coll = choose(coll);
   if (!Coll) {
     throw new TypeError("1st argument must be Array or Object");
   }
-  if (!isFunction(func)) {
+  if (!isFunction(fun)) {
     throw new TypeError("2nd argument must be Function");
   }
-  return Coll.forEach(coll, func);
+  return Coll.forEach(coll, fun);
 };
 
 module.exports = Kasen;

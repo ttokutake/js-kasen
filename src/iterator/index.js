@@ -46,10 +46,10 @@ export class OriginIterator extends BaseIterator {
 }
 
 export class ChainIterator extends BaseIterator {
-  constructor(parentIterator, func) {
+  constructor(parentIterator, fun) {
     super(parentIterator.Origin);
     this.parent = parentIterator;
-    this.func = func;
+    this.fun = fun;
   }
 
   // eslint-disable-next-line class-methods-use-this, no-unused-vars
@@ -99,7 +99,7 @@ export class TapIterator extends ChainIterator {
   base(direction) {
     const result = this.parent[direction]();
     if (!result.done) {
-      this.func(result.value, result.key);
+      this.fun(result.value, result.key);
     }
     return result;
   }
@@ -109,7 +109,7 @@ export class MapIterator extends ChainIterator {
   base(direction) {
     const result = this.parent[direction]();
     if (!result.done) {
-      result.value = this.func(result.value, result.key);
+      result.value = this.fun(result.value, result.key);
     }
     return result;
   }

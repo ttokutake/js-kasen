@@ -105,7 +105,7 @@ describe("Array", () => {
   });
 
   describe("filter()", () => {
-    test("func is undefined", () => {
+    test("fun is undefined", () => {
       const ios = [[[], []], [[1], [1]], [[null], []], [[1, null], [1]]];
       ios.forEach(([input, expected]) => {
         const result = Kasen(input)
@@ -119,7 +119,7 @@ describe("Array", () => {
       });
     });
 
-    test("func is specified", () => {
+    test("fun is specified", () => {
       const ios = [
         [[], []],
         [[1], []],
@@ -1254,7 +1254,7 @@ describe("Array", () => {
   });
 
   describe("count()", () => {
-    test("func is undefined", () => {
+    test("fun is undefined", () => {
       const inputs = [[[], 0], [[1], 1], [[1, 2], 2], [[1, 2, 3], 3]];
       inputs.forEach(([input, expected]) => {
         const result = Kasen(input).count();
@@ -1266,7 +1266,7 @@ describe("Array", () => {
       });
     });
 
-    test("func is specified", () => {
+    test("fun is specified", () => {
       const inputs = [[[], 0], [[1], 1], [[1, 2], 1], [[1, 2, 3], 2]];
       inputs.forEach(([input, expected]) => {
         const result = Kasen(input).count(v => v % 2 === 1);

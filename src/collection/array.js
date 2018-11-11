@@ -66,18 +66,18 @@ export default class KasenArray extends Collection {
       return bool ? this.takeLast(num) : this;
     };
 
-    this.takeWhile.if = (bool, func) => {
-      if (!isFunction(func)) {
+    this.takeWhile.if = (bool, fun) => {
+      if (!isFunction(fun)) {
         throw new TypeError("2nd argument must be Function");
       }
-      return bool ? this.takeWhile(func) : this;
+      return bool ? this.takeWhile(fun) : this;
     };
 
-    this.takeUntil.if = (bool, func) => {
-      if (!isFunction(func)) {
+    this.takeUntil.if = (bool, fun) => {
+      if (!isFunction(fun)) {
         throw new TypeError("2nd argument must be Function");
       }
-      return bool ? this.takeUntil(func) : this;
+      return bool ? this.takeUntil(fun) : this;
     };
 
     this.skip.if = (bool, num) => {
@@ -94,18 +94,18 @@ export default class KasenArray extends Collection {
       return bool ? this.skipLast(num) : this;
     };
 
-    this.skipWhile.if = (bool, func) => {
-      if (!isFunction(func)) {
+    this.skipWhile.if = (bool, fun) => {
+      if (!isFunction(fun)) {
         throw new TypeError("2nd argument must be Function");
       }
-      return bool ? this.skipWhile(func) : this;
+      return bool ? this.skipWhile(fun) : this;
     };
 
-    this.skipUntil.if = (bool, func) => {
-      if (!isFunction(func)) {
+    this.skipUntil.if = (bool, fun) => {
+      if (!isFunction(fun)) {
         throw new TypeError("2nd argument must be Function");
       }
-      return bool ? this.skipUntil(func) : this;
+      return bool ? this.skipUntil(fun) : this;
     };
 
     this.set.if = (bool, index, value) => {
@@ -115,14 +115,14 @@ export default class KasenArray extends Collection {
       return bool ? this.set(index, value) : this;
     };
 
-    this.update.if = (bool, index, func) => {
+    this.update.if = (bool, index, fun) => {
       if (!isNumber(index)) {
         throw new TypeError("2nd argument must be Number");
       }
-      if (!isFunction(func)) {
+      if (!isFunction(fun)) {
         throw new TypeError("3rd argument must be Function");
       }
-      return bool ? this.update(index, func) : this;
+      return bool ? this.update(index, fun) : this;
     };
 
     this.delete.if = (bool, index) => {
@@ -153,11 +153,11 @@ export default class KasenArray extends Collection {
 
     this.flatten.if = bool => (bool ? this.flatten() : this);
 
-    this.flatMap.if = (bool, func) => {
-      if (!isFunction(func)) {
+    this.flatMap.if = (bool, fun) => {
+      if (!isFunction(fun)) {
         throw new TypeError("2nd argument must be Function");
       }
-      return bool ? this.flatMap(func) : this;
+      return bool ? this.flatMap(fun) : this;
     };
   }
 
@@ -169,21 +169,21 @@ export default class KasenArray extends Collection {
     return array.slice();
   }
 
-  static map(array, func) {
-    return array.map(func);
+  static map(array, fun) {
+    return array.map(fun);
   }
 
-  filter(func) {
-    if (!(isFunction(func) || func === undefined)) {
+  filter(fun) {
+    if (!(isFunction(fun) || fun === undefined)) {
       throw new TypeError("1st argument must be Function or Undefined");
     }
-    const fn = func || (v => v);
+    const fn = fun || (v => v);
     this.__pile(FilterIterator, fn);
     return this;
   }
 
-  static filter(array, func) {
-    return array.filter(func);
+  static filter(array, fun) {
+    return array.filter(fun);
   }
 
   reverse() {
@@ -240,15 +240,15 @@ export default class KasenArray extends Collection {
     return num < 0 ? [] : array.slice(length - num, length);
   }
 
-  takeWhile(func) {
-    if (!isFunction(func)) {
+  takeWhile(fun) {
+    if (!isFunction(fun)) {
       throw new TypeError("1st argument must be Function");
     }
     const curate = iter => {
       const array = [];
       let key;
       let value;
-      while (!({ key, value } = iter.next()).done && func(value, key)) {
+      while (!({ key, value } = iter.next()).done && fun(value, key)) {
         array.push(value);
       }
       return array;
@@ -257,11 +257,11 @@ export default class KasenArray extends Collection {
     return this;
   }
 
-  static takeWhile(array, func) {
+  static takeWhile(array, fun) {
     const result = [];
     for (let i = 0, { length } = array; i < length; i += 1) {
       const value = array[i];
-      if (!func(value, i)) {
+      if (!fun(value, i)) {
         break;
       }
       result.push(value);
@@ -269,15 +269,15 @@ export default class KasenArray extends Collection {
     return result;
   }
 
-  takeUntil(func) {
-    if (!isFunction(func)) {
+  takeUntil(fun) {
+    if (!isFunction(fun)) {
       throw new TypeError("1st argument must be Function");
     }
-    return this.takeWhile((v, i) => !func(v, i));
+    return this.takeWhile((v, i) => !fun(v, i));
   }
 
-  static takeUntil(array, func) {
-    return this.takeWhile(array, (v, i) => !func(v, i));
+  static takeUntil(array, fun) {
+    return this.takeWhile(array, (v, i) => !fun(v, i));
   }
 
   skip(num) {
@@ -329,8 +329,8 @@ export default class KasenArray extends Collection {
     return num >= length ? [] : array.slice(0, array.length - num);
   }
 
-  skipWhile(func) {
-    if (!isFunction(func)) {
+  skipWhile(fun) {
+    if (!isFunction(fun)) {
       throw new TypeError("1st argument must be Function");
     }
     const curate = iter => {
@@ -339,7 +339,7 @@ export default class KasenArray extends Collection {
       let value;
       let skipped = true;
       while (!({ key, value } = iter.next()).done) {
-        if (skipped && !func(value, key)) {
+        if (skipped && !fun(value, key)) {
           skipped = false;
         }
         if (!skipped) {
@@ -352,11 +352,11 @@ export default class KasenArray extends Collection {
     return this;
   }
 
-  static skipWhile(array, func) {
+  static skipWhile(array, fun) {
     const result = [];
     let skipped = true;
     array.forEach((value, i) => {
-      if (skipped && !func(value, i)) {
+      if (skipped && !fun(value, i)) {
         skipped = false;
       }
       if (!skipped) {
@@ -366,15 +366,15 @@ export default class KasenArray extends Collection {
     return result;
   }
 
-  skipUntil(func) {
-    if (!isFunction(func)) {
+  skipUntil(fun) {
+    if (!isFunction(fun)) {
       throw new TypeError("1st argument must be Function");
     }
-    return this.skipWhile((v, i) => !func(v, i));
+    return this.skipWhile((v, i) => !fun(v, i));
   }
 
-  static skipUntil(array, func) {
-    return this.skipWhile(array, (v, i) => !func(v, i));
+  static skipUntil(array, fun) {
+    return this.skipWhile(array, (v, i) => !fun(v, i));
   }
 
   set(index, value) {
@@ -384,11 +384,11 @@ export default class KasenArray extends Collection {
     return super.set(index, value);
   }
 
-  update(index, func) {
+  update(index, fun) {
     if (!isNumber(index)) {
       throw new TypeError("1st argument must be Number");
     }
-    if (!isFunction(func)) {
+    if (!isFunction(fun)) {
       throw new TypeError("2nd argument must be Function");
     }
     const curate = iter => {
@@ -396,7 +396,7 @@ export default class KasenArray extends Collection {
       const { length } = array;
       if (-length <= index && index < length) {
         const key = correctIndex(index, length);
-        array[key] = func(array[key]);
+        array[key] = fun(array[key]);
       }
       return array;
     };
@@ -404,12 +404,12 @@ export default class KasenArray extends Collection {
     return this;
   }
 
-  static update(array, index, func) {
+  static update(array, index, fun) {
     const result = this.copy(array);
     const { length } = result;
     if (-length <= index && index < length) {
       const key = correctIndex(index, length);
-      result[key] = func(array[key]);
+      result[key] = fun(array[key]);
     }
     return result;
   }
@@ -569,8 +569,8 @@ export default class KasenArray extends Collection {
     return result;
   }
 
-  flatMap(func) {
-    if (!isFunction(func)) {
+  flatMap(fun) {
+    if (!isFunction(fun)) {
       throw new TypeError("1st argument must be Function");
     }
     const curate = iter => {
@@ -578,7 +578,7 @@ export default class KasenArray extends Collection {
       let key;
       let value;
       while (!({ key, value } = iter.next()).done) {
-        const val = func(value, key);
+        const val = fun(value, key);
         if (isArray(val)) {
           array = array.concat(val);
         } else {
@@ -591,10 +591,10 @@ export default class KasenArray extends Collection {
     return this;
   }
 
-  static flatMap(array, func) {
+  static flatMap(array, fun) {
     let result = [];
     array.forEach((v, i) => {
-      const value = func(v, i);
+      const value = fun(v, i);
       if (isArray(value)) {
         result = result.concat(value);
       } else {
@@ -608,14 +608,14 @@ export default class KasenArray extends Collection {
   // TODO: zipAll()
   // TODO: zipWith()
 
-  // TODO: sort(func)
+  // TODO: sort(fun)
 
   // TODO?: interpose()
   // TODO?: interleave()
 
   // TODO: splice()
 
-  // TODO: distinct(func) / unique(func) from Scala
+  // TODO: distinct(fun) / unique(fun) from Scala
 
   // TODO: chunk() (paging method)
 
@@ -636,13 +636,13 @@ export default class KasenArray extends Collection {
   // TODO?: startsWith() from Scala
   // TODO?: endsWith() from Scala
 
-  static count(array, func) {
-    if (func === undefined) {
+  static count(array, fun) {
+    if (fun === undefined) {
       return array.length;
     }
     let counter = 0;
     array.forEach((value, key) => {
-      if (func(value, key)) {
+      if (fun(value, key)) {
         counter += 1;
       }
     });
@@ -706,8 +706,8 @@ export default class KasenArray extends Collection {
     return object;
   }
 
-  static reduce(array, func, init) {
-    return init === undefined ? array.reduce(func) : array.reduce(func, init);
+  static reduce(array, fun, init) {
+    return init === undefined ? array.reduce(fun) : array.reduce(fun, init);
   }
 
   // TODO: reduceRight()
@@ -718,33 +718,33 @@ export default class KasenArray extends Collection {
   // TODO?: unzip() from Scala
   // TODO?: unzipAll() from Scala?
 
-  static every(array, func) {
-    return array.every(func);
+  static every(array, fun) {
+    return array.every(fun);
   }
 
-  static some(array, func) {
-    return array.some(func);
+  static some(array, fun) {
+    return array.some(fun);
   }
 
-  static find(array, func) {
+  static find(array, fun) {
     for (let i = 0, { length } = array; i < length; i += 1) {
       const value = array[i];
-      if (func(value, i)) {
+      if (fun(value, i)) {
         return value;
       }
     }
     return undefined;
   }
 
-  findLast(func) {
-    if (!isFunction(func)) {
+  findLast(fun) {
+    if (!isFunction(fun)) {
       throw new TypeError("1st argument must be Function");
     }
     const finalize = iter => {
       let key;
       let value;
       while (!({ key, value } = iter.prev()).done) {
-        if (func(value, key)) {
+        if (fun(value, key)) {
           return value;
         }
       }
@@ -753,10 +753,10 @@ export default class KasenArray extends Collection {
     return this.__consume(finalize);
   }
 
-  static findLast(array, func) {
+  static findLast(array, fun) {
     for (let i = array.length - 1; i > -1; i -= 1) {
       const value = array[i];
-      if (func(value, i)) {
+      if (fun(value, i)) {
         return value;
       }
     }
@@ -773,7 +773,7 @@ export default class KasenArray extends Collection {
   // TODO: findIndexOf()
   // TODO: findLastIndexOf()
 
-  static forEach(array, func) {
-    return array.forEach(func);
+  static forEach(array, fun) {
+    return array.forEach(fun);
   }
 }

@@ -6,7 +6,7 @@ export class FilterIterator extends ChainIterator {
   next() {
     let result;
     while (!(result = this.parent.next()).done) {
-      if (this.func(result.value, result.key)) {
+      if (this.fun(result.value, result.key)) {
         break;
       }
     }
