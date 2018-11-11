@@ -852,6 +852,59 @@ describe("Object", () => {
     });
   });
 
+  describe("reduceWhile()", () => {
+    test("init is undefined", () => {
+      const ios = [
+        [{ a: 1 }, 1],
+        [{ a: 1, b: 1 }, 2],
+        [{ a: 1, b: 1, c: 1 }, 2]
+      ];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input).reduceWhile((acc, v) => ["halt", acc + v]);
+        expect(result).toBe(expected);
+      });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.reduceWhile(input, (acc, v) => ["halt", acc + v]);
+        expect(result).toBe(expected);
+      });
+    });
+
+    test("init is specified", () => {
+      const ios = [
+        [{}, 10],
+        [{ a: 1 }, 11],
+        [{ a: 1, b: 1 }, 11],
+        [{ a: 1, b: 1, c: 1 }, 11]
+      ];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input).reduceWhile(
+          (acc, v) => ["halt", acc + v],
+          10
+        );
+        expect(result).toBe(expected);
+      });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.reduceWhile(
+          input,
+          (acc, v) => ["halt", acc + v],
+          10
+        );
+        expect(result).toBe(expected);
+      });
+    });
+
+    test("error", () => {
+      {
+        const run = () => Kasen({}).reduceWhile((acc, v) => ["halt", acc + v]);
+        expect(run).toThrow(TypeError);
+      }
+      {
+        const run = () => Kasen.reduceWhile({}, (acc, v) => ["halt", acc + v]);
+        expect(run).toThrow(TypeError);
+      }
+    });
+  });
+
   describe("every()", () => {
     test("ok", () => {
       const ios = [

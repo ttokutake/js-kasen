@@ -445,7 +445,18 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
-  // TODO: reduceWhile() from Elixir
+  reduceWhile(fun, init) {
+    if (!isFunction(fun)) {
+      throw new TypeError("1st argument must be Function");
+    }
+    const coll = this.__consume(null);
+    return this.constructor.reduceWhile(coll, fun, init);
+  }
+
+  // eslint-disable-next-line no-unused-vars
+  static reduceWhile(_coll, _fun, _init) {
+    throw new Error("not implemented");
+  }
 
   // TODO: partition() from Scala
 

@@ -711,6 +711,27 @@ export default class KasenArray extends Collection {
   }
 
   // TODO: reduceRight()
+
+  static reduceWhile(array, fun, init) {
+    let firstIndex = 0;
+    let acc = init;
+    if (init === undefined) {
+      if (!array.length) {
+        throw new TypeError("Reduce of empty array with no initial value");
+      }
+      firstIndex = 1;
+      [acc] = array;
+    }
+    for (let i = firstIndex, { length } = array; i < length; i += 1) {
+      const [state, result] = fun(acc, array[i], i);
+      if (state === "halt") {
+        return result;
+      }
+      acc = result;
+    }
+    return acc;
+  }
+
   // TODO: scan() from Scala
   // TODO: scanRight() from Scala
 
