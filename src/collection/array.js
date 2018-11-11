@@ -694,6 +694,10 @@ export default class KasenArray extends Collection {
 
   // TODO: last()
 
+  static toArray(array) {
+    return this.copy(array);
+  }
+
   static reduce(array, func, init) {
     return init === undefined ? array.reduce(func) : array.reduce(func, init);
   }

@@ -397,7 +397,22 @@ export default class Collection {
     return this.__consume(null);
   }
 
-  // TODO: toArray()
+  toArray() {
+    const finalize = iter => {
+      const array = [];
+      let value;
+      while (!({ value } = iter.next()).done) {
+        array.push(value);
+      }
+      return array;
+    };
+    return this.__consume(finalize);
+  }
+
+  // eslint-disable-next-line no-unused-vars
+  static toArray(_coll) {
+    throw new Error("not implemented");
+  }
 
   // TODO: toObject()
 

@@ -374,6 +374,14 @@ export default class KasenObject extends Collection {
     return false;
   }
 
+  static toArray(object) {
+    const array = [];
+    Object.keys(object).forEach(key => {
+      array.push(object[key]);
+    });
+    return array;
+  }
+
   static reduce(object, func, init) {
     const keys = Object.keys(object);
     let acc = init;

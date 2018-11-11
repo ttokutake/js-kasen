@@ -411,6 +411,14 @@ Kasen.includes = (coll, value) => {
   return Coll.includes(coll, value);
 };
 
+Kasen.toArray = coll => {
+  const Coll = choose(coll);
+  if (!Coll) {
+    throw new TypeError("1st argument must be Array or Object");
+  }
+  return Coll.toArray(coll);
+};
+
 Kasen.reduce = (coll, func, init) => {
   const Coll = choose(coll);
   if (!Coll) {
