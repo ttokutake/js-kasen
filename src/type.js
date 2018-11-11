@@ -7,7 +7,7 @@ export function isString(v) {
 }
 
 export function isObject(v) {
-  return typeof v === "object";
+  return typeof v === "object" && v !== null;
 }
 
 export function isArray(v) {
