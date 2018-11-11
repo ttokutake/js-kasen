@@ -698,6 +698,14 @@ export default class KasenArray extends Collection {
     return this.copy(array);
   }
 
+  static toObject(array) {
+    const object = {};
+    array.forEach((value, key) => {
+      object[key] = value;
+    });
+    return object;
+  }
+
   static reduce(array, func, init) {
     return init === undefined ? array.reduce(func) : array.reduce(func, init);
   }

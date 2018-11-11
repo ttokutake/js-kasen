@@ -1400,6 +1400,25 @@ describe("Array", () => {
     });
   });
 
+  describe("toObject", () => {
+    test("ok", () => {
+      const inputs = [
+        [[], {}],
+        [[1], { 0: 1 }],
+        [[1, 2], { 0: 1, 1: 2 }],
+        [[1, 2, 3], { 0: 1, 1: 2, 2: 3 }]
+      ];
+      inputs.forEach(([input, expected]) => {
+        const result = Kasen(input).toObject();
+        expect(result).toEqual(expected);
+      });
+      inputs.forEach(([input, expected]) => {
+        const result = Kasen.toObject(input);
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
   describe("reduce()", () => {
     test("init is undefined", () => {
       const ios = [[[1], 1], [[1, 2], 3], [[1, 2, 3], 6]];

@@ -419,6 +419,14 @@ Kasen.toArray = coll => {
   return Coll.toArray(coll);
 };
 
+Kasen.toObject = coll => {
+  const Coll = choose(coll);
+  if (!Coll) {
+    throw new TypeError("1st argument must be Array or Object");
+  }
+  return Coll.toObject(coll);
+};
+
 Kasen.reduce = (coll, func, init) => {
   const Coll = choose(coll);
   if (!Coll) {

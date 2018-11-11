@@ -414,7 +414,23 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
-  // TODO: toObject()
+  toObject() {
+    const finalize = iter => {
+      const object = {};
+      let key;
+      let value;
+      while (!({ key, value } = iter.next()).done) {
+        object[key] = value;
+      }
+      return object;
+    };
+    return this.__consume(finalize);
+  }
+
+  // eslint-disable-next-line no-unused-vars
+  static toObject(_coll) {
+    throw new Error("not implemented");
+  }
 
   reduce(func, init) {
     if (!isFunction(func)) {

@@ -781,12 +781,26 @@ describe("Object", () => {
         [{ a: 1, b: 2 }, [1, 2]],
         [{ a: 1, b: 2, c: 3 }, [1, 2, 3]]
       ];
-      inputs.forEach(input => {
+      inputs.forEach(([input, expected]) => {
         const result = Kasen(input).toArray();
+        expect(result).toEqual(expected);
+      });
+      inputs.forEach(([input, expected]) => {
+        const result = Kasen.toArray(input);
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
+  describe("toObject()", () => {
+    test("ok", () => {
+      const inputs = [{}, { a: 1 }, { a: 1, b: 2 }, { a: 1, b: 2, c: 3 }];
+      inputs.forEach(input => {
+        const result = Kasen(input).toObject();
         expect(result).toEqual(input);
       });
       inputs.forEach(input => {
-        const result = Kasen.toArray(input);
+        const result = Kasen.toObject(input);
         expect(result).toEqual(input);
       });
     });
