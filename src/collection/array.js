@@ -735,6 +735,15 @@ export default class KasenArray extends Collection {
   // TODO: scan() from Scala
   // TODO: scanRight() from Scala
 
+  static partition(array, fun) {
+    const result = [[], []];
+    array.forEach((value, key) => {
+      const index = fun(value, key) ? 0 : 1;
+      result[index].push(value);
+    });
+    return result;
+  }
+
   // TODO?: splitAt() from Scala
   // TODO?: unzip() from Scala
   // TODO?: unzipAll() from Scala?

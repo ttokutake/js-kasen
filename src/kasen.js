@@ -449,6 +449,17 @@ Kasen.reduceWhile = (coll, fun, init) => {
   return Coll.reduceWhile(coll, fun, init);
 };
 
+Kasen.partition = (coll, fun) => {
+  const Coll = choose(coll);
+  if (!Coll) {
+    throw new TypeError("1st argument must be Array or Object");
+  }
+  if (!isFunction(fun)) {
+    throw new TypeError("2nd argument must be Function");
+  }
+  return Coll.partition(coll, fun);
+};
+
 Kasen.every = (coll, fun) => {
   const Coll = choose(coll);
   if (!Coll) {

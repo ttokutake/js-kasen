@@ -1500,6 +1500,25 @@ describe("Array", () => {
     });
   });
 
+  describe("partition()", () => {
+    test("ok", () => {
+      const inputs = [
+        [[], [[], []]],
+        [[1], [[1], []]],
+        [[1, 2], [[1], [2]]],
+        [[1, 2, 3], [[1, 3], [2]]]
+      ];
+      inputs.forEach(([input, expected]) => {
+        const result = Kasen(input).partition(v => v % 2 === 1);
+        expect(result).toEqual(expected);
+      });
+      inputs.forEach(([input, expected]) => {
+        const result = Kasen.partition(input, v => v % 2 === 1);
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
   describe("every()", () => {
     test("ok", () => {
       const ios = [

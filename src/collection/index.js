@@ -458,7 +458,27 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
-  // TODO: partition() from Scala
+  partition(fun) {
+    if (!isFunction(fun)) {
+      throw new TypeError("1st argument must be Function");
+    }
+    const finalize = iter => {
+      const result = [iter.Origin.default(), iter.Origin.default()];
+      let key;
+      let value;
+      while (!({ key, value } = iter.next()).done) {
+        const index = fun(value, key) ? 0 : 1;
+        iter.Origin.add(result[index], key, value);
+      }
+      return result;
+    };
+    return this.__consume(finalize);
+  }
+
+  // eslint-disable-next-line no-unused-vars
+  static partition(_coll, _fun) {
+    throw new Error("not implemented");
+  }
 
   // TODO: join()
 

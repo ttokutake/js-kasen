@@ -421,6 +421,16 @@ export default class KasenObject extends Collection {
     return acc;
   }
 
+  static partition(object, fun) {
+    const result = [{}, {}];
+    Object.keys(object).forEach(key => {
+      const value = object[key];
+      const index = fun(value, key) ? 0 : 1;
+      result[index][key] = value;
+    });
+    return result;
+  }
+
   static every(object, fun) {
     const keys = Object.keys(object);
     for (let i = 0, { length } = keys; i < length; i += 1) {

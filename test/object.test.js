@@ -905,6 +905,25 @@ describe("Object", () => {
     });
   });
 
+  describe("partition()", () => {
+    test("ok", () => {
+      const inputs = [
+        [{}, [{}, {}]],
+        [{ a: 1 }, [{ a: 1 }, {}]],
+        [{ a: 1, b: 2 }, [{ a: 1 }, { b: 2 }]],
+        [{ a: 1, b: 2, c: 3 }, [{ a: 1, c: 3 }, { b: 2 }]]
+      ];
+      inputs.forEach(([input, expected]) => {
+        const result = Kasen(input).partition(v => v % 2 === 1);
+        expect(result).toEqual(expected);
+      });
+      inputs.forEach(([input, expected]) => {
+        const result = Kasen.partition(input, v => v % 2 === 1);
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
   describe("every()", () => {
     test("ok", () => {
       const ios = [
