@@ -458,6 +458,7 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
+  // TODO: func = v => v
   partition(fun) {
     if (!isFunction(fun)) {
       throw new TypeError("1st argument must be Function");
