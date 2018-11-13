@@ -924,6 +924,42 @@ describe("Object", () => {
     });
   });
 
+  describe("join()", () => {
+    test("delimiter is undefined", () => {
+      const inputs = [
+        [{}, ""],
+        [{ a: 1 }, "1"],
+        [{ a: 1, b: 2 }, "1,2"],
+        [{ a: 1, b: 2, c: 3 }, "1,2,3"]
+      ];
+      inputs.forEach(([input, expected]) => {
+        const result = Kasen(input).join();
+        expect(result).toBe(expected);
+      });
+      inputs.forEach(([input, expected]) => {
+        const result = Kasen.join(input);
+        expect(result).toBe(expected);
+      });
+    });
+
+    test("delimiter is specified", () => {
+      const inputs = [
+        [{}, ""],
+        [{ a: 1 }, "1"],
+        [{ a: 1, b: 2 }, "1|2"],
+        [{ a: 1, b: 2, c: 3 }, "1|2|3"]
+      ];
+      inputs.forEach(([input, expected]) => {
+        const result = Kasen(input).join("|");
+        expect(result).toBe(expected);
+      });
+      inputs.forEach(([input, expected]) => {
+        const result = Kasen.join(input, "|");
+        expect(result).toBe(expected);
+      });
+    });
+  });
+
   describe("every()", () => {
     test("ok", () => {
       const ios = [

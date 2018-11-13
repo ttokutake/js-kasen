@@ -480,7 +480,32 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
-  // TODO: join()
+  join(delimiter) {
+    if (!(isString(delimiter) || delimiter === undefined)) {
+      throw new TypeError("1st argument must be String or Undefined");
+    }
+    const delim = delimiter || ",";
+    const finalize = iter => {
+      let result = "";
+      let value;
+      let isFirst = true;
+      while (!({ value } = iter.next()).done) {
+        if (isFirst) {
+          isFirst = false;
+          result += value;
+        } else {
+          result = `${result}${delim}${value}`;
+        }
+      }
+      return result;
+    };
+    return this.__consume(finalize);
+  }
+
+  // eslint-disable-next-line no-unused-vars
+  static join(_coll, _delimiter) {
+    throw new Error("not implemented");
+  }
 
   // TODO: groupBy()
 

@@ -460,6 +460,17 @@ Kasen.partition = (coll, fun) => {
   return Coll.partition(coll, fun);
 };
 
+Kasen.join = (coll, delimiter) => {
+  const Coll = choose(coll);
+  if (!Coll) {
+    throw new TypeError("1st argument must be Array or Object");
+  }
+  if (!(isString(delimiter) || delimiter === undefined)) {
+    throw new TypeError("2nd argument must be String or Undefined");
+  }
+  return Coll.join(coll, delimiter);
+};
+
 Kasen.every = (coll, fun) => {
   const Coll = choose(coll);
   if (!Coll) {

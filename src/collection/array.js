@@ -744,6 +744,10 @@ export default class KasenArray extends Collection {
     return result;
   }
 
+  static join(array, delimiter) {
+    return array.join(delimiter);
+  }
+
   // TODO?: splitAt() from Scala
   // TODO?: unzip() from Scala
   // TODO?: unzipAll() from Scala?

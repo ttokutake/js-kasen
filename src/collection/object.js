@@ -431,6 +431,21 @@ export default class KasenObject extends Collection {
     return result;
   }
 
+  static join(object, delimiter) {
+    const delim = delimiter || ",";
+    let result = "";
+    let isFirst = true;
+    Object.keys(object).forEach(key => {
+      if (isFirst) {
+        isFirst = false;
+        result += object[key];
+      } else {
+        result = `${result}${delim}${object[key]}`;
+      }
+    });
+    return result;
+  }
+
   static every(object, fun) {
     const keys = Object.keys(object);
     for (let i = 0, { length } = keys; i < length; i += 1) {
