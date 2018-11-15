@@ -458,7 +458,6 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
-  // TODO: func = v => v
   partition(fun) {
     if (!isFunction(fun)) {
       throw new TypeError("1st argument must be Function");
@@ -508,7 +507,30 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
-  // TODO: groupBy()
+  groupBy(fun) {
+    if (!isFunction(fun)) {
+      throw new TypeError("1st argument must be Function");
+    }
+    const finalize = iter => {
+      const object = {};
+      let key;
+      let value;
+      while (!({ key, value } = iter.next()).done) {
+        const k = fun(value, key);
+        if (!Object.prototype.hasOwnProperty.call(object, k)) {
+          object[k] = [];
+        }
+        object[k].push(value);
+      }
+      return object;
+    };
+    return this.__consume(finalize);
+  }
+
+  // eslint-disable-next-line no-unused-vars
+  static groupBy(_coll, _fun) {
+    throw new Error("not implemented");
+  }
 
   every(fun) {
     if (!isFunction(fun)) {

@@ -446,6 +446,19 @@ export default class KasenObject extends Collection {
     return result;
   }
 
+  static groupBy(object, fun) {
+    const result = {};
+    Object.keys(object).forEach(key => {
+      const value = object[key];
+      const k = fun(value, key);
+      if (!Object.prototype.hasOwnProperty.call(result, k)) {
+        result[k] = [];
+      }
+      result[k].push(value);
+    });
+    return result;
+  }
+
   static every(object, fun) {
     const keys = Object.keys(object);
     for (let i = 0, { length } = keys; i < length; i += 1) {

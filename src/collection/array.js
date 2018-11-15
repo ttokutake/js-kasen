@@ -748,6 +748,18 @@ export default class KasenArray extends Collection {
     return array.join(delimiter);
   }
 
+  static groupBy(array, fun) {
+    const object = {};
+    array.forEach((value, key) => {
+      const k = fun(value, key);
+      if (!Object.prototype.hasOwnProperty.call(object, k)) {
+        object[k] = [];
+      }
+      object[k].push(value);
+    });
+    return object;
+  }
+
   // TODO?: splitAt() from Scala
   // TODO?: unzip() from Scala
   // TODO?: unzipAll() from Scala?

@@ -960,6 +960,23 @@ describe("Object", () => {
     });
   });
 
+  describe("groupBy()", () => {
+    const inputs = [
+      [{}, {}],
+      [{ a: 1 }, { 1: [1] }],
+      [{ a: 1, b: 2 }, { 1: [1], 2: [2] }],
+      [{ a: 1, b: 2, c: 1 }, { 1: [1, 1], 2: [2] }]
+    ];
+    inputs.forEach(([input, expected]) => {
+      const result = Kasen(input).groupBy(v => v);
+      expect(result).toEqual(expected);
+    });
+    inputs.forEach(([input, expected]) => {
+      const result = Kasen.groupBy(input, v => v);
+      expect(result).toEqual(expected);
+    });
+  });
+
   describe("every()", () => {
     test("ok", () => {
       const ios = [

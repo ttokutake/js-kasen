@@ -471,6 +471,17 @@ Kasen.join = (coll, delimiter) => {
   return Coll.join(coll, delimiter);
 };
 
+Kasen.groupBy = (coll, fun) => {
+  const Coll = choose(coll);
+  if (!Coll) {
+    throw new TypeError("1st argument must be Array or Object");
+  }
+  if (!isFunction(fun)) {
+    throw new TypeError("2nd argument must be Function");
+  }
+  return Coll.groupBy(coll, fun);
+};
+
 Kasen.every = (coll, fun) => {
   const Coll = choose(coll);
   if (!Coll) {
