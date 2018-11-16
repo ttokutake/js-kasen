@@ -371,6 +371,7 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
+  // TODO: Use SameValueZero algorithm
   includes(value) {
     const finalize = iter => {
       let v;
