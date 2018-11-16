@@ -474,13 +474,13 @@ export default class KasenObject extends Collection {
     return !this.every(object, (v, k) => !fun(v, k));
   }
 
-  static find(object, fun) {
+  static findEntry(object, fun) {
     const keys = Object.keys(object);
     for (let i = 0, { length } = keys; i < length; i += 1) {
       const key = keys[i];
       const value = object[key];
       if (fun(value, key)) {
-        return value;
+        return [key, value];
       }
     }
     return undefined;

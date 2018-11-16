@@ -1659,6 +1659,28 @@ describe("Array", () => {
     });
   });
 
+  describe("findEntry()", () => {
+    test("ok", () => {
+      const ios = [
+        [[], undefined],
+        [[1], [0, 1]],
+        [[2], undefined],
+        [[1, 2], [0, 1]],
+        [[2, 3], [1, 3]],
+        [[1, 2, 3], [0, 1]],
+        [[2, 4, 5], [2, 5]]
+      ];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input).findEntry(v => v % 2 === 1);
+        expect(result).toEqual(expected);
+      });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.findEntry(input, v => v % 2 === 1);
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
   describe("forEach()", () => {
     test("ok", () => {
       const inputs = [[], [1], [1, 2], [1, 2, 3]];

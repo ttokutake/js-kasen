@@ -571,12 +571,26 @@ export default class Collection {
     if (!isFunction(fun)) {
       throw new TypeError("1st argument must be Function");
     }
+    const result = this.findEntry(fun);
+    return result ? result[1] : result;
+  }
+
+  // eslint-disable-next-line no-unused-vars
+  static find(coll, fun) {
+    const result = this.findEntry(coll, fun);
+    return result ? result[1] : result;
+  }
+
+  findEntry(fun) {
+    if (!isFunction(fun)) {
+      throw new TypeError("1st argument must be Function");
+    }
     const finalize = iter => {
       let key;
       let value;
       while (!({ key, value } = iter.next()).done) {
         if (fun(value, key)) {
-          return value;
+          return [key, value];
         }
       }
       return undefined;
@@ -585,11 +599,10 @@ export default class Collection {
   }
 
   // eslint-disable-next-line no-unused-vars
-  static find(_coll, _fun) {
+  static findEntry(_coll, _fun) {
     throw new Error("not implemented");
   }
 
-  // TODO: findEntry()
   // TODO: findKey()
   // TODO: keyOf()
 

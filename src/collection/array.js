@@ -772,16 +772,6 @@ export default class KasenArray extends Collection {
     return array.some(fun);
   }
 
-  static find(array, fun) {
-    for (let i = 0, { length } = array; i < length; i += 1) {
-      const value = array[i];
-      if (fun(value, i)) {
-        return value;
-      }
-    }
-    return undefined;
-  }
-
   findLast(fun) {
     if (!isFunction(fun)) {
       throw new TypeError("1st argument must be Function");
@@ -804,6 +794,16 @@ export default class KasenArray extends Collection {
       const value = array[i];
       if (fun(value, i)) {
         return value;
+      }
+    }
+    return undefined;
+  }
+
+  static findEntry(array, fun) {
+    for (let i = 0, { length } = array; i < length; i += 1) {
+      const value = array[i];
+      if (fun(value, i)) {
+        return [i, value];
       }
     }
     return undefined;

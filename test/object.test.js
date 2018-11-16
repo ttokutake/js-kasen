@@ -1042,6 +1042,28 @@ describe("Object", () => {
     });
   });
 
+  describe("findEntry()", () => {
+    test("ok", () => {
+      const ios = [
+        [{}, undefined],
+        [{ a: 1 }, ["a", 1]],
+        [{ b: 2 }, undefined],
+        [{ a: 1, b: 2 }, ["a", 1]],
+        [{ b: 2, c: 3 }, ["c", 3]],
+        [{ a: 1, b: 2, c: 3 }, ["a", 1]],
+        [{ b: 2, d: 4, e: 5 }, ["e", 5]]
+      ];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input).findEntry(v => v % 2 === 1);
+        expect(result).toEqual(expected);
+      });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.findEntry(input, v => v % 2 === 1);
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
   describe("forEach()", () => {
     test("ok", () => {
       const inputs = [{}, { a: 1 }, { a: 1, b: 2 }, { a: 1, b: 2, c: 3 }];
