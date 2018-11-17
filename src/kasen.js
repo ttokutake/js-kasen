@@ -536,6 +536,17 @@ Kasen.findEntry = (coll, fun) => {
   return Coll.findEntry(coll, fun);
 };
 
+Kasen.findKey = (coll, fun) => {
+  const Coll = choose(coll);
+  if (!Coll) {
+    throw new TypeError("1st argument must be Array or Object");
+  }
+  if (!isFunction(fun)) {
+    throw new TypeError("2nd argument must be Function");
+  }
+  return Coll.findKey(coll, fun);
+};
+
 Kasen.forEach = (coll, fun) => {
   const Coll = choose(coll);
   if (!Coll) {

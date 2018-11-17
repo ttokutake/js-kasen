@@ -1681,6 +1681,28 @@ describe("Array", () => {
     });
   });
 
+  describe("findKey()", () => {
+    test("ok", () => {
+      const ios = [
+        [[], undefined],
+        [[1], 0],
+        [[2], undefined],
+        [[1, 2], 0],
+        [[2, 3], 1],
+        [[1, 2, 3], 0],
+        [[2, 4, 5], 2]
+      ];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input).findKey(v => v % 2 === 1);
+        expect(result).toEqual(expected);
+      });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.findKey(input, v => v % 2 === 1);
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
   describe("forEach()", () => {
     test("ok", () => {
       const inputs = [[], [1], [1, 2], [1, 2, 3]];

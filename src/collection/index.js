@@ -603,7 +603,19 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
-  // TODO: findKey()
+  findKey(fun) {
+    if (!isFunction(fun)) {
+      throw new TypeError("1st argument must be Function");
+    }
+    const result = this.findEntry(fun);
+    return result ? result[0] : result;
+  }
+
+  static findKey(coll, fun) {
+    const result = this.findEntry(coll, fun);
+    return result ? result[0] : result;
+  }
+
   // TODO: keyOf()
 
   // TODO: sum(fun) from Ramda
