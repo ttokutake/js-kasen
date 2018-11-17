@@ -811,6 +811,16 @@ export default class KasenArray extends Collection {
 
   // TODO: findLastEntry()
   // TODO: findLastKey()
+
+  static keyOf(array, value) {
+    for (let i = 0, { length } = array; i < length; i += 1) {
+      if (array[i] === value) {
+        return i;
+      }
+    }
+    return undefined;
+  }
+
   // TODO: lastKeyOf()
 
   // TODO: indexOf()

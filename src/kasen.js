@@ -547,6 +547,14 @@ Kasen.findKey = (coll, fun) => {
   return Coll.findKey(coll, fun);
 };
 
+Kasen.keyOf = (coll, value) => {
+  const Coll = choose(coll);
+  if (!Coll) {
+    throw new TypeError("1st argument must be Array or Object");
+  }
+  return Coll.keyOf(coll, value);
+};
+
 Kasen.forEach = (coll, fun) => {
   const Coll = choose(coll);
   if (!Coll) {

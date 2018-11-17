@@ -1086,6 +1086,27 @@ describe("Object", () => {
     });
   });
 
+  describe("keyOf()", () => {
+    test("ok", () => {
+      const ios = [
+        [{}, 1, undefined],
+        [{ a: 1 }, 1, "a"],
+        [{ a: 1 }, 2, undefined],
+        [{ a: 1, b: 2 }, 1, "a"],
+        [{ a: 1, b: 2 }, 2, "b"],
+        [{ a: 1, b: 2 }, 3, undefined]
+      ];
+      ios.forEach(([input, value, expected]) => {
+        const result = Kasen(input).keyOf(value);
+        expect(result).toBe(expected);
+      });
+      ios.forEach(([input, value, expected]) => {
+        const result = Kasen.keyOf(input, value);
+        expect(result).toBe(expected);
+      });
+    });
+  });
+
   describe("forEach()", () => {
     test("ok", () => {
       const inputs = [{}, { a: 1 }, { a: 1, b: 2 }, { a: 1, b: 2, c: 3 }];

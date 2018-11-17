@@ -616,7 +616,24 @@ export default class Collection {
     return result ? result[0] : result;
   }
 
-  // TODO: keyOf()
+  keyOf(value) {
+    const finalize = iter => {
+      let key;
+      let v;
+      while (!({ key, value: v } = iter.next()).done) {
+        if (v === value) {
+          return key;
+        }
+      }
+      return undefined;
+    };
+    return this.__consume(finalize);
+  }
+
+  // eslint-disable-next-line no-unused-vars
+  static keyOf(_coll, _value) {
+    throw new Error("not implemented");
+  }
 
   // TODO: sum(fun) from Ramda
 

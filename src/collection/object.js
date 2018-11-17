@@ -486,6 +486,17 @@ export default class KasenObject extends Collection {
     return undefined;
   }
 
+  static keyOf(object, value) {
+    const keys = Object.keys(object);
+    for (let i = 0, { length } = keys; i < length; i += 1) {
+      const key = keys[i];
+      if (object[key] === value) {
+        return key;
+      }
+    }
+    return undefined;
+  }
+
   static forEach(object, fun) {
     Object.keys(object).forEach(key => {
       fun(object[key], key);

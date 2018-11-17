@@ -1703,6 +1703,28 @@ describe("Array", () => {
     });
   });
 
+  describe("keyOf()", () => {
+    test("ok", () => {
+      const ios = [
+        [[], 1, undefined],
+        [[1], 1, 0],
+        [[1], 2, undefined],
+        [[1, 2], 1, 0],
+        [[1, 2], 2, 1],
+        [[1, 2], 3, undefined],
+        [[1, 1], 1, 0]
+      ];
+      ios.forEach(([input, value, expected]) => {
+        const result = Kasen(input).keyOf(value);
+        expect(result).toBe(expected);
+      });
+      ios.forEach(([input, value, expected]) => {
+        const result = Kasen.keyOf(input, value);
+        expect(result).toBe(expected);
+      });
+    });
+  });
+
   describe("forEach()", () => {
     test("ok", () => {
       const inputs = [[], [1], [1, 2], [1, 2, 3]];
