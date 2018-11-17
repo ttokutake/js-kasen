@@ -635,7 +635,27 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
-  // TODO: sum(fun) from Ramda
+  sum(fun) {
+    if (!(isFunction(fun) || fun === undefined)) {
+      throw new TypeError("1st argument must be Function or Undefined");
+    }
+    const fn = fun || (v => v);
+    const finalize = iter => {
+      let result = 0;
+      let key;
+      let value;
+      while (!({ key, value } = iter.next()).done) {
+        result += fn(value, key);
+      }
+      return result;
+    };
+    return this.__consume(finalize);
+  }
+
+  // eslint-disable-next-line no-unused-vars
+  static sum(_coll, _fun) {
+    throw new Error("not implemented");
+  }
 
   // TODO: max(fun)
 

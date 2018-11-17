@@ -555,6 +555,18 @@ Kasen.keyOf = (coll, value) => {
   return Coll.keyOf(coll, value);
 };
 
+Kasen.sum = (coll, fun) => {
+  const Coll = choose(coll);
+  if (!Coll) {
+    throw new TypeError("1st argument must be Array or Object");
+  }
+  if (!(isFunction(fun) || fun === undefined)) {
+    throw new TypeError("2nd argument must be Function or Undefined");
+  }
+  const fn = fun || (v => v);
+  return Coll.sum(coll, fn);
+};
+
 Kasen.forEach = (coll, fun) => {
   const Coll = choose(coll);
   if (!Coll) {

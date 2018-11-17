@@ -1725,6 +1725,37 @@ describe("Array", () => {
     });
   });
 
+  describe("sum()", () => {
+    test("fun is undefined", () => {
+      const ios = [[[], 0], [[1], 1], [[1, 2], 3], [[1, 2, 3], 6]];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input).sum();
+        expect(result).toBe(expected);
+      });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.sum(input);
+        expect(result).toBe(expected);
+      });
+    });
+
+    test("fun is specified", () => {
+      const ios = [
+        [[], 0],
+        [[{ a: 1 }], 1],
+        [[{ a: 1 }, { a: 2 }], 3],
+        [[{ a: 1 }, { a: 2 }, { a: 3 }], 6]
+      ];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input).sum(v => v.a);
+        expect(result).toBe(expected);
+      });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.sum(input, v => v.a);
+        expect(result).toBe(expected);
+      });
+    });
+  });
+
   describe("forEach()", () => {
     test("ok", () => {
       const inputs = [[], [1], [1, 2], [1, 2, 3]];

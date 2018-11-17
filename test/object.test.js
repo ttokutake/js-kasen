@@ -1107,6 +1107,42 @@ describe("Object", () => {
     });
   });
 
+  describe("sum()", () => {
+    test("fun is undefined", () => {
+      const ios = [
+        [{}, 0],
+        [{ a: 1 }, 1],
+        [{ a: 1, b: 2 }, 3],
+        [{ a: 1, b: 2, c: 3 }, 6]
+      ];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input).sum();
+        expect(result).toBe(expected);
+      });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.sum(input);
+        expect(result).toBe(expected);
+      });
+    });
+
+    test("fun is specified", () => {
+      const ios = [
+        [{}, 0],
+        [{ a: { aa: 1 } }, 1],
+        [{ a: { aa: 1 }, b: { aa: 2 } }, 3],
+        [{ a: { aa: 1 }, b: { aa: 2 }, c: { aa: 3 } }, 6]
+      ];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input).sum(v => v.aa);
+        expect(result).toBe(expected);
+      });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.sum(input, v => v.aa);
+        expect(result).toBe(expected);
+      });
+    });
+  });
+
   describe("forEach()", () => {
     test("ok", () => {
       const inputs = [{}, { a: 1 }, { a: 1, b: 2 }, { a: 1, b: 2, c: 3 }];

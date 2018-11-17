@@ -497,6 +497,14 @@ export default class KasenObject extends Collection {
     return undefined;
   }
 
+  static sum(object, fun) {
+    let result = 0;
+    Object.keys(object).forEach(key => {
+      result += fun(object[key], key);
+    });
+    return result;
+  }
+
   static forEach(object, fun) {
     Object.keys(object).forEach(key => {
       fun(object[key], key);

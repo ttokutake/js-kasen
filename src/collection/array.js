@@ -829,6 +829,14 @@ export default class KasenArray extends Collection {
   // TODO: findIndexOf()
   // TODO: findLastIndexOf()
 
+  static sum(array, fun) {
+    let result = 0;
+    array.forEach((value, index) => {
+      result += fun(value, index);
+    });
+    return result;
+  }
+
   static forEach(array, fun) {
     return array.forEach(fun);
   }
