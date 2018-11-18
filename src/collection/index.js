@@ -434,9 +434,12 @@ export default class Collection {
     return this.__consume(finalize);
   }
 
-  // eslint-disable-next-line no-unused-vars
-  static toObject(_coll) {
-    throw new Error("not implemented");
+  static toObject(coll) {
+    const object = {};
+    this.forEach(coll, (value, key) => {
+      object[key] = value;
+    });
+    return object;
   }
 
   reduce(fun, init) {
@@ -509,9 +512,19 @@ export default class Collection {
     return this.__consume(finalize);
   }
 
-  // eslint-disable-next-line no-unused-vars
-  static join(_coll, _delimiter) {
-    throw new Error("not implemented");
+  static join(coll, delimiter) {
+    const delim = delimiter || ",";
+    let result = "";
+    let isFirst = true;
+    this.forEach(coll, value => {
+      if (isFirst) {
+        isFirst = false;
+        result += value;
+      } else {
+        result = `${result}${delim}${value}`;
+      }
+    });
+    return result;
   }
 
   groupBy(fun) {
@@ -534,9 +547,16 @@ export default class Collection {
     return this.__consume(finalize);
   }
 
-  // eslint-disable-next-line no-unused-vars
-  static groupBy(_coll, _fun) {
-    throw new Error("not implemented");
+  static groupBy(coll, fun) {
+    const result = {};
+    this.forEach(coll, (value, key) => {
+      const k = fun(value, key);
+      if (!Object.prototype.hasOwnProperty.call(result, k)) {
+        result[k] = [];
+      }
+      result[k].push(value);
+    });
+    return result;
   }
 
   every(fun) {
@@ -658,9 +678,12 @@ export default class Collection {
     return this.__consume(finalize);
   }
 
-  // eslint-disable-next-line no-unused-vars
-  static sum(_coll, _fun) {
-    throw new Error("not implemented");
+  static sum(coll, fun) {
+    let result = 0;
+    this.forEach(coll, (value, key) => {
+      result += fun(value, key);
+    });
+    return result;
   }
 
   max(fun) {

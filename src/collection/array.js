@@ -692,14 +692,6 @@ export default class KasenArray extends Collection {
     return this.copy(array);
   }
 
-  static toObject(array) {
-    const object = {};
-    array.forEach((value, key) => {
-      object[key] = value;
-    });
-    return object;
-  }
-
   static reduce(array, fun, init) {
     return init === undefined ? array.reduce(fun) : array.reduce(fun, init);
   }
@@ -740,18 +732,6 @@ export default class KasenArray extends Collection {
 
   static join(array, delimiter) {
     return array.join(delimiter);
-  }
-
-  static groupBy(array, fun) {
-    const object = {};
-    array.forEach((value, key) => {
-      const k = fun(value, key);
-      if (!Object.prototype.hasOwnProperty.call(object, k)) {
-        object[k] = [];
-      }
-      object[k].push(value);
-    });
-    return object;
   }
 
   // TODO?: splitAt() from Scala
@@ -822,14 +802,6 @@ export default class KasenArray extends Collection {
 
   // TODO: findIndexOf()
   // TODO: findLastIndexOf()
-
-  static sum(array, fun) {
-    let result = 0;
-    array.forEach((value, index) => {
-      result += fun(value, index);
-    });
-    return result;
-  }
 
   static max(array, fun) {
     if (!array.length) {

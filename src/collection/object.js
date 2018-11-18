@@ -368,10 +368,6 @@ export default class KasenObject extends Collection {
     return array;
   }
 
-  static toObject(object) {
-    return this.copy(object);
-  }
-
   static reduce(object, fun, init) {
     const keys = Object.keys(object);
     let acc = init;
@@ -416,33 +412,6 @@ export default class KasenObject extends Collection {
     return result;
   }
 
-  static join(object, delimiter) {
-    const delim = delimiter || ",";
-    let result = "";
-    let isFirst = true;
-    this.forEach(object, value => {
-      if (isFirst) {
-        isFirst = false;
-        result += value;
-      } else {
-        result = `${result}${delim}${value}`;
-      }
-    });
-    return result;
-  }
-
-  static groupBy(object, fun) {
-    const result = {};
-    this.forEach(object, (value, key) => {
-      const k = fun(value, key);
-      if (!Object.prototype.hasOwnProperty.call(result, k)) {
-        result[k] = [];
-      }
-      result[k].push(value);
-    });
-    return result;
-  }
-
   static every(object, fun) {
     const keys = Object.keys(object);
     for (let i = 0, { length } = keys; i < length; i += 1) {
@@ -479,14 +448,6 @@ export default class KasenObject extends Collection {
       }
     }
     return undefined;
-  }
-
-  static sum(object, fun) {
-    let result = 0;
-    this.forEach(object, (value, key) => {
-      result += fun(value, key);
-    });
-    return result;
   }
 
   static max(object, fun) {
