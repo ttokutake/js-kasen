@@ -684,7 +684,13 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
-  // TODO: min(fun)
+  min(fun) {
+    if (!(isFunction(fun) || fun === undefined)) {
+      throw new TypeError("1st argument must be Function or Undefined");
+    }
+    const fn = fun || ((v1, v2) => v1 < v2);
+    return this.max(fn);
+  }
 
   // TODO: equals()
 

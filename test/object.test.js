@@ -1179,6 +1179,42 @@ describe("Object", () => {
     });
   });
 
+  describe("min()", () => {
+    test("fun is undefined", () => {
+      const ios = [
+        [{}, undefined],
+        [{ a: 1 }, 1],
+        [{ a: 1, b: 2 }, 1],
+        [{ a: 1, b: 2, c: 3 }, 1]
+      ];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input).min();
+        expect(result).toBe(expected);
+      });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.min(input);
+        expect(result).toBe(expected);
+      });
+    });
+
+    test("fun is specified", () => {
+      const ios = [
+        [{}, undefined],
+        [{ a: { aa: 1 } }, { aa: 1 }],
+        [{ a: { aa: 1 }, b: { aa: 2 } }, { aa: 1 }],
+        [{ a: { aa: 1 }, b: { aa: 2 }, c: { aa: 3 } }, { aa: 1 }]
+      ];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input).min((v1, v2) => v1.aa < v2.aa);
+        expect(result).toEqual(expected);
+      });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.min(input, (v1, v2) => v1.aa < v2.aa);
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
   describe("forEach()", () => {
     test("ok", () => {
       const inputs = [{}, { a: 1 }, { a: 1, b: 2 }, { a: 1, b: 2, c: 3 }];
