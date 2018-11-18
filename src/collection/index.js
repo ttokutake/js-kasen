@@ -512,19 +512,9 @@ export default class Collection {
     return this.__consume(finalize);
   }
 
-  static join(coll, delimiter) {
-    const delim = delimiter || ",";
-    let result = "";
-    let isFirst = true;
-    this.forEach(coll, value => {
-      if (isFirst) {
-        isFirst = false;
-        result += value;
-      } else {
-        result = `${result}${delim}${value}`;
-      }
-    });
-    return result;
+  // eslint-disable-next-line no-unused-vars
+  static join(_coll, _delimiter) {
+    throw new Error("not implemented");
   }
 
   groupBy(fun) {
