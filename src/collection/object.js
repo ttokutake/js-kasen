@@ -505,6 +505,21 @@ export default class KasenObject extends Collection {
     return result;
   }
 
+  static max(object, fun) {
+    const keys = Object.keys(object);
+    if (!keys.length) {
+      return undefined;
+    }
+    let result = object[keys.pop()];
+    keys.forEach(key => {
+      const value = object[key];
+      if (fun(value, result)) {
+        result = value;
+      }
+    });
+    return result;
+  }
+
   static forEach(object, fun) {
     Object.keys(object).forEach(key => {
       fun(object[key], key);

@@ -837,6 +837,19 @@ export default class KasenArray extends Collection {
     return result;
   }
 
+  static max(array, fun) {
+    if (!array.length) {
+      return undefined;
+    }
+    let result = array.pop();
+    array.forEach(value => {
+      if (fun(value, result)) {
+        result = value;
+      }
+    });
+    return result;
+  }
+
   static forEach(array, fun) {
     return array.forEach(fun);
   }

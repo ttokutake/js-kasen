@@ -657,7 +657,32 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
-  // TODO: max(fun)
+  max(fun) {
+    if (!(isFunction(fun) || fun === undefined)) {
+      throw new TypeError("1st argument must be Function or Undefined");
+    }
+    const fn = fun || ((v1, v2) => v1 > v2);
+    const finalize = iter => {
+      let result;
+      let value;
+      let isFirst = true;
+      while (!({ value } = iter.next()).done) {
+        if (isFirst) {
+          isFirst = false;
+          result = value;
+        } else if (fn(value, result)) {
+          result = value;
+        }
+      }
+      return result;
+    };
+    return this.__consume(finalize);
+  }
+
+  // eslint-disable-next-line no-unused-vars
+  static max(_coll, _fun) {
+    throw new Error("not implemented");
+  }
 
   // TODO: min(fun)
 
