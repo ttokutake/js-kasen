@@ -337,9 +337,15 @@ export default class Collection {
     return this.__consume(finalize);
   }
 
-  // eslint-disable-next-line no-unused-vars
-  static count(_coll, _fun) {
-    throw new Error("not implemented");
+  static count(coll, fun) {
+    const fn = fun || (() => true);
+    let counter = 0;
+    this.forEach(coll, (value, key) => {
+      if (fn(value, key)) {
+        counter += 1;
+      }
+    });
+    return counter;
   }
 
   // eslint-disable-next-line class-methods-use-this, no-unused-vars

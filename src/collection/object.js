@@ -107,16 +107,16 @@ export default class KasenObject extends Collection {
 
   static copy(object) {
     const result = {};
-    Object.keys(object).forEach(key => {
-      result[key] = object[key];
+    this.forEach(object, (value, key) => {
+      result[key] = value;
     });
     return result;
   }
 
   static map(object, fun) {
     const result = {};
-    Object.keys(object).forEach(key => {
-      result[key] = fun(object[key], key);
+    this.forEach(object, (value, key) => {
+      result[key] = fun(value, key);
     });
     return result;
   }
@@ -132,8 +132,7 @@ export default class KasenObject extends Collection {
 
   static filter(object, fun) {
     const result = {};
-    Object.keys(object).forEach(key => {
-      const value = object[key];
+    this.forEach(object, (value, key) => {
       if (fun(value, key)) {
         result[key] = value;
       }
@@ -234,8 +233,8 @@ export default class KasenObject extends Collection {
     const curate = iter => {
       const object = ObjectIterator.curate(iter);
       objects.forEach(obj => {
-        Object.keys(obj).forEach(key => {
-          object[key] = obj[key];
+        this.constructor.forEach(obj, (value, key) => {
+          object[key] = value;
         });
       });
       return object;
@@ -247,8 +246,8 @@ export default class KasenObject extends Collection {
   static merge(objects) {
     const result = {};
     objects.forEach(object => {
-      Object.keys(object).forEach(key => {
-        result[key] = object[key];
+      this.forEach(object, (value, key) => {
+        result[key] = value;
       });
     });
     return result;
@@ -275,10 +274,10 @@ export default class KasenObject extends Collection {
     const curate = iter => {
       const object = ObjectIterator.curate(iter);
       objects.forEach(obj => {
-        Object.keys(obj).forEach(key => {
+        this.constructor.forEach(obj, (value, key) => {
           object[key] = Object.prototype.hasOwnProperty.call(object, key)
-            ? fun(object[key], obj[key], key)
-            : obj[key];
+            ? fun(object[key], value, key)
+            : value;
         });
       });
       return object;
@@ -290,10 +289,10 @@ export default class KasenObject extends Collection {
   static mergeWith(object, fun, objects) {
     const result = this.copy(object);
     objects.forEach(obj => {
-      Object.keys(obj).forEach(key => {
+      this.forEach(obj, (value, key) => {
         result[key] = Object.prototype.hasOwnProperty.call(result, key)
-          ? fun(result[key], obj[key], key)
-          : obj[key];
+          ? fun(result[key], value, key)
+          : value;
       });
     });
     return result;
@@ -309,19 +308,6 @@ export default class KasenObject extends Collection {
 
   static isEmpty(object) {
     return !Object.keys(object).length;
-  }
-
-  static count(object, fun) {
-    if (fun === undefined) {
-      return Object.keys(object).length;
-    }
-    let counter = 0;
-    Object.keys(object).forEach(key => {
-      if (fun(object[key], key)) {
-        counter += 1;
-      }
-    });
-    return counter;
   }
 
   get(key, protection) {
@@ -376,8 +362,8 @@ export default class KasenObject extends Collection {
 
   static toArray(object) {
     const array = [];
-    Object.keys(object).forEach(key => {
-      array.push(object[key]);
+    this.forEach(object, value => {
+      array.push(value);
     });
     return array;
   }
@@ -423,8 +409,7 @@ export default class KasenObject extends Collection {
 
   static partition(object, fun) {
     const result = [{}, {}];
-    Object.keys(object).forEach(key => {
-      const value = object[key];
+    this.forEach(object, (value, key) => {
       const index = fun(value, key) ? 0 : 1;
       result[index][key] = value;
     });
@@ -435,12 +420,12 @@ export default class KasenObject extends Collection {
     const delim = delimiter || ",";
     let result = "";
     let isFirst = true;
-    Object.keys(object).forEach(key => {
+    this.forEach(object, value => {
       if (isFirst) {
         isFirst = false;
-        result += object[key];
+        result += value;
       } else {
-        result = `${result}${delim}${object[key]}`;
+        result = `${result}${delim}${value}`;
       }
     });
     return result;
@@ -448,8 +433,7 @@ export default class KasenObject extends Collection {
 
   static groupBy(object, fun) {
     const result = {};
-    Object.keys(object).forEach(key => {
-      const value = object[key];
+    this.forEach(object, (value, key) => {
       const k = fun(value, key);
       if (!Object.prototype.hasOwnProperty.call(result, k)) {
         result[k] = [];
@@ -499,8 +483,8 @@ export default class KasenObject extends Collection {
 
   static sum(object, fun) {
     let result = 0;
-    Object.keys(object).forEach(key => {
-      result += fun(object[key], key);
+    this.forEach(object, (value, key) => {
+      result += fun(value, key);
     });
     return result;
   }

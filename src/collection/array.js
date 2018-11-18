@@ -640,13 +640,7 @@ export default class KasenArray extends Collection {
     if (fun === undefined) {
       return array.length;
     }
-    let counter = 0;
-    array.forEach((value, key) => {
-      if (fun(value, key)) {
-        counter += 1;
-      }
-    });
-    return counter;
+    return super.count(array, fun);
   }
 
   get(index, protection) {
