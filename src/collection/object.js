@@ -480,6 +480,10 @@ export default class KasenObject extends Collection {
     return result;
   }
 
+  static keys(object) {
+    return Object.keys(object);
+  }
+
   static forEach(object, fun) {
     Object.keys(object).forEach(key => {
       fun(object[key], key);

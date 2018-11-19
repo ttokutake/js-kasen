@@ -591,6 +591,14 @@ Kasen.min = (coll, fun) => {
   return Coll.max(coll, fn);
 };
 
+Kasen.keys = coll => {
+  const Coll = choose(coll);
+  if (!Coll) {
+    throw new TypeError("1st argument must be Array or Object");
+  }
+  return Coll.keys(coll);
+};
+
 Kasen.forEach = (coll, fun) => {
   const Coll = choose(coll);
   if (!Coll) {

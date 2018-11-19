@@ -715,7 +715,22 @@ export default class Collection {
 
   // TODO: hashCode()
 
-  // TODO: keys()
+  keys() {
+    const finalize = iter => {
+      const result = [];
+      let key;
+      while (!({ key } = iter.next()).done) {
+        result.push(key);
+      }
+      return result;
+    };
+    return this.__consume(finalize);
+  }
+
+  // eslint-disable-next-line no-unused-vars
+  static keys(_coll) {
+    throw new Error("not implemented");
+  }
 
   // TODO: values()
 
