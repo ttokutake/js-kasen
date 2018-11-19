@@ -599,6 +599,14 @@ Kasen.keys = coll => {
   return Coll.keys(coll);
 };
 
+Kasen.values = coll => {
+  const Coll = choose(coll);
+  if (!Coll) {
+    throw new TypeError("1st argument must be Array or Object");
+  }
+  return Coll.values(coll);
+};
+
 Kasen.forEach = (coll, fun) => {
   const Coll = choose(coll);
   if (!Coll) {

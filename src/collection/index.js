@@ -732,7 +732,22 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
-  // TODO: values()
+  values() {
+    const finalize = iter => {
+      const result = [];
+      let value;
+      while (!({ value } = iter.next()).done) {
+        result.push(value);
+      }
+      return result;
+    };
+    return this.__consume(finalize);
+  }
+
+  // eslint-disable-next-line no-unused-vars
+  static values(_coll) {
+    throw new Error("not implemented");
+  }
 
   // TODO: entries()
 
