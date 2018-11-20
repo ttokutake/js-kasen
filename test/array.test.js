@@ -1864,6 +1864,20 @@ describe("Array", () => {
     });
   });
 
+  describe("entries()", () => {
+    test("ok", () => {
+      const ios = [[[], []], [[1], [[0, 1]]], [[1, 2], [[0, 1], [1, 2]]]];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input).entries();
+        expect(result).toEqual(expected);
+      });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.entries(input);
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
   describe("forEach()", () => {
     test("ok", () => {
       const inputs = [[], [1], [1, 2], [1, 2, 3]];

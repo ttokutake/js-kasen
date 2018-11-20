@@ -749,7 +749,23 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
-  // TODO: entries()
+  entries() {
+    const finalize = iter => {
+      const result = [];
+      let key;
+      let value;
+      while (!({ key, value } = iter.next()).done) {
+        result.push([key, value]);
+      }
+      return result;
+    };
+    return this.__consume(finalize);
+  }
+
+  // eslint-disable-next-line no-unused-vars
+  static entries(_coll) {
+    throw new Error("not implemented");
+  }
 
   forEach(fun) {
     if (!isFunction(fun)) {

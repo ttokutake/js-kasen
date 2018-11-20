@@ -1243,6 +1243,24 @@ describe("Object", () => {
     });
   });
 
+  describe("entries()", () => {
+    test("ok", () => {
+      const ios = [
+        [{}, []],
+        [{ a: 1 }, [["a", 1]]],
+        [{ a: 1, b: 2 }, [["a", 1], ["b", 2]]]
+      ];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input).entries();
+        expect(result).toEqual(expected);
+      });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.entries(input);
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
   describe("forEach()", () => {
     test("ok", () => {
       const inputs = [{}, { a: 1 }, { a: 1, b: 2 }, { a: 1, b: 2, c: 3 }];

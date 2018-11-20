@@ -492,6 +492,14 @@ export default class KasenObject extends Collection {
     return result;
   }
 
+  static entries(object) {
+    const result = [];
+    this.forEach(object, (value, key) => {
+      result.push([key, value]);
+    });
+    return result;
+  }
+
   static forEach(object, fun) {
     Object.keys(object).forEach(key => {
       fun(object[key], key);

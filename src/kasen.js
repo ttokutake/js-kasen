@@ -607,6 +607,14 @@ Kasen.values = coll => {
   return Coll.values(coll);
 };
 
+Kasen.entries = coll => {
+  const Coll = choose(coll);
+  if (!Coll) {
+    throw new TypeError("1st argument must be Array or Object");
+  }
+  return Coll.entries(coll);
+};
+
 Kasen.forEach = (coll, fun) => {
   const Coll = choose(coll);
   if (!Coll) {

@@ -828,6 +828,14 @@ export default class KasenArray extends Collection {
     return this.copy(array);
   }
 
+  static entries(array) {
+    const result = [];
+    array.forEach((value, key) => {
+      result.push([key, value]);
+    });
+    return result;
+  }
+
   static forEach(array, fun) {
     return array.forEach(fun);
   }
