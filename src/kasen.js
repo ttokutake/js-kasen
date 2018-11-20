@@ -1,3 +1,5 @@
+const hash = require("hash-sum");
+
 const { default: KasenArray } = require("./collection/array");
 const { default: KasenObject } = require("./collection/object");
 const { isNumber, isString, isObject, isArray, isFunction } = require("./type");
@@ -590,6 +592,8 @@ Kasen.min = (coll, fun) => {
   const fn = fun || ((v1, v2) => v1 < v2);
   return Coll.max(coll, fn);
 };
+
+Kasen.hashCode = hash;
 
 Kasen.keys = coll => {
   const Coll = choose(coll);

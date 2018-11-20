@@ -1,3 +1,5 @@
+import hash from "hash-sum";
+
 import { TapIterator, MapIterator, Curator, ClearCurator } from "../iterator";
 import { isNumber, isString, isObject, isArray, isFunction } from "../type";
 
@@ -713,7 +715,10 @@ export default class Collection {
 
   // TODO: equals()
 
-  // TODO: hashCode()
+  hashCode() {
+    const coll = this.__consume(null);
+    return hash(coll);
+  }
 
   keys() {
     const finalize = iter => {

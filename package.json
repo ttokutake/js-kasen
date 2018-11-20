@@ -18,7 +18,9 @@
     "test": "npm run build && npm run test:ci",
     "test:ci": "jest"
   },
-  "dependencies": {},
+  "dependencies": {
+    "hash-sum": "^1.0.2"
+  },
   "devDependencies": {
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
@@ -33,7 +35,7 @@
     "eslint-plugin-prettier": "^3.0.0",
     "immutable": "^3.8.2",
     "jest": "^23.6.0",
-    "npm-check-updates": "^2.14.2",
+    "npm-check-updates": "^2.14.3",
     "prettier": "^1.14.3",
     "webpack": "^4.25.0",
     "webpack-cli": "^3.1.2"
