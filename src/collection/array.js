@@ -817,11 +817,7 @@ export default class KasenArray extends Collection {
   }
 
   static keys(array) {
-    const result = [];
-    array.forEach((_value, key) => {
-      result.push(key);
-    });
-    return result;
+    return array.map((_value, index) => index);
   }
 
   static values(array) {
@@ -829,11 +825,7 @@ export default class KasenArray extends Collection {
   }
 
   static entries(array) {
-    const result = [];
-    array.forEach((value, key) => {
-      result.push([key, value]);
-    });
-    return result;
+    return array.map((value, index) => [index, value]);
   }
 
   static forEach(array, fun) {
