@@ -41,8 +41,8 @@ export default class Collection {
     };
 
     this.filter.if = (bool, fun) => {
-      if (!isFunction(fun)) {
-        throw new TypeError("2nd argument must be Function");
+      if (!(isFunction(fun) || fun === undefined)) {
+        throw new TypeError("2nd argument must be Function or Undefined");
       }
       return bool ? this.filter(fun) : this;
     };

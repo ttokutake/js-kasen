@@ -150,7 +150,23 @@ describe("Object", () => {
   });
 
   describe("filter.if()", () => {
-    test("ok", () => {
+    test("fun is undefined", () => {
+      const input = { a: 1, b: null };
+      {
+        const result = Kasen(input)
+          .filter.if(false)
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const result = Kasen(input)
+          .filter.if(true)
+          .toJs();
+        expect(result).toEqual({ a: 1 });
+      }
+    });
+
+    test("fun is specified", () => {
       const input = { a: 1, b: 2, c: 3 };
       {
         const result = Kasen(input)

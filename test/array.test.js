@@ -141,7 +141,23 @@ describe("Array", () => {
   });
 
   describe("filter.if()", () => {
-    test("ok", () => {
+    test("fun is undefined", () => {
+      const input = [1, null];
+      {
+        const result = Kasen(input)
+          .filter.if(false)
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const result = Kasen(input)
+          .filter.if(true)
+          .toJs();
+        expect(result).toEqual([1]);
+      }
+    });
+
+    test("fun is specified", () => {
       const input = [1, 2, 3];
       {
         const result = Kasen(input)
