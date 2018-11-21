@@ -44,6 +44,13 @@ export default class KasenObject extends Collection {
       return bool ? this.pick(keys) : this;
     };
 
+    this.flip.if = (bool, fun) => {
+      if (!(isFunction(fun) || fun === undefined)) {
+        throw new TypeError("2nd argument must be Function");
+      }
+      return bool ? this.flip(fun) : this;
+    };
+
     this.set.if = (bool, key, value) => {
       if (!(isNumber(key) || isString(key))) {
         throw new TypeError("2nd argument must be Number or String");

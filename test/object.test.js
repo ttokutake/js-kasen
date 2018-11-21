@@ -279,6 +279,40 @@ describe("Object", () => {
     });
   });
 
+  describe("flip.if()", () => {
+    test("fun is undefined", () => {
+      const input = { a: 1, b: 2 };
+      {
+        const result = Kasen(input)
+          .flip.if(false)
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const result = Kasen(input)
+          .flip.if(true)
+          .toJs();
+        expect(result).toEqual({ 1: "a", 2: "b" });
+      }
+    });
+
+    test("fun is specified", () => {
+      const input = { a: { aa: 1 }, b: { aa: 2 } };
+      {
+        const result = Kasen(input)
+          .flip.if(false, v => v.aa)
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const result = Kasen(input)
+          .flip.if(true, v => v.aa)
+          .toJs();
+        expect(result).toEqual({ 1: "a", 2: "b" });
+      }
+    });
+  });
+
   describe("set()", () => {
     test("ok", () => {
       const ios = [
