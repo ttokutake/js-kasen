@@ -1,6 +1,6 @@
 import Collection from ".";
 import { OriginIterator, Curator } from "../iterator";
-import { FilterIterator } from "../iterator/object";
+import { FilterIterator, FlipIterator } from "../iterator/object";
 import { isNumber, isString, isObject, isArray, isFunction } from "../type";
 
 class ObjectIterator extends OriginIterator {
@@ -153,6 +153,15 @@ export default class KasenObject extends Collection {
     return this.filter(object, fun);
   }
 
+  flip(fun) {
+    if (!(isFunction(fun) || fun === undefined)) {
+      throw new TypeError("1st argument must be Function");
+    }
+    const fn = fun || (v => v);
+    this.__pile(FlipIterator, fn);
+    return this;
+  }
+
   set(key, value) {
     if (!(isNumber(key) || isString(key))) {
       throw new TypeError("1st argument must be Number or String");
@@ -300,9 +309,6 @@ export default class KasenObject extends Collection {
 
   // TODO: mergeDeep()
   // TODO: mergeDeepWith()
-
-  // TODO: flip()
-  // TODO: flipWith()
 
   /* consumer */
 

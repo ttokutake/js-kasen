@@ -247,6 +247,38 @@ describe("Object", () => {
     });
   });
 
+  describe("flip()", () => {
+    test("fun is undefined", () => {
+      const ios = [
+        [{}, {}],
+        [{ a: 1 }, { 1: "a" }],
+        [{ a: 1, b: 2 }, { 1: "a", 2: "b" }],
+        [{ a: 1, b: 1 }, { 1: "b" }]
+      ];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input)
+          .flip()
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+    });
+
+    test("fun is specified", () => {
+      const ios = [
+        [{}, {}],
+        [{ a: { aa: 1 } }, { 1: "a" }],
+        [{ a: { aa: 1 }, b: { aa: 2 } }, { 1: "a", 2: "b" }],
+        [{ a: { aa: 1 }, b: { aa: 1 } }, { 1: "b" }]
+      ];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input)
+          .flip(v => v.aa)
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
   describe("set()", () => {
     test("ok", () => {
       const ios = [

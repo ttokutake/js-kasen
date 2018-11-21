@@ -1,7 +1,5 @@
 import { ChainIterator } from ".";
 
-// TODO: Delete below line
-// eslint-disable-next-line import/prefer-default-export
 export class FilterIterator extends ChainIterator {
   next() {
     let result;
@@ -9,6 +7,18 @@ export class FilterIterator extends ChainIterator {
       if (this.fun(result.value, result.key)) {
         break;
       }
+    }
+    return result;
+  }
+}
+
+export class FlipIterator extends ChainIterator {
+  next() {
+    const result = this.parent.next();
+    if (!result.done) {
+      const { key, value } = result;
+      result.key = this.fun(value, key);
+      result.value = key;
     }
     return result;
   }

@@ -379,7 +379,7 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
-  // TODO: Use SameValueZero algorithm
+  // TODO?: Use SameValueZero algorithm
   includes(value) {
     const finalize = iter => {
       let v;
@@ -678,6 +678,7 @@ export default class Collection {
     return result;
   }
 
+  // TODO: Need value mapper?
   max(fun) {
     if (!(isFunction(fun) || fun === undefined)) {
       throw new TypeError("1st argument must be Function or Undefined");
@@ -705,6 +706,7 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
+  // TODO: Need value mapper?
   min(fun) {
     if (!(isFunction(fun) || fun === undefined)) {
       throw new TypeError("1st argument must be Function or Undefined");
