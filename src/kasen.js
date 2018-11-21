@@ -92,6 +92,17 @@ Kasen.pick = (object, keys) => {
   return KasenObject.pick(object, keys);
 };
 
+Kasen.flip = (object, fun) => {
+  if (!isObject(object)) {
+    throw new TypeError("1st argument must be Object");
+  }
+  if (!(isFunction(fun) || fun === undefined)) {
+    throw new TypeError("2nd argument must be Function or Undefined");
+  }
+  const fn = fun || (v => v);
+  return KasenObject.flip(object, fn);
+};
+
 Kasen.take = (array, num) => {
   if (!isArray(array)) {
     throw new TypeError("1st argument must be Array");

@@ -261,6 +261,10 @@ describe("Object", () => {
           .toJs();
         expect(result).toEqual(expected);
       });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.flip(input);
+        expect(result).toEqual(expected);
+      });
     });
 
     test("fun is specified", () => {
@@ -274,6 +278,10 @@ describe("Object", () => {
         const result = Kasen(input)
           .flip(v => v.aa)
           .toJs();
+        expect(result).toEqual(expected);
+      });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.flip(input, v => v.aa);
         expect(result).toEqual(expected);
       });
     });

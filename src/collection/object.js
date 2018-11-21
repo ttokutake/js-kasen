@@ -169,6 +169,14 @@ export default class KasenObject extends Collection {
     return this;
   }
 
+  static flip(object, fun) {
+    const result = {};
+    this.forEach(object, (value, key) => {
+      result[fun(value, key)] = key;
+    });
+    return result;
+  }
+
   set(key, value) {
     if (!(isNumber(key) || isString(key))) {
       throw new TypeError("1st argument must be Number or String");
