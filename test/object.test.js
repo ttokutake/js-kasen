@@ -525,7 +525,7 @@ describe("Object", () => {
     });
   });
 
-  describe("merge() (assign())", () => {
+  describe("merge() / assign()", () => {
     test("ok()", () => {
       const ios = [
         [{}, [{}], {}],
@@ -560,7 +560,7 @@ describe("Object", () => {
     });
   });
 
-  describe("merge.if() (assign.if())", () => {
+  describe("merge.if() / assign.if()", () => {
     test("ok()", () => {
       const input = { a: 1 };
       const objects = [{ b: 2 }, { c: 3 }];

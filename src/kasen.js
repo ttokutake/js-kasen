@@ -431,6 +431,8 @@ Kasen.head = array => {
   return KasenArray.head(array);
 };
 
+Kasen.first = Kasen.head;
+
 Kasen.toArray = coll => {
   const Coll = choose(coll);
   if (!Coll) {

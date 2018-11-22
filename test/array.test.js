@@ -1392,7 +1392,7 @@ describe("Array", () => {
     });
   });
 
-  describe("head()", () => {
+  describe("head() / first()", () => {
     test("ok", () => {
       const ios = [[[], undefined], [[1], 1], [[1, 2], 1]];
       ios.forEach(([input, expected]) => {
@@ -1401,6 +1401,14 @@ describe("Array", () => {
       });
       ios.forEach(([input, expected]) => {
         const result = Kasen.head(input);
+        expect(result).toBe(expected);
+      });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input).first();
+        expect(result).toBe(expected);
+      });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.first(input);
         expect(result).toBe(expected);
       });
     });

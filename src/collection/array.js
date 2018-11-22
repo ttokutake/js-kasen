@@ -689,6 +689,10 @@ export default class KasenArray extends Collection {
     return array[0];
   }
 
+  first() {
+    return this.head();
+  }
+
   // TODO: tail() from Scala
 
   // TODO: init() from Scala
