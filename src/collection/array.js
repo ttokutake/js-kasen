@@ -680,13 +680,22 @@ export default class KasenArray extends Collection {
     return false;
   }
 
-  // TODO: first() / head()
+  head() {
+    const finalize = iter => iter.next().value;
+    return this.__consume(finalize);
+  }
 
-  // TODO: tail() === shift() from Scala
+  static head(array) {
+    return array[0];
+  }
 
-  // TODO: init() === pop() from Scala
+  // TODO: tail() from Scala
+
+  // TODO: init() from Scala
 
   // TODO: last()
+
+  // TODO: splitAt() from Scala
 
   static toArray(array) {
     return this.copy(array);
@@ -734,7 +743,6 @@ export default class KasenArray extends Collection {
     return array.join(delimiter);
   }
 
-  // TODO?: splitAt() from Scala
   // TODO?: unzip() from Scala
   // TODO?: unzipAll() from Scala?
 

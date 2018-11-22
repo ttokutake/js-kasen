@@ -424,6 +424,13 @@ Kasen.includes = (coll, value) => {
   return Coll.includes(coll, value);
 };
 
+Kasen.head = array => {
+  if (!isArray(array)) {
+    throw new TypeError("1st argument must be Array");
+  }
+  return KasenArray.head(array);
+};
+
 Kasen.toArray = coll => {
   const Coll = choose(coll);
   if (!Coll) {
