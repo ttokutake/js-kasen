@@ -1830,6 +1830,28 @@ describe("Array", () => {
     });
   });
 
+  describe("findLastKey()", () => {
+    test("ok", () => {
+      const ios = [
+        [[], undefined],
+        [[1], 0],
+        [[2], undefined],
+        [[1, 2], 0],
+        [[2, 3], 1],
+        [[1, 2, 3], 2],
+        [[1, 2, 4], 0]
+      ];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input).findLastKey(v => v % 2 === 1);
+        expect(result).toBe(expected);
+      });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.findLastKey(input, v => v % 2 === 1);
+        expect(result).toBe(expected);
+      });
+    });
+  });
+
   describe("keyOf()", () => {
     test("ok", () => {
       const ios = [
