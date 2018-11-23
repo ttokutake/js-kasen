@@ -899,7 +899,15 @@ export default class KasenArray extends Collection {
     return result === undefined ? -1 : result;
   }
 
-  // TODO: lastIndexOf()
+  lastIndexOf(value) {
+    const result = this.lastKeyOf(value);
+    return result === undefined ? -1 : result;
+  }
+
+  static lastIndexOf(array, value) {
+    const result = this.lastKeyOf(array, value);
+    return result === undefined ? -1 : result;
+  }
 
   // TODO: findIndexOf()
   // TODO: findLastIndexOf()

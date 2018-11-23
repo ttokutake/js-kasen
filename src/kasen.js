@@ -632,6 +632,13 @@ Kasen.indexOf = (array, value) => {
   return KasenArray.indexOf(array, value);
 };
 
+Kasen.lastIndexOf = (array, value) => {
+  if (!isArray(array)) {
+    throw new TypeError("1st argument must be Array");
+  }
+  return KasenArray.lastIndexOf(array, value);
+};
+
 Kasen.sum = (coll, fun) => {
   const Coll = choose(coll);
   if (!Coll) {

@@ -1918,6 +1918,28 @@ describe("Array", () => {
     });
   });
 
+  describe("lastIndexOf()", () => {
+    test("ok", () => {
+      const ios = [
+        [[], 1, -1],
+        [[1], 1, 0],
+        [[1], 2, -1],
+        [[1, 2], 1, 0],
+        [[1, 2], 2, 1],
+        [[1, 2], 3, -1],
+        [[1, 1], 1, 1]
+      ];
+      ios.forEach(([input, value, expected]) => {
+        const result = Kasen(input).lastIndexOf(value);
+        expect(result).toBe(expected);
+      });
+      ios.forEach(([input, value, expected]) => {
+        const result = Kasen.lastIndexOf(input, value);
+        expect(result).toBe(expected);
+      });
+    });
+  });
+
   describe("sum()", () => {
     test("fun is undefined", () => {
       const ios = [[[], 0], [[1], 1], [[1, 2], 3], [[1, 2, 3], 6]];
