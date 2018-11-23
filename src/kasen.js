@@ -433,19 +433,9 @@ Kasen.head = array => {
 
 Kasen.first = Kasen.head;
 
-Kasen.tail = array => {
-  if (!isArray(array)) {
-    throw new TypeError("1st argument must be Array");
-  }
-  return KasenArray.tail(array);
-};
+Kasen.tail = Kasen.shift;
 
-Kasen.init = array => {
-  if (!isArray(array)) {
-    throw new TypeError("1st argument must be Array");
-  }
-  return KasenArray.init(array);
-};
+Kasen.init = Kasen.pop;
 
 Kasen.last = array => {
   if (!isArray(array)) {

@@ -506,9 +506,7 @@ export default class KasenArray extends Collection {
   }
 
   static pop(array) {
-    const result = this.copy(array);
-    result.pop();
-    return result;
+    return array.slice(0, -1);
   }
 
   unshift(...values) {
@@ -535,9 +533,7 @@ export default class KasenArray extends Collection {
   }
 
   static shift(array) {
-    const result = this.copy(array);
-    result.shift();
-    return result;
+    return array.slice(1);
   }
 
   flatten() {
@@ -697,10 +693,6 @@ export default class KasenArray extends Collection {
     return this.skip(1).toArray();
   }
 
-  static tail(array) {
-    return this.skip(array, 1);
-  }
-
   init() {
     const finalize = iter => {
       const array = [];
@@ -719,10 +711,6 @@ export default class KasenArray extends Collection {
       return array;
     };
     return this.__consume(finalize);
-  }
-
-  static init(array) {
-    return array.slice(0, -1);
   }
 
   last() {
