@@ -857,6 +857,21 @@ export default class KasenArray extends Collection {
     return result ? result[0] : result;
   }
 
+  findIndex(fun) {
+    if (!isFunction(fun)) {
+      throw new TypeError("1st argument must be Function");
+    }
+    const result = this.findKey(fun);
+    return result === undefined ? -1 : result;
+  }
+
+  static findIndex(array, fun) {
+    const result = this.findKey(array, fun);
+    return result === undefined ? -1 : result;
+  }
+
+  // TODO: findLastIndex()
+
   static keyOf(array, value) {
     for (let i = 0, { length } = array; i < length; i += 1) {
       if (array[i] === value) {
@@ -908,9 +923,6 @@ export default class KasenArray extends Collection {
     const result = this.lastKeyOf(array, value);
     return result === undefined ? -1 : result;
   }
-
-  // TODO: findIndexOf()
-  // TODO: findLastIndexOf()
 
   static max(array, fun) {
     if (!array.length) {

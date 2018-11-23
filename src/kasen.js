@@ -610,6 +610,16 @@ Kasen.findLastKey = (array, fun) => {
   return KasenArray.findLastKey(array, fun);
 };
 
+Kasen.findIndex = (array, fun) => {
+  if (!isArray(array)) {
+    throw new TypeError("1st argument must be Array");
+  }
+  if (!isFunction(fun)) {
+    throw new TypeError("2nd argument must be Function");
+  }
+  return KasenArray.findIndex(array, fun);
+};
+
 Kasen.keyOf = (coll, value) => {
   const Coll = choose(coll);
   if (!Coll) {
