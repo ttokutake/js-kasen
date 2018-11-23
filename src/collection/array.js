@@ -693,7 +693,13 @@ export default class KasenArray extends Collection {
     return this.head();
   }
 
-  // TODO: tail() from Scala
+  tail() {
+    return this.skip(1).toArray();
+  }
+
+  static tail(array) {
+    return this.skip(array, 1);
+  }
 
   // TODO: init() from Scala
 

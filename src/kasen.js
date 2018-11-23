@@ -433,6 +433,13 @@ Kasen.head = array => {
 
 Kasen.first = Kasen.head;
 
+Kasen.tail = array => {
+  if (!isArray(array)) {
+    throw new TypeError("1st argument must be Array");
+  }
+  return KasenArray.tail(array);
+};
+
 Kasen.toArray = coll => {
   const Coll = choose(coll);
   if (!Coll) {

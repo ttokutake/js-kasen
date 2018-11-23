@@ -1414,6 +1414,20 @@ describe("Array", () => {
     });
   });
 
+  describe("tail()", () => {
+    test("ok", () => {
+      const ios = [[[], []], [[1], []], [[1, 2], [2]], [[1, 2, 3], [2, 3]]];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input).tail();
+        expect(result).toEqual(expected);
+      });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.tail(input);
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
   describe("toJs()", () => {
     test("ok", () => {
       const inputs = [[], [1], [1, 2], [1, 2, 3]];
