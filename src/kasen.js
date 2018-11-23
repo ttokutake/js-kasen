@@ -618,6 +618,13 @@ Kasen.keyOf = (coll, value) => {
   return Coll.keyOf(coll, value);
 };
 
+Kasen.lastKeyOf = (array, value) => {
+  if (!isArray(array)) {
+    throw new TypeError("1st argument must be Array");
+  }
+  return KasenArray.lastKeyOf(array, value);
+};
+
 Kasen.sum = (coll, fun) => {
   const Coll = choose(coll);
   if (!Coll) {

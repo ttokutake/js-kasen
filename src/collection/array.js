@@ -866,7 +866,28 @@ export default class KasenArray extends Collection {
     return undefined;
   }
 
-  // TODO: lastKeyOf()
+  lastKeyOf(value) {
+    const finalize = iter => {
+      let key;
+      let v;
+      while (!({ key, value: v } = iter.prev()).done) {
+        if (v === value) {
+          return key;
+        }
+      }
+      return undefined;
+    };
+    return this.__consume(finalize);
+  }
+
+  static lastKeyOf(array, value) {
+    for (let i = array.length - 1; i > -1; i -= 1) {
+      if (array[i] === value) {
+        return i;
+      }
+    }
+    return undefined;
+  }
 
   // TODO: indexOf()
   // TODO: lastIndexOf()

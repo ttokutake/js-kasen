@@ -1874,6 +1874,28 @@ describe("Array", () => {
     });
   });
 
+  describe("lastKeyOf()", () => {
+    test("ok", () => {
+      const ios = [
+        [[], 1, undefined],
+        [[1], 1, 0],
+        [[1], 2, undefined],
+        [[1, 2], 1, 0],
+        [[1, 2], 2, 1],
+        [[1, 2], 3, undefined],
+        [[1, 1], 1, 1]
+      ];
+      ios.forEach(([input, value, expected]) => {
+        const result = Kasen(input).lastKeyOf(value);
+        expect(result).toBe(expected);
+      });
+      ios.forEach(([input, value, expected]) => {
+        const result = Kasen.lastKeyOf(input, value);
+        expect(result).toBe(expected);
+      });
+    });
+  });
+
   describe("sum()", () => {
     test("fun is undefined", () => {
       const ios = [[[], 0], [[1], 1], [[1, 2], 3], [[1, 2, 3], 6]];
