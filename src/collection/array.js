@@ -722,7 +722,20 @@ export default class KasenArray extends Collection {
     return array[array.length - 1];
   }
 
-  // TODO: splitAt() from Scala
+  splitAt(index) {
+    if (!isNumber(index)) {
+      throw new TypeError("1st argument must be Number");
+    }
+    const finalize = iter => {
+      const array = iter.Origin.curate(iter);
+      return this.constructor.splitAt(array, index);
+    };
+    return this.__consume(finalize);
+  }
+
+  static splitAt(array, index) {
+    return [array.slice(0, index), array.slice(index)];
+  }
 
   static toArray(array) {
     return this.copy(array);

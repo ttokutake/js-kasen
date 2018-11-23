@@ -454,6 +454,16 @@ Kasen.last = array => {
   return KasenArray.last(array);
 };
 
+Kasen.splitAt = (array, index) => {
+  if (!isArray(array)) {
+    throw new TypeError("1st argument must be Array");
+  }
+  if (!isNumber(index)) {
+    throw new TypeError("2nd argument must be Number");
+  }
+  return KasenArray.splitAt(array, index);
+};
+
 Kasen.toArray = coll => {
   const Coll = choose(coll);
   if (!Coll) {
