@@ -703,8 +703,20 @@ export default class KasenArray extends Collection {
 
   init() {
     const finalize = iter => {
-      const array = iter.Origin.curate(iter);
-      return array.slice(0, -1);
+      const array = [];
+      let value;
+      let prevValue;
+      let isFirst = true;
+      while (!({ value } = iter.next()).done) {
+        if (isFirst) {
+          isFirst = false;
+          prevValue = value;
+        } else {
+          array.push(prevValue);
+          prevValue = value;
+        }
+      }
+      return array;
     };
     return this.__consume(finalize);
   }
