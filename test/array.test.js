@@ -1442,6 +1442,20 @@ describe("Array", () => {
     });
   });
 
+  describe("last()", () => {
+    test("ok", () => {
+      const ios = [[[], undefined], [[1], 1], [[1, 2], 2]];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input).last();
+        expect(result).toBe(expected);
+      });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.last(input);
+        expect(result).toBe(expected);
+      });
+    });
+  });
+
   describe("toJs()", () => {
     test("ok", () => {
       const inputs = [[], [1], [1, 2], [1, 2, 3]];

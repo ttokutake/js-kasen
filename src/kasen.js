@@ -447,6 +447,13 @@ Kasen.init = array => {
   return KasenArray.init(array);
 };
 
+Kasen.last = array => {
+  if (!isArray(array)) {
+    throw new TypeError("1st argument must be Array");
+  }
+  return KasenArray.last(array);
+};
+
 Kasen.toArray = coll => {
   const Coll = choose(coll);
   if (!Coll) {

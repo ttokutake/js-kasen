@@ -713,7 +713,14 @@ export default class KasenArray extends Collection {
     return array.slice(0, -1);
   }
 
-  // TODO: last()
+  last() {
+    const finalize = iter => iter.prev().value;
+    return this.__consume(finalize);
+  }
+
+  static last(array) {
+    return array[array.length - 1];
+  }
 
   // TODO: splitAt() from Scala
 
