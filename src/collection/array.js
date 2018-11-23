@@ -889,7 +889,16 @@ export default class KasenArray extends Collection {
     return undefined;
   }
 
-  // TODO: indexOf()
+  indexOf(value) {
+    const result = this.keyOf(value);
+    return result === undefined ? -1 : result;
+  }
+
+  static indexOf(array, value) {
+    const result = this.keyOf(array, value);
+    return result === undefined ? -1 : result;
+  }
+
   // TODO: lastIndexOf()
 
   // TODO: findIndexOf()
