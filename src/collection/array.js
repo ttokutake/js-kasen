@@ -701,7 +701,17 @@ export default class KasenArray extends Collection {
     return this.skip(array, 1);
   }
 
-  // TODO: init() from Scala
+  init() {
+    const finalize = iter => {
+      const array = iter.Origin.curate(iter);
+      return array.slice(0, -1);
+    };
+    return this.__consume(finalize);
+  }
+
+  static init(array) {
+    return array.slice(0, -1);
+  }
 
   // TODO: last()
 

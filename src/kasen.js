@@ -440,6 +440,13 @@ Kasen.tail = array => {
   return KasenArray.tail(array);
 };
 
+Kasen.init = array => {
+  if (!isArray(array)) {
+    throw new TypeError("1st argument must be Array");
+  }
+  return KasenArray.init(array);
+};
+
 Kasen.toArray = coll => {
   const Coll = choose(coll);
   if (!Coll) {
