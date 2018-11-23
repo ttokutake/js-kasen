@@ -1874,6 +1874,28 @@ describe("Array", () => {
     });
   });
 
+  describe("findLastIndex()", () => {
+    test("ok", () => {
+      const ios = [
+        [[], -1],
+        [[1], 0],
+        [[2], -1],
+        [[1, 2], 0],
+        [[2, 3], 1],
+        [[1, 2, 3], 2],
+        [[1, 2, 4], 0]
+      ];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input).findLastIndex(v => v % 2 === 1);
+        expect(result).toBe(expected);
+      });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.findLastIndex(input, v => v % 2 === 1);
+        expect(result).toBe(expected);
+      });
+    });
+  });
+
   describe("keyOf()", () => {
     test("ok", () => {
       const ios = [

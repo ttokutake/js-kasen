@@ -870,7 +870,18 @@ export default class KasenArray extends Collection {
     return result === undefined ? -1 : result;
   }
 
-  // TODO: findLastIndex()
+  findLastIndex(fun) {
+    if (!isFunction(fun)) {
+      throw new TypeError("1st argument must be Function");
+    }
+    const result = this.findLastKey(fun);
+    return result === undefined ? -1 : result;
+  }
+
+  static findLastIndex(array, fun) {
+    const result = this.findLastKey(array, fun);
+    return result === undefined ? -1 : result;
+  }
 
   static keyOf(array, value) {
     for (let i = 0, { length } = array; i < length; i += 1) {
