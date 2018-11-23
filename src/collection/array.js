@@ -798,27 +798,13 @@ export default class KasenArray extends Collection {
     if (!isFunction(fun)) {
       throw new TypeError("1st argument must be Function");
     }
-    const finalize = iter => {
-      let key;
-      let value;
-      while (!({ key, value } = iter.prev()).done) {
-        if (fun(value, key)) {
-          return value;
-        }
-      }
-      return undefined;
-    };
-    return this.__consume(finalize);
+    const result = this.findLastEntry(fun);
+    return result ? result[1] : result;
   }
 
   static findLast(array, fun) {
-    for (let i = array.length - 1; i > -1; i -= 1) {
-      const value = array[i];
-      if (fun(value, i)) {
-        return value;
-      }
-    }
-    return undefined;
+    const result = this.findLastEntry(array, fun);
+    return result ? result[1] : result;
   }
 
   static findEntry(array, fun) {
@@ -831,7 +817,33 @@ export default class KasenArray extends Collection {
     return undefined;
   }
 
-  // TODO: findLastEntry()
+  findLastEntry(fun) {
+    if (!isFunction(fun)) {
+      throw new TypeError("1st argument must be Function");
+    }
+    const finalize = iter => {
+      let key;
+      let value;
+      while (!({ key, value } = iter.prev()).done) {
+        if (fun(value, key)) {
+          return [key, value];
+        }
+      }
+      return undefined;
+    };
+    return this.__consume(finalize);
+  }
+
+  static findLastEntry(array, fun) {
+    for (let i = array.length - 1; i > -1; i -= 1) {
+      const value = array[i];
+      if (fun(value, i)) {
+        return [i, value];
+      }
+    }
+    return undefined;
+  }
+
   // TODO: findLastKey()
 
   static keyOf(array, value) {

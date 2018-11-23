@@ -579,6 +579,16 @@ Kasen.findEntry = (coll, fun) => {
   return Coll.findEntry(coll, fun);
 };
 
+Kasen.findLastEntry = (array, fun) => {
+  if (!isArray(array)) {
+    throw new TypeError("1st argument must be Array");
+  }
+  if (!isFunction(fun)) {
+    throw new TypeError("2nd argument must be Function");
+  }
+  return KasenArray.findLastEntry(array, fun);
+};
+
 Kasen.findKey = (coll, fun) => {
   const Coll = choose(coll);
   if (!Coll) {

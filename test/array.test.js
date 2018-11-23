@@ -1786,6 +1786,28 @@ describe("Array", () => {
     });
   });
 
+  describe("findLastEntry()", () => {
+    test("ok", () => {
+      const ios = [
+        [[], undefined],
+        [[1], [0, 1]],
+        [[2], undefined],
+        [[1, 2], [0, 1]],
+        [[2, 3], [1, 3]],
+        [[1, 2, 3], [2, 3]],
+        [[1, 2, 4], [0, 1]]
+      ];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input).findLastEntry(v => v % 2 === 1);
+        expect(result).toEqual(expected);
+      });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.findLastEntry(input, v => v % 2 === 1);
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
   describe("findKey()", () => {
     test("ok", () => {
       const ios = [
@@ -1799,11 +1821,11 @@ describe("Array", () => {
       ];
       ios.forEach(([input, expected]) => {
         const result = Kasen(input).findKey(v => v % 2 === 1);
-        expect(result).toEqual(expected);
+        expect(result).toBe(expected);
       });
       ios.forEach(([input, expected]) => {
         const result = Kasen.findKey(input, v => v % 2 === 1);
-        expect(result).toEqual(expected);
+        expect(result).toBe(expected);
       });
     });
   });
