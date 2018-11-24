@@ -47,8 +47,8 @@ function correctIndex(index, length) {
 }
 
 export default class KasenArray extends Collection {
-  constructor(array, iter, options) {
-    super(array, iter, options);
+  constructor(array, iter) {
+    super(array, iter);
 
     this.reverse.if = bool => (bool ? this.reverse() : this);
 
@@ -625,8 +625,9 @@ export default class KasenArray extends Collection {
     return array;
   }
 
-  // TODO: static repeat.kasen()
-  // TODO: static repeat()
+  static repeat(value, num) {
+    return new Array(num > 0 ? num : 0).fill(value);
+  }
 
   /* consumer */
 

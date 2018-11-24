@@ -19,7 +19,7 @@ function Kasen(coll) {
   if (!Coll) {
     throw new TypeError("1st argument must be Array or Object");
   }
-  return new Coll(coll, null, {});
+  return new Coll(coll, null);
 }
 
 Kasen.copy = coll => {
@@ -384,9 +384,19 @@ Kasen.range = (start, end, step) => {
 
 Kasen.range._ = (start, end, step) => {
   const array = Kasen.range(start, end, step);
-  return new KasenArray(array, null, {
-    noCopy: true
-  });
+  return new KasenArray(array, null);
+};
+
+Kasen.repeat = (value, num) => {
+  if (!isNumber(num)) {
+    throw new TypeError("2nd argument must be Number");
+  }
+  return KasenArray.repeat(value, num);
+};
+
+Kasen.repeat._ = (value, num) => {
+  const array = Kasen.repeat(value, num);
+  return new KasenArray(array, null);
 };
 
 Kasen.isEmpty = coll => {

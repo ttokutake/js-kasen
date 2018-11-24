@@ -34,8 +34,8 @@ class ObjectIterator extends OriginIterator {
 }
 
 export default class KasenObject extends Collection {
-  constructor(object, iter, options) {
-    super(object, iter, options);
+  constructor(object, iter) {
+    super(object, iter);
 
     this.pick.if = (bool, keys) => {
       if (!isArray(keys)) {

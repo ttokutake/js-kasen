@@ -27,9 +27,8 @@ function copy(type, coll) {
 }
 
 export default class Collection {
-  constructor(coll, iter, options) {
-    this.__coll = options.noCopy ? coll : this.constructor.copy(coll);
-    this.__iter = iter || this.constructor.__iterator(this.__coll);
+  constructor(coll, iter) {
+    this.__iter = iter || this.constructor.__iterator(coll);
 
     this.map.if = (bool, fun) => {
       if (!isFunction(fun)) {
@@ -103,8 +102,9 @@ export default class Collection {
     return result;
   }
 
+  // TODO: Rethink the definition
   copy() {
-    return new this.constructor(this.__coll, this.__iter, {});
+    return new this.constructor(null, this.__iter);
   }
 
   // eslint-disable-next-line no-unused-vars

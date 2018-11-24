@@ -1312,6 +1312,20 @@ describe("Array", () => {
     });
   });
 
+  describe("repeat()", () => {
+    test("ok", () => {
+      const ios = [[-1, []], [0, []], [1, [null]], [2, [null, null]]];
+      ios.forEach(([num, expected]) => {
+        const result = Kasen.repeat._(null, num).toJs();
+        expect(result).toEqual(expected);
+      });
+      ios.forEach(([num, expected]) => {
+        const result = Kasen.repeat(null, num);
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
   describe("count()", () => {
     test("fun is undefined", () => {
       const inputs = [[[], 0], [[1], 1], [[1, 2], 2], [[1, 2, 3], 3]];
