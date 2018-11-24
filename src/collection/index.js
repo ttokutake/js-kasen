@@ -453,8 +453,29 @@ export default class Collection {
     if (!isFunction(fun)) {
       throw new TypeError("1st argument must be Function");
     }
-    const coll = this.__consume(null);
-    return this.constructor.reduce(coll, fun, init);
+    const finalize = iter => {
+      let acc = init;
+      let key;
+      let value;
+      let isFirst = true;
+      while (!({ key, value } = iter.next()).done) {
+        if (isFirst) {
+          isFirst = false;
+          if (init === undefined) {
+            acc = value;
+          } else {
+            acc = fun(init, value, key);
+          }
+        } else {
+          acc = fun(acc, value, key);
+        }
+      }
+      if (isFirst && init === undefined) {
+        throw new TypeError("Reduce of empty collection with no initial value");
+      }
+      return acc;
+    };
+    return this.__consume(finalize);
   }
 
   // eslint-disable-next-line no-unused-vars
@@ -466,8 +487,34 @@ export default class Collection {
     if (!isFunction(fun)) {
       throw new TypeError("1st argument must be Function");
     }
-    const coll = this.__consume(null);
-    return this.constructor.reduceWhile(coll, fun, init);
+    const finalize = iter => {
+      let acc = init;
+      let key;
+      let value;
+      let isFirst = true;
+      let state;
+      while (!({ key, value } = iter.next()).done) {
+        if (isFirst) {
+          isFirst = false;
+          if (init === undefined) {
+            state = "cont";
+            acc = value;
+          } else {
+            [state, acc] = fun(init, value, key);
+          }
+        } else {
+          [state, acc] = fun(acc, value, key);
+        }
+        if (state === "halt") {
+          return acc;
+        }
+      }
+      if (isFirst && init === undefined) {
+        throw new TypeError("Reduce of empty collection with no initial value");
+      }
+      return acc;
+    };
+    return this.__consume(finalize);
   }
 
   // eslint-disable-next-line no-unused-vars
