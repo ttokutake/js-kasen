@@ -1526,7 +1526,7 @@ describe("Array", () => {
 
   describe("reduce()", () => {
     test("init is undefined", () => {
-      const ios = [[[1], 1], [[1, 2], 3], [[1, 2, 3], 6]];
+      const ios = [[["1"], "1"], [["1", "2"], "12"], [["1", "2", "3"], "123"]];
       ios.forEach(([input, expected]) => {
         const result = Kasen(input).reduce((acc, v) => acc + v);
         expect(result).toBe(expected);
@@ -1538,13 +1538,18 @@ describe("Array", () => {
     });
 
     test("init is specified", () => {
-      const ios = [[[], 10], [[1], 11], [[1, 2], 13], [[1, 2, 3], 16]];
+      const ios = [
+        [[], "10"],
+        [["1"], "101"],
+        [["1", "2"], "1012"],
+        [["1", "2", "3"], "10123"]
+      ];
       ios.forEach(([input, expected]) => {
-        const result = Kasen(input).reduce((acc, v) => acc + v, 10);
+        const result = Kasen(input).reduce((acc, v) => acc + v, "10");
         expect(result).toBe(expected);
       });
       ios.forEach(([input, expected]) => {
-        const result = Kasen.reduce(input, (acc, v) => acc + v, 10);
+        const result = Kasen.reduce(input, (acc, v) => acc + v, "10");
         expect(result).toBe(expected);
       });
     });
@@ -1556,6 +1561,48 @@ describe("Array", () => {
       }
       {
         const run = () => Kasen.reduce([], (acc, v) => acc + v);
+        expect(run).toThrow(TypeError);
+      }
+    });
+  });
+
+  describe("reduceRight()", () => {
+    test("init is undefined", () => {
+      const ios = [[["1"], "1"], [["1", "2"], "21"], [["1", "2", "3"], "321"]];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input).reduceRight((acc, v) => acc + v);
+        expect(result).toBe(expected);
+      });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.reduceRight(input, (acc, v) => acc + v);
+        expect(result).toBe(expected);
+      });
+    });
+
+    test("init is specified", () => {
+      const ios = [
+        [[], "10"],
+        [["1"], "101"],
+        [["1", "2"], "1021"],
+        [["1", "2", "3"], "10321"]
+      ];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input).reduceRight((acc, v) => acc + v, "10");
+        expect(result).toBe(expected);
+      });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.reduceRight(input, (acc, v) => acc + v, "10");
+        expect(result).toBe(expected);
+      });
+    });
+
+    test("error", () => {
+      {
+        const run = () => Kasen([]).reduceRight((acc, v) => acc + v);
+        expect(run).toThrow(TypeError);
+      }
+      {
+        const run = () => Kasen.reduceRight([], (acc, v) => acc + v);
         expect(run).toThrow(TypeError);
       }
     });

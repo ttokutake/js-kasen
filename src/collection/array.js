@@ -745,19 +745,64 @@ export default class KasenArray extends Collection {
     return init === undefined ? array.reduce(fun) : array.reduce(fun, init);
   }
 
-  // TODO: reduceRight()
-
-  static reduceWhile(array, fun, init) {
-    let firstIndex = 0;
-    let acc = init;
-    if (init === undefined) {
-      if (!array.length) {
+  reduceRight(fun, init) {
+    if (!isFunction(fun)) {
+      throw new TypeError("1st argument must be Function");
+    }
+    const finalize = iter => {
+      let acc = init;
+      let key;
+      let value;
+      let isFirst = true;
+      while (!({ key, value } = iter.prev()).done) {
+        if (isFirst) {
+          isFirst = false;
+          if (init === undefined) {
+            acc = value;
+          } else {
+            acc = fun(init, value, key);
+          }
+        } else {
+          acc = fun(acc, value, key);
+        }
+      }
+      if (isFirst && init === undefined) {
         throw new TypeError("Reduce of empty array with no initial value");
       }
-      firstIndex = 1;
-      [acc] = array;
+      return acc;
+    };
+    return this.__consume(finalize);
+  }
+
+  static reduceRight(array, fun, init) {
+    const { length } = array;
+    let startIndex = length - 1;
+    let acc = init;
+    if (init === undefined) {
+      if (!length) {
+        throw new TypeError("Reduce of empty array with no initial value");
+      }
+      acc = array[startIndex];
+      startIndex -= 1;
     }
-    for (let i = firstIndex, { length } = array; i < length; i += 1) {
+    for (let i = startIndex; i > -1; i -= 1) {
+      acc = fun(acc, array[i], i);
+    }
+    return acc;
+  }
+
+  static reduceWhile(array, fun, init) {
+    const { length } = array;
+    let startIndex = 0;
+    let acc = init;
+    if (init === undefined) {
+      if (!length) {
+        throw new TypeError("Reduce of empty array with no initial value");
+      }
+      acc = array[startIndex];
+      startIndex += 1;
+    }
+    for (let i = startIndex; i < length; i += 1) {
       const [state, result] = fun(acc, array[i], i);
       if (state === "halt") {
         return result;

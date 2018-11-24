@@ -481,6 +481,16 @@ Kasen.reduce = (coll, fun, init) => {
   return Coll.reduce(coll, fun, init);
 };
 
+Kasen.reduceRight = (array, fun, init) => {
+  if (!isArray(array)) {
+    throw new TypeError("1st argument must be Array");
+  }
+  if (!isFunction(fun)) {
+    throw new TypeError("2nd argument must be Function");
+  }
+  return KasenArray.reduceRight(array, fun, init);
+};
+
 Kasen.reduceWhile = (coll, fun, init) => {
   const Coll = choose(coll);
   if (!Coll) {
