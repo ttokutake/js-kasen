@@ -34,7 +34,7 @@ export class OriginIterator extends BaseIterator {
     throw new Error("not implemented");
   }
 
-  static curate(iter) {
+  static collect(iter) {
     const coll = this.default();
     let key;
     let value;
@@ -70,10 +70,10 @@ export class ChainIterator extends BaseIterator {
   }
 }
 
-export class Curator extends ChainIterator {
-  constructor(parentIterator, curate) {
+export class Collector extends ChainIterator {
+  constructor(parentIterator, collect) {
     super(parentIterator, null);
-    this.curate = curate;
+    this.collect = collect;
     this.rewind();
   }
 
@@ -83,7 +83,7 @@ export class Curator extends ChainIterator {
 
   base(direction) {
     if (!this.iter) {
-      const coll = this.curate(this.parent);
+      const coll = this.collect(this.parent);
       this.iter = new this.Origin(coll);
     }
     return this.iter[direction]();
@@ -115,7 +115,7 @@ export class MapIterator extends ChainIterator {
   }
 }
 
-export class ClearCurator extends Curator {
+export class ClearCollector extends Collector {
   base(direction) {
     if (!this.iter) {
       const coll = this.Origin.default();

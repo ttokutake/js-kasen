@@ -1,5 +1,5 @@
 import Collection from ".";
-import { OriginIterator, Curator } from "../iterator";
+import { OriginIterator, Collector } from "../iterator";
 import { FilterIterator, FlipIterator } from "../iterator/object";
 import { isNumber, isString, isObject, isArray, isFunction } from "../type";
 
@@ -191,12 +191,12 @@ export default class KasenObject extends Collection {
     if (!isFunction(fun)) {
       throw new TypeError("2nd argument must be Function");
     }
-    const curate = iter => {
-      const object = ObjectIterator.curate(iter);
+    const collect = iter => {
+      const object = ObjectIterator.collect(iter);
       object[key] = fun(object[key]);
       return object;
     };
-    this.__pile(Curator, curate);
+    this.__pile(Collector, collect);
     return this;
   }
 
@@ -210,12 +210,12 @@ export default class KasenObject extends Collection {
     if (!(isNumber(key) || isString(key))) {
       throw new TypeError("1st argument must be Number or String");
     }
-    const curate = iter => {
-      const object = ObjectIterator.curate(iter);
+    const collect = iter => {
+      const object = ObjectIterator.collect(iter);
       delete object[key];
       return object;
     };
-    this.__pile(Curator, curate);
+    this.__pile(Collector, collect);
     return this;
   }
 
@@ -229,14 +229,14 @@ export default class KasenObject extends Collection {
     if (!isArray(keys)) {
       throw new TypeError("1st argument must be Array");
     }
-    const curate = iter => {
-      const object = ObjectIterator.curate(iter);
+    const collect = iter => {
+      const object = ObjectIterator.collect(iter);
       keys.forEach(key => {
         delete object[key];
       });
       return object;
     };
-    this.__pile(Curator, curate);
+    this.__pile(Collector, collect);
     return this;
   }
 
@@ -254,8 +254,8 @@ export default class KasenObject extends Collection {
         throw new TypeError("Each argument must be Object");
       }
     }
-    const curate = iter => {
-      const object = ObjectIterator.curate(iter);
+    const collect = iter => {
+      const object = ObjectIterator.collect(iter);
       objects.forEach(obj => {
         this.constructor.forEach(obj, (value, key) => {
           object[key] = value;
@@ -263,7 +263,7 @@ export default class KasenObject extends Collection {
       });
       return object;
     };
-    this.__pile(Curator, curate);
+    this.__pile(Collector, collect);
     return this;
   }
 
@@ -295,8 +295,8 @@ export default class KasenObject extends Collection {
         throw new TypeError("Each argument except 1st one must be Object");
       }
     }
-    const curate = iter => {
-      const object = ObjectIterator.curate(iter);
+    const collect = iter => {
+      const object = ObjectIterator.collect(iter);
       objects.forEach(obj => {
         this.constructor.forEach(obj, (value, key) => {
           object[key] = Object.prototype.hasOwnProperty.call(object, key)
@@ -306,7 +306,7 @@ export default class KasenObject extends Collection {
       });
       return object;
     };
-    this.__pile(Curator, curate);
+    this.__pile(Collector, collect);
     return this;
   }
 

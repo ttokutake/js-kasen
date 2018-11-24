@@ -1,6 +1,11 @@
 import hash from "hash-sum";
 
-import { TapIterator, MapIterator, Curator, ClearCurator } from "../iterator";
+import {
+  TapIterator,
+  MapIterator,
+  Collector,
+  ClearCollector
+} from "../iterator";
 import { isNumber, isString, isObject, isArray, isFunction } from "../type";
 
 function copy(type, coll) {
@@ -93,7 +98,7 @@ export default class Collection {
   __consume(finalize) {
     const result = finalize
       ? finalize(this.__iter)
-      : this.__iter.Origin.curate(this.__iter);
+      : this.__iter.Origin.collect(this.__iter);
     this.__iter.reset();
     return result;
   }
@@ -189,7 +194,7 @@ export default class Collection {
   }
 
   clear() {
-    this.__pile(ClearCurator, null);
+    this.__pile(ClearCollector, null);
     return this;
   }
 
@@ -213,8 +218,8 @@ export default class Collection {
     if (!isFunction(fun)) {
       throw new TypeError("2nd argument must be Function");
     }
-    const curate = iter => {
-      const coll = iter.Origin.curate(iter);
+    const collect = iter => {
+      const coll = iter.Origin.collect(iter);
       let nextColl = coll;
       for (let i = 0, { length } = keys; i < length; i += 1) {
         const key = keys[i];
@@ -230,7 +235,7 @@ export default class Collection {
       }
       return coll;
     };
-    this.__pile(Curator, curate);
+    this.__pile(Collector, collect);
     return this;
   }
 
@@ -257,8 +262,8 @@ export default class Collection {
     if (!isArray(keys)) {
       throw new TypeError("1st argument must be Array");
     }
-    const curate = iter => {
-      const coll = iter.Origin.curate(iter);
+    const collect = iter => {
+      const coll = iter.Origin.collect(iter);
       let nextColl = coll;
       for (let i = 0, { length } = keys; i < length; i += 1) {
         const key = keys[i];
@@ -278,7 +283,7 @@ export default class Collection {
       }
       return coll;
     };
-    this.__pile(Curator, curate);
+    this.__pile(Collector, collect);
     return this;
   }
 

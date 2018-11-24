@@ -1,5 +1,5 @@
 import Collection from ".";
-import { OriginIterator, Curator } from "../iterator";
+import { OriginIterator, Collector } from "../iterator";
 import { FilterIterator, ReverseIterator } from "../iterator/array";
 import { isNumber, isArray, isFunction } from "../type";
 
@@ -199,7 +199,7 @@ export default class KasenArray extends Collection {
     if (!isNumber(num)) {
       throw new TypeError("1st argument must be Number");
     }
-    const curate = iter => {
+    const collect = iter => {
       const array = [];
       let count = 0;
       let value;
@@ -209,7 +209,7 @@ export default class KasenArray extends Collection {
       }
       return array;
     };
-    this.__pile(Curator, curate);
+    this.__pile(Collector, collect);
     return this;
   }
 
@@ -221,7 +221,7 @@ export default class KasenArray extends Collection {
     if (!isNumber(num)) {
       throw new TypeError("1st argument must be Number");
     }
-    const curate = iter => {
+    const collect = iter => {
       const array = [];
       let count = 0;
       let value;
@@ -231,7 +231,7 @@ export default class KasenArray extends Collection {
       }
       return array;
     };
-    this.__pile(Curator, curate);
+    this.__pile(Collector, collect);
     return this;
   }
 
@@ -244,7 +244,7 @@ export default class KasenArray extends Collection {
     if (!isFunction(fun)) {
       throw new TypeError("1st argument must be Function");
     }
-    const curate = iter => {
+    const collect = iter => {
       const array = [];
       let key;
       let value;
@@ -253,7 +253,7 @@ export default class KasenArray extends Collection {
       }
       return array;
     };
-    this.__pile(Curator, curate);
+    this.__pile(Collector, collect);
     return this;
   }
 
@@ -284,7 +284,7 @@ export default class KasenArray extends Collection {
     if (!isNumber(num)) {
       throw new TypeError("1st argument must be Number");
     }
-    const curate = iter => {
+    const collect = iter => {
       const array = [];
       let count = 0;
       let value;
@@ -296,7 +296,7 @@ export default class KasenArray extends Collection {
       }
       return array;
     };
-    this.__pile(Curator, curate);
+    this.__pile(Collector, collect);
     return this;
   }
 
@@ -308,7 +308,7 @@ export default class KasenArray extends Collection {
     if (!isNumber(num)) {
       throw new TypeError("1st argument must be Number");
     }
-    const curate = iter => {
+    const collect = iter => {
       const array = [];
       let count = 0;
       let value;
@@ -320,7 +320,7 @@ export default class KasenArray extends Collection {
       }
       return array;
     };
-    this.__pile(Curator, curate);
+    this.__pile(Collector, collect);
     return this;
   }
 
@@ -333,7 +333,7 @@ export default class KasenArray extends Collection {
     if (!isFunction(fun)) {
       throw new TypeError("1st argument must be Function");
     }
-    const curate = iter => {
+    const collect = iter => {
       const array = [];
       let key;
       let value;
@@ -348,7 +348,7 @@ export default class KasenArray extends Collection {
       }
       return array;
     };
-    this.__pile(Curator, curate);
+    this.__pile(Collector, collect);
     return this;
   }
 
@@ -391,8 +391,8 @@ export default class KasenArray extends Collection {
     if (!isFunction(fun)) {
       throw new TypeError("2nd argument must be Function");
     }
-    const curate = iter => {
-      const array = ArrayIterator.curate(iter);
+    const collect = iter => {
+      const array = ArrayIterator.collect(iter);
       const { length } = array;
       if (-length <= index && index < length) {
         const key = correctIndex(index, length);
@@ -400,7 +400,7 @@ export default class KasenArray extends Collection {
       }
       return array;
     };
-    this.__pile(Curator, curate);
+    this.__pile(Collector, collect);
     return this;
   }
 
@@ -418,8 +418,8 @@ export default class KasenArray extends Collection {
     if (!isNumber(index)) {
       throw new TypeError("1st argument must be Number");
     }
-    const curate = iter => {
-      const array = ArrayIterator.curate(iter);
+    const collect = iter => {
+      const array = ArrayIterator.collect(iter);
       const { length } = array;
       if (-length <= index && index < length) {
         const key = correctIndex(index, length);
@@ -428,7 +428,7 @@ export default class KasenArray extends Collection {
       }
       return array;
     };
-    this.__pile(Curator, curate);
+    this.__pile(Collector, collect);
     return this;
   }
 
@@ -443,11 +443,11 @@ export default class KasenArray extends Collection {
   }
 
   concat(...values) {
-    const curate = iter => {
-      const array = ArrayIterator.curate(iter);
+    const collect = iter => {
+      const array = ArrayIterator.collect(iter);
       return array.concat(...values);
     };
-    this.__pile(Curator, curate);
+    this.__pile(Collector, collect);
     return this;
   }
 
@@ -459,8 +459,8 @@ export default class KasenArray extends Collection {
     if (!isNumber(index)) {
       throw new TypeError("1st argument must be Number");
     }
-    const curate = iter => {
-      const array = ArrayIterator.curate(iter);
+    const collect = iter => {
+      const array = ArrayIterator.collect(iter);
       const { length } = array;
       if (-length <= index && index <= length) {
         const key = correctIndex(index, length);
@@ -468,7 +468,7 @@ export default class KasenArray extends Collection {
       }
       return array;
     };
-    this.__pile(Curator, curate);
+    this.__pile(Collector, collect);
     return this;
   }
 
@@ -483,11 +483,11 @@ export default class KasenArray extends Collection {
   }
 
   push(...values) {
-    const curate = iter => {
-      const array = ArrayIterator.curate(iter);
+    const collect = iter => {
+      const array = ArrayIterator.collect(iter);
       return array.concat(values);
     };
-    this.__pile(Curator, curate);
+    this.__pile(Collector, collect);
     return this;
   }
 
@@ -496,12 +496,12 @@ export default class KasenArray extends Collection {
   }
 
   pop() {
-    const curate = iter => {
-      const array = ArrayIterator.curate(iter);
+    const collect = iter => {
+      const array = ArrayIterator.collect(iter);
       array.pop();
       return array;
     };
-    this.__pile(Curator, curate);
+    this.__pile(Collector, collect);
     return this;
   }
 
@@ -510,11 +510,11 @@ export default class KasenArray extends Collection {
   }
 
   unshift(...values) {
-    const curate = iter => {
-      const array = ArrayIterator.curate(iter);
+    const collect = iter => {
+      const array = ArrayIterator.collect(iter);
       return values.concat(array);
     };
-    this.__pile(Curator, curate);
+    this.__pile(Collector, collect);
     return this;
   }
 
@@ -523,12 +523,12 @@ export default class KasenArray extends Collection {
   }
 
   shift() {
-    const curate = iter => {
-      const array = ArrayIterator.curate(iter);
+    const collect = iter => {
+      const array = ArrayIterator.collect(iter);
       array.shift();
       return array;
     };
-    this.__pile(Curator, curate);
+    this.__pile(Collector, collect);
     return this;
   }
 
@@ -537,7 +537,7 @@ export default class KasenArray extends Collection {
   }
 
   flatten() {
-    const curate = iter => {
+    const collect = iter => {
       let array = [];
       let value;
       while (!({ value } = iter.next()).done) {
@@ -549,7 +549,7 @@ export default class KasenArray extends Collection {
       }
       return array;
     };
-    this.__pile(Curator, curate);
+    this.__pile(Collector, collect);
     return this;
   }
 
@@ -569,7 +569,7 @@ export default class KasenArray extends Collection {
     if (!isFunction(fun)) {
       throw new TypeError("1st argument must be Function");
     }
-    const curate = iter => {
+    const collect = iter => {
       let array = [];
       let key;
       let value;
@@ -583,7 +583,7 @@ export default class KasenArray extends Collection {
       }
       return array;
     };
-    this.__pile(Curator, curate);
+    this.__pile(Collector, collect);
     return this;
   }
 
@@ -727,7 +727,7 @@ export default class KasenArray extends Collection {
       throw new TypeError("1st argument must be Number");
     }
     const finalize = iter => {
-      const array = iter.Origin.curate(iter);
+      const array = iter.Origin.collect(iter);
       return this.constructor.splitAt(array, index);
     };
     return this.__consume(finalize);
