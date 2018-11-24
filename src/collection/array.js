@@ -47,8 +47,8 @@ function correctIndex(index, length) {
 }
 
 export default class KasenArray extends Collection {
-  constructor(array, iter) {
-    super(array, iter);
+  constructor(array, iter, options) {
+    super(array, iter, options);
 
     this.reverse.if = bool => (bool ? this.reverse() : this);
 
@@ -617,8 +617,13 @@ export default class KasenArray extends Collection {
 
   // TODO: sliding() from Scala
 
-  // TODO: static range.kasen()
-  // TODO: static range()
+  static range(start, end, step) {
+    const array = [];
+    for (let i = start; i < end; i += step) {
+      array.push(i);
+    }
+    return array;
+  }
 
   // TODO: static repeat.kasen()
   // TODO: static repeat()

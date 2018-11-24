@@ -19,7 +19,7 @@ function Kasen(coll) {
   if (!Coll) {
     throw new TypeError("1st argument must be Array or Object");
   }
-  return new Coll(coll, null);
+  return new Coll(coll, null, {});
 }
 
 Kasen.copy = coll => {
@@ -367,6 +367,26 @@ Kasen.flatMap = (array, fun) => {
     throw new TypeError("2nd argument must be Function");
   }
   return KasenArray.flatMap(array, fun);
+};
+
+Kasen.range = (start, end, step) => {
+  if (!isNumber(start)) {
+    throw new TypeError("1st argument must be Number");
+  }
+  if (!isNumber(end)) {
+    throw new TypeError("2nd argument must be Number");
+  }
+  if (!(isNumber(step) || step === undefined) || step === 0) {
+    throw new TypeError("3rd argument must be Number excluding 0 or Undefined");
+  }
+  return KasenArray.range(start, end, step || 1);
+};
+
+Kasen.range._ = (start, end, step) => {
+  const array = Kasen.range(start, end, step);
+  return new KasenArray(array, null, {
+    noCopy: true
+  });
 };
 
 Kasen.isEmpty = coll => {

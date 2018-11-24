@@ -1269,6 +1269,49 @@ describe("Array", () => {
     });
   });
 
+  describe("range()", () => {
+    test("step is undefined", () => {
+      const ios = [
+        [0, -1, []],
+        [0, 0, []],
+        [0, 1, [0]],
+        [0, 2, [0, 1]],
+        [1, 4, [1, 2, 3]]
+      ];
+      ios.forEach(([start, end, expected]) => {
+        const result = Kasen.range._(start, end).toJs();
+        expect(result).toEqual(expected);
+      });
+      ios.forEach(([start, end, expected]) => {
+        const result = Kasen.range(start, end);
+        expect(result).toEqual(expected);
+      });
+    });
+
+    test("step is specified", () => {
+      const ios = [[0, 3, 1, [0, 1, 2]], [0, 3, 2, [0, 2]], [0, 3, 3, [0]]];
+      ios.forEach(([start, end, step, expected]) => {
+        const result = Kasen.range._(start, end, step).toJs();
+        expect(result).toEqual(expected);
+      });
+      ios.forEach(([start, end, step, expected]) => {
+        const result = Kasen.range(start, end, step);
+        expect(result).toEqual(expected);
+      });
+    });
+
+    test("error", () => {
+      {
+        const run = () => Kasen.range._(0, 0, 0).toJs();
+        expect(run).toThrow(TypeError);
+      }
+      {
+        const run = () => Kasen.range(0, 0, 0);
+        expect(run).toThrow(TypeError);
+      }
+    });
+  });
+
   describe("count()", () => {
     test("fun is undefined", () => {
       const inputs = [[[], 0], [[1], 1], [[1, 2], 2], [[1, 2, 3], 3]];
