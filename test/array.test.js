@@ -1255,6 +1255,68 @@ describe("Array", () => {
     });
   });
 
+  describe("sort()", () => {
+    test("fun is undefined", () => {
+      const ios = [
+        [[], []],
+        [[1], [1]],
+        [[1, 2], [1, 2]],
+        [[2, 1], [1, 2]],
+        [[1, 2, 3], [1, 2, 3]],
+        [[1, 3, 2], [1, 2, 3]],
+        [[2, 1, 3], [1, 2, 3]],
+        [[2, 3, 1], [1, 2, 3]],
+        [[3, 1, 2], [1, 2, 3]],
+        [[3, 2, 1], [1, 2, 3]]
+      ];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input)
+          .sort()
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.sort(input);
+        expect(result).toEqual(expected);
+      });
+    });
+
+    test("fun is specified", () => {
+      const ios = [
+        [[{ a: 1 }, { a: 2 }], [{ a: 1 }, { a: 2 }]],
+        [[{ a: 2 }, { a: 1 }], [{ a: 1 }, { a: 2 }]]
+      ];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input)
+          .sort(({ a: v1 }, { a: v2 }) => v1 - v2)
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.sort(input, ({ a: v1 }, { a: v2 }) => v1 - v2);
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
+  describe("sort.if()", () => {
+    test("ok", () => {
+      const input = [3, 2, 1];
+      {
+        const result = Kasen(input)
+          .sort.if(false)
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const result = Kasen(input)
+          .sort.if(true)
+          .toJs();
+        expect(result).toEqual([1, 2, 3]);
+      }
+    });
+  });
+
   describe("range()", () => {
     test("step is undefined", () => {
       const ios = [

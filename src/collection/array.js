@@ -159,6 +159,13 @@ export default class KasenArray extends Collection {
       }
       return bool ? this.flatMap(fun) : this;
     };
+
+    this.sort.if = (bool, fun) => {
+      if (!(isFunction(fun) || fun === undefined)) {
+        throw new TypeError("2nd argument must be Function or Undefined");
+      }
+      return bool ? this.sort(fun) : this;
+    };
   }
 
   static __iterator(array) {
@@ -604,7 +611,37 @@ export default class KasenArray extends Collection {
   // TODO: zipAll()
   // TODO: zipWith()
 
-  // TODO: sort(fun)
+  sort(fun) {
+    if (!(isFunction(fun) || fun === undefined)) {
+      throw new TypeError("1st argument must be Function or Undefined");
+    }
+    const fn =
+      fun ||
+      ((v1, v2) => {
+        if (v1 > v2) {
+          return 1;
+        }
+        if (v1 < v2) {
+          return -1;
+        }
+        return 0;
+      });
+    const collect = iter => {
+      const array = iter.Origin.collect(iter);
+      array.sort(fn);
+      return array;
+    };
+    this.__pile(Collector, collect);
+    return this;
+  }
+
+  static sort(array, fun) {
+    const result = this.copy(array);
+    result.sort(fun);
+    return result;
+  }
+
+  // TODO?: sortBy()
 
   // TODO?: interpose()
   // TODO?: interleave()

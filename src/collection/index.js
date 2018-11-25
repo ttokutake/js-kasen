@@ -730,7 +730,6 @@ export default class Collection {
     return result;
   }
 
-  // TODO: Need value mapper?
   max(fun) {
     if (!(isFunction(fun) || fun === undefined)) {
       throw new TypeError("1st argument must be Function or Undefined");
@@ -753,12 +752,13 @@ export default class Collection {
     return this.__consume(finalize);
   }
 
+  // TODO?: maxBy()
+
   // eslint-disable-next-line no-unused-vars
   static max(_coll, _fun) {
     throw new Error("not implemented");
   }
 
-  // TODO: Need value mapper?
   min(fun) {
     if (!(isFunction(fun) || fun === undefined)) {
       throw new TypeError("1st argument must be Function or Undefined");
@@ -766,6 +766,8 @@ export default class Collection {
     const fn = fun || ((v1, v2) => v1 < v2);
     return this.max(fn);
   }
+
+  // TODO?: minBy()
 
   // TODO: equals()
 

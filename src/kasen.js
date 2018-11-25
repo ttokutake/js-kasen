@@ -369,6 +369,27 @@ Kasen.flatMap = (array, fun) => {
   return KasenArray.flatMap(array, fun);
 };
 
+Kasen.sort = (array, fun) => {
+  if (!isArray(array)) {
+    throw new TypeError("1st argument must be Array");
+  }
+  if (!(isFunction(fun) || fun === undefined)) {
+    throw new TypeError("2nd argument must be Function or Undefined");
+  }
+  const fn =
+    fun ||
+    ((v1, v2) => {
+      if (v1 > v2) {
+        return 1;
+      }
+      if (v1 < v2) {
+        return -1;
+      }
+      return 0;
+    });
+  return KasenArray.sort(array, fn);
+};
+
 Kasen.range = (start, end, step) => {
   if (!isNumber(start)) {
     throw new TypeError("1st argument must be Number");
