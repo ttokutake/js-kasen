@@ -151,6 +151,16 @@ export default class KasenArray extends Collection {
 
     this.shift.if = bool => (bool ? this.shift() : this);
 
+    this.splice.if = (bool, index, num, ...values) => {
+      if (!isNumber(index)) {
+        throw new TypeError("2nd argument must be Number");
+      }
+      if (!isNumber(num)) {
+        throw new TypeError("3rd argument must be Number");
+      }
+      return bool ? this.splice(index, num, ...values) : this;
+    };
+
     this.flatten.if = bool => (bool ? this.flatten() : this);
 
     this.flatMap.if = (bool, fun) => {
@@ -543,6 +553,28 @@ export default class KasenArray extends Collection {
     return array.slice(1);
   }
 
+  splice(index, num, ...values) {
+    if (!isNumber(index)) {
+      throw new TypeError("1st argument must be Number");
+    }
+    if (!isNumber(num)) {
+      throw new TypeError("2nd argument must be Number");
+    }
+    const collect = iter => {
+      const array = iter.Origin.collect(iter);
+      array.splice(index, num, ...values);
+      return array;
+    };
+    this.__pile(Collector, collect);
+    return this;
+  }
+
+  static splice(array, index, num, values) {
+    const result = this.copy(array);
+    result.splice(index, num, ...values);
+    return result;
+  }
+
   flatten() {
     const collect = iter => {
       let array = [];
@@ -645,8 +677,6 @@ export default class KasenArray extends Collection {
 
   // TODO?: interpose()
   // TODO?: interleave()
-
-  // TODO: splice()
 
   // TODO: distinct(fun) / unique(fun) from Scala
 

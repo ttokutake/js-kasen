@@ -1052,6 +1052,62 @@ describe("Array", () => {
     });
   });
 
+  describe("splice()", () => {
+    test("ok", () => {
+      const ios = [
+        [[], 0, 0, [], []],
+        [[], -1, 1, [], []],
+        [[], 0, 1, [], []],
+        [[], 0, 0, [10], [10]],
+        [[], 0, 0, [10, 20], [10, 20]],
+        [[1], 0, 0, [], [1]],
+        [[1], -1, 1, [], []],
+        [[1], 0, 1, [], []],
+        [[1], 0, 0, [10], [10, 1]],
+        [[1], 1, 0, [10], [1, 10]],
+        [[1, 2], 0, 0, [], [1, 2]],
+        [[1, 2], -2, 1, [], [2]],
+        [[1, 2], -1, 1, [], [1]],
+        [[1, 2], 0, 1, [], [2]],
+        [[1, 2], 1, 1, [], [1]],
+        [[1, 2], 1, 0, [10, 20], [1, 10, 20, 2]],
+        [[1, 2], 0, 1, [10, 20], [10, 20, 2]],
+        [[1, 2], 1, 1, [10, 20], [1, 10, 20]]
+      ];
+      ios.forEach(([input, index, num, values, expected]) => {
+        const result = Kasen(input)
+          .splice(index, num, ...values)
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+      ios.forEach(([input, index, num, values, expected]) => {
+        const result = Kasen.splice(input, index, num, ...values);
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
+  describe("splice.if()", () => {
+    test("ok", () => {
+      const input = [1, 2];
+      const index = 1;
+      const num = 0;
+      const values = [10, 20];
+      {
+        const result = Kasen(input)
+          .splice.if(false, index, num, ...values)
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const result = Kasen(input)
+          .splice.if(true, index, num, ...values)
+          .toJs();
+        expect(result).toEqual([1, 10, 20, 2]);
+      }
+    });
+  });
+
   describe("setIn()", () => {
     test("ok", () => {
       const ios = [

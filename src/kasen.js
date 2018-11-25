@@ -316,6 +316,19 @@ Kasen.shift = array => {
   return KasenArray.shift(array);
 };
 
+Kasen.splice = (array, index, num, ...values) => {
+  if (!isArray(array)) {
+    throw new TypeError("1st argument must be Array");
+  }
+  if (!isNumber(index)) {
+    throw new TypeError("2nd argument must be Number");
+  }
+  if (!isNumber(num)) {
+    throw new TypeError("3rd argument must be Number");
+  }
+  return KasenArray.splice(array, index, num, values);
+};
+
 Kasen.setIn = (coll, keys, value) => {
   const Coll = choose(coll);
   if (!Coll) {
