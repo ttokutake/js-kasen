@@ -74,11 +74,6 @@ export class Collector extends ChainIterator {
   constructor(parentIterator, collect) {
     super(parentIterator, null);
     this.collect = collect;
-    this.rewind();
-  }
-
-  rewind() {
-    this.iter = null;
   }
 
   base(direction) {
@@ -90,8 +85,7 @@ export class Collector extends ChainIterator {
   }
 
   reset() {
-    this.rewind();
-    super.reset();
+    this.iter.reset();
   }
 }
 
