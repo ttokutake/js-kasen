@@ -1255,20 +1255,6 @@ describe("Array", () => {
     });
   });
 
-  describe("isEmpty()", () => {
-    test("ok", () => {
-      const inputs = [[[], true], [[1], false], [[1, 2], false]];
-      inputs.forEach(([input, expected]) => {
-        const result = Kasen(input).isEmpty();
-        expect(result).toBe(expected);
-      });
-      inputs.forEach(([input, expected]) => {
-        const result = Kasen.isEmpty(input);
-        expect(result).toBe(expected);
-      });
-    });
-  });
-
   describe("range()", () => {
     test("step is undefined", () => {
       const ios = [
@@ -1322,6 +1308,20 @@ describe("Array", () => {
       ios.forEach(([num, expected]) => {
         const result = Kasen.repeat(null, num);
         expect(result).toEqual(expected);
+      });
+    });
+  });
+
+  describe("isEmpty()", () => {
+    test("ok", () => {
+      const inputs = [[[], true], [[1], false], [[1, 2], false]];
+      inputs.forEach(([input, expected]) => {
+        const result = Kasen(input).isEmpty();
+        expect(result).toBe(expected);
+      });
+      inputs.forEach(([input, expected]) => {
+        const result = Kasen.isEmpty(input);
+        expect(result).toBe(expected);
       });
     });
   });
