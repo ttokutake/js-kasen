@@ -7,6 +7,7 @@
   "license": "MIT",
   "scripts": {
     "ncu": "ncu",
+    "nca": "# TODO: npm audit fix --package-lock-only",
     "build": "npm run clean && webpack --bail",
     "clean": "rm -rf ./dist",
     "release": "NODE_ENV=production npm run build",
