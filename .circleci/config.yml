@@ -15,7 +15,7 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package-lock.json" }}
-      # TOD: - run: npm audit
+      # TODO: - run: npm audit
       - run: npm run release
       - run: npm run format:ci
       - run: npm run lint:ci
