@@ -1373,6 +1373,28 @@ describe("Array", () => {
     });
   });
 
+  describe("chunk()", () => {
+    test("ok", () => {
+      const ios = [
+        [[], 1, []],
+        [[], 2, []],
+        [[1], 1, [[1]]],
+        [[1], 2, [[1]]],
+        [[1, 2], 1, [[1], [2]]],
+        [[1, 2], 2, [[1, 2]]],
+        [[1, 2, 3], 1, [[1], [2], [3]]],
+        [[1, 2, 3], 2, [[1, 2], [3]]],
+        [[1, 2, 3], 3, [[1, 2, 3]]]
+      ];
+      ios.forEach(([input, num, expected]) => {
+        const result = Kasen(input)
+          .chunk(num)
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
   describe("range()", () => {
     test("step is undefined", () => {
       const ios = [

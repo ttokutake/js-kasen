@@ -680,7 +680,32 @@ export default class KasenArray extends Collection {
 
   // TODO: distinct(fun) / unique(fun) from Scala
 
-  // TODO: chunk() (paging method)
+  chunk(num) {
+    if (!(isNumber(num) || num >= 1)) {
+      throw new TypeError("1st argument must be Number >= 1");
+    }
+    const collect = iter => {
+      const array = [];
+      let value;
+      let count = 0;
+      let partialArray = [];
+      while (!({ value } = iter.next()).done) {
+        if (count >= num) {
+          array.push(partialArray);
+          count = 0;
+          partialArray = [];
+        }
+        partialArray.push(value);
+        count += 1;
+      }
+      if (partialArray.length) {
+        array.push(partialArray);
+      }
+      return array;
+    };
+    this.__pile(Collector, collect);
+    return this;
+  }
 
   // TODO: sliding() from Scala
 
