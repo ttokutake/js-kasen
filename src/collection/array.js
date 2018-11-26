@@ -176,6 +176,13 @@ export default class KasenArray extends Collection {
       }
       return bool ? this.sort(fun) : this;
     };
+
+    this.chunk.if = (bool, num) => {
+      if (!(isNumber(num) || num >= 1)) {
+        throw new TypeError("2nd argument must be Number >= 1");
+      }
+      return bool ? this.chunk(num) : this;
+    };
   }
 
   static __iterator(array) {

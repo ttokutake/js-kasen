@@ -1399,6 +1399,24 @@ describe("Array", () => {
     });
   });
 
+  describe("chunk.if()", () => {
+    test("ok", () => {
+      const input = [1, 2, 3];
+      {
+        const result = Kasen(input)
+          .chunk.if(false, 2)
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const result = Kasen(input)
+          .chunk.if(true, 2)
+          .toJs();
+        expect(result).toEqual([[1, 2], [3]]);
+      }
+    });
+  });
+
   describe("range()", () => {
     test("step is undefined", () => {
       const ios = [
