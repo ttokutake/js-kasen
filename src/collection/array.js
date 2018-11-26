@@ -707,6 +707,25 @@ export default class KasenArray extends Collection {
     return this;
   }
 
+  static chunk(array, num) {
+    const result = [];
+    let count = 0;
+    let partialArray = [];
+    array.forEach(value => {
+      if (count >= num) {
+        result.push(partialArray);
+        count = 0;
+        partialArray = [];
+      }
+      partialArray.push(value);
+      count += 1;
+    });
+    if (partialArray.length) {
+      result.push(partialArray);
+    }
+    return result;
+  }
+
   // TODO: sliding() from Scala
 
   static range(start, end, step) {
