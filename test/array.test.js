@@ -1397,6 +1397,20 @@ describe("Array", () => {
         expect(result).toEqual(expected);
       });
     });
+
+    test("error", () => {
+      {
+        const run = () =>
+          Kasen([])
+            .chunk(0)
+            .toJs();
+        expect(run).toThrow(TypeError);
+      }
+      {
+        const run = () => Kasen.chunk([], 0);
+        expect(run).toThrow(TypeError);
+      }
+    });
   });
 
   describe("chunk.if()", () => {
@@ -1414,6 +1428,14 @@ describe("Array", () => {
           .toJs();
         expect(result).toEqual([[1, 2], [3]]);
       }
+    });
+
+    test("error", () => {
+      const run = () =>
+        Kasen([])
+          .chunk.if(false, 0)
+          .toJs();
+      expect(run).toThrow(TypeError);
     });
   });
 

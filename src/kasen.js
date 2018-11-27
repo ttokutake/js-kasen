@@ -407,7 +407,7 @@ Kasen.chunk = (array, num) => {
   if (!isArray(array)) {
     throw new TypeError("1st argument must be Array");
   }
-  if (!(isNumber(num) || num >= 1)) {
+  if (!(isNumber(num) && num >= 1)) {
     throw new TypeError("2nd argument must be Number >= 1");
   }
   return KasenArray.chunk(array, num);

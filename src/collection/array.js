@@ -178,7 +178,7 @@ export default class KasenArray extends Collection {
     };
 
     this.chunk.if = (bool, num) => {
-      if (!(isNumber(num) || num >= 1)) {
+      if (!(isNumber(num) && num >= 1)) {
         throw new TypeError("2nd argument must be Number >= 1");
       }
       return bool ? this.chunk(num) : this;
@@ -688,7 +688,7 @@ export default class KasenArray extends Collection {
   // TODO: distinct(fun) / unique(fun) from Scala
 
   chunk(num) {
-    if (!(isNumber(num) || num >= 1)) {
+    if (!(isNumber(num) && num >= 1)) {
       throw new TypeError("1st argument must be Number >= 1");
     }
     const collect = iter => {
