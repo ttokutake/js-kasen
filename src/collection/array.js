@@ -183,6 +183,16 @@ export default class KasenArray extends Collection {
       }
       return bool ? this.chunk(num) : this;
     };
+
+    this.sliding.if = (bool, num, step) => {
+      if (!(isNumber(num) && num >= 1)) {
+        throw new TypeError("2nd argument must be Number >= 1");
+      }
+      if (!((isNumber(step) && step >= 1) || step === undefined)) {
+        throw new TypeError("3rd argument must be Number or Undefined");
+      }
+      return bool ? this.sliding(num, step) : this;
+    };
   }
 
   static __iterator(array) {
@@ -691,22 +701,36 @@ export default class KasenArray extends Collection {
     if (!(isNumber(num) && num >= 1)) {
       throw new TypeError("1st argument must be Number >= 1");
     }
+    return this.sliding(num, num);
+  }
+
+  sliding(num, step) {
+    if (!(isNumber(num) && num >= 1)) {
+      throw new TypeError("1st argument must be Number >= 1");
+    }
+    if (!((isNumber(step) && step >= 1) || step === undefined)) {
+      throw new TypeError("2nd argument must be Number or Undefined");
+    }
+    const stp = step || 1;
     const collect = iter => {
       const array = [];
       let value;
       let count = 0;
-      let partialArray = [];
+      const chunk = [];
       while (!({ value } = iter.next()).done) {
         if (count >= num) {
-          array.push(partialArray);
-          count = 0;
-          partialArray = [];
+          array.push(this.constructor.copy(chunk));
+          count -= stp;
+          chunk.splice(0, stp);
         }
-        partialArray.push(value);
+        chunk.push(value);
+        if (chunk.length > num) {
+          chunk.shift();
+        }
         count += 1;
       }
-      if (partialArray.length) {
-        array.push(partialArray);
+      if (chunk.length) {
+        array.push(chunk);
       }
       return array;
     };
@@ -714,26 +738,27 @@ export default class KasenArray extends Collection {
     return this;
   }
 
-  static chunk(array, num) {
+  static sliding(array, num, step) {
     const result = [];
     let count = 0;
-    let partialArray = [];
+    const chunk = [];
     array.forEach(value => {
       if (count >= num) {
-        result.push(partialArray);
-        count = 0;
-        partialArray = [];
+        result.push(this.copy(chunk));
+        count -= step;
+        chunk.splice(0, step);
       }
-      partialArray.push(value);
+      chunk.push(value);
+      if (chunk.length > num) {
+        chunk.shift();
+      }
       count += 1;
     });
-    if (partialArray.length) {
-      result.push(partialArray);
+    if (chunk.length) {
+      result.push(chunk);
     }
     return result;
   }
-
-  // TODO: sliding() from Scala
 
   static range(start, end, step) {
     const array = [];

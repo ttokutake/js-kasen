@@ -1439,6 +1439,105 @@ describe("Array", () => {
     });
   });
 
+  describe("sliding()", () => {
+    test("step is undefined", () => {
+      const ios = [
+        [[], 1, []],
+        [[1], 1, [[1]]],
+        [[1], 2, [[1]]],
+        [[1, 2], 1, [[1], [2]]],
+        [[1, 2], 2, [[1, 2]]],
+        [[1, 2, 3], 1, [[1], [2], [3]]],
+        [[1, 2, 3], 2, [[1, 2], [2, 3]]],
+        [[1, 2, 3], 3, [[1, 2, 3]]]
+      ];
+      ios.forEach(([input, num, expected]) => {
+        const result = Kasen(input)
+          .sliding(num)
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+      ios.forEach(([input, num, expected]) => {
+        const result = Kasen.sliding(input, num);
+        expect(result).toEqual(expected);
+      });
+    });
+
+    test("step is specified", () => {
+      const ios = [
+        [[], 1, 1, []],
+        [[1], 1, 1, [[1]]],
+        [[1, 2], 1, 1, [[1], [2]]],
+        [[1, 2], 1, 2, [[1], [2]]],
+        [[1, 2, 3], 1, 1, [[1], [2], [3]]],
+        [[1, 2, 3], 1, 2, [[1], [3]]],
+        [[1, 2, 3], 2, 1, [[1, 2], [2, 3]]],
+        [[1, 2, 3], 2, 2, [[1, 2], [3]]]
+      ];
+      ios.forEach(([input, num, step, expected]) => {
+        const result = Kasen(input)
+          .sliding(num, step)
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+      ios.forEach(([input, num, step, expected]) => {
+        const result = Kasen.sliding(input, num, step);
+        expect(result).toEqual(expected);
+      });
+    });
+
+    test("error", () => {
+      {
+        const run = () =>
+          Kasen([])
+            .sliding(0)
+            .toJs();
+        expect(run).toThrow(TypeError);
+      }
+      {
+        const run = () => Kasen.sliding([], 0);
+        expect(run).toThrow(TypeError);
+      }
+      {
+        const run = () =>
+          Kasen([])
+            .sliding(1, 0)
+            .toJs();
+        expect(run).toThrow(TypeError);
+      }
+      {
+        const run = () => Kasen.sliding([], 1, 0);
+        expect(run).toThrow(TypeError);
+      }
+    });
+  });
+
+  describe("sliding.if()", () => {
+    test("ok", () => {
+      const input = [1, 2, 3];
+      {
+        const result = Kasen(input)
+          .sliding.if(false, 2)
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const result = Kasen(input)
+          .sliding.if(true, 2)
+          .toJs();
+        expect(result).toEqual([[1, 2], [2, 3]]);
+      }
+    });
+
+    test("error", () => {
+      const run = () =>
+        Kasen([])
+          .sliding.if(false, 0)
+          .toJs();
+      expect(run).toThrow(TypeError);
+    });
+  });
+
   describe("range()", () => {
     test("step is undefined", () => {
       const ios = [

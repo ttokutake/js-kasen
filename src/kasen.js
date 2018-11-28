@@ -410,7 +410,18 @@ Kasen.chunk = (array, num) => {
   if (!(isNumber(num) && num >= 1)) {
     throw new TypeError("2nd argument must be Number >= 1");
   }
-  return KasenArray.chunk(array, num);
+  return KasenArray.sliding(array, num, num);
+};
+
+Kasen.sliding = (array, num, step) => {
+  if (!(isNumber(num) && num >= 1)) {
+    throw new TypeError("2nd argument must be Number >= 1");
+  }
+  if (!((isNumber(step) && step >= 1) || step === undefined)) {
+    throw new TypeError("3rd argument must be Number or Undefined");
+  }
+  const stp = step || 1;
+  return KasenArray.sliding(array, num, stp);
 };
 
 Kasen.range = (start, end, step) => {
