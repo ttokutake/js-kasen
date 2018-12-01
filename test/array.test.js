@@ -1373,6 +1373,40 @@ describe("Array", () => {
     });
   });
 
+  describe("unique()", () => {
+    test("fun is undefined", () => {
+      const ios = [
+        [[], []],
+        [[1], [1]],
+        [[1, 2], [1, 2]],
+        [[1, 1], [1]],
+        [[1, 2, 1], [1, 2]]
+      ];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input)
+          .unique()
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+    });
+
+    test("fun is specified", () => {
+      const ios = [
+        [[], []],
+        [[{ a: 1 }], [{ a: 1 }]],
+        [[{ a: 1 }, { a: 2 }], [{ a: 1 }, { a: 2 }]],
+        [[{ a: 1 }, { a: 1 }], [{ a: 1 }]],
+        [[{ a: 1 }, { a: 2 }, { a: 1 }], [{ a: 1 }, { a: 2 }]]
+      ];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input)
+          .unique(v => v.a)
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
   describe("chunk()", () => {
     test("ok", () => {
       const ios = [

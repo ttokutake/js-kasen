@@ -656,6 +656,9 @@ export default class KasenArray extends Collection {
     return result;
   }
 
+  // TODO?: interpose()
+  // TODO?: interleave()
+
   // TODO: zip()
   // TODO: zipAll()
   // TODO: zipWith()
@@ -692,10 +695,41 @@ export default class KasenArray extends Collection {
 
   // TODO?: sortBy()
 
-  // TODO?: interpose()
-  // TODO?: interleave()
-
-  // TODO: distinct(fun) / unique(fun) from Scala
+  unique(fun) {
+    if (!(isFunction(fun) || fun === undefined)) {
+      throw new TypeError("1st argument must be Function or Undefined");
+    }
+    const fn = fun || (v => v);
+    const collect = iter => {
+      const array = iter.Origin.collect(iter);
+      // TODO: sortBy() should be used
+      array.sort((v1, v2) => {
+        const r1 = fn(v1);
+        const r2 = fn(v2);
+        if (r1 > r2) {
+          return 1;
+        }
+        if (r1 < r2) {
+          return -1;
+        }
+        return 0;
+      });
+      const result = [];
+      const { length } = array;
+      let left;
+      for (let i = 0; i < length; i += 1) {
+        const value = array[i];
+        const right = fn(value, i);
+        if (i === 0 || left !== right) {
+          left = right;
+          result.push(value);
+        }
+      }
+      return result;
+    };
+    this.__pile(Collector, collect);
+    return this;
+  }
 
   chunk(num) {
     if (!(isNumber(num) && num >= 1)) {
