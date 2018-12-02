@@ -600,6 +600,16 @@ Kasen.scan = (coll, fun, init) => {
   return Coll.scan(coll, fun, init);
 };
 
+Kasen.scanRight = (array, fun, init) => {
+  if (!isArray(array)) {
+    throw new TypeError("1st argument must be Array");
+  }
+  if (!isFunction(fun)) {
+    throw new TypeError("2nd argument must be Function");
+  }
+  return KasenArray.scanRight(array, fun, init);
+};
+
 Kasen.partition = (coll, fun) => {
   const Coll = choose(coll);
   if (!Coll) {

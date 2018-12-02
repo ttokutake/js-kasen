@@ -2094,6 +2094,48 @@ describe("Array", () => {
     });
   });
 
+  describe("scanRight()", () => {
+    test("init is undefined", () => {
+      const ios = [[[1], [1]], [[1, 2], [2, 3]], [[1, 2, 3], [3, 5, 6]]];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input).scanRight((acc, v) => acc + v);
+        expect(result).toEqual(expected);
+      });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.scanRight(input, (acc, v) => acc + v);
+        expect(result).toEqual(expected);
+      });
+    });
+
+    test("init is specified", () => {
+      const ios = [
+        [[], [10]],
+        [[1], [10, 11]],
+        [[1, 2], [10, 12, 13]],
+        [[1, 2, 3], [10, 13, 15, 16]]
+      ];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input).scanRight((acc, v) => acc + v, 10);
+        expect(result).toEqual(expected);
+      });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.scanRight(input, (acc, v) => acc + v, 10);
+        expect(result).toEqual(expected);
+      });
+    });
+
+    test("error", () => {
+      {
+        const run = () => Kasen([]).scanRight((acc, v) => acc + v);
+        expect(run).toThrow(TypeError);
+      }
+      {
+        const run = () => Kasen.scanRight([], (acc, v) => acc + v);
+        expect(run).toThrow(TypeError);
+      }
+    });
+  });
+
   describe("partition()", () => {
     test("ok", () => {
       const inputs = [

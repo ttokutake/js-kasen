@@ -1002,7 +1002,55 @@ export default class KasenArray extends Collection {
     return result;
   }
 
-  // TODO: scanRight() from Scala
+  scanRight(fun, init) {
+    if (!isFunction(fun)) {
+      throw new TypeError("1st argument must be Function");
+    }
+    const finalize = iter => {
+      const result = init === undefined ? [] : [init];
+      let acc;
+      let key;
+      let value;
+      let isFirst = true;
+      while (!({ key, value } = iter.prev()).done) {
+        if (isFirst) {
+          isFirst = false;
+          if (init === undefined) {
+            acc = value;
+          } else {
+            acc = fun(init, value, key);
+          }
+        } else {
+          acc = fun(acc, value, key);
+        }
+        result.push(acc);
+      }
+      if (isFirst && init === undefined) {
+        throw new TypeError("Scan of empty collection with no initial value");
+      }
+      return result;
+    };
+    return this.__consume(finalize);
+  }
+
+  static scanRight(array, fun, init) {
+    const { length } = array;
+    let startIndex = length - 1;
+    let acc = init;
+    if (init === undefined) {
+      if (!length) {
+        throw new TypeError("Scan of empty array with no initial value");
+      }
+      acc = array[startIndex];
+      startIndex -= 1;
+    }
+    const result = [acc];
+    for (let i = startIndex; i > -1; i -= 1) {
+      acc = fun(acc, array[i], i);
+      result.push(acc);
+    }
+    return result;
+  }
 
   static partition(array, fun) {
     const result = [[], []];
