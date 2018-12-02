@@ -1319,7 +1319,7 @@ describe("Array", () => {
         [[1], [], [[1]]],
         [[1], [[]], []],
         [[1], [[10]], [[1, 10]]],
-        [[1], [[10, 20]], [[1, 10]]],
+        [[1], [[10, 11]], [[1, 10]]],
         [[1, 2], [[10]], [[1, 10]]],
         [[1, 2], [[10, 11]], [[1, 10], [2, 11]]],
         [[1, 2], [[10, 11], [20]], [[1, 10, 20]]],
@@ -1340,7 +1340,7 @@ describe("Array", () => {
 
   describe("zip.if()", () => {
     const input = [1, 2];
-    const arrays = [[10, 11], [20, 21]];
+    const arrays = [[10, 11], [20]];
     {
       const result = Kasen(input)
         .zip.if(false, ...arrays)
@@ -1351,8 +1351,54 @@ describe("Array", () => {
       const result = Kasen(input)
         .zip.if(true, ...arrays)
         .toJs();
-      expect(result).toEqual([[1, 10, 20], [2, 11, 21]]);
+      expect(result).toEqual([[1, 10, 20]]);
     }
+  });
+
+  describe("zipAll()", () => {
+    test("ok", () => {
+      const ios = [
+        [[], [], []],
+        [[], [[1]], [[undefined, 1]]],
+        [[1], [], [[1]]],
+        [[1], [[]], [[1, undefined]]],
+        [[1], [[10]], [[1, 10]]],
+        [[1], [[10, 11]], [[1, 10], [undefined, 11]]],
+        [[1, 2], [[10]], [[1, 10], [2, undefined]]],
+        [[1, 2], [[10, 11]], [[1, 10], [2, 11]]],
+        [[1, 2], [[10, 11], [20]], [[1, 10, 20], [2, 11, undefined]]],
+        [[1, 2], [[10, 11], [20, 21]], [[1, 10, 20], [2, 11, 21]]]
+      ];
+      ios.forEach(([input, arrays, expected]) => {
+        const result = Kasen(input)
+          .zipAll(...arrays)
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+      ios.forEach(([input, arrays, expected]) => {
+        const result = Kasen.zipAll(input, ...arrays);
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
+  describe("zipAll.if()", () => {
+    test("ok", () => {
+      const input = [1, 2];
+      const arrays = [[10, 11], [20]];
+      {
+        const result = Kasen(input)
+          .zipAll.if(false, ...arrays)
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const result = Kasen(input)
+          .zipAll.if(true, ...arrays)
+          .toJs();
+        expect(result).toEqual([[1, 10, 20], [2, 11, undefined]]);
+      }
+    });
   });
 
   describe("sort()", () => {

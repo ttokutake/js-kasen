@@ -174,10 +174,19 @@ export default class KasenArray extends Collection {
     this.zip.if = (bool, ...arrays) => {
       for (let i = 0, { length } = arrays; i < length; i += 1) {
         if (!isArray(arrays[i])) {
-          throw new TypeError("Each argument must be Array");
+          throw new TypeError("Each argument except 1st one must be Array");
         }
       }
       return bool ? this.zip(...arrays) : this;
+    };
+
+    this.zipAll.if = (bool, ...arrays) => {
+      for (let i = 0, { length } = arrays; i < length; i += 1) {
+        if (!isArray(arrays[i])) {
+          throw new TypeError("Each argument except 1st one must be Array");
+        }
+      }
+      return bool ? this.zipAll(...arrays) : this;
     };
 
     this.sort.if = (bool, fun) => {
@@ -725,7 +734,53 @@ export default class KasenArray extends Collection {
     return result;
   }
 
-  // TODO: zipAll()
+  zipAll(...arrays) {
+    const { length } = arrays;
+    for (let i = 0; i < length; i += 1) {
+      if (!isArray(arrays[i])) {
+        throw new TypeError("Each argument must be Array");
+      }
+    }
+    const collect = iter => {
+      const maxArray = this.constructor.max(
+        arrays,
+        (v1, v2) => v1.length > v2.length
+      );
+      const maxLength = maxArray ? maxArray.length : 0;
+      const result = [];
+      let index = 0;
+      let value;
+      while (!({ value } = iter.next()).done || index < maxLength) {
+        const combination = [value];
+        for (let i = 0; i < length; i += 1) {
+          const array = arrays[i];
+          combination.push(array[index]);
+        }
+        result.push(combination);
+        index += 1;
+      }
+      return result;
+    };
+    this.__pile(Collector, collect);
+    return this;
+  }
+
+  static zipAll(arrays) {
+    const { length } = arrays;
+    const maxArray = this.max(arrays, (v1, v2) => v1.length > v2.length);
+    const maxLength = maxArray ? maxArray.length : 0;
+    const result = [];
+    for (let index = 0; index < maxLength; index += 1) {
+      const combination = [];
+      for (let i = 0; i < length; i += 1) {
+        const array = arrays[i];
+        combination.push(array[index]);
+      }
+      result.push(combination);
+    }
+    return result;
+  }
+
   // TODO: zipWith()
 
   sort(fun) {
