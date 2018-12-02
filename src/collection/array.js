@@ -983,6 +983,25 @@ export default class KasenArray extends Collection {
     return acc;
   }
 
+  static scan(array, fun, init) {
+    const { length } = array;
+    let startIndex = 0;
+    let acc = init;
+    if (init === undefined) {
+      if (!length) {
+        throw new TypeError("Scan of empty array with no initial value");
+      }
+      acc = array[startIndex];
+      startIndex += 1;
+    }
+    const result = [acc];
+    for (let i = startIndex; i < length; i += 1) {
+      acc = fun(acc, array[i], i);
+      result.push(acc);
+    }
+    return result;
+  }
+
   // TODO: scanRight() from Scala
 
   static partition(array, fun) {

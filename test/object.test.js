@@ -1006,6 +1006,10 @@ describe("Object", () => {
         const result = Kasen(input).scan((acc, v) => acc + v);
         expect(result).toEqual(expected);
       });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.scan(input, (acc, v) => acc + v);
+        expect(result).toEqual(expected);
+      });
     });
 
     test("init is specified", () => {
@@ -1018,11 +1022,19 @@ describe("Object", () => {
         const result = Kasen(input).scan((acc, v) => acc + v, 10);
         expect(result).toEqual(expected);
       });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.scan(input, (acc, v) => acc + v, 10);
+        expect(result).toEqual(expected);
+      });
     });
 
     test("error", () => {
       {
         const run = () => Kasen({}).scan((acc, v) => acc + v);
+        expect(run).toThrow(TypeError);
+      }
+      {
+        const run = () => Kasen.scan({}, (acc, v) => acc + v);
         expect(run).toThrow(TypeError);
       }
     });

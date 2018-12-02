@@ -424,6 +424,23 @@ export default class KasenObject extends Collection {
     return acc;
   }
 
+  static scan(object, fun, init) {
+    const keys = Object.keys(object);
+    let acc = init;
+    if (init === undefined) {
+      if (!keys.length) {
+        throw new TypeError("Scan of empty object with no initial value");
+      }
+      acc = object[keys.pop()];
+    }
+    const result = [acc];
+    keys.forEach(key => {
+      acc = fun(acc, object[key], key);
+      result.push(acc);
+    });
+    return result;
+  }
+
   static partition(object, fun) {
     const result = [{}, {}];
     this.forEach(object, (value, key) => {
