@@ -699,18 +699,19 @@ export default class KasenArray extends Collection {
       );
       const minLength = minArray ? minArray.length : null;
       const result = [];
-      let index;
+      let index = 0;
       let value;
-      while (!({ key: index, value } = iter.next()).done) {
-        if (minLength !== null && index >= minLength) {
-          break;
-        }
+      while (
+        !({ value } = iter.next()).done &&
+        (minLength === null || index < minLength)
+      ) {
         const combination = [value];
         for (let i = 0; i < length; i += 1) {
           const array = arrays[i];
           combination.push(array[index]);
         }
         result.push(combination);
+        index += 1;
       }
       return result;
     };
