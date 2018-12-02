@@ -881,23 +881,7 @@ export default class KasenArray extends Collection {
   }
 
   init() {
-    const finalize = iter => {
-      const array = [];
-      let value;
-      let prevValue;
-      let isFirst = true;
-      while (!({ value } = iter.next()).done) {
-        if (isFirst) {
-          isFirst = false;
-          prevValue = value;
-        } else {
-          array.push(prevValue);
-          prevValue = value;
-        }
-      }
-      return array;
-    };
-    return this.__consume(finalize);
+    return this.skipLast(1).toArray();
   }
 
   last() {
