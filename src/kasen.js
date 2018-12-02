@@ -3,6 +3,7 @@ const hash = require("hash-sum");
 const { default: KasenArray } = require("./collection/array");
 const { default: KasenObject } = require("./collection/object");
 const { isNumber, isString, isObject, isArray, isFunction } = require("./type");
+const { compare } = require("./util");
 
 function choose(coll) {
   if (isArray(coll)) {
@@ -389,17 +390,7 @@ Kasen.sort = (array, fun) => {
   if (!(isFunction(fun) || fun === undefined)) {
     throw new TypeError("2nd argument must be Function or Undefined");
   }
-  const fn =
-    fun ||
-    ((v1, v2) => {
-      if (v1 > v2) {
-        return 1;
-      }
-      if (v1 < v2) {
-        return -1;
-      }
-      return 0;
-    });
+  const fn = fun || compare;
   return KasenArray.sort(array, fn);
 };
 

@@ -2,6 +2,7 @@ import Collection from ".";
 import { OriginIterator, Collector } from "../iterator";
 import { FilterIterator, ReverseIterator } from "../iterator/array";
 import { isNumber, isArray, isFunction } from "../type";
+import { compare } from "../util";
 
 class ArrayIterator extends OriginIterator {
   constructor(array) {
@@ -674,17 +675,7 @@ export default class KasenArray extends Collection {
     if (!(isFunction(fun) || fun === undefined)) {
       throw new TypeError("1st argument must be Function or Undefined");
     }
-    const fn =
-      fun ||
-      ((v1, v2) => {
-        if (v1 > v2) {
-          return 1;
-        }
-        if (v1 < v2) {
-          return -1;
-        }
-        return 0;
-      });
+    const fn = fun || compare;
     const collect = iter => {
       const array = iter.Origin.collect(iter);
       array.sort(fn);
@@ -710,17 +701,7 @@ export default class KasenArray extends Collection {
     const collect = iter => {
       const array = iter.Origin.collect(iter);
       // TODO: sortBy() should be used
-      array.sort((v1, v2) => {
-        const r1 = fn(v1);
-        const r2 = fn(v2);
-        if (r1 > r2) {
-          return 1;
-        }
-        if (r1 < r2) {
-          return -1;
-        }
-        return 0;
-      });
+      array.sort((v1, v2) => compare(fn(v1), fn(v2)));
       const result = [];
       let left;
       for (let i = 0, { length } = array; i < length; i += 1) {
@@ -739,17 +720,8 @@ export default class KasenArray extends Collection {
 
   static unique(array, fun) {
     const arr = this.copy(array);
-    arr.sort((v1, v2) => {
-      const r1 = fun(v1);
-      const r2 = fun(v2);
-      if (r1 > r2) {
-        return 1;
-      }
-      if (r1 < r2) {
-        return -1;
-      }
-      return 0;
-    });
+    // TODO: sortBy() should be used
+    arr.sort((v1, v2) => compare(fun(v1), fun(v2)));
     const result = [];
     let left;
     for (let i = 0, { length } = arr; i < length; i += 1) {
