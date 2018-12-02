@@ -403,6 +403,17 @@ Kasen.sort = (array, fun) => {
   return KasenArray.sort(array, fn);
 };
 
+Kasen.unique = (array, fun) => {
+  if (!isArray(array)) {
+    throw new TypeError("1st argument must be Array");
+  }
+  if (!(isFunction(fun) || fun === undefined)) {
+    throw new TypeError("2nd argument must be Function or Undefined");
+  }
+  const fn = fun || (v => v);
+  return KasenArray.unique(array, fn);
+};
+
 Kasen.chunk = (array, num) => {
   if (!isArray(array)) {
     throw new TypeError("1st argument must be Array");

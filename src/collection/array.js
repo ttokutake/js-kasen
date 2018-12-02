@@ -715,9 +715,8 @@ export default class KasenArray extends Collection {
         return 0;
       });
       const result = [];
-      const { length } = array;
       let left;
-      for (let i = 0; i < length; i += 1) {
+      for (let i = 0, { length } = array; i < length; i += 1) {
         const value = array[i];
         const right = fn(value, i);
         if (i === 0 || left !== right) {
@@ -729,6 +728,32 @@ export default class KasenArray extends Collection {
     };
     this.__pile(Collector, collect);
     return this;
+  }
+
+  static unique(array, fun) {
+    const arr = this.copy(array);
+    arr.sort((v1, v2) => {
+      const r1 = fun(v1);
+      const r2 = fun(v2);
+      if (r1 > r2) {
+        return 1;
+      }
+      if (r1 < r2) {
+        return -1;
+      }
+      return 0;
+    });
+    const result = [];
+    let left;
+    for (let i = 0, { length } = arr; i < length; i += 1) {
+      const value = arr[i];
+      const right = fun(value, i);
+      if (i === 0 || left !== right) {
+        left = right;
+        result.push(value);
+      }
+    }
+    return result;
   }
 
   chunk(num) {

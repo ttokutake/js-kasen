@@ -1388,6 +1388,10 @@ describe("Array", () => {
           .toJs();
         expect(result).toEqual(expected);
       });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.unique(input);
+        expect(result).toEqual(expected);
+      });
     });
 
     test("fun is specified", () => {
@@ -1402,6 +1406,10 @@ describe("Array", () => {
         const result = Kasen(input)
           .unique(v => v.a)
           .toJs();
+        expect(result).toEqual(expected);
+      });
+      ios.forEach(([input, expected]) => {
+        const result = Kasen.unique(input, v => v.a);
         expect(result).toEqual(expected);
       });
     });
