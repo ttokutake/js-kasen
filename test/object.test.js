@@ -605,17 +605,17 @@ describe("Object", () => {
         [{ a: 1, b: 1 }, [{ a: 1 }, { a: 1 }], { a: 3, b: 1 }],
         [{ a: 1, b: 1 }, [{ a: 1 }, { b: 1 }], { a: 2, b: 2 }]
       ];
-      ios.forEach(([input, args, expected]) => {
+      ios.forEach(([input, objects, expected]) => {
         const result = Kasen(input)
-          .mergeWith((left, right) => left + right, ...args)
+          .mergeWith((left, right) => left + right, ...objects)
           .toJs();
         expect(result).toEqual(expected);
       });
-      ios.forEach(([input, args, expected]) => {
+      ios.forEach(([input, objects, expected]) => {
         const result = Kasen.mergeWith(
           input,
           (left, right) => left + right,
-          ...args
+          ...objects
         );
         expect(result).toEqual(expected);
       });

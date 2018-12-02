@@ -912,14 +912,14 @@ describe("Array", () => {
         [[1, 2], [10], [1, 2, 10]],
         [[1, 2], [10, 11], [1, 2, 10, 11]]
       ];
-      ios.forEach(([input, args, expected]) => {
+      ios.forEach(([input, values, expected]) => {
         const result = Kasen(input)
-          .push(...args)
+          .push(...values)
           .toJs();
         expect(result).toEqual(expected);
       });
-      ios.forEach(([input, args, expected]) => {
-        const result = Kasen.push(input, ...args);
+      ios.forEach(([input, values, expected]) => {
+        const result = Kasen.push(input, ...values);
         expect(result).toEqual(expected);
       });
     });
@@ -987,14 +987,14 @@ describe("Array", () => {
         [[1, 2], [10], [10, 1, 2]],
         [[1, 2], [10, 11], [10, 11, 1, 2]]
       ];
-      ios.forEach(([input, args, expected]) => {
+      ios.forEach(([input, values, expected]) => {
         const result = Kasen(input)
-          .unshift(...args)
+          .unshift(...values)
           .toJs();
         expect(result).toEqual(expected);
       });
-      ios.forEach(([input, args, expected]) => {
-        const result = Kasen.unshift(input, ...args);
+      ios.forEach(([input, values, expected]) => {
+        const result = Kasen.unshift(input, ...values);
         expect(result).toEqual(expected);
       });
     });
