@@ -171,6 +171,15 @@ export default class KasenArray extends Collection {
       return bool ? this.flatMap(fun) : this;
     };
 
+    this.zip.if = (bool, ...arrays) => {
+      for (let i = 0, { length } = arrays; i < length; i += 1) {
+        if (!isArray(arrays[i])) {
+          throw new TypeError("Each argument must be Array");
+        }
+      }
+      return bool ? this.zip(...arrays) : this;
+    };
+
     this.sort.if = (bool, fun) => {
       if (!(isFunction(fun) || fun === undefined)) {
         throw new TypeError("2nd argument must be Function or Undefined");
@@ -667,7 +676,55 @@ export default class KasenArray extends Collection {
   // TODO?: interpose()
   // TODO?: interleave()
 
-  // TODO: zip()
+  zip(...arrays) {
+    const { length } = arrays;
+    for (let i = 0; i < length; i += 1) {
+      if (!isArray(arrays[i])) {
+        throw new TypeError("Each argument must be Array");
+      }
+    }
+    const collect = iter => {
+      const minArray = this.constructor.max(
+        arrays,
+        (v1, v2) => v1.length < v2.length
+      );
+      const minLength = minArray ? minArray.length : null;
+      const result = [];
+      let index;
+      let value;
+      while (!({ key: index, value } = iter.next()).done) {
+        if (minLength !== null && index >= minLength) {
+          break;
+        }
+        const combination = [value];
+        for (let i = 0; i < length; i += 1) {
+          const array = arrays[i];
+          combination.push(array[index]);
+        }
+        result.push(combination);
+      }
+      return result;
+    };
+    this.__pile(Collector, collect);
+    return this;
+  }
+
+  static zip(arrays) {
+    const { length } = arrays;
+    const minArray = this.max(arrays, (v1, v2) => v1.length < v2.length);
+    const minLength = minArray ? minArray.length : 0;
+    const result = [];
+    for (let index = 0; index < minLength; index += 1) {
+      const combination = [];
+      for (let i = 0; i < length; i += 1) {
+        const array = arrays[i];
+        combination.push(array[index]);
+      }
+      result.push(combination);
+    }
+    return result;
+  }
+
   // TODO: zipAll()
   // TODO: zipWith()
 
@@ -1221,12 +1278,13 @@ export default class KasenArray extends Collection {
     if (!array.length) {
       return undefined;
     }
-    let result = array.pop();
-    array.forEach(value => {
+    let result = array[0];
+    for (let i = 1, { length } = array; i < length; i += 1) {
+      const value = array[i];
       if (fun(value, result)) {
         result = value;
       }
-    });
+    }
     return result;
   }
 
