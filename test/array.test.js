@@ -2052,6 +2052,36 @@ describe("Array", () => {
     });
   });
 
+  describe("scan()", () => {
+    test("init is undefined", () => {
+      const ios = [[[1], [1]], [[1, 2], [1, 3]], [[1, 2, 3], [1, 3, 6]]];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input).scan((acc, v) => acc + v);
+        expect(result).toEqual(expected);
+      });
+    });
+
+    test("init is specified", () => {
+      const ios = [
+        [[], [10]],
+        [[1], [10, 11]],
+        [[1, 2], [10, 11, 13]],
+        [[1, 2, 3], [10, 11, 13, 16]]
+      ];
+      ios.forEach(([input, expected]) => {
+        const result = Kasen(input).scan((acc, v) => acc + v, 10);
+        expect(result).toEqual(expected);
+      });
+    });
+
+    test("error", () => {
+      {
+        const run = () => Kasen([]).scan((acc, v) => acc + v);
+        expect(run).toThrow(TypeError);
+      }
+    });
+  });
+
   describe("partition()", () => {
     test("ok", () => {
       const inputs = [

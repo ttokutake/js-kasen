@@ -522,6 +522,42 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
+  scan(fun, init) {
+    if (!isFunction(fun)) {
+      throw new TypeError("1st argument must be Function");
+    }
+    const finalize = iter => {
+      const result = init === undefined ? [] : [init];
+      let acc;
+      let key;
+      let value;
+      let isFirst = true;
+      while (!({ key, value } = iter.next()).done) {
+        if (isFirst) {
+          isFirst = false;
+          if (init === undefined) {
+            acc = value;
+          } else {
+            acc = fun(init, value, key);
+          }
+        } else {
+          acc = fun(acc, value, key);
+        }
+        result.push(acc);
+      }
+      if (isFirst && init === undefined) {
+        throw new TypeError("Scan of empty collection with no initial value");
+      }
+      return result;
+    };
+    return this.__consume(finalize);
+  }
+
+  // eslint-disable-next-line no-unused-vars
+  static scan(_coll, _fun, _init) {
+    throw new Error("not implemented");
+  }
+
   partition(fun) {
     if (!isFunction(fun)) {
       throw new TypeError("1st argument must be Function");

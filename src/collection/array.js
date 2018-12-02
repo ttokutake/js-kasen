@@ -983,7 +983,6 @@ export default class KasenArray extends Collection {
     return acc;
   }
 
-  // TODO: scan() from Scala
   // TODO: scanRight() from Scala
 
   static partition(array, fun) {
