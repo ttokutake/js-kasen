@@ -1415,6 +1415,24 @@ describe("Array", () => {
     });
   });
 
+  describe("unique.if()", () => {
+    test("ok", () => {
+      const input = [1, 2, 1];
+      {
+        const result = Kasen(input)
+          .unique.if(false)
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const result = Kasen(input)
+          .unique.if(true)
+          .toJs();
+        expect(result).toEqual([1, 2]);
+      }
+    });
+  });
+
   describe("chunk()", () => {
     test("ok", () => {
       const ios = [

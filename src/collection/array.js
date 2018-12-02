@@ -177,6 +177,13 @@ export default class KasenArray extends Collection {
       return bool ? this.sort(fun) : this;
     };
 
+    this.unique.if = (bool, fun) => {
+      if (!(isFunction(fun) || fun === undefined)) {
+        throw new TypeError("2nd argument must be Function or Undefined");
+      }
+      return bool ? this.unique(fun) : this;
+    };
+
     this.chunk.if = (bool, num) => {
       if (!(isNumber(num) && num >= 1)) {
         throw new TypeError("2nd argument must be Number >= 1");
