@@ -100,7 +100,7 @@ export default class KasenObject extends Collection {
       for (let i = 0, { length } = objects; i < length; i += 1) {
         if (!isObject(objects[i])) {
           throw new TypeError(
-            "Each argument except 1st & 2nd one must be Object"
+            "Each argument except 1st & 2nd ones must be Object"
           );
         }
       }

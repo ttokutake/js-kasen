@@ -1401,6 +1401,62 @@ describe("Array", () => {
     });
   });
 
+  describe("zipWith()", () => {
+    test("ok", () => {
+      const ios = [
+        [[], [], []],
+        [[], [[1]], []],
+        [[1], [], [1]],
+        [[1], [[]], []],
+        [[1], [[10]], [11]],
+        [[1], [[10, 11]], [11]],
+        [[1, 2], [[10]], [11]],
+        [[1, 2], [[10, 11]], [11, 13]],
+        [[1, 2], [[10, 11], [20]], [31]],
+        [[1, 2], [[10, 11], [20, 21]], [31, 34]]
+      ];
+      ios.forEach(([input, arrays, expected]) => {
+        const result = Kasen(input)
+          .zipWith((...values) => values.reduce((acc, v) => acc + v), ...arrays)
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+      ios.forEach(([input, arrays, expected]) => {
+        const result = Kasen.zipWith(
+          input,
+          (...values) => values.reduce((acc, v) => acc + v),
+          ...arrays
+        );
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
+  describe("zipWith.if()", () => {
+    const input = [1, 2];
+    const arrays = [[10, 11], [20]];
+    {
+      const result = Kasen(input)
+        .zipWith.if(
+          false,
+          (...values) => values.reduce((acc, v) => acc + v),
+          ...arrays
+        )
+        .toJs();
+      expect(result).toEqual(input);
+    }
+    {
+      const result = Kasen(input)
+        .zipWith.if(
+          true,
+          (...values) => values.reduce((acc, v) => acc + v),
+          ...arrays
+        )
+        .toJs();
+      expect(result).toEqual([31]);
+    }
+  });
+
   describe("sort()", () => {
     test("fun is undefined", () => {
       const ios = [

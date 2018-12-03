@@ -401,6 +401,21 @@ Kasen.zipAll = (...arrays) => {
   return KasenArray.zipAll(arrays);
 };
 
+Kasen.zipWith = (array, fun, ...arrays) => {
+  if (!isArray(array)) {
+    throw new TypeError("1st argument must be Array");
+  }
+  if (!isFunction(fun)) {
+    throw new TypeError("2nd argument must be Function");
+  }
+  for (let i = 0, { length } = arrays; i < length; i += 1) {
+    if (!isArray(arrays[i])) {
+      throw new TypeError("Each argument except 2nd one must be Array");
+    }
+  }
+  return KasenArray.zipWith(array, fun, arrays);
+};
+
 Kasen.sort = (array, fun) => {
   if (!isArray(array)) {
     throw new TypeError("1st argument must be Array");

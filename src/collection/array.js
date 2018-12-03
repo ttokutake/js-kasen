@@ -189,6 +189,20 @@ export default class KasenArray extends Collection {
       return bool ? this.zipAll(...arrays) : this;
     };
 
+    this.zipWith.if = (bool, fun, ...arrays) => {
+      if (!isFunction(fun)) {
+        throw new TypeError("2nd argument must be Function");
+      }
+      for (let i = 0, { length } = arrays; i < length; i += 1) {
+        if (!isArray(arrays[i])) {
+          throw new TypeError(
+            "Each argument except 1st & 2nd ones must be Array"
+          );
+        }
+      }
+      return bool ? this.zipWith(fun, ...arrays) : this;
+    };
+
     this.sort.if = (bool, fun) => {
       if (!(isFunction(fun) || fun === undefined)) {
         throw new TypeError("2nd argument must be Function or Undefined");
@@ -782,7 +796,59 @@ export default class KasenArray extends Collection {
     return result;
   }
 
-  // TODO: zipWith()
+  zipWith(fun, ...arrays) {
+    if (!isFunction(fun)) {
+      throw new TypeError("1st argument must be Function");
+    }
+    const { length } = arrays;
+    for (let i = 0; i < length; i += 1) {
+      if (!isArray(arrays[i])) {
+        throw new TypeError("Each argument except 1st one must be Array");
+      }
+    }
+    const collect = iter => {
+      const minArray = this.constructor.max(
+        arrays,
+        (v1, v2) => v1.length < v2.length
+      );
+      const minLength = minArray ? minArray.length : null;
+      const result = [];
+      let index = 0;
+      let value;
+      while (
+        !({ value } = iter.next()).done &&
+        (minLength === null || index < minLength)
+      ) {
+        const combination = [value];
+        for (let i = 0; i < length; i += 1) {
+          const array = arrays[i];
+          combination.push(array[index]);
+        }
+        result.push(fun(...combination));
+        index += 1;
+      }
+      return result;
+    };
+    this.__pile(Collector, collect);
+    return this;
+  }
+
+  static zipWith(array, fun, arrays) {
+    arrays.unshift(array);
+    const { length } = arrays;
+    const minArray = this.max(arrays, (v1, v2) => v1.length < v2.length);
+    const minLength = minArray ? minArray.length : 0;
+    const result = [];
+    for (let index = 0; index < minLength; index += 1) {
+      const combination = [];
+      for (let i = 0; i < length; i += 1) {
+        const arr = arrays[i];
+        combination.push(arr[index]);
+      }
+      result.push(fun(...combination));
+    }
+    return result;
+  }
 
   sort(fun) {
     if (!(isFunction(fun) || fun === undefined)) {
