@@ -7,7 +7,7 @@ import { compare } from "../util";
 class ArrayIterator extends OriginIterator {
   constructor(array) {
     super(array, ArrayIterator);
-    this.reset();
+    this.index = null;
   }
 
   static default() {

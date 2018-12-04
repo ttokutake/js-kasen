@@ -7,7 +7,7 @@ class ObjectIterator extends OriginIterator {
   constructor(object) {
     super(object, ObjectIterator);
     this.keys = Object.keys(object);
-    this.reset();
+    this.index = 0;
   }
 
   static default() {
