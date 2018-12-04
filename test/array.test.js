@@ -2772,6 +2772,31 @@ describe("Array", () => {
     });
   });
 
+  describe("equals()", () => {
+    test("ok", () => {
+      const ios = [
+        [[], undefined, false],
+        [[], null, false],
+        [[], true, false],
+        [[], 1, false],
+        [[], "a", false],
+        [[], {}, false],
+        [[], () => undefined, false],
+        [[], [], true],
+        [[], [1], false],
+        [[1], [], false],
+        [[1], [1], true],
+        [[1], [2], false],
+        [[1], [1, 2], false],
+        [[1, 2], [1, 2], true]
+      ];
+      ios.forEach(([input, value, expected]) => {
+        const result = Kasen(input).equals(value);
+        expect(result).toBe(expected);
+      });
+    });
+  });
+
   describe("hashCode()", () => {
     test("ok", () => {
       Kasen([1, 2, 3]).hashCode();

@@ -6,7 +6,7 @@ import {
   Collector,
   ClearCollector
 } from "../iterator";
-import { isNumber, isString, isObject, isArray, isFunction } from "../type";
+import { isNumber, isString, isArray, isFunction, isObject } from "../type";
 
 function copy(type, coll) {
   switch (type) {
@@ -806,7 +806,10 @@ export default class Collection {
 
   // TODO?: minBy()
 
-  // TODO: equals()
+  // eslint-disable-next-line class-methods-use-this, no-unused-vars
+  equals(_value) {
+    throw new Error("not implemented");
+  }
 
   hashCode() {
     const coll = this.__consume(null);

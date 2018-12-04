@@ -1,7 +1,7 @@
 import Collection from ".";
 import { OriginIterator, Collector } from "../iterator";
 import { FilterIterator, FlipIterator } from "../iterator/object";
-import { isNumber, isString, isObject, isArray, isFunction } from "../type";
+import { isNumber, isString, isArray, isFunction, isObject } from "../type";
 
 class ObjectIterator extends OriginIterator {
   constructor(object) {
@@ -516,6 +516,25 @@ export default class KasenObject extends Collection {
       }
     });
     return result;
+  }
+
+  equals(object) {
+    if (!isObject(object)) {
+      return false;
+    }
+    const finalize = iter => {
+      let key;
+      let value;
+      let count = 0;
+      while (!({ key, value } = iter.next()).done) {
+        if (value !== object[key]) {
+          return false;
+        }
+        count += 1;
+      }
+      return count === Object.keys(object).length;
+    };
+    return this.__consume(finalize);
   }
 
   static keys(object) {

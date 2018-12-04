@@ -1350,6 +1350,32 @@ describe("Object", () => {
     });
   });
 
+  describe("equals()", () => {
+    test("ok", () => {
+      const ios = [
+        [{}, undefined, false],
+        [{}, null, false],
+        [{}, true, false],
+        [{}, 1, false],
+        [{}, "a", false],
+        [{}, [], false],
+        [{}, () => undefined, false],
+        [{}, {}, true],
+        [{}, { a: 1 }, false],
+        [{ a: 1 }, {}, false],
+        [{ a: 1 }, { a: 1 }, true],
+        [{ a: 1 }, { a: 2 }, false],
+        [{ a: 1 }, { b: 2 }, false],
+        [{ a: 1 }, { a: 1, b: 2 }, false],
+        [{ a: 1, b: 2 }, { a: 1, b: 2 }, true]
+      ];
+      ios.forEach(([input, value, expected]) => {
+        const result = Kasen(input).equals(value);
+        expect(result).toBe(expected);
+      });
+    });
+  });
+
   describe("hashCode()", () => {
     test("ok", () => {
       Kasen({ a: 1, b: 2, c: 3 }).hashCode();

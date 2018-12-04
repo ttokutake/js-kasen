@@ -1410,6 +1410,25 @@ export default class KasenArray extends Collection {
     return result;
   }
 
+  equals(array) {
+    if (!isArray(array)) {
+      return false;
+    }
+    const finalize = iter => {
+      let index;
+      let value;
+      let count = 0;
+      while (!({ key: index, value } = iter.next()).done) {
+        if (value !== array[index]) {
+          return false;
+        }
+        count += 1;
+      }
+      return count === array.length;
+    };
+    return this.__consume(finalize);
+  }
+
   static keys(array) {
     return array.map((_value, index) => index);
   }
