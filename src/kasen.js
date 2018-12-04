@@ -846,6 +846,17 @@ Kasen.min = (coll, fun) => {
   return Coll.max(coll, fn);
 };
 
+Kasen.equals = (left, right) => {
+  if (left === right) {
+    return true;
+  }
+  const Coll = choose(left);
+  if (!Coll) {
+    return false;
+  }
+  return Coll.equals(left, right);
+};
+
 Kasen.hashCode = hash;
 
 Kasen.keys = coll => {

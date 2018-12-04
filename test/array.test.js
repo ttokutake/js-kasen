@@ -2794,6 +2794,10 @@ describe("Array", () => {
         const result = Kasen(input).equals(value);
         expect(result).toBe(expected);
       });
+      ios.forEach(([input, value, expected]) => {
+        const result = Kasen.equals(input, value);
+        expect(result).toBe(expected);
+      });
     });
   });
 

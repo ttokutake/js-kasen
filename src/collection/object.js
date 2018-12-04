@@ -527,6 +527,9 @@ export default class KasenObject extends Collection {
       let value;
       let count = 0;
       while (!({ key, value } = iter.next()).done) {
+        if (!Object.prototype.hasOwnProperty.call(object, key)) {
+          return false;
+        }
         if (value !== object[key]) {
           return false;
         }
@@ -535,6 +538,24 @@ export default class KasenObject extends Collection {
       return count === Object.keys(object).length;
     };
     return this.__consume(finalize);
+  }
+
+  static equals(object, value) {
+    if (!isObject(value)) {
+      return false;
+    }
+    const keys = Object.keys(object);
+    const { length } = keys;
+    for (let i = 0; i < length; i += 1) {
+      const key = keys[i];
+      if (!Object.prototype.hasOwnProperty.call(value, key)) {
+        return false;
+      }
+      if (object[key] !== value[key]) {
+        return false;
+      }
+    }
+    return length === Object.keys(value).length;
   }
 
   static keys(object) {

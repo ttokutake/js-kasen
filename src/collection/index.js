@@ -811,6 +811,11 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
+  // eslint-disable-next-line no-unused-vars
+  static equals(_coll, _value) {
+    throw new Error("not implemented");
+  }
+
   hashCode() {
     const coll = this.__consume(null);
     return hash(coll);

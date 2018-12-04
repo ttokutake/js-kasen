@@ -1362,6 +1362,7 @@ describe("Object", () => {
         [{}, () => undefined, false],
         [{}, {}, true],
         [{}, { a: 1 }, false],
+        [{ a: undefined }, { b: undefined }, false],
         [{ a: 1 }, {}, false],
         [{ a: 1 }, { a: 1 }, true],
         [{ a: 1 }, { a: 2 }, false],
@@ -1371,6 +1372,10 @@ describe("Object", () => {
       ];
       ios.forEach(([input, value, expected]) => {
         const result = Kasen(input).equals(value);
+        expect(result).toBe(expected);
+      });
+      ios.forEach(([input, value, expected]) => {
+        const result = Kasen.equals(input, value);
         expect(result).toBe(expected);
       });
     });
