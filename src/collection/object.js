@@ -33,6 +33,17 @@ class ObjectIterator extends OriginIterator {
   }
 }
 
+function mergeDeepCore(left, right) {
+  if (isObject(left) && isObject(right)) {
+    Object.keys(right).forEach(key => {
+      // eslint-disable-next-line no-param-reassign
+      left[key] = mergeDeepCore(left[key], right[key]);
+    });
+    return left;
+  }
+  return right;
+}
+
 export default class KasenObject extends Collection {
   constructor(object, iter) {
     super(object, iter);
@@ -322,7 +333,25 @@ export default class KasenObject extends Collection {
     return result;
   }
 
-  // TODO: mergeDeep()
+  mergeDeep(...objects) {
+    for (let i = 0, { length } = objects; i < length; i += 1) {
+      if (!isObject(objects[i])) {
+        throw new TypeError("Each argument must be Object");
+      }
+    }
+    const collect = iter => {
+      const object = ObjectIterator.collect(iter);
+      objects.forEach(obj => {
+        this.constructor.forEach(obj, (value, key) => {
+          object[key] = mergeDeepCore(object[key], value);
+        });
+      });
+      return object;
+    };
+    this.__pile(Collector, collect);
+    return this;
+  }
+
   // TODO: mergeDeepWith()
 
   /* consumer */

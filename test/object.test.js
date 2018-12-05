@@ -645,6 +645,33 @@ describe("Object", () => {
     });
   });
 
+  describe("mergeDeep()", () => {
+    test("ok", () => {
+      const ios = [
+        [{}, [], {}],
+        [{}, [{}], {}],
+        [{}, [{}, {}], {}],
+        [{ a: 1 }, [], { a: 1 }],
+        [{ a: 1 }, [{}], { a: 1 }],
+        [{ a: 1 }, [{}, {}], { a: 1 }],
+        [{ a: 1, b: 1 }, [{ a: 10 }], { a: 10, b: 1 }],
+        [{ a: 1, b: 1 }, [{ a: 10 }, { a: 11 }], { a: 11, b: 1 }],
+        [{ a: 1, b: 1 }, [{ a: 10 }, { b: 20 }], { a: 10, b: 20 }],
+        [
+          { a: { aa: 1, bb: 2 }, b: { aa: 1, bb: 2 } },
+          [{ a: { aa: 10, cc: 30 } }, { b: { aa: 11, dd: 40 } }],
+          { a: { aa: 10, bb: 2, cc: 30 }, b: { aa: 11, bb: 2, dd: 40 } }
+        ]
+      ];
+      ios.forEach(([input, objects, expected]) => {
+        const result = Kasen(input)
+          .mergeDeep(...objects)
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
   describe("setIn()", () => {
     test("ok", () => {
       const ios = [
