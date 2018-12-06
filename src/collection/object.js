@@ -117,6 +117,15 @@ export default class KasenObject extends Collection {
       }
       return bool ? this.mergeWith(fun, ...objects) : this;
     };
+
+    this.mergeDeep.if = (bool, ...objects) => {
+      for (let i = 0, { length } = objects; i < length; i += 1) {
+        if (!isObject(objects[i])) {
+          throw new TypeError("Each argument except 1st one must be Object");
+        }
+      }
+      return bool ? this.mergeDeep(...objects) : this;
+    };
   }
 
   static __iterator(object) {

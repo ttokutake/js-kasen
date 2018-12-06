@@ -676,6 +676,35 @@ describe("Object", () => {
     });
   });
 
+  describe("mergeDeep.if()", () => {
+    test("ok", () => {
+      const input = { a: { aa: 1, bb: 2 }, b: { aa: 1, bb: 2 } };
+      {
+        const result = Kasen(input)
+          .mergeDeep.if(
+            false,
+            { a: { aa: 10, cc: 30 } },
+            { b: { aa: 11, dd: 40 } }
+          )
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const result = Kasen(input)
+          .mergeDeep.if(
+            true,
+            { a: { aa: 10, cc: 30 } },
+            { b: { aa: 11, dd: 40 } }
+          )
+          .toJs();
+        expect(result).toEqual({
+          a: { aa: 10, bb: 2, cc: 30 },
+          b: { aa: 11, bb: 2, dd: 40 }
+        });
+      }
+    });
+  });
+
   describe("setIn()", () => {
     test("ok", () => {
       const ios = [
