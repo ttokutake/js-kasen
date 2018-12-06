@@ -352,6 +352,16 @@ export default class KasenObject extends Collection {
     return this;
   }
 
+  static mergeDeep(objects) {
+    const result = {};
+    objects.forEach(object => {
+      this.forEach(object, (value, key) => {
+        result[key] = mergeDeepCore(result[key], value);
+      });
+    });
+    return result;
+  }
+
   // TODO: mergeDeepWith()
 
   /* consumer */

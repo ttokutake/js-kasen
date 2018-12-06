@@ -279,6 +279,15 @@ Kasen.mergeWith = (object, fun, ...objects) => {
   return KasenObject.mergeWith(object, fun, objects);
 };
 
+Kasen.mergeDeep = (...objects) => {
+  for (let i = 0, { length } = objects; i < length; i += 1) {
+    if (!isObject(objects[i])) {
+      throw new TypeError("Each argument must be Object");
+    }
+  }
+  return KasenObject.mergeDeep(objects);
+};
+
 Kasen.insert = (array, index, value) => {
   if (!isArray(array)) {
     throw new TypeError("1st argument must be Array");

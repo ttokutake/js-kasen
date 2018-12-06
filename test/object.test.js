@@ -669,6 +669,10 @@ describe("Object", () => {
           .toJs();
         expect(result).toEqual(expected);
       });
+      ios.forEach(([input, objects, expected]) => {
+        const result = Kasen.mergeDeep(input, ...objects);
+        expect(result).toEqual(expected);
+      });
     });
   });
 
