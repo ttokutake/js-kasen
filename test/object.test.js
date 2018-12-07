@@ -705,6 +705,72 @@ describe("Object", () => {
     });
   });
 
+  describe("mergeDeepWith()", () => {
+    test("ok", () => {
+      const ios = [
+        [{}, [], {}],
+        [{}, [{}], {}],
+        [{}, [{}, {}], {}],
+        [{ a: 1 }, [], { a: 1 }],
+        [{ a: 1 }, [{}], { a: 1 }],
+        [{ a: 1 }, [{}, {}], { a: 1 }],
+        [{ a: 1, b: 1 }, [{ a: 10 }], { a: 11, b: 1 }],
+        [{ a: 1, b: 1 }, [{ a: 10 }, { a: 11 }], { a: 22, b: 1 }],
+        [{ a: 1, b: 1 }, [{ a: 10 }, { b: 20 }], { a: 11, b: 21 }],
+        [
+          { a: { aa: 1, bb: 2 }, b: { aa: 1, bb: 2 } },
+          [{ a: { aa: 10, cc: 30 } }, { b: { aa: 11, dd: 40 } }],
+          { a: { aa: 11, bb: 2, cc: 30 }, b: { aa: 12, bb: 2, dd: 40 } }
+        ]
+      ];
+      ios.forEach(([input, objects, expected]) => {
+        const result = Kasen(input)
+          .mergeDeepWith((v1, v2) => v1 + v2, ...objects)
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+      ios.forEach(([input, objects, expected]) => {
+        const result = Kasen.mergeDeepWith(
+          input,
+          (v1, v2) => v1 + v2,
+          ...objects
+        );
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
+  describe("mergeDeepWith.if()", () => {
+    test("ok", () => {
+      const input = { a: { aa: 1, bb: 2 }, b: { aa: 1, bb: 2 } };
+      {
+        const result = Kasen(input)
+          .mergeDeepWith.if(
+            false,
+            (v1, v2) => v1 + v2,
+            { a: { aa: 10, cc: 30 } },
+            { b: { aa: 11, dd: 40 } }
+          )
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const result = Kasen(input)
+          .mergeDeepWith.if(
+            true,
+            (v1, v2) => v1 + v2,
+            { a: { aa: 10, cc: 30 } },
+            { b: { aa: 11, dd: 40 } }
+          )
+          .toJs();
+        expect(result).toEqual({
+          a: { aa: 11, bb: 2, cc: 30 },
+          b: { aa: 12, bb: 2, dd: 40 }
+        });
+      }
+    });
+  });
+
   describe("setIn()", () => {
     test("ok", () => {
       const ios = [

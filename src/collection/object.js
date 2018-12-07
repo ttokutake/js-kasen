@@ -33,15 +33,22 @@ class ObjectIterator extends OriginIterator {
   }
 }
 
-function mergeDeepCore(left, right) {
-  if (isObject(left) && isObject(right)) {
-    Object.keys(right).forEach(key => {
-      // eslint-disable-next-line no-param-reassign
-      left[key] = mergeDeepCore(left[key], right[key]);
-    });
-    return left;
+function mergeDeepWithCore(fun, object, key, right) {
+  if (!Object.prototype.hasOwnProperty.call(object, key)) {
+    return right;
   }
-  return right;
+  const left = object[key];
+  if (isObject(left) && isObject(right)) {
+    const obj = {};
+    Object.keys(left).forEach(k => {
+      obj[k] = left[k];
+    });
+    Object.keys(right).forEach(k => {
+      obj[k] = mergeDeepWithCore(fun, obj, k, right[k]);
+    });
+    return obj;
+  }
+  return fun(left, right);
 }
 
 export default class KasenObject extends Collection {
@@ -125,6 +132,20 @@ export default class KasenObject extends Collection {
         }
       }
       return bool ? this.mergeDeep(...objects) : this;
+    };
+
+    this.mergeDeepWith.if = (bool, fun, ...objects) => {
+      if (!isFunction(fun)) {
+        throw new TypeError("2nd argument must be Function");
+      }
+      for (let i = 0, { length } = objects; i < length; i += 1) {
+        if (!isObject(objects[i])) {
+          throw new TypeError(
+            "Each argument except 1st & 2nd ones must be Object"
+          );
+        }
+      }
+      return bool ? this.mergeDeepWith(fun, ...objects) : this;
     };
   }
 
@@ -348,11 +369,31 @@ export default class KasenObject extends Collection {
         throw new TypeError("Each argument must be Object");
       }
     }
+    return this.mergeDeepWith((left, right) => right, ...objects);
+  }
+
+  static mergeDeep(objects) {
+    if (!Object.keys(objects).length) {
+      return {};
+    }
+    const [object, ...objs] = objects;
+    return this.mergeDeepWith(object, (left, right) => right, objs);
+  }
+
+  mergeDeepWith(fun, ...objects) {
+    if (!isFunction(fun)) {
+      throw new TypeError("1st argument must be Function");
+    }
+    for (let i = 0, { length } = objects; i < length; i += 1) {
+      if (!isObject(objects[i])) {
+        throw new TypeError("Each argument except 1st one must be Object");
+      }
+    }
     const collect = iter => {
       const object = ObjectIterator.collect(iter);
       objects.forEach(obj => {
         this.constructor.forEach(obj, (value, key) => {
-          object[key] = mergeDeepCore(object[key], value);
+          object[key] = mergeDeepWithCore(fun, object, key, value);
         });
       });
       return object;
@@ -361,17 +402,15 @@ export default class KasenObject extends Collection {
     return this;
   }
 
-  static mergeDeep(objects) {
-    const result = {};
-    objects.forEach(object => {
-      this.forEach(object, (value, key) => {
-        result[key] = mergeDeepCore(result[key], value);
+  static mergeDeepWith(object, fun, objects) {
+    const result = this.copy(object);
+    objects.forEach(obj => {
+      this.forEach(obj, (value, key) => {
+        result[key] = mergeDeepWithCore(fun, result, key, value);
       });
     });
     return result;
   }
-
-  // TODO: mergeDeepWith()
 
   /* consumer */
 
