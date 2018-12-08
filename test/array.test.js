@@ -1109,11 +1109,28 @@ describe("Array", () => {
   });
 
   describe("setIn()", () => {
-    test("ok", () => {
+    test("initializer is undefined", () => {
       const ios = [
         [[], [0], [10]],
         [[{}], [0, "a"], [{ a: 10 }]],
         [[{ a: [] }], [0, "a", 0], [{ a: [10] }]]
+      ];
+      ios.forEach(([input, keys, expected]) => {
+        const result = Kasen(input)
+          .setIn(keys, 10)
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+      ios.forEach(([input, keys, expected]) => {
+        const result = Kasen.setIn(input, keys, 10);
+        expect(result).toEqual(expected);
+      });
+    });
+
+    test("initializer is specified", () => {
+      const ios = [
+        [[{ a: [] }], [0, "a", 0], [{ a: [10] }]],
+        [[], [[0, {}], ["a", []], 0], [{ a: [10] }]]
       ];
       ios.forEach(([input, keys, expected]) => {
         const result = Kasen(input)
@@ -1147,11 +1164,28 @@ describe("Array", () => {
   });
 
   describe("updateIn()", () => {
-    test("ok", () => {
+    test("initializer is undefined", () => {
       const ios = [
         [[1], [0], [11]],
         [[{ a: 1 }], [0, "a"], [{ a: 11 }]],
         [[{ a: [1] }], [0, "a", 0], [{ a: [11] }]]
+      ];
+      ios.forEach(([input, keys, expected]) => {
+        const result = Kasen(input)
+          .updateIn(keys, v => v + 10)
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+      ios.forEach(([input, keys, expected]) => {
+        const result = Kasen.updateIn(input, keys, v => v + 10);
+        expect(result).toEqual(expected);
+      });
+    });
+
+    test("initializer is specified", () => {
+      const ios = [
+        [[{ a: [1] }], [0, "a", 0], [{ a: [11] }]],
+        [[], [[0, {}], ["a", []], [0, 100]], [{ a: [110] }]]
       ];
       ios.forEach(([input, keys, expected]) => {
         const result = Kasen(input)
@@ -1187,8 +1221,11 @@ describe("Array", () => {
   describe("deleteIn()", () => {
     test("ok", () => {
       const ios = [
+        [[], [0], []],
         [[1], [0], []],
+        [[1], [0, "a"], [1]],
         [[{ a: 1 }], [0, "a"], [{}]],
+        [[{ a: 1 }], [0, "a", 0], [{ a: 1 }]],
         [[{ a: [1] }], [0, "a", 0], [{ a: [] }]]
       ];
       ios.forEach(([input, keys, expected]) => {

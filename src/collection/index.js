@@ -8,22 +8,59 @@ import {
 } from "../iterator";
 import { isNumber, isString, isArray, isFunction, isObject } from "../type";
 
-function copy(type, coll) {
-  switch (type) {
-    case "array": {
-      return isArray(coll) ? coll.slice() : [];
+function copy(coll) {
+  if (isArray(coll)) {
+    return coll.slice();
+  }
+  if (isObject(coll)) {
+    const object = {};
+    Object.keys(coll).forEach(key => {
+      object[key] = coll[key];
+    });
+    return object;
+  }
+  return coll;
+}
+
+function updateInCore(coll, keys, fun) {
+  let nextColl = coll;
+  for (let i = 0, { length } = keys; i < length; i += 1) {
+    let key = keys[i];
+    let init;
+    if (isArray(key)) {
+      [key, init] = key;
     }
-    default: {
-      if (!isObject(coll)) {
-        return {};
-      }
-      const object = {};
-      Object.keys(coll).forEach(key => {
-        object[key] = coll[key];
-      });
-      return object;
+    const value = nextColl[key];
+    if (i >= length - 1) {
+      nextColl[key] = fun(value === undefined ? copy(init) : value, key);
+    } else {
+      nextColl[key] = copy(value === undefined ? init : value);
+      nextColl = nextColl[key];
     }
   }
+  return coll;
+}
+
+function deleteInCore(coll, keys) {
+  let nextColl = coll;
+  for (let i = 0, { length } = keys; i < length; i += 1) {
+    const key = keys[i];
+    if (i >= length - 1) {
+      if (isArray(nextColl)) {
+        nextColl.splice(key, 1);
+      } else if (isObject(nextColl)) {
+        delete nextColl[key];
+      }
+    } else {
+      const value = nextColl[key];
+      if (!(isArray(value) || isObject(value))) {
+        break;
+      }
+      nextColl[key] = copy(value);
+      nextColl = nextColl[key];
+    }
+  }
+  return coll;
 }
 
 export default class Collection {
@@ -198,7 +235,6 @@ export default class Collection {
     return this;
   }
 
-  // EXPERIMENTAL
   setIn(keys, value) {
     if (!isArray(keys)) {
       throw new TypeError("1st argument must be Array");
@@ -210,7 +246,6 @@ export default class Collection {
     return this.updateIn(coll, keys, () => value);
   }
 
-  // EXPERIMENTAL
   updateIn(keys, fun) {
     if (!isArray(keys)) {
       throw new TypeError("1st argument must be Array");
@@ -220,93 +255,30 @@ export default class Collection {
     }
     const collect = iter => {
       const coll = iter.Origin.collect(iter);
-      let nextColl = coll;
-      for (let i = 0, { length } = keys; i < length; i += 1) {
-        const key = keys[i];
-        if (i >= length - 1) {
-          nextColl[key] = fun(nextColl[key], key);
-        } else {
-          nextColl[key] = copy(
-            isNumber(keys[i + 1]) ? "array" : "object",
-            nextColl[key]
-          );
-          nextColl = nextColl[key];
-        }
-      }
-      return coll;
+      return updateInCore(coll, keys, fun);
     };
     this.__pile(Collector, collect);
     return this;
   }
 
   static updateIn(coll, keys, fun) {
-    const result = this.copy(coll);
-    let nextColl = result;
-    for (let i = 0, { length } = keys; i < length; i += 1) {
-      const key = keys[i];
-      if (i >= length - 1) {
-        nextColl[key] = fun(nextColl[key], key);
-      } else {
-        nextColl[key] = copy(
-          isNumber(keys[i + 1]) ? "array" : "object",
-          nextColl[key]
-        );
-        nextColl = nextColl[key];
-      }
-    }
-    return result;
+    return updateInCore(this.copy(coll), keys, fun);
   }
 
-  // EXPERIMENTAL
   deleteIn(keys) {
     if (!isArray(keys)) {
       throw new TypeError("1st argument must be Array");
     }
     const collect = iter => {
       const coll = iter.Origin.collect(iter);
-      let nextColl = coll;
-      for (let i = 0, { length } = keys; i < length; i += 1) {
-        const key = keys[i];
-        if (i >= length - 1) {
-          if (isArray(nextColl)) {
-            nextColl.splice(key, 1);
-          } else {
-            delete nextColl[key];
-          }
-        } else {
-          nextColl[key] = copy(
-            isNumber(keys[i + 1]) ? "array" : "object",
-            nextColl[key]
-          );
-          nextColl = nextColl[key];
-        }
-      }
-      return coll;
+      return deleteInCore(coll, keys);
     };
     this.__pile(Collector, collect);
     return this;
   }
 
   static deleteIn(coll, keys) {
-    const result = this.copy(coll);
-    let nextColl = result;
-    for (let i = 0, { length } = keys; i < length; i += 1) {
-      const key = keys[i];
-      if (i >= length - 1) {
-        if (isArray(nextColl)) {
-          nextColl.splice(key, 1);
-        } else {
-          delete nextColl[key];
-        }
-      } else {
-        nextColl[key] = copy(
-          isNumber(keys[i + 1]) ? "array" : "object",
-          nextColl[key]
-        );
-        nextColl = nextColl[key];
-      }
-    }
-    return result;
+    return deleteInCore(this.copy(coll), keys);
   }
 
   /* consumer */

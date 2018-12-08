@@ -772,11 +772,28 @@ describe("Object", () => {
   });
 
   describe("setIn()", () => {
-    test("ok", () => {
+    test("initializer is undefined", () => {
       const ios = [
         [{}, ["a"], { a: 10 }],
         [{ a: [] }, ["a", 0], { a: [10] }],
         [{ a: [{}] }, ["a", 0, "a"], { a: [{ a: 10 }] }]
+      ];
+      ios.forEach(([input, keys, expected]) => {
+        const result = Kasen(input)
+          .setIn(keys, 10)
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+      ios.forEach(([input, keys, expected]) => {
+        const result = Kasen.setIn(input, keys, 10);
+        expect(result).toEqual(expected);
+      });
+    });
+
+    test("initializer is specified", () => {
+      const ios = [
+        [{ a: [{}] }, ["a", 0, "a"], { a: [{ a: 10 }] }],
+        [{}, [["a", []], [0, {}], "a"], { a: [{ a: 10 }] }]
       ];
       ios.forEach(([input, keys, expected]) => {
         const result = Kasen(input)
@@ -810,11 +827,28 @@ describe("Object", () => {
   });
 
   describe("updateIn()", () => {
-    test("ok", () => {
+    test("initializer is undefined", () => {
       const ios = [
         [{ a: 1 }, ["a"], { a: 11 }],
         [{ a: [1] }, ["a", 0], { a: [11] }],
         [{ a: [{ a: 1 }] }, ["a", 0, "a"], { a: [{ a: 11 }] }]
+      ];
+      ios.forEach(([input, keys, expected]) => {
+        const result = Kasen(input)
+          .updateIn(keys, v => v + 10)
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+      ios.forEach(([input, keys, expected]) => {
+        const result = Kasen.updateIn(input, keys, v => v + 10);
+        expect(result).toEqual(expected);
+      });
+    });
+
+    test("initializer is specified", () => {
+      const ios = [
+        [{ a: [{ a: 1 }] }, ["a", 0, "a"], { a: [{ a: 11 }] }],
+        [{}, [["a", []], [0, {}], ["a", 100]], { a: [{ a: 110 }] }]
       ];
       ios.forEach(([input, keys, expected]) => {
         const result = Kasen(input)
@@ -843,6 +877,47 @@ describe("Object", () => {
           .updateIn.if(true, ["a", 0, "a"], v => v + 10)
           .toJs();
         expect(result).toEqual({ a: [{ a: 11 }] });
+      }
+    });
+  });
+
+  describe("deleteIn()", () => {
+    test("ok", () => {
+      const ios = [
+        [{}, ["a"], {}],
+        [{ a: 1 }, ["a"], {}],
+        [{ a: 1 }, ["a", 0], { a: 1 }],
+        [{ a: [1] }, ["a", 0], { a: [] }],
+        [{ a: [1] }, ["a", 0, "a"], { a: [1] }],
+        [{ a: [{ a: 1 }] }, ["a", 0, "a"], { a: [{}] }]
+      ];
+      ios.forEach(([input, keys, expected]) => {
+        const result = Kasen(input)
+          .deleteIn(keys)
+          .toJs();
+        expect(result).toEqual(expected);
+      });
+      ios.forEach(([input, keys, expected]) => {
+        const result = Kasen.deleteIn(input, keys);
+        expect(result).toEqual(expected);
+      });
+    });
+  });
+
+  describe("deleteIn.if()", () => {
+    test("ok", () => {
+      const input = { a: [{ a: 1 }] };
+      {
+        const result = Kasen(input)
+          .deleteIn.if(false, ["a", 0, "a"])
+          .toJs();
+        expect(result).toEqual(input);
+      }
+      {
+        const result = Kasen(input)
+          .deleteIn.if(true, ["a", 0, "a"])
+          .toJs();
+        expect(result).toEqual({ a: [{}] });
       }
     });
   });
