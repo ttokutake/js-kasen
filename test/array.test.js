@@ -1111,7 +1111,9 @@ describe("Array", () => {
   describe("setIn()", () => {
     test("initializer is undefined", () => {
       const ios = [
+        [[], [], []],
         [[], [0], [10]],
+        [[{}], [], [{}]],
         [[{}], [0, "a"], [{ a: 10 }]],
         [[{ a: [] }], [0, "a", 0], [{ a: [10] }]]
       ];
@@ -1166,6 +1168,8 @@ describe("Array", () => {
   describe("updateIn()", () => {
     test("initializer is undefined", () => {
       const ios = [
+        [[], [], []],
+        [[1], [], [1]],
         [[1], [0], [11]],
         [[{ a: 1 }], [0, "a"], [{ a: 11 }]],
         [[{ a: [1] }], [0, "a", 0], [{ a: [11] }]]

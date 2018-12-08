@@ -774,7 +774,9 @@ describe("Object", () => {
   describe("setIn()", () => {
     test("initializer is undefined", () => {
       const ios = [
+        [{}, [], {}],
         [{}, ["a"], { a: 10 }],
+        [{ a: [] }, [], { a: [] }],
         [{ a: [] }, ["a", 0], { a: [10] }],
         [{ a: [{}] }, ["a", 0, "a"], { a: [{ a: 10 }] }]
       ];
@@ -829,6 +831,8 @@ describe("Object", () => {
   describe("updateIn()", () => {
     test("initializer is undefined", () => {
       const ios = [
+        [{}, [], {}],
+        [{ a: 1 }, [], { a: 1 }],
         [{ a: 1 }, ["a"], { a: 11 }],
         [{ a: [1] }, ["a", 0], { a: [11] }],
         [{ a: [{ a: 1 }] }, ["a", 0, "a"], { a: [{ a: 11 }] }]
