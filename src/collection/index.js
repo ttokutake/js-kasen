@@ -7,20 +7,7 @@ import {
   ClearCollector
 } from "../iterator";
 import { isNumber, isString, isArray, isFunction, isObject } from "../type";
-
-function copy(coll) {
-  if (isArray(coll)) {
-    return coll.slice();
-  }
-  if (isObject(coll)) {
-    const object = {};
-    Object.keys(coll).forEach(key => {
-      object[key] = coll[key];
-    });
-    return object;
-  }
-  return coll;
-}
+import { copy } from "../util";
 
 function updateInCore(coll, keys, fun) {
   let nextColl = coll;
