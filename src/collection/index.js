@@ -405,7 +405,54 @@ export default class Collection {
     return protection;
   }
 
-  // TODO: hasIn()
+  hasIn(keys) {
+    if (!isArray(keys)) {
+      throw new TypeError("1st argument must be Array");
+    }
+    const finalize = iter => {
+      if (!keys.length) {
+        return true;
+      }
+      const [head, ...tail] = keys;
+      let key;
+      let value;
+      while (!({ key, value } = iter.next()).done) {
+        if (key === head) {
+          if (!tail.length) {
+            return true;
+          }
+          if (isArray(value) || isObject(value)) {
+            return this.constructor.hasIn(value, tail);
+          }
+          break;
+        }
+      }
+      return false;
+    };
+    return this.__consume(finalize);
+  }
+
+  static hasIn(coll, keys) {
+    let nextColl = coll;
+    for (let i = 0, { length } = keys; i < length; i += 1) {
+      const key = keys[i];
+      if (i >= length - 1) {
+        if (isObject(nextColl)) {
+          return Object.prototype.hasOwnProperty.call(nextColl, key);
+        }
+        if (isArray(nextColl)) {
+          return key >= 0 && key < nextColl.length;
+        }
+        return false;
+      }
+      const value = nextColl[key];
+      if (!(isArray(value) || isObject(value))) {
+        return false;
+      }
+      nextColl = value;
+    }
+    return true;
+  }
 
   toJs() {
     return this.__consume(null);

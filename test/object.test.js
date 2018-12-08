@@ -1094,6 +1094,29 @@ describe("Object", () => {
     });
   });
 
+  describe("hasIn()", () => {
+    test("ok", () => {
+      const ios = [
+        [{}, [], true],
+        [{}, ["a"], false],
+        [{ a: 1 }, ["a"], true],
+        [{ a: 1 }, ["a", 0], false],
+        [{ a: [1] }, ["a"], true],
+        [{ a: [1] }, ["a", 0], true],
+        [{ a: [1] }, ["a", 1], false],
+        [{ a: [{ a: 1 }] }, ["a", 0, "a"], true]
+      ];
+      ios.forEach(([input, keys, expected]) => {
+        const result = Kasen(input).hasIn(keys);
+        expect(result).toBe(expected);
+      });
+      ios.forEach(([input, keys, expected]) => {
+        const result = Kasen.hasIn(input, keys);
+        expect(result).toBe(expected);
+      });
+    });
+  });
+
   describe("toJs()", () => {
     test("ok", () => {
       const inputs = [{}, { a: 1 }, { a: 1, b: 2 }, { a: 1, b: 2, c: 3 }];

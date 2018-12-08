@@ -2015,6 +2015,29 @@ describe("Array", () => {
     });
   });
 
+  describe("hasIn()", () => {
+    test("ok", () => {
+      const ios = [
+        [[], [], true],
+        [[], [0], false],
+        [[1], [0], true],
+        [[1], [0, "a"], false],
+        [[{ a: 1 }], [0], true],
+        [[{ a: 1 }], [0, "a"], true],
+        [[{ a: 1 }], [0, "b"], false],
+        [[{ a: [1] }], [0, "a", 0], true]
+      ];
+      ios.forEach(([input, keys, expected]) => {
+        const result = Kasen(input).hasIn(keys);
+        expect(result).toBe(expected);
+      });
+      ios.forEach(([input, keys, expected]) => {
+        const result = Kasen.hasIn(input, keys);
+        expect(result).toBe(expected);
+      });
+    });
+  });
+
   describe("head() / first()", () => {
     test("ok", () => {
       const ios = [[[], undefined], [[1], 1], [[1, 2], 1]];
