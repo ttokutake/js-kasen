@@ -568,6 +568,17 @@ Kasen.includes = (coll, value) => {
   return Coll.includes(coll, value);
 };
 
+Kasen.getIn = (coll, keys, protection) => {
+  const Coll = choose(coll);
+  if (!Coll) {
+    throw new TypeError("1st argument must be Array or Object");
+  }
+  if (!isArray(keys)) {
+    throw new TypeError("2nd argument must be Array");
+  }
+  return Coll.getIn(coll, keys, protection);
+};
+
 Kasen.head = array => {
   if (!isArray(array)) {
     throw new TypeError("1st argument must be Array");

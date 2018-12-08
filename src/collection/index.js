@@ -362,7 +362,48 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
-  // TODO: getIn()
+  getIn(keys, protection) {
+    if (!isArray(keys)) {
+      throw new TypeError("1st argument must be Array");
+    }
+    const finalize = iter => {
+      if (!keys.length) {
+        return protection;
+      }
+      const [head, ...tail] = keys;
+      let key;
+      let value;
+      while (!({ key, value } = iter.next()).done) {
+        if (key === head) {
+          if (!tail.length) {
+            return value;
+          }
+          if (isArray(value) || isObject(value)) {
+            return this.constructor.getIn(value, tail, protection);
+          }
+          break;
+        }
+      }
+      return protection;
+    };
+    return this.__consume(finalize);
+  }
+
+  static getIn(coll, keys, protection) {
+    let nextColl = coll;
+    for (let i = 0, { length } = keys; i < length; i += 1) {
+      const key = keys[i];
+      const value = nextColl[key];
+      if (i >= length - 1) {
+        return value === undefined ? protection : value;
+      }
+      if (!(isArray(value) || isObject(value))) {
+        break;
+      }
+      nextColl = value;
+    }
+    return protection;
+  }
 
   // TODO: hasIn()
 

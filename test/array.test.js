@@ -1975,6 +1975,46 @@ describe("Array", () => {
     });
   });
 
+  describe("getIn()", () => {
+    test("protection is undefined", () => {
+      const ios = [
+        [[], [], undefined],
+        [[], [0], undefined],
+        [[1], [0], 1],
+        [[1], [0, "a"], undefined],
+        [[{ a: 1 }], [0, "a"], 1],
+        [[{ a: [1] }], [0, "a", 0], 1]
+      ];
+      ios.forEach(([input, keys, expected]) => {
+        const result = Kasen(input).getIn(keys);
+        expect(result).toBe(expected);
+      });
+      ios.forEach(([input, keys, expected]) => {
+        const result = Kasen.getIn(input, keys);
+        expect(result).toBe(expected);
+      });
+    });
+
+    test("protection is specified", () => {
+      const ios = [
+        [[], [], 10],
+        [[], [0], 10],
+        [[1], [0], 1],
+        [[1], [0, "a"], 10],
+        [[{ a: 1 }], [0, "a"], 1],
+        [[{ a: [1] }], [0, "a", 0], 1]
+      ];
+      ios.forEach(([input, keys, expected]) => {
+        const result = Kasen(input).getIn(keys, 10);
+        expect(result).toBe(expected);
+      });
+      ios.forEach(([input, keys, expected]) => {
+        const result = Kasen.getIn(input, keys, 10);
+        expect(result).toBe(expected);
+      });
+    });
+  });
+
   describe("head() / first()", () => {
     test("ok", () => {
       const ios = [[[], undefined], [[1], 1], [[1, 2], 1]];

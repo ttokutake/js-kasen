@@ -1054,6 +1054,46 @@ describe("Object", () => {
     });
   });
 
+  describe("getIn()", () => {
+    test("protection is undefined", () => {
+      const ios = [
+        [{}, [], undefined],
+        [{}, ["a"], undefined],
+        [{ a: 1 }, ["a"], 1],
+        [{ a: 1 }, ["a", 0], undefined],
+        [{ a: [1] }, ["a", 0], 1],
+        [{ a: [{ a: 1 }] }, ["a", 0, "a"], 1]
+      ];
+      ios.forEach(([input, keys, expected]) => {
+        const result = Kasen(input).getIn(keys);
+        expect(result).toBe(expected);
+      });
+      ios.forEach(([input, keys, expected]) => {
+        const result = Kasen.getIn(input, keys);
+        expect(result).toBe(expected);
+      });
+    });
+
+    test("protection is specified", () => {
+      const ios = [
+        [{}, [], 10],
+        [{}, ["a"], 10],
+        [{ a: 1 }, ["a"], 1],
+        [{ a: 1 }, ["a", 0], 10],
+        [{ a: [1] }, ["a", 0], 1],
+        [{ a: [{ a: 1 }] }, ["a", 0, "a"], 1]
+      ];
+      ios.forEach(([input, keys, expected]) => {
+        const result = Kasen(input).getIn(keys, 10);
+        expect(result).toBe(expected);
+      });
+      ios.forEach(([input, keys, expected]) => {
+        const result = Kasen.getIn(input, keys, 10);
+        expect(result).toBe(expected);
+      });
+    });
+  });
+
   describe("toJs()", () => {
     test("ok", () => {
       const inputs = [{}, { a: 1 }, { a: 1, b: 2 }, { a: 1, b: 2, c: 3 }];
