@@ -775,6 +775,8 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
+  // TODO?: equalsDeep()
+
   hashCode() {
     const coll = this.__consume(null);
     return hash(coll);
