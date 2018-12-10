@@ -50,6 +50,7 @@ export class ChainIterator extends BaseIterator {
     super(parentIterator.Origin);
     this.parent = parentIterator;
     this.fun = fun;
+    this.iter = null;
   }
 
   // eslint-disable-next-line class-methods-use-this, no-unused-vars
@@ -85,7 +86,9 @@ export class Collector extends ChainIterator {
   }
 
   reset() {
-    this.iter.reset();
+    if (this.iter) {
+      this.iter.reset();
+    }
   }
 }
 
