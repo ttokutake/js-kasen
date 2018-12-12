@@ -1,6 +1,7 @@
 class BaseIterator {
   constructor(OriginIter) {
     this.Origin = OriginIter;
+    this.parent = null;
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -50,7 +51,6 @@ export class ChainIterator extends BaseIterator {
     super(parentIterator.Origin);
     this.parent = parentIterator;
     this.fun = fun;
-    this.iter = null;
   }
 
   // eslint-disable-next-line class-methods-use-this, no-unused-vars
@@ -75,6 +75,7 @@ export class Collector extends ChainIterator {
   constructor(parentIterator, collect) {
     super(parentIterator, null);
     this.collect = collect;
+    this.iter = null;
   }
 
   base(direction) {
@@ -86,9 +87,8 @@ export class Collector extends ChainIterator {
   }
 
   reset() {
-    if (this.iter) {
-      this.iter.reset();
-    }
+    super.reset();
+    this.iter = null;
   }
 }
 

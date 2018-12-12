@@ -10,6 +10,21 @@ describe("Object", () => {
         expect(object2.toJs()).toEqual({ a: 3, b: 4, c: 5 });
       }
       {
+        const object = Kasen({ a: 1, b: 2, c: 3 });
+        const object2 = object.copy();
+        object.delete("a");
+        expect(object.toJs()).toEqual({ b: 2, c: 3 });
+        expect(object2.toJs()).toEqual({ a: 1, b: 2, c: 3 });
+      }
+      {
+        const object = { a: 1, b: 2, c: 3 };
+        const object2 = Kasen(object);
+        const object3 = object2.copy();
+        object.a = 10;
+        expect(object2.toJs()).toEqual({ a: 10, b: 2, c: 3 });
+        expect(object3.toJs()).toEqual({ a: 1, b: 2, c: 3 });
+      }
+      {
         const object = { a: 1, b: 2, c: 3 };
         const object2 = Kasen.copy(object);
         object.a = 10;

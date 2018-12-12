@@ -126,9 +126,20 @@ export default class Collection {
     return result;
   }
 
-  // TODO: Rethink the definition
   copy() {
-    return new this.constructor(null, this.__iter);
+    const iters = [];
+    for (let iter = this.__iter; iter; iter = iter.parent) {
+      iters.unshift([
+        iter.constructor,
+        iter.parent ? iter.fun || iter.collect : copy(iter.coll)
+      ]);
+    }
+    const [[OriginIter, coll], ...tail] = iters;
+    let iter = new OriginIter(coll);
+    tail.forEach(([Iter, fun]) => {
+      iter = new Iter(iter, fun);
+    });
+    return new this.constructor(null, iter);
   }
 
   // eslint-disable-next-line no-unused-vars

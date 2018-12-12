@@ -10,6 +10,21 @@ describe("Array", () => {
         expect(array2.toJs()).toEqual([3, 4, 5]);
       }
       {
+        const array = Kasen([1, 2, 3]);
+        const array2 = array.copy();
+        array.take(2);
+        expect(array.toJs()).toEqual([1, 2]);
+        expect(array2.toJs()).toEqual([1, 2, 3]);
+      }
+      {
+        const array = [1, 2, 3];
+        const array2 = Kasen(array);
+        const array3 = array2.copy();
+        array[0] = 10;
+        expect(array2.toJs()).toEqual([10, 2, 3]);
+        expect(array3.toJs()).toEqual([1, 2, 3]);
+      }
+      {
         const array = [1, 2, 3];
         const array2 = Kasen.copy(array);
         array[0] = 10;
