@@ -3,6 +3,8 @@ import hash from "hash-sum";
 import {
   TapIterator,
   MapIterator,
+  OriginIterator,
+  ChainIterator,
   Collector,
   ClearCollector
 } from "../iterator";
@@ -129,10 +131,17 @@ export default class Collection {
   copy() {
     const iters = [];
     for (let iter = this.__iter; iter; iter = iter.parent) {
-      iters.unshift([
-        iter.constructor,
-        iter.parent ? iter.fun || iter.collect : copy(iter.coll)
-      ]);
+      let arg;
+      if (iter instanceof Collector) {
+        arg = iter.collect;
+      } else if (iter instanceof ChainIterator) {
+        arg = iter.fun;
+      } else if (iter instanceof OriginIterator) {
+        arg = copy(iter.coll);
+      } else {
+        throw new Error("cannot happen");
+      }
+      iters.unshift([iter.constructor, arg]);
     }
     const [[OriginIter, coll], ...tail] = iters;
     let iter = new OriginIter(coll);
