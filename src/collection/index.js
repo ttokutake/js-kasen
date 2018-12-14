@@ -156,6 +156,12 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
+  memoize() {
+    const coll = this.__consume(null);
+    this.__iter = new this.__iter.Origin(coll);
+    return this;
+  }
+
   tap(fun) {
     if (!isFunction(fun)) {
       throw new TypeError("1st argument must be Function");

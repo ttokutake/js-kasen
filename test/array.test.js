@@ -25,11 +25,36 @@ describe("Array", () => {
         expect(array3.toJs()).toEqual([1, 2, 3]);
       }
       {
-        const array = [1, 2, 3];
-        const array2 = Kasen.copy(array);
-        array[0] = 10;
-        expect(array).toEqual([10, 2, 3]);
-        expect(array2).toEqual([1, 2, 3]);
+        const origin = [1, 2, 3];
+        const array = Kasen.copy(origin);
+        origin[0] = 10;
+        expect(origin).toEqual([10, 2, 3]);
+        expect(array).toEqual([1, 2, 3]);
+      }
+    });
+  });
+
+  describe("memoize()", () => {
+    test("ok", () => {
+      {
+        const origin = [null, null, null];
+        const array = Kasen([null, null, null]).memoize();
+        origin[0] = 1;
+        expect(origin).toEqual([1, null, null]);
+        expect(array.toJs()).toEqual([null, null, null]);
+      }
+      {
+        const array = Kasen([null, null, null])
+          .map(() => Math.random())
+          .memoize();
+        expect(array.toJs()).toEqual(array.toJs());
+      }
+      {
+        const array = Kasen([null, null, null])
+          .map(() => Math.random())
+          .take(2)
+          .memoize();
+        expect(array.toJs()).toEqual(array.toJs());
       }
     });
   });

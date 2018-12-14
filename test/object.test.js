@@ -25,11 +25,36 @@ describe("Object", () => {
         expect(object3.toJs()).toEqual({ a: 1, b: 2, c: 3 });
       }
       {
-        const object = { a: 1, b: 2, c: 3 };
-        const object2 = Kasen.copy(object);
-        object.a = 10;
-        expect(object).toEqual({ a: 10, b: 2, c: 3 });
-        expect(object2).toEqual({ a: 1, b: 2, c: 3 });
+        const origin = { a: 1, b: 2, c: 3 };
+        const object = Kasen.copy(origin);
+        origin.a = 10;
+        expect(origin).toEqual({ a: 10, b: 2, c: 3 });
+        expect(object).toEqual({ a: 1, b: 2, c: 3 });
+      }
+    });
+  });
+
+  describe("memoize()", () => {
+    test("ok", () => {
+      {
+        const origin = { a: null, b: null, c: null };
+        const object = Kasen(origin).memoize();
+        origin.a = 1;
+        expect(origin).toEqual({ a: 1, b: null, c: null });
+        expect(object.toJs()).toEqual({ a: null, b: null, c: null });
+      }
+      {
+        const object = Kasen({ a: null, b: null, c: null })
+          .map(() => Math.random())
+          .memoize();
+        expect(object.toJs()).toEqual(object.toJs());
+      }
+      {
+        const object = Kasen({ a: null, b: null, c: null })
+          .map(() => Math.random())
+          .set("a", 1)
+          .memoize();
+        expect(object.toJs()).toEqual(object.toJs());
       }
     });
   });
