@@ -2,7 +2,34 @@
 
 ## `tap(fun)`
 
+```js
+Kasen([1, 2, 3])
+  .tap((v, k) => console.log(`${k}: ${v}`))
+  .toJs();
+// => [1, 2, 3]
+```
+
 ## `map(fun)`
+
+```js
+Kasen([1, 2, 3])
+  .map(v => v + 1)
+  .toJs();
+// => [2, 3, 4]
+
+Kasen([1, 2, 3])
+  .map((v, k) => v + k)
+  .toJs();
+// => [1, 3, 5]
+
+Kasen([1, 2, 3])
+  .map.if(false, v => v + 1)
+  .toJs();
+// => [1, 2, 3]
+
+Kasen.map([1, 2, 3], v => v + 1);
+// => [2, 3, 4]
+```
 
 ## `pluck(key)`
 
