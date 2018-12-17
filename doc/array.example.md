@@ -33,6 +33,21 @@ Kasen.map([1, 2, 3], v => v + 1);
 
 ## `pluck(key)`
 
+```js
+Kasen([{ a: 1 }, { a: 2 }, { a: 3 }])
+  .pluck("a")
+  .toJs();
+// => [1, 2, 3]
+
+Kasen([{ a: 1 }, { a: 2 }, { a: 3 }])
+  .pluck.if(false, "a")
+  .toJs();
+// => [{ a: 1 }, { a: 2 }, { a: 3 }]
+
+Kasen.pluck([{ a: 1 }, { a: 2 }, { a: 3 }], "a");
+// => [1, 2, 3]
+```
+
 ## `filter(fun)`
 
 ## `filterNot(fun)`
