@@ -34,17 +34,28 @@ Kasen.map([1, 2, 3], v => v + 1);
 ## `pluck(key)`
 
 ```js
-Kasen([{ id: 1, name: "alpha" }, { id: 2, name: "beta" }, { id: 3, name: "gamma" }])
+Kasen([
+  { id: 1, name: "alpha" },
+  { id: 2, name: "beta" },
+  { id: 3, name: "gamma" }
+])
   .pluck("id")
   .toJs();
 // => [1, 2, 3]
 
-Kasen([{ id: 1, name: "alpha" }, { id: 2, name: "beta" }, { id: 3, name: "gamma" }])
+Kasen([
+  { id: 1, name: "alpha" },
+  { id: 2, name: "beta" },
+  { id: 3, name: "gamma" }
+])
   .pluck.if(false, "id")
   .toJs();
 // => [{ id: 1, name: "alpha" }, { id: 2, name: "beta" }, { id: 3, name: "gamma" }]
 
-Kasen.pluck([{ id: 1, name: "alpha" }, { id: 2, name: "beta" }, { id: 3, name: "gamma" }], "id");
+Kasen.pluck(
+  [{ id: 1, name: "alpha" }, { id: 2, name: "beta" }, { id: 3, name: "gamma" }],
+  "id"
+);
 // => [1, 2, 3]
 ```
 
