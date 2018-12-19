@@ -34,21 +34,59 @@ Kasen.map([1, 2, 3], v => v + 1);
 ## `pluck(key)`
 
 ```js
-Kasen([{ a: 1 }, { a: 2 }, { a: 3 }])
-  .pluck("a")
+Kasen([{ id: 1, name: "alpha" }, { id: 2, name: "beta" }, { id: 3, name: "gamma" }])
+  .pluck("id")
   .toJs();
 // => [1, 2, 3]
 
-Kasen([{ a: 1 }, { a: 2 }, { a: 3 }])
-  .pluck.if(false, "a")
+Kasen([{ id: 1, name: "alpha" }, { id: 2, name: "beta" }, { id: 3, name: "gamma" }])
+  .pluck.if(false, "id")
   .toJs();
-// => [{ a: 1 }, { a: 2 }, { a: 3 }]
+// => [{ id: 1, name: "alpha" }, { id: 2, name: "beta" }, { id: 3, name: "gamma" }]
 
-Kasen.pluck([{ a: 1 }, { a: 2 }, { a: 3 }], "a");
+Kasen.pluck([{ id: 1, name: "alpha" }, { id: 2, name: "beta" }, { id: 3, name: "gamma" }], "id");
 // => [1, 2, 3]
 ```
 
 ## `filter(fun)`
+
+```js
+Kasen([1, 0, 2, null, 3, undefined])
+  .filter()
+  .toJs();
+// => [1, 2, 3]
+
+Kasen([1, 0, 2, null, 3, undefined])
+  .filter.if(false)
+  .toJs();
+// => [1, 0, 2, null, 3, undefined]
+
+Kasen.filter([1, 0, 2, null, 3, undefined]);
+// => [1, 2, 3]
+
+Kasen([1, 2, 3])
+  .filter(v => v % 2 === 1)
+  .toJs();
+// => [1, 3]
+
+Kasen([1, 2, 3])
+  .filter.if(false, v => v % 2 === 1)
+  .toJs();
+// => [1, 2, 3]
+
+Kasen([1, 2, 3])
+  .filter((v, k) => k % 2 === 1)
+  .toJs();
+// => [2]
+
+Kasen([1, 2, 3])
+  .filter.if(false, (v, k) => k % 2 === 1)
+  .toJs();
+// => [1, 2, 3]
+
+Kasen.filter([1, 2, 3], (v, k) => k % 2 === 1);
+// => [2]
+```
 
 ## `filterNot(fun)`
 
