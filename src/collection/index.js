@@ -680,7 +680,8 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
-  // TDOO: Need version to return KasenObject?
+  // TODO: Need version to return KasenObject?
+  // TODO: groupBy(fun1, fun2, init)?
   groupBy(fun) {
     if (!isFunction(fun)) {
       throw new TypeError("1st argument must be Function");
