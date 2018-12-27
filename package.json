@@ -13,7 +13,7 @@
     "release": "NODE_ENV=production npm run build",
     "format": "npm run format:base -- --write",
     "format:ci": "npm run format:base -- --list-different",
-    "format:base": "prettier **/*.json **/*.yml **/*.md",
+    "format:base": "prettier --ignore-path=.gitignore '**/*.json' '**/*.yml' '**/*.md'",
     "lint": "npm run lint:ci -- --fix",
     "lint:ci": "eslint --ignore-path .gitignore .",
     "test": "npm run build && npm run test:ci",
