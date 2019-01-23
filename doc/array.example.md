@@ -88,6 +88,26 @@ Kasen([1, 2, 3])
 
 ## `filterNot(fun)`
 
+```js
+Kasen([1, 2, 3])
+  .filterNot(v => v % 2 === 1)
+  .toJs();
+// => [2]
+
+Kasen([1, 2, 3])
+  .filterNot.if(false, v => v % 2 === 1)
+  .toJs();
+// => [1, 2, 3]
+
+Kasen.filterNot([1, 2, 3], v => v % 2 === 1);
+// => [2]
+
+Kasen([1, 2, 3])
+  .filterNot((v, k) => k % 2 === 1)
+  .toJs();
+// => [1, 3]
+```
+
 ## `reverse()`
 
 ## `take(num)`
