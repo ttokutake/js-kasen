@@ -110,6 +110,16 @@ Kasen([1, 2, 3])
 
 ## `reverse()`
 
+```js
+Kasen([1, 2, 3])
+  .reverse()
+  .toJs();
+// => [3, 2, 1]
+
+Kasen.reverse([1, 2, 3]);
+// => [3, 2, 1]
+```
+
 ## `take(num)`
 
 ## `takeLast(num)`
