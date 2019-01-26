@@ -116,6 +116,11 @@ Kasen([1, 2, 3])
   .toJs();
 // => [3, 2, 1]
 
+Kasen([1, 2, 3])
+  .reverse.if(false)
+  .toJs();
+// => [1, 2, 3]
+
 Kasen.reverse([1, 2, 3]);
 // => [3, 2, 1]
 ```
@@ -127,6 +132,11 @@ Kasen([1, 2, 3])
   .take(2)
   .toJs();
 // => [1, 2]
+
+Kasen([1, 2, 3])
+  .take.if(false, 2)
+  .toJs();
+// => [1, 2, 3]
 
 Kasen.take([1, 2, 3], 2);
 // => [1, 2]
@@ -140,6 +150,11 @@ Kasen([1, 2, 3])
   .toJs();
 // => [2, 3]
 
+Kasen([1, 2, 3])
+  .takeLast.if(false, 2)
+  .toJs();
+// => [1, 2, 3]
+
 Kasen.takeLast([1, 2, 3], 2);
 // => [2, 3]
 ```
@@ -151,6 +166,11 @@ Kasen([1, 3, 4, 5])
   .takeWhile(v => v % 2 === 1)
   .toJs();
 // => [1, 3]
+
+Kasen([1, 3, 4, 5])
+  .takeWhile.if(false, v => v % 2 === 1)
+  .toJs();
+// => [1, 3, 4, 5]
 
 Kasen([1, 3, 4, 5])
   .takeWhile((v, k) => k % 2 === 0)
@@ -170,6 +190,11 @@ Kasen([1, 3, 4, 5])
 // => [1, 3]
 
 Kasen([1, 3, 4, 5])
+  .takeUntil.if(false, v => v % 2 === 0)
+  .toJs();
+// => [1, 3, 4, 5]
+
+Kasen([1, 3, 4, 5])
   .takeUntil((v, k) => k % 2 === 1)
   .toJs();
 // => [1]
@@ -186,6 +211,11 @@ Kasen([1, 2, 3])
   .toJs();
 // => [3]
 
+Kasen([1, 2, 3])
+  .skip.if(false, 2)
+  .toJs();
+// => [1, 2, 3]
+
 Kasen.skip([1, 2, 3], 2);
 // => [3]
 ```
@@ -198,6 +228,11 @@ Kasen([1, 2, 3])
   .toJs();
 // => [1]
 
+Kasen([1, 2, 3])
+  .skipLast.if(false, 2)
+  .toJs();
+// => [1, 2, 3]
+
 Kasen.skipLast([1, 2, 3], 2);
 // => [1]
 ```
@@ -209,6 +244,11 @@ Kasen([1, 3, 4, 5])
   .skipWhile(v => v % 2 === 1)
   .toJs();
 // => [4, 5]
+
+Kasen([1, 3, 4, 5])
+  .skipWhile.if(false, v => v % 2 === 1)
+  .toJs();
+// => [1, 3, 4, 5]
 
 Kasen([1, 3, 4, 5])
   .skipWhile((v, k) => k % 2 === 0)
@@ -226,6 +266,11 @@ Kasen([1, 3, 4, 5])
   .skipUntil(v => v % 2 === 0)
   .toJs();
 // => [4, 5]
+
+Kasen([1, 3, 4, 5])
+  .skipUntil.if(false, v => v % 2 === 0)
+  .toJs();
+// => [1, 3, 4, 5]
 
 Kasen([1, 3, 4, 5])
   .skipUntil((v, k) => k % 2 === 1)
