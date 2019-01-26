@@ -163,6 +163,20 @@ Kasen.takeWhile([1, 2, 3], v => v % 2 === 1);
 
 ## `takeUntil(fun)`
 
+```js
+Kasen([1, 2, 3])
+  .takeUntil(v => v % 2 === 0)
+  .toJs();
+// => [1]
+
+Kasen([1, 2, 3])
+  .takeUntil((v, k) => k % 2 === 1)
+  .toJs();
+// => [1]
+
+Kasen.takeUntil([1, 2, 3], v => v % 2 === 0);
+```
+
 ## `skip(num)`
 
 ## `skipLast(num)`
