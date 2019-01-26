@@ -147,35 +147,35 @@ Kasen.takeLast([1, 2, 3], 2);
 ## `takeWhile(fun)`
 
 ```js
-Kasen([1, 2, 3])
+Kasen([1, 3, 4, 5])
   .takeWhile(v => v % 2 === 1)
   .toJs();
-// => [1]
+// => [1, 3]
 
-Kasen([1, 2, 3])
+Kasen([1, 3, 4, 5])
   .takeWhile((v, k) => k % 2 === 0)
   .toJs();
 // => [1]
 
-Kasen.takeWhile([1, 2, 3], v => v % 2 === 1);
-// => [1]
+Kasen.takeWhile([1, 3, 4, 5], v => v % 2 === 1);
+// => [1, 3]
 ```
 
 ## `takeUntil(fun)`
 
 ```js
-Kasen([1, 2, 3])
+Kasen([1, 3, 4, 5])
   .takeUntil(v => v % 2 === 0)
   .toJs();
-// => [1]
+// => [1, 3]
 
-Kasen([1, 2, 3])
+Kasen([1, 3, 4, 5])
   .takeUntil((v, k) => k % 2 === 1)
   .toJs();
 // => [1]
 
-Kasen.takeUntil([1, 2, 3], v => v % 2 === 0);
-// => [1]
+Kasen.takeUntil([1, 3, 4, 5], v => v % 2 === 0);
+// => [1, 3]
 ```
 
 ## `skip(num)`
