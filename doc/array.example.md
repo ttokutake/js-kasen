@@ -180,6 +180,16 @@ Kasen.takeUntil([1, 3, 4, 5], v => v % 2 === 0);
 
 ## `skip(num)`
 
+```js
+Kasen([1, 2, 3])
+  .skip(2)
+  .toJs();
+// => [3]
+
+Kasen.skip([1, 2, 3], 2);
+// => [3]
+```
+
 ## `skipLast(num)`
 
 ## `skipWhile(fun)`
