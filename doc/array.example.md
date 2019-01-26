@@ -192,6 +192,16 @@ Kasen.skip([1, 2, 3], 2);
 
 ## `skipLast(num)`
 
+```js
+Kasen([1, 2, 3])
+  .skipLast(2)
+  .toJs();
+// => [1]
+
+Kasen.skipLast([1, 2, 3], 2);
+// => [1]
+```
+
 ## `skipWhile(fun)`
 
 ## `skipUntil(fun)`
