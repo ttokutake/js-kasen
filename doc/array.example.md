@@ -221,6 +221,21 @@ Kasen.skipWhile([1, 3, 4, 5], v => v % 2 === 1);
 
 ## `skipUntil(fun)`
 
+```js
+Kasen([1, 3, 4, 5])
+  .skipUntil(v => v % 2 === 0)
+  .toJs();
+// => [4, 5]
+
+Kasen([1, 3, 4, 5])
+  .skipUntil((v, k) => k % 2 === 1)
+  .toJs();
+// => [3, 4, 5]
+
+Kasen.skipUntil([1, 3, 4, 5], v => v % 2 === 0);
+// => [4, 5]
+```
+
 ## `set(index, value)`
 
 ## `update(index, fun)`
