@@ -134,6 +134,16 @@ Kasen.take([1, 2, 3], 2);
 
 ## `takeLast(num)`
 
+```js
+Kasen([1, 2, 3])
+  .takeLast(2)
+  .toJs();
+// => [2, 3]
+
+Kasen.takeLast([1, 2, 3], 2);
+// => [2, 3]
+```
+
 ## `takeWhile(fun)`
 
 ## `takeUntil(fun)`
