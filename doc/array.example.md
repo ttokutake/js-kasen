@@ -122,6 +122,16 @@ Kasen.reverse([1, 2, 3]);
 
 ## `take(num)`
 
+```js
+Kasen([1, 2, 3])
+  .take(2)
+  .toJs();
+// => [1, 2]
+
+Kasen.take([1, 2, 3], 2);
+// => [1, 2]
+```
+
 ## `takeLast(num)`
 
 ## `takeWhile(fun)`
