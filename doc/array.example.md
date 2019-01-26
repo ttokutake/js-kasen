@@ -204,6 +204,21 @@ Kasen.skipLast([1, 2, 3], 2);
 
 ## `skipWhile(fun)`
 
+```js
+Kasen([1, 3, 4, 5])
+  .skipWhile(v => v % 2 === 1)
+  .toJs();
+// => [4, 5]
+
+Kasen([1, 3, 4, 5])
+  .skipWhile((v, k) => k % 2 === 0)
+  .toJs();
+// => [3, 4, 5]
+
+Kasen.skipWhile([1, 3, 4, 5], v => v % 2 === 1);
+// => [4, 5]
+```
+
 ## `skipUntil(fun)`
 
 ## `set(index, value)`
