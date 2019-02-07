@@ -283,6 +283,31 @@ Kasen.skipUntil([1, 3, 4, 5], v => v % 2 === 0);
 
 ## `set(index, value)`
 
+```js
+Kasen([1, 2, 3])
+  .set(0, 10)
+  .toJs();
+// => [10, 2, 3]
+
+Kasen([1, 2, 3])
+  .set(3, 10)
+  .toJs();
+// => [1, 2, 3]
+
+Kasen([1, 2, 3])
+  .set(-1, 10)
+  .toJs();
+// => [1, 2, 10]
+
+Kasen([1, 2, 3])
+  .set.if(false, 0, 10)
+  .toJs();
+// => [1, 2, 3]
+
+Kasen.set([1, 2, 3], 0, 10);
+// => [10, 2, 3]
+```
+
 ## `update(index, fun)`
 
 ## `delete(index)`
