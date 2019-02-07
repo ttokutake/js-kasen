@@ -73,17 +73,17 @@ Kasen([1, 2, 3])
 // => [1, 3]
 
 Kasen([1, 2, 3])
+  .filter((v, k) => k % 2 === 1)
+  .toJs();
+// => [2]
+
+Kasen([1, 2, 3])
   .filter.if(false, v => v % 2 === 1)
   .toJs();
 // => [1, 2, 3]
 
 Kasen.filter([1, 2, 3], v => v % 2 === 1);
 // => [1, 3]
-
-Kasen([1, 2, 3])
-  .filter((v, k) => k % 2 === 1)
-  .toJs();
-// => [2]
 ```
 
 ## `filterNot(fun)`
@@ -95,17 +95,17 @@ Kasen([1, 2, 3])
 // => [2]
 
 Kasen([1, 2, 3])
+  .filterNot((v, k) => k % 2 === 1)
+  .toJs();
+// => [1, 3]
+
+Kasen([1, 2, 3])
   .filterNot.if(false, v => v % 2 === 1)
   .toJs();
 // => [1, 2, 3]
 
 Kasen.filterNot([1, 2, 3], v => v % 2 === 1);
 // => [2]
-
-Kasen([1, 2, 3])
-  .filterNot((v, k) => k % 2 === 1)
-  .toJs();
-// => [1, 3]
 ```
 
 ## `reverse()`
@@ -168,14 +168,14 @@ Kasen([1, 3, 4, 5])
 // => [1, 3]
 
 Kasen([1, 3, 4, 5])
-  .takeWhile.if(false, v => v % 2 === 1)
-  .toJs();
-// => [1, 3, 4, 5]
-
-Kasen([1, 3, 4, 5])
   .takeWhile((v, k) => k % 2 === 0)
   .toJs();
 // => [1]
+
+Kasen([1, 3, 4, 5])
+  .takeWhile.if(false, v => v % 2 === 1)
+  .toJs();
+// => [1, 3, 4, 5]
 
 Kasen.takeWhile([1, 3, 4, 5], v => v % 2 === 1);
 // => [1, 3]
@@ -190,14 +190,14 @@ Kasen([1, 3, 4, 5])
 // => [1, 3]
 
 Kasen([1, 3, 4, 5])
-  .takeUntil.if(false, v => v % 2 === 0)
-  .toJs();
-// => [1, 3, 4, 5]
-
-Kasen([1, 3, 4, 5])
   .takeUntil((v, k) => k % 2 === 1)
   .toJs();
 // => [1]
+
+Kasen([1, 3, 4, 5])
+  .takeUntil.if(false, v => v % 2 === 0)
+  .toJs();
+// => [1, 3, 4, 5]
 
 Kasen.takeUntil([1, 3, 4, 5], v => v % 2 === 0);
 // => [1, 3]
@@ -246,14 +246,14 @@ Kasen([1, 3, 4, 5])
 // => [4, 5]
 
 Kasen([1, 3, 4, 5])
-  .skipWhile.if(false, v => v % 2 === 1)
-  .toJs();
-// => [1, 3, 4, 5]
-
-Kasen([1, 3, 4, 5])
   .skipWhile((v, k) => k % 2 === 0)
   .toJs();
 // => [3, 4, 5]
+
+Kasen([1, 3, 4, 5])
+  .skipWhile.if(false, v => v % 2 === 1)
+  .toJs();
+// => [1, 3, 4, 5]
 
 Kasen.skipWhile([1, 3, 4, 5], v => v % 2 === 1);
 // => [4, 5]
@@ -268,14 +268,14 @@ Kasen([1, 3, 4, 5])
 // => [4, 5]
 
 Kasen([1, 3, 4, 5])
-  .skipUntil.if(false, v => v % 2 === 0)
-  .toJs();
-// => [1, 3, 4, 5]
-
-Kasen([1, 3, 4, 5])
   .skipUntil((v, k) => k % 2 === 1)
   .toJs();
 // => [3, 4, 5]
+
+Kasen([1, 3, 4, 5])
+  .skipUntil.if(false, v => v % 2 === 0)
+  .toJs();
+// => [1, 3, 4, 5]
 
 Kasen.skipUntil([1, 3, 4, 5], v => v % 2 === 0);
 // => [4, 5]
