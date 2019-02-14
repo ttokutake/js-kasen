@@ -16,8 +16,9 @@
     "format:base": "prettier --ignore-path=.gitignore '**/*.json' '**/*.yml' '**/*.md'",
     "lint": "npm run lint:ci -- --fix",
     "lint:ci": "eslint --ignore-path .gitignore .",
-    "test": "npm run build && npm run test:ci",
-    "test:ci": "jest"
+    "test": "npm run build && npm run test:base",
+    "test:ci": "npm run test:base && codecov",
+    "test:base": "jest"
   },
   "dependencies": {
     "hash-sum": "^1.0.2"
@@ -27,6 +28,7 @@
     "@babel/preset-env": "^7.3.1",
     "babel-jest": "^24.1.0",
     "babel-loader": "^8.0.5",
+    "codecov": "^3.2.0",
     "eslint": "^5.13.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^4.0.0",
@@ -71,5 +73,9 @@
         "except-parens"
       ]
     }
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverage": true
   }
 }
