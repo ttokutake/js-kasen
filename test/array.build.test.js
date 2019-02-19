@@ -1,4 +1,4 @@
-import Kasen from "../src/kasen";
+import Kasen from "../dist/kasen";
 
 describe("Array", () => {
   describe("copy()", () => {
