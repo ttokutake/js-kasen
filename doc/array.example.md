@@ -364,6 +364,18 @@ Kasen.delete([1, 2, 3], 0);
 
 ## `clear()`
 
+```js
+Kasen([1, 2, 3])
+  .clear()
+  .toJs();
+// => []
+
+Kasen([1, 2, 3])
+  .clear.if(false)
+  .toJs();
+// => [1, 2, 3]
+```
+
 ## `concat(...values)`
 
 ## `insert(index, value)`
