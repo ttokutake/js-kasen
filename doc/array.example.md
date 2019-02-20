@@ -337,6 +337,31 @@ Kasen.update([1, 2, 3], 0, v => v + 10);
 
 ## `delete(index)`
 
+```js
+Kasen([1, 2, 3])
+  .delete(0)
+  .toJs();
+// => [2, 3]
+
+Kasen([1, 2, 3])
+  .delete(3)
+  .toJs();
+// => [1, 2, 3]
+
+Kasen([1, 2, 3])
+  .delete(-1)
+  .toJs();
+// => [1, 2]
+
+Kasen([1, 2, 3])
+  .delete.if(false, 0)
+  .toJs();
+// => [1, 2, 3]
+
+Kasen.delete([1, 2, 3], 0);
+// => [2, 3]
+```
+
 ## `clear()`
 
 ## `concat(...values)`
