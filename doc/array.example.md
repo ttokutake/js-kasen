@@ -310,6 +310,31 @@ Kasen.set([1, 2, 3], 0, 10);
 
 ## `update(index, fun)`
 
+```js
+Kasen([1, 2, 3])
+  .update(0, v => v + 10)
+  .toJs();
+// => [11, 2, 3]
+
+Kasen([1, 2, 3])
+  .update(3, v => v + 10)
+  .toJs();
+// => [1, 2, 3]
+
+Kasen([1, 2, 3])
+  .update(-1, v => v + 10)
+  .toJs();
+// => [1, 2, 13]
+
+Kasen([1, 2, 3])
+  .update.if(false, 0, v => v + 10)
+  .toJs();
+// => [1, 2, 3]
+
+Kasen.update([1, 2, 3], 0, v => v + 10);
+// => [11, 2, 3]
+```
+
 ## `delete(index)`
 
 ## `clear()`
