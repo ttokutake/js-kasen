@@ -378,6 +378,26 @@ Kasen([1, 2, 3])
 
 ## `concat(...values)`
 
+```js
+Kasen([1, 2, 3])
+  .concat([4, 5, 6])
+  .toJs();
+// => [1, 2, 3, 4, 5, 6]
+
+Kasen([1, 2, 3])
+  .concat([4, 5, 6], [7, 8, 9])
+  .toJs();
+// => [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+Kasen([1, 2, 3])
+  .concat.if(false, [4, 5, 6])
+  .toJs();
+// => [1, 2, 3]
+
+Kasen.concat([1, 2, 3], [4, 5, 6]);
+// => [1, 2, 3, 4, 5, 6, 7]
+```
+
 ## `insert(index, value)`
 
 ## `push(...values)`
