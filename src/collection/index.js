@@ -223,6 +223,8 @@ export default class Collection {
     return this.update(coll, key, () => value);
   }
 
+  // TODO: setAll()
+
   // eslint-disable-next-line class-methods-use-this, no-unused-vars
   update(_fun) {
     throw new Error("not implemented");
