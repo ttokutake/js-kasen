@@ -400,6 +400,31 @@ Kasen.concat([1, 2, 3], [4, 5, 6]);
 
 ## `insert(index, value)`
 
+```js
+Kasen([1, 2, 3])
+  .insert(0, 10)
+  .toJs();
+// => [10, 1, 2, 3]
+
+Kasen([1, 2, 3])
+  .insert(3, 10)
+  .toJs();
+// => [1, 2, 3, 10]
+
+Kasen([1, 2, 3])
+  .insert(-1, 10)
+  .toJs();
+// => [1, 2, 10, 3]
+
+Kasen([1, 2, 3])
+  .insert.if(false, 0, 10)
+  .toJs();
+// => [1, 2, 3]
+
+Kasen.insert([1, 2, 3], 0, 10);
+// => [10, 1, 2, 3]
+```
+
 ## `push(...values)`
 
 ## `pop()`
