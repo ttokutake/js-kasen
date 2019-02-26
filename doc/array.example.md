@@ -432,6 +432,26 @@ Kasen.insert([1, 2, 3], 0, 10);
 
 ## `push(...values)`
 
+```js
+Kasen([1, 2, 3])
+  .push(4)
+  .toJs();
+// => [1, 2, 3, 4]
+
+Kasen([1, 2, 3])
+  .push(4, 5, 6)
+  .toJs();
+// => [1, 2, 3, 4, 5, 6]
+
+Kasen([1, 2, 3])
+  .push.if(false, 4)
+  .toJs();
+// => [1, 2, 3]
+
+Kasen.push([1, 2, 3], 4);
+// => [1, 2, 3, 4]
+```
+
 ## `pop()`
 
 ## `unshift(...values)`
