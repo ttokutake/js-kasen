@@ -458,7 +458,7 @@ Kasen.push([1, 2, 3], 4);
 Kasen([1, 2, 3])
   .pop()
   .toJs();
-// => [2, 3]
+// => [1, 2]
 
 Kasen([1, 2, 3])
   .pop.if(false)
@@ -466,7 +466,7 @@ Kasen([1, 2, 3])
 // => [1, 2, 3]
 
 Kasen.pop([1, 2, 3]);
-// => [2, 3]
+// => [1, 2]
 ```
 
 ## `unshift(...values)`
@@ -492,6 +492,21 @@ Kasen.unshift([1, 2, 3], 4);
 ```
 
 ## `shift()`
+
+```js
+Kasen([1, 2, 3])
+  .shift()
+  .toJs();
+// => [2, 3]
+
+Kasen([1, 2, 3])
+  .shift.if(false)
+  .toJs();
+// => [1, 2, 3]
+
+Kasen.shift([1, 2, 3]);
+// => [2, 3]
+```
 
 ## `splice()`
 
