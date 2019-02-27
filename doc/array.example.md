@@ -454,6 +454,21 @@ Kasen.push([1, 2, 3], 4);
 
 ## `pop()`
 
+```js
+Kasen([1, 2, 3])
+  .pop()
+  .toJs();
+// => [2, 3]
+
+Kasen([1, 2, 3])
+  .pop.if(false)
+  .toJs();
+// => [1, 2, 3]
+
+Kasen.pop([1, 2, 3]);
+// => [2, 3]
+```
+
 ## `unshift(...values)`
 
 ## `shift()`
