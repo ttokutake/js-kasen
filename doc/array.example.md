@@ -508,7 +508,42 @@ Kasen.shift([1, 2, 3]);
 // => [2, 3]
 ```
 
-## `splice()`
+## `splice(index, num, ...values)`
+
+```js
+Kasen([1, 2, 3])
+  .splice(0, 1)
+  .toJs();
+// => [2, 3]
+
+Kasen([1, 2, 3])
+  .splice(0, 2)
+  .toJs();
+// => [3]
+
+Kasen([1, 2, 3])
+  .splice(2, 1)
+  .toJs();
+// => [1, 2]
+
+Kasen([1, 2, 3])
+  .splice(1, 0, 4, 5)
+  .toJs();
+// => [1, 4, 5, 2, 3]
+
+Kasen([1, 2, 3])
+  .splice(1, 1, 4, 5)
+  .toJs();
+// => [1, 4, 5, 3]
+
+Kasen([1, 2, 3])
+  .splice.if(false, 0, 1)
+  .toJs();
+// => [1, 2, 3]
+
+Kasen.splice([1, 2, 3], 0, 1);
+// => [2, 3]
+```
 
 ## `setIn(keys, value)`
 
