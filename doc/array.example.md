@@ -547,6 +547,42 @@ Kasen.splice([1, 2, 3], 0, 1);
 
 ## `setIn(keys, value)`
 
+```js
+Kasen([
+  { id: 1, name: "alpha" },
+  { id: 2, name: "beta" },
+  { id: 3, name: "gamma" }
+])
+  .setIn([1, "name"], "delta")
+  .toJs();
+// => [{id: 1, name: "alpha"}, {id: 2, name: "delta"}, {id: 3, name: "gamma"}]
+
+Kasen([
+  { id: 1, data: { name: "alpha" } },
+  { id: 2 },
+  { id: 3, data: { name: "gamma" } }
+])
+  .setIn([1, ["data", {}], "name"], "beta")
+  .toJs();
+// => [{id: 1, data: {name: "alpha"}}, {id: 2, data: {name: "deta"}}, {id: 3, data: {name: "gamma"}}]
+
+Kasen([
+  { id: 1, name: "alpha" },
+  { id: 2, name: "beta" },
+  { id: 3, name: "gamma" }
+])
+  .setIn.if(false, [1, "name"], "delta")
+  .toJs();
+// => [{id: 1, name: "alpha"}, {id: 2, name: "beta"}, {id: 3, name: "gamma"}]
+
+Kasen.setIn(
+  [{ id: 1, name: "alpha" }, { id: 2, name: "beta" }, { id: 3, name: "gamma" }],
+  [1, "name"],
+  "delta"
+);
+// => [{id: 1, name: "alpha"}, {id: 2, name: "delta"}, {id: 3, name: "gamma"}]
+```
+
 ## `updateIn(keys, fun)`
 
 ## `deleteIn(keys)`
