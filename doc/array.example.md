@@ -564,7 +564,7 @@ Kasen([
 ])
   .setIn([1, ["data", {}], "name"], "beta")
   .toJs();
-// => [{id: 1, data: {name: "alpha"}}, {id: 2, data: {name: "deta"}}, {id: 3, data: {name: "gamma"}}]
+// => [{id: 1, data: {name: "alpha"}}, {id: 2, data: {name: "beta"}}, {id: 3, data: {name: "gamma"}}]
 
 Kasen([
   { id: 1, name: "alpha" },
@@ -584,6 +584,42 @@ Kasen.setIn(
 ```
 
 ## `updateIn(keys, fun)`
+
+```js
+Kasen([
+  { id: 1, name: "alpha" },
+  { id: 2, name: "beta" },
+  { id: 3, name: "gamma" }
+])
+  .updateIn([1, "name"], name => `${name}2`)
+  .toJs();
+// => [{id: 1, name: "alpha"}, {id: 2, name: "beta2"}, {id: 3, name: "gamma"}]
+
+Kasen([
+  { id: 1, data: { name: "alpha" } },
+  { id: 2 },
+  { id: 3, data: { name: "gamma" } }
+])
+  .updateIn([1, ["data", {}], ["name", "beta"]], name => `${name}2`)
+  .toJs();
+// => [{id: 1, data: {name: "alpha"}}, {id: 2, data: {name: "beta2"}}, {id: 3, data: {name: "gamma"}}]
+
+Kasen([
+  { id: 1, name: "alpha" },
+  { id: 2, name: "beta" },
+  { id: 3, name: "gamma" }
+])
+  .updateIn.if(false, [1, "name"], name => `${name}2`)
+  .toJs();
+// => [{id: 1, name: "alpha"}, {id: 2, name: "beta"}, {id: 3, name: "gamma"}]
+
+Kasen.updateIn(
+  [{ id: 1, name: "alpha" }, { id: 2, name: "beta" }, { id: 3, name: "gamma" }],
+  [1, "name"],
+  name => `${name}2`
+);
+// => [{id: 1, name: "alpha"}, {id: 2, name: "beta2"}, {id: 3, name: "gamma"}]
+```
 
 ## `deleteIn(keys)`
 
