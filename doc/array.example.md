@@ -623,6 +623,32 @@ Kasen.updateIn(
 
 ## `deleteIn(keys)`
 
+```js
+Kasen([
+  { id: 1, name: "alpha" },
+  { id: 2, name: "beta" },
+  { id: 3, name: "gamma" }
+])
+  .deleteIn([1, "name"])
+  .toJs();
+// => [{id: 1, name: "alpha"}, {id: 2}, {id: 3, name: "gamma"}]
+
+Kasen([
+  { id: 1, name: "alpha" },
+  { id: 2, name: "beta" },
+  { id: 3, name: "gamma" }
+])
+  .deleteIn.if(false, [1, "name"])
+  .toJs();
+// => [{id: 1, name: "alpha"}, {id: 2, name: "beta"}, {id: 3, name: "gamma"}]
+
+Kasen.deleteIn(
+  [{ id: 1, name: "alpha" }, { id: 2, name: "beta" }, { id: 3, name: "gamma" }],
+  [1, "name"]
+);
+// => [{id: 1, name: "alpha"}, {id: 2}, {id: 3, name: "gamma"}]
+```
+
 ## `flatten()`
 
 ## `flatMap(fun)`
