@@ -651,6 +651,26 @@ Kasen.deleteIn(
 
 ## `flatten()`
 
+```js
+Kasen([[1, 2], [3, 4]])
+  .flatten()
+  .toJs();
+// => [1, 2, 3, 4]
+
+Kasen([[1, 2], 3, [4]])
+  .flatten()
+  .toJs();
+// => [1, 2, 3, 4]
+
+Kasen([[1, 2], [3, 4]])
+  .flatten.if(false)
+  .toJs();
+// => [[1, 2], [3, 4]]
+
+Kasen.flatten([[1, 2], [3, 4]]);
+// => [1, 2, 3, 4]
+```
+
 ## `flatMap(fun)`
 
 ## `zip(...arrays)`
