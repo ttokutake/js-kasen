@@ -673,6 +673,63 @@ Kasen.flatten([[1, 2], [3, 4]]);
 
 ## `flatMap(fun)`
 
+```js
+Kasen([
+  {
+    name: "alpha",
+    friends: ["James", "John"]
+  },
+  {
+    name: "beta",
+    friends: ["Robert"]
+  },
+  {
+    name: "gamma",
+    friends: ["Michael", "William", "David"]
+  }
+])
+  .flatMap(({ friends }) => friends)
+  .toJs();
+// => ["James", "John", "Robert", "Michael", "William", "David"]
+
+Kasen([
+  {
+    name: "alpha",
+    friends: ["James", "John"]
+  },
+  {
+    name: "beta",
+    friends: ["Robert"]
+  },
+  {
+    name: "gamma",
+    friends: ["Michael", "William", "David"]
+  }
+])
+  .flatMap.if(false, ({ friends }) => friends)
+  .toJs();
+// => [{ name: "alpha", friends: ["James", "John"] }, { name: "beta", friends: ["Robert"] }, { name: "gamma", friends: ["Michael", "William", "David"] }]
+
+Kasen.flatMap(
+  [
+    {
+      name: "alpha",
+      friends: ["James", "John"]
+    },
+    {
+      name: "beta",
+      friends: ["Robert"]
+    },
+    {
+      name: "gamma",
+      friends: ["Michael", "William", "David"]
+    }
+  ],
+  ({ friends }) => friends
+);
+// => ["James", "John", "Robert", "Michael", "William", "David"]
+```
+
 ## `zip(...arrays)`
 
 ## `zipAll(...arrays)`
