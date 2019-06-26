@@ -92,24 +92,6 @@ describe("Array", () => {
     });
   });
 
-  describe("map.if()", () => {
-    test("ok", () => {
-      const input = [1, 2, 3];
-      {
-        const result = Kasen(input)
-          .map.if(false, v => v + 1)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .map.if(true, v => v + 1)
-          .toJs();
-        expect(result).toEqual([2, 3, 4]);
-      }
-    });
-  });
-
   describe("pluck()", () => {
     test("ok", () => {
       const ios = [[[], []], [[{ a: 1 }], [1]], [[{ a: 1 }, { a: 2 }], [1, 2]]];
@@ -123,24 +105,6 @@ describe("Array", () => {
         const result = Kasen.pluck(input, "a");
         expect(result).toEqual(expected);
       });
-    });
-  });
-
-  describe("pluck.if()", () => {
-    test("ok", () => {
-      const input = [{ a: 1 }, { a: 2 }];
-      {
-        const result = Kasen(input)
-          .pluck.if(false, "a")
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .pluck.if(true, "a")
-          .toJs();
-        expect(result).toEqual([1, 2]);
-      }
     });
   });
 
@@ -180,40 +144,6 @@ describe("Array", () => {
     });
   });
 
-  describe("filter.if()", () => {
-    test("fun is undefined", () => {
-      const input = [1, null];
-      {
-        const result = Kasen(input)
-          .filter.if(false)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .filter.if(true)
-          .toJs();
-        expect(result).toEqual([1]);
-      }
-    });
-
-    test("fun is specified", () => {
-      const input = [1, 2, 3];
-      {
-        const result = Kasen(input)
-          .filter.if(false, v => v % 2 === 0)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .filter.if(true, v => v % 2 === 0)
-          .toJs();
-        expect(result).toEqual([2]);
-      }
-    });
-  });
-
   describe("filterNot()", () => {
     test("ok", () => {
       const ios = [
@@ -236,24 +166,6 @@ describe("Array", () => {
     });
   });
 
-  describe("filterNot.if()", () => {
-    test("ok", () => {
-      const input = [1, 2, 3];
-      {
-        const result = Kasen(input)
-          .filterNot.if(false, v => v % 2 === 1)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .filterNot.if(true, v => v % 2 === 1)
-          .toJs();
-        expect(result).toEqual([2]);
-      }
-    });
-  });
-
   describe("reverse()", () => {
     test("ok", () => {
       const ios = [
@@ -272,24 +184,6 @@ describe("Array", () => {
         const result = Kasen.reverse(input);
         expect(result).toEqual(expected);
       });
-    });
-  });
-
-  describe("reverse.if()", () => {
-    test("ok", () => {
-      const input = [1, 2, 3];
-      {
-        const result = Kasen(input)
-          .reverse.if(false)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .reverse.if(true)
-          .toJs();
-        expect(result).toEqual([3, 2, 1]);
-      }
     });
   });
 
@@ -326,24 +220,6 @@ describe("Array", () => {
     });
   });
 
-  describe("take.if()", () => {
-    test("ok", () => {
-      const input = [1, 2, 3];
-      {
-        const result = Kasen(input)
-          .take.if(false, 2)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .take.if(true, 2)
-          .toJs();
-        expect(result).toEqual([1, 2]);
-      }
-    });
-  });
-
   describe("takeLast()", () => {
     test("ok", () => {
       const ios = [
@@ -377,24 +253,6 @@ describe("Array", () => {
     });
   });
 
-  describe("takeLast.if()", () => {
-    test("ok", () => {
-      const input = [1, 2, 3];
-      {
-        const result = Kasen(input)
-          .takeLast.if(false, 2)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .takeLast.if(true, 2)
-          .toJs();
-        expect(result).toEqual([2, 3]);
-      }
-    });
-  });
-
   describe("takeWhile()", () => {
     test("ok", () => {
       const ios = [
@@ -421,24 +279,6 @@ describe("Array", () => {
     });
   });
 
-  describe("takeWhile.if()", () => {
-    test("ok", () => {
-      const input = [1, 3, 4];
-      {
-        const result = Kasen(input)
-          .takeWhile.if(false, v => v % 2 === 1)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .takeWhile.if(true, v => v % 2 === 1)
-          .toJs();
-        expect(result).toEqual([1, 3]);
-      }
-    });
-  });
-
   describe("takeUntil()", () => {
     test("ok", () => {
       const ios = [
@@ -462,24 +302,6 @@ describe("Array", () => {
         const result = Kasen.takeUntil(input, v => v % 2 === 0);
         expect(result).toEqual(expected);
       });
-    });
-  });
-
-  describe("takeUntil.if()", () => {
-    test("ok", () => {
-      const input = [1, 3, 4];
-      {
-        const result = Kasen(input)
-          .takeUntil.if(false, v => v % 2 === 0)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .takeUntil.if(true, v => v % 2 === 0)
-          .toJs();
-        expect(result).toEqual([1, 3]);
-      }
     });
   });
 
@@ -516,24 +338,6 @@ describe("Array", () => {
     });
   });
 
-  describe("skip.if()", () => {
-    test("ok", () => {
-      const input = [1, 2, 3];
-      {
-        const result = Kasen(input)
-          .skip.if(false, 2)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .skip.if(true, 2)
-          .toJs();
-        expect(result).toEqual([3]);
-      }
-    });
-  });
-
   describe("skipLast()", () => {
     test("ok", () => {
       const ios = [
@@ -567,24 +371,6 @@ describe("Array", () => {
     });
   });
 
-  describe("skipLast.if()", () => {
-    test("ok", () => {
-      const input = [1, 2, 3];
-      {
-        const result = Kasen(input)
-          .skipLast.if(false, 2)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .skipLast.if(true, 2)
-          .toJs();
-        expect(result).toEqual([1]);
-      }
-    });
-  });
-
   describe("skipWhile()", () => {
     test("ok", () => {
       const ios = [
@@ -611,24 +397,6 @@ describe("Array", () => {
     });
   });
 
-  describe("skipWhile.if()", () => {
-    test("ok", () => {
-      const input = [1, 3, 4];
-      {
-        const result = Kasen(input)
-          .skipWhile.if(false, v => v % 2 === 1)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .skipWhile.if(true, v => v % 2 === 1)
-          .toJs();
-        expect(result).toEqual([4]);
-      }
-    });
-  });
-
   describe("skipUntil()", () => {
     test("ok", () => {
       const ios = [
@@ -652,24 +420,6 @@ describe("Array", () => {
         const result = Kasen.skipUntil(input, v => v % 2 === 0);
         expect(result).toEqual(expected);
       });
-    });
-  });
-
-  describe("skipUntil.if()", () => {
-    test("ok", () => {
-      const input = [1, 3, 4];
-      {
-        const result = Kasen(input)
-          .skipUntil.if(false, v => v % 2 === 0)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .skipUntil.if(true, v => v % 2 === 0)
-          .toJs();
-        expect(result).toEqual([4]);
-      }
     });
   });
 
@@ -702,24 +452,6 @@ describe("Array", () => {
     });
   });
 
-  describe("set.if()", () => {
-    test("ok", () => {
-      const input = [1, 2];
-      {
-        const result = Kasen(input)
-          .set.if(false, 0, 10)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .set.if(true, 0, 10)
-          .toJs();
-        expect(result).toEqual([10, 2]);
-      }
-    });
-  });
-
   describe("update()", () => {
     test("ok", () => {
       const ios = [
@@ -746,24 +478,6 @@ describe("Array", () => {
         const result = Kasen.update(input, index, v => v + 10);
         expect(result).toEqual(expected);
       });
-    });
-  });
-
-  describe("update.if()", () => {
-    test("ok", () => {
-      const input = [1, 2];
-      {
-        const result = Kasen(input)
-          .update.if(false, 0, v => v + 10)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .update.if(true, 0, v => v + 10)
-          .toJs();
-        expect(result).toEqual([11, 2]);
-      }
     });
   });
 
@@ -796,24 +510,6 @@ describe("Array", () => {
     });
   });
 
-  describe("delete.if()", () => {
-    test("ok", () => {
-      const input = [1, 2];
-      {
-        const result = Kasen(input)
-          .delete.if(false, 0)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .delete.if(true, 0)
-          .toJs();
-        expect(result).toEqual([2]);
-      }
-    });
-  });
-
   describe("clear()", () => {
     test("ok()", () => {
       const inputs = [[], [1]];
@@ -823,24 +519,6 @@ describe("Array", () => {
           .toJs();
         expect(result).toEqual([]);
       });
-    });
-  });
-
-  describe("clear.if()", () => {
-    test("ok()", () => {
-      const input = [1];
-      {
-        const result = Kasen(input)
-          .clear.if(false)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .clear.if(true)
-          .toJs();
-        expect(result).toEqual([]);
-      }
     });
   });
 
@@ -875,25 +553,6 @@ describe("Array", () => {
     });
   });
 
-  describe("concat.if()", () => {
-    test("ok()", () => {
-      const input = [1];
-      const arrays = [[2], [3]];
-      {
-        const result = Kasen(input)
-          .concat.if(false, ...arrays)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .concat.if(true, ...arrays)
-          .toJs();
-        expect(result).toEqual([1, 2, 3]);
-      }
-    });
-  });
-
   describe("insert()", () => {
     test("ok", () => {
       const ios = [
@@ -924,24 +583,6 @@ describe("Array", () => {
     });
   });
 
-  describe("insert.if()", () => {
-    test("ok", () => {
-      const input = [1, 2];
-      {
-        const result = Kasen(input)
-          .insert.if(false, 1, 10)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .insert.if(true, 1, 10)
-          .toJs();
-        expect(result).toEqual([1, 10, 2]);
-      }
-    });
-  });
-
   describe("push()", () => {
     test("ok", () => {
       const ios = [
@@ -965,24 +606,6 @@ describe("Array", () => {
     });
   });
 
-  describe("push.if()", () => {
-    test("ok", () => {
-      const input = [1, 2];
-      {
-        const result = Kasen(input)
-          .push.if(false, 10, 11)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .push.if(true, 10, 11)
-          .toJs();
-        expect(result).toEqual([1, 2, 10, 11]);
-      }
-    });
-  });
-
   describe("pop()", () => {
     test("ok", () => {
       const ios = [[[], []], [[1], []], [[1, 2], [1]]];
@@ -996,24 +619,6 @@ describe("Array", () => {
         const result = Kasen.pop(input);
         expect(result).toEqual(expected);
       });
-    });
-  });
-
-  describe("pop.if()", () => {
-    test("ok", () => {
-      const input = [1, 2];
-      {
-        const result = Kasen(input)
-          .pop.if(false)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .pop.if(true)
-          .toJs();
-        expect(result).toEqual([1]);
-      }
     });
   });
 
@@ -1040,24 +645,6 @@ describe("Array", () => {
     });
   });
 
-  describe("unshift.if()", () => {
-    test("ok", () => {
-      const input = [1, 2];
-      {
-        const result = Kasen(input)
-          .unshift.if(false, 10, 11)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .unshift.if(true, 10, 11)
-          .toJs();
-        expect(result).toEqual([10, 11, 1, 2]);
-      }
-    });
-  });
-
   describe("shift()", () => {
     test("ok", () => {
       const ios = [[[], []], [[1], []], [[1, 2], [2]]];
@@ -1071,24 +658,6 @@ describe("Array", () => {
         const result = Kasen.shift(input);
         expect(result).toEqual(expected);
       });
-    });
-  });
-
-  describe("shift.if()", () => {
-    test("ok", () => {
-      const input = [1, 2];
-      {
-        const result = Kasen(input)
-          .shift.if(false)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .shift.if(true)
-          .toJs();
-        expect(result).toEqual([2]);
-      }
     });
   });
 
@@ -1124,27 +693,6 @@ describe("Array", () => {
         const result = Kasen.splice(input, index, num, ...values);
         expect(result).toEqual(expected);
       });
-    });
-  });
-
-  describe("splice.if()", () => {
-    test("ok", () => {
-      const input = [1, 2];
-      const index = 1;
-      const num = 0;
-      const values = [10, 20];
-      {
-        const result = Kasen(input)
-          .splice.if(false, index, num, ...values)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .splice.if(true, index, num, ...values)
-          .toJs();
-        expect(result).toEqual([1, 10, 20, 2]);
-      }
     });
   });
 
@@ -1187,24 +735,6 @@ describe("Array", () => {
     });
   });
 
-  describe("setIn.if()", () => {
-    test("ok", () => {
-      const input = [{ a: [] }];
-      {
-        const result = Kasen(input)
-          .setIn.if(false, [0, "a", 0], 10)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .setIn.if(true, [0, "a", 0], 10)
-          .toJs();
-        expect(result).toEqual([{ a: [10] }]);
-      }
-    });
-  });
-
   describe("updateIn()", () => {
     test("initializer is undefined", () => {
       const ios = [
@@ -1244,24 +774,6 @@ describe("Array", () => {
     });
   });
 
-  describe("updateIn.if()", () => {
-    test("ok", () => {
-      const input = [{ a: [1] }];
-      {
-        const result = Kasen(input)
-          .updateIn.if(false, [0, "a", 0], v => v + 10)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .updateIn.if(true, [0, "a", 0], v => v + 10)
-          .toJs();
-        expect(result).toEqual([{ a: [11] }]);
-      }
-    });
-  });
-
   describe("deleteIn()", () => {
     test("ok", () => {
       const ios = [
@@ -1282,24 +794,6 @@ describe("Array", () => {
         const result = Kasen.deleteIn(input, keys);
         expect(result).toEqual(expected);
       });
-    });
-  });
-
-  describe("deleteIn.if()", () => {
-    test("ok", () => {
-      const input = [{ a: [1] }];
-      {
-        const result = Kasen(input)
-          .deleteIn.if(false, [0, "a", 0])
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .deleteIn.if(true, [0, "a", 0])
-          .toJs();
-        expect(result).toEqual([{ a: [] }]);
-      }
     });
   });
 
@@ -1335,24 +829,6 @@ describe("Array", () => {
     });
   });
 
-  describe("flatten.if()", () => {
-    test("ok", () => {
-      const input = [[1], 2, [3]];
-      {
-        const result = Kasen(input)
-          .flatten.if(false)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .flatten.if(true)
-          .toJs();
-        expect(result).toEqual([1, 2, 3]);
-      }
-    });
-  });
-
   describe("flatMap()", () => {
     test("ok", () => {
       const ios = [
@@ -1371,24 +847,6 @@ describe("Array", () => {
         const result = Kasen.flatMap(input, v => Array(v).fill(1));
         expect(result).toEqual(expected);
       });
-    });
-  });
-
-  describe("flatMap.if()", () => {
-    test("ok", () => {
-      const input = [1, 2, 3];
-      {
-        const result = Kasen(input)
-          .flatMap.if(false, v => Array(v).fill(1))
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .flatMap.if(true, v => Array(v).fill(1))
-          .toJs();
-        expect(result).toEqual([1, 1, 1, 1, 1, 1]);
-      }
     });
   });
 
@@ -1419,23 +877,6 @@ describe("Array", () => {
     });
   });
 
-  describe("zip.if()", () => {
-    const input = [1, 2];
-    const arrays = [[10, 11], [20]];
-    {
-      const result = Kasen(input)
-        .zip.if(false, ...arrays)
-        .toJs();
-      expect(result).toEqual(input);
-    }
-    {
-      const result = Kasen(input)
-        .zip.if(true, ...arrays)
-        .toJs();
-      expect(result).toEqual([[1, 10, 20]]);
-    }
-  });
-
   describe("zipAll()", () => {
     test("ok", () => {
       const ios = [
@@ -1460,25 +901,6 @@ describe("Array", () => {
         const result = Kasen.zipAll(input, ...arrays);
         expect(result).toEqual(expected);
       });
-    });
-  });
-
-  describe("zipAll.if()", () => {
-    test("ok", () => {
-      const input = [1, 2];
-      const arrays = [[10, 11], [20]];
-      {
-        const result = Kasen(input)
-          .zipAll.if(false, ...arrays)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .zipAll.if(true, ...arrays)
-          .toJs();
-        expect(result).toEqual([[1, 10, 20], [2, 11, undefined]]);
-      }
     });
   });
 
@@ -1511,31 +933,6 @@ describe("Array", () => {
         expect(result).toEqual(expected);
       });
     });
-  });
-
-  describe("zipWith.if()", () => {
-    const input = [1, 2];
-    const arrays = [[10, 11], [20]];
-    {
-      const result = Kasen(input)
-        .zipWith.if(
-          false,
-          (...values) => values.reduce((acc, v) => acc + v),
-          ...arrays
-        )
-        .toJs();
-      expect(result).toEqual(input);
-    }
-    {
-      const result = Kasen(input)
-        .zipWith.if(
-          true,
-          (...values) => values.reduce((acc, v) => acc + v),
-          ...arrays
-        )
-        .toJs();
-      expect(result).toEqual([31]);
-    }
   });
 
   describe("sort()", () => {
@@ -1582,24 +979,6 @@ describe("Array", () => {
     });
   });
 
-  describe("sort.if()", () => {
-    test("ok", () => {
-      const input = [3, 2, 1];
-      {
-        const result = Kasen(input)
-          .sort.if(false)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .sort.if(true)
-          .toJs();
-        expect(result).toEqual([1, 2, 3]);
-      }
-    });
-  });
-
   describe("unique()", () => {
     test("fun is undefined", () => {
       const ios = [
@@ -1642,24 +1021,6 @@ describe("Array", () => {
     });
   });
 
-  describe("unique.if()", () => {
-    test("ok", () => {
-      const input = [1, 2, 1];
-      {
-        const result = Kasen(input)
-          .unique.if(false)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .unique.if(true)
-          .toJs();
-        expect(result).toEqual([1, 2]);
-      }
-    });
-  });
-
   describe("chunk()", () => {
     test("ok", () => {
       const ios = [
@@ -1697,32 +1058,6 @@ describe("Array", () => {
         const run = () => Kasen.chunk([], 0);
         expect(run).toThrow(TypeError);
       }
-    });
-  });
-
-  describe("chunk.if()", () => {
-    test("ok", () => {
-      const input = [1, 2, 3];
-      {
-        const result = Kasen(input)
-          .chunk.if(false, 2)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .chunk.if(true, 2)
-          .toJs();
-        expect(result).toEqual([[1, 2], [3]]);
-      }
-    });
-
-    test("error", () => {
-      const run = () =>
-        Kasen([])
-          .chunk.if(false, 0)
-          .toJs();
-      expect(run).toThrow(TypeError);
     });
   });
 
@@ -1796,32 +1131,6 @@ describe("Array", () => {
         const run = () => Kasen.sliding([], 1, 0);
         expect(run).toThrow(TypeError);
       }
-    });
-  });
-
-  describe("sliding.if()", () => {
-    test("ok", () => {
-      const input = [1, 2, 3];
-      {
-        const result = Kasen(input)
-          .sliding.if(false, 2)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .sliding.if(true, 2)
-          .toJs();
-        expect(result).toEqual([[1, 2], [2, 3]]);
-      }
-    });
-
-    test("error", () => {
-      const run = () =>
-        Kasen([])
-          .sliding.if(false, 0)
-          .toJs();
-      expect(run).toThrow(TypeError);
     });
   });
 

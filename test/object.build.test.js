@@ -92,24 +92,6 @@ describe("Object", () => {
     });
   });
 
-  describe("map.if()", () => {
-    test("ok", () => {
-      const input = { a: 1, b: 2, c: 3 };
-      {
-        const result = Kasen(input)
-          .map.if(false, v => v + 1)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .map.if(true, v => v + 1)
-          .toJs();
-        expect(result).toEqual({ a: 2, b: 3, c: 4 });
-      }
-    });
-  });
-
   describe("pluck()", () => {
     test("ok", () => {
       const ios = [
@@ -127,24 +109,6 @@ describe("Object", () => {
         const result = Kasen.pluck(input, "a");
         expect(result).toEqual(expected);
       });
-    });
-  });
-
-  describe("pluck.if()", () => {
-    test("ok", () => {
-      const input = { a: { a: 1 }, b: { a: 1 } };
-      {
-        const result = Kasen(input)
-          .pluck.if(false, "a")
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .pluck.if(true, "a")
-          .toJs();
-        expect(result).toEqual({ a: 1, b: 1 });
-      }
     });
   });
 
@@ -189,40 +153,6 @@ describe("Object", () => {
     });
   });
 
-  describe("filter.if()", () => {
-    test("fun is undefined", () => {
-      const input = { a: 1, b: null };
-      {
-        const result = Kasen(input)
-          .filter.if(false)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .filter.if(true)
-          .toJs();
-        expect(result).toEqual({ a: 1 });
-      }
-    });
-
-    test("fun is specified", () => {
-      const input = { a: 1, b: 2, c: 3 };
-      {
-        const result = Kasen(input)
-          .filter.if(false, v => v % 2 === 0)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .filter.if(true, v => v % 2 === 0)
-          .toJs();
-        expect(result).toEqual({ b: 2 });
-      }
-    });
-  });
-
   describe("filterNot()", () => {
     test("ok", () => {
       const ios = [
@@ -245,24 +175,6 @@ describe("Object", () => {
     });
   });
 
-  describe("filterNot.if()", () => {
-    test("ok", () => {
-      const input = { a: 1, b: 2, c: 3 };
-      {
-        const result = Kasen(input)
-          .filterNot.if(false, v => v % 2 === 1)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .filterNot.if(true, v => v % 2 === 1)
-          .toJs();
-        expect(result).toEqual({ b: 2 });
-      }
-    });
-  });
-
   describe("pick()", () => {
     test("ok", () => {
       const ios = [
@@ -282,24 +194,6 @@ describe("Object", () => {
         const result = Kasen.pick(input, ["a", "c"]);
         expect(result).toEqual(expected);
       });
-    });
-  });
-
-  describe("pick.if()", () => {
-    test("ok", () => {
-      const input = { a: 1, b: 2, c: 3 };
-      {
-        const result = Kasen(input)
-          .pick.if(false, ["a", "c"])
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .pick.if(true, ["a", "c"])
-          .toJs();
-        expect(result).toEqual({ a: 1, c: 3 });
-      }
     });
   });
 
@@ -343,40 +237,6 @@ describe("Object", () => {
     });
   });
 
-  describe("flip.if()", () => {
-    test("fun is undefined", () => {
-      const input = { a: 1, b: 2 };
-      {
-        const result = Kasen(input)
-          .flip.if(false)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .flip.if(true)
-          .toJs();
-        expect(result).toEqual({ 1: "a", 2: "b" });
-      }
-    });
-
-    test("fun is specified", () => {
-      const input = { a: { aa: 1 }, b: { aa: 2 } };
-      {
-        const result = Kasen(input)
-          .flip.if(false, v => v.aa)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .flip.if(true, v => v.aa)
-          .toJs();
-        expect(result).toEqual({ 1: "a", 2: "b" });
-      }
-    });
-  });
-
   describe("set()", () => {
     test("ok", () => {
       const ios = [
@@ -394,24 +254,6 @@ describe("Object", () => {
         const result = Kasen.set(input, key, 10);
         expect(result).toEqual(expected);
       });
-    });
-  });
-
-  describe("set.if()", () => {
-    test("ok", () => {
-      const input = { a: 1 };
-      {
-        const result = Kasen(input)
-          .set.if(false, "a", 10)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .set.if(true, "a", 10)
-          .toJs();
-        expect(result).toEqual({ a: 10 });
-      }
     });
   });
 
@@ -435,24 +277,6 @@ describe("Object", () => {
     });
   });
 
-  describe("update.if()", () => {
-    test("ok", () => {
-      const input = { a: 1 };
-      {
-        const result = Kasen(input)
-          .update.if(false, "a", v => v + 10)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .update.if(true, "a", v => v + 10)
-          .toJs();
-        expect(result).toEqual({ a: 11 });
-      }
-    });
-  });
-
   describe("delete()", () => {
     test("ok", () => {
       const ios = [
@@ -470,24 +294,6 @@ describe("Object", () => {
         const result = Kasen.delete(input, key);
         expect(result).toEqual(expected);
       });
-    });
-  });
-
-  describe("delete.if()", () => {
-    test("ok", () => {
-      const input = { a: 1 };
-      {
-        const result = Kasen(input)
-          .delete.if(false, "a")
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .delete.if(true, "a")
-          .toJs();
-        expect(result).toEqual({});
-      }
     });
   });
 
@@ -516,25 +322,6 @@ describe("Object", () => {
     });
   });
 
-  describe("deleteAll.if()", () => {
-    test("ok", () => {
-      const input = { a: 1, b: 2 };
-      const keys = ["a"];
-      {
-        const result = Kasen(input)
-          .deleteAll.if(false, keys)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .deleteAll.if(true, keys)
-          .toJs();
-        expect(result).toEqual({ b: 2 });
-      }
-    });
-  });
-
   describe("clear()", () => {
     test("ok", () => {
       const inputs = [{}, { a: 1 }];
@@ -544,24 +331,6 @@ describe("Object", () => {
           .toJs();
         expect(result).toEqual({});
       });
-    });
-  });
-
-  describe("clear.if()", () => {
-    test("ok()", () => {
-      const input = { a: 1 };
-      {
-        const result = Kasen(input)
-          .clear.if(false)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .clear.if(true)
-          .toJs();
-        expect(result).toEqual({});
-      }
     });
   });
 
@@ -600,37 +369,6 @@ describe("Object", () => {
     });
   });
 
-  describe("merge.if() / assign.if()", () => {
-    test("ok()", () => {
-      const input = { a: 1 };
-      const objects = [{ b: 2 }, { c: 3 }];
-      {
-        const result = Kasen(input)
-          .merge.if(false, ...objects)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .merge.if(true, ...objects)
-          .toJs();
-        expect(result).toEqual({ a: 1, b: 2, c: 3 });
-      }
-      {
-        const result = Kasen(input)
-          .assign.if(false, ...objects)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .assign.if(true, ...objects)
-          .toJs();
-        expect(result).toEqual({ a: 1, b: 2, c: 3 });
-      }
-    });
-  });
-
   describe("mergeWith()", () => {
     test("ok", () => {
       const ios = [
@@ -662,29 +400,6 @@ describe("Object", () => {
     });
   });
 
-  describe("mergeWith.if()", () => {
-    test("ok", () => {
-      const input = { a: 1, b: 1 };
-      {
-        const result = Kasen(input)
-          .mergeWith.if(
-            false,
-            (left, right) => left + right,
-            { a: 1 },
-            { b: 1 }
-          )
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .mergeWith.if(true, (left, right) => left + right, { a: 1 }, { b: 1 })
-          .toJs();
-        expect(result).toEqual({ a: 2, b: 2 });
-      }
-    });
-  });
-
   describe("mergeDeep()", () => {
     test("ok", () => {
       const ios = [
@@ -713,35 +428,6 @@ describe("Object", () => {
         const result = Kasen.mergeDeep(input, ...objects);
         expect(result).toEqual(expected);
       });
-    });
-  });
-
-  describe("mergeDeep.if()", () => {
-    test("ok", () => {
-      const input = { a: { aa: 1, bb: 2 }, b: { aa: 1, bb: 2 } };
-      {
-        const result = Kasen(input)
-          .mergeDeep.if(
-            false,
-            { a: { aa: 10, cc: 30 } },
-            { b: { aa: 11, dd: 40 } }
-          )
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .mergeDeep.if(
-            true,
-            { a: { aa: 10, cc: 30 } },
-            { b: { aa: 11, dd: 40 } }
-          )
-          .toJs();
-        expect(result).toEqual({
-          a: { aa: 10, bb: 2, cc: 30 },
-          b: { aa: 11, bb: 2, dd: 40 }
-        });
-      }
     });
   });
 
@@ -777,37 +463,6 @@ describe("Object", () => {
         );
         expect(result).toEqual(expected);
       });
-    });
-  });
-
-  describe("mergeDeepWith.if()", () => {
-    test("ok", () => {
-      const input = { a: { aa: 1, bb: 2 }, b: { aa: 1, bb: 2 } };
-      {
-        const result = Kasen(input)
-          .mergeDeepWith.if(
-            false,
-            (v1, v2) => v1 + v2,
-            { a: { aa: 10, cc: 30 } },
-            { b: { aa: 11, dd: 40 } }
-          )
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .mergeDeepWith.if(
-            true,
-            (v1, v2) => v1 + v2,
-            { a: { aa: 10, cc: 30 } },
-            { b: { aa: 11, dd: 40 } }
-          )
-          .toJs();
-        expect(result).toEqual({
-          a: { aa: 11, bb: 2, cc: 30 },
-          b: { aa: 12, bb: 2, dd: 40 }
-        });
-      }
     });
   });
 
@@ -850,24 +505,6 @@ describe("Object", () => {
     });
   });
 
-  describe("setIn.if()", () => {
-    test("ok", () => {
-      const input = { a: [{}] };
-      {
-        const result = Kasen(input)
-          .setIn.if(false, ["a", 0, "a"], 10)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .setIn.if(true, ["a", 0, "a"], 10)
-          .toJs();
-        expect(result).toEqual({ a: [{ a: 10 }] });
-      }
-    });
-  });
-
   describe("updateIn()", () => {
     test("initializer is undefined", () => {
       const ios = [
@@ -907,24 +544,6 @@ describe("Object", () => {
     });
   });
 
-  describe("updateIn.if()", () => {
-    test("ok", () => {
-      const input = { a: [{ a: 1 }] };
-      {
-        const result = Kasen(input)
-          .updateIn.if(false, ["a", 0, "a"], v => v + 10)
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .updateIn.if(true, ["a", 0, "a"], v => v + 10)
-          .toJs();
-        expect(result).toEqual({ a: [{ a: 11 }] });
-      }
-    });
-  });
-
   describe("deleteIn()", () => {
     test("ok", () => {
       const ios = [
@@ -945,24 +564,6 @@ describe("Object", () => {
         const result = Kasen.deleteIn(input, keys);
         expect(result).toEqual(expected);
       });
-    });
-  });
-
-  describe("deleteIn.if()", () => {
-    test("ok", () => {
-      const input = { a: [{ a: 1 }] };
-      {
-        const result = Kasen(input)
-          .deleteIn.if(false, ["a", 0, "a"])
-          .toJs();
-        expect(result).toEqual(input);
-      }
-      {
-        const result = Kasen(input)
-          .deleteIn.if(true, ["a", 0, "a"])
-          .toJs();
-        expect(result).toEqual({ a: [{}] });
-      }
     });
   });
 

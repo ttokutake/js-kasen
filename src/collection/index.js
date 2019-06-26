@@ -55,60 +55,6 @@ function deleteInCore(coll, keys) {
 export default class Collection {
   constructor(coll, iter) {
     this.__iter = iter || this.constructor.__iterator(coll);
-
-    this.map.if = (bool, fun) => {
-      if (!isFunction(fun)) {
-        throw new TypeError("2nd argument must be Function");
-      }
-      return bool ? this.map(fun) : this;
-    };
-
-    this.pluck.if = (bool, key) => {
-      if (!(isNumber(key) || isString(key))) {
-        throw new TypeError("2nd argument must be Number or String");
-      }
-      return bool ? this.pluck(key) : this;
-    };
-
-    this.filter.if = (bool, fun) => {
-      if (!(isFunction(fun) || fun === undefined)) {
-        throw new TypeError("2nd argument must be Function or Undefined");
-      }
-      return bool ? this.filter(fun) : this;
-    };
-
-    this.filterNot.if = (bool, fun) => {
-      if (!isFunction(fun)) {
-        throw new TypeError("2nd argument must be Function");
-      }
-      return bool ? this.filterNot(fun) : this;
-    };
-
-    this.clear.if = bool => (bool ? this.clear() : this);
-
-    this.setIn.if = (bool, keys, value) => {
-      if (!isArray(keys)) {
-        throw new TypeError("2nd argument must be Array");
-      }
-      return bool ? this.setIn(keys, value) : this;
-    };
-
-    this.updateIn.if = (bool, keys, fun) => {
-      if (!isArray(keys)) {
-        throw new TypeError("2nd argument must be Array");
-      }
-      if (!isFunction(fun)) {
-        throw new TypeError("3rd argument must be Function");
-      }
-      return bool ? this.updateIn(keys, fun) : this;
-    };
-
-    this.deleteIn.if = (bool, keys) => {
-      if (!isArray(keys)) {
-        throw new TypeError("2nd argument must be Array");
-      }
-      return bool ? this.deleteIn(keys) : this;
-    };
   }
 
   // eslint-disable-next-line no-unused-vars
