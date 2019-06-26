@@ -6,7 +6,7 @@
   "author": "ttokutake <tadatoshi.tokutake@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "upgrade": "ncu -a",
+    "upgrade": "ncu -u",
     "audit": "# TODO: npm audit fix --force",
     "build": "npm run clean && webpack --bail",
     "clean": "rm -rf ./dist",
