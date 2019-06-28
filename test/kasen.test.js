@@ -12,4 +12,11 @@ describe("Kasen", () => {
     expect(() => Kasen()).toThrow(TypeError);
     expect(() => Kasen(null)).toThrow(TypeError);
   });
+
+  describe("copy()", () => {
+    test("error", () => {
+      expect(() => Kasen.copy()).toThrow(TypeError);
+      expect(() => Kasen.copy(null)).toThrow(TypeError);
+    });
+  });
 });
