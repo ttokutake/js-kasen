@@ -255,14 +255,7 @@ Kasen.merge = (...objects) => {
   return KasenObject.merge(objects);
 };
 
-Kasen.assign = (...objects) => {
-  for (let i = 0, { length } = objects; i < length; i += 1) {
-    if (!isObject(objects[i])) {
-      throw new TypeError("Each argument must be Object");
-    }
-  }
-  return KasenObject.merge(objects);
-};
+Kasen.assign = Kasen.merge;
 
 Kasen.mergeWith = (object, fun, ...objects) => {
   if (!isObject(object)) {
