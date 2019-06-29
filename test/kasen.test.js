@@ -19,4 +19,46 @@ describe("Kasen", () => {
       expect(() => Kasen.copy(null)).toThrow(TypeError);
     });
   });
+
+  describe("isEmpty()", () => {
+    test("error", () => {
+      expect(() => Kasen.isEmpty()).toThrow(TypeError);
+      expect(() => Kasen.isEmpty(null)).toThrow(TypeError);
+    });
+  });
+
+  describe("toArray()", () => {
+    test("error", () => {
+      expect(() => Kasen.toArray()).toThrow(TypeError);
+      expect(() => Kasen.toArray(null)).toThrow(TypeError);
+    });
+  });
+
+  describe("toObject()", () => {
+    test("error", () => {
+      expect(() => Kasen.toObject()).toThrow(TypeError);
+      expect(() => Kasen.toObject(null)).toThrow(TypeError);
+    });
+  });
+
+  describe("keys()", () => {
+    test("error", () => {
+      expect(() => Kasen.keys()).toThrow(TypeError);
+      expect(() => Kasen.keys(null)).toThrow(TypeError);
+    });
+  });
+
+  describe("values()", () => {
+    test("error", () => {
+      expect(() => Kasen.values()).toThrow(TypeError);
+      expect(() => Kasen.values(null)).toThrow(TypeError);
+    });
+  });
+
+  describe("entries()", () => {
+    test("error", () => {
+      expect(() => Kasen.entries()).toThrow(TypeError);
+      expect(() => Kasen.entries(null)).toThrow(TypeError);
+    });
+  });
 });
