@@ -840,14 +840,8 @@ describe("Object", () => {
     });
 
     test("error", () => {
-      {
-        const run = () => Kasen({}).reduce((acc, v) => acc + v);
-        expect(run).toThrow(TypeError);
-      }
-      {
-        const run = () => Kasen.reduce({}, (acc, v) => acc + v);
-        expect(run).toThrow(TypeError);
-      }
+      expect(() => Kasen({}).reduce((acc, v) => acc + v)).toThrow(TypeError);
+      expect(() => Kasen.reduce({}, (acc, v) => acc + v)).toThrow(TypeError);
     });
   });
 
@@ -893,14 +887,12 @@ describe("Object", () => {
     });
 
     test("error", () => {
-      {
-        const run = () => Kasen({}).reduceWhile((acc, v) => ["halt", acc + v]);
-        expect(run).toThrow(TypeError);
-      }
-      {
-        const run = () => Kasen.reduceWhile({}, (acc, v) => ["halt", acc + v]);
-        expect(run).toThrow(TypeError);
-      }
+      expect(() =>
+        Kasen({}).reduceWhile((acc, v) => ["halt", acc + v])
+      ).toThrow(TypeError);
+      expect(() =>
+        Kasen.reduceWhile({}, (acc, v) => ["halt", acc + v])
+      ).toThrow(TypeError);
     });
   });
 
@@ -938,14 +930,8 @@ describe("Object", () => {
     });
 
     test("error", () => {
-      {
-        const run = () => Kasen({}).scan((acc, v) => acc + v);
-        expect(run).toThrow(TypeError);
-      }
-      {
-        const run = () => Kasen.scan({}, (acc, v) => acc + v);
-        expect(run).toThrow(TypeError);
-      }
+      expect(() => Kasen({}).scan((acc, v) => acc + v)).toThrow(TypeError);
+      expect(() => Kasen.scan({}, (acc, v) => acc + v)).toThrow(TypeError);
     });
   });
 
