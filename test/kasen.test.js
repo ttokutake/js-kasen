@@ -369,10 +369,6 @@ describe("Kasen", () => {
     test("error", () => {});
   });
 
-  describe("hashCode()", () => {
-    test("error", () => {});
-  });
-
   describe("keys()", () => {
     test("error", () => {
       expect(() => Kasen.keys()).toThrow(TypeError);

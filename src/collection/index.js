@@ -1,5 +1,3 @@
-import hash from "hash-sum";
-
 import {
   TapIterator,
   MapIterator,
@@ -839,11 +837,6 @@ export default class Collection {
   }
 
   // TODO?: equalsDeep()
-
-  hashCode() {
-    const coll = this.__consume(null);
-    return hash(coll);
-  }
 
   keys() {
     const finalize = iter => {

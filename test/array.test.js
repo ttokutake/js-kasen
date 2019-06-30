@@ -2199,13 +2199,6 @@ describe("Array", () => {
     });
   });
 
-  describe("hashCode()", () => {
-    test("ok", () => {
-      Kasen([1, 2, 3]).hashCode();
-      Kasen.hashCode([1, 2, 3]);
-    });
-  });
-
   describe("keys()", () => {
     test("ok", () => {
       const ios = [[[], []], [[1], [0]], [[1, 2], [0, 1]]];

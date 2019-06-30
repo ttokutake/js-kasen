@@ -1,5 +1,3 @@
-const hash = require("hash-sum");
-
 const { default: KasenArray } = require("./collection/array");
 const { default: KasenObject } = require("./collection/object");
 const { isNumber, isString, isObject, isArray, isFunction } = require("./type");
@@ -895,8 +893,6 @@ Kasen.equals = (left, right) => {
   }
   return Coll.equals(left, right);
 };
-
-Kasen.hashCode = hash;
 
 Kasen.keys = coll => {
   const Coll = choose(coll);

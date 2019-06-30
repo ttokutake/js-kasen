@@ -1276,13 +1276,6 @@ describe("Object", () => {
     });
   });
 
-  describe("hashCode()", () => {
-    test("ok", () => {
-      Kasen({ a: 1, b: 2, c: 3 }).hashCode();
-      Kasen.hashCode({ a: 1, b: 2, c: 3 });
-    });
-  });
-
   describe("keys()", () => {
     test("ok", () => {
       const ios = [[{}, []], [{ a: 1 }, ["a"]], [{ a: 1, b: 2 }, ["a", "b"]]];
