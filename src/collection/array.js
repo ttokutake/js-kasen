@@ -1,4 +1,17 @@
 import Collection from ".";
+import {
+  EACH_ARGUMENT_EXCEPT_FIRST_ONE_MUST_BE_ARRAY,
+  EACH_ARGUMENT_MUST_BE_ARRAY,
+  FIRST_ARGUMENT_MUST_BE_NUMBER,
+  FIRST_ARGUMENT_MUST_BE_NUMBER_AND_OVER_1,
+  FIRST_ARGUMENT_MUST_BE_FUNCTION,
+  FIRST_ARGUMENT_MUST_BE_FUNCTION_OR_UNDEFINED,
+  REDUCE_OF_EMPTY_ARRAY_WITH_NO_INITIAL_VALUE,
+  SCAN_OF_EMPTY_ARRAY_WITH_NO_INITIAL_VALUE,
+  SECOND_ARGUMENT_MUST_BE_FUNCTION,
+  SECOND_ARGUMENT_MUST_BE_NUMBER,
+  SECOND_ARGUMENT_MUST_BE_NUMBER_OR_UNDEFINED
+} from "../error-message";
 import { OriginIterator, Collector } from "../iterator";
 import { FilterIterator, ReverseIterator } from "../iterator/array";
 import { isNumber, isArray, isFunction } from "../type";
@@ -62,7 +75,7 @@ export default class KasenArray extends Collection {
 
   filter(fun) {
     if (!(isFunction(fun) || fun === undefined)) {
-      throw new TypeError("1st argument must be Function or Undefined");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION_OR_UNDEFINED);
     }
     const fn = fun || (v => v);
     this.__pile(FilterIterator, fn);
@@ -84,7 +97,7 @@ export default class KasenArray extends Collection {
 
   take(num) {
     if (!isNumber(num)) {
-      throw new TypeError("1st argument must be Number");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_NUMBER);
     }
     const collect = iter => {
       const array = [];
@@ -106,7 +119,7 @@ export default class KasenArray extends Collection {
 
   takeLast(num) {
     if (!isNumber(num)) {
-      throw new TypeError("1st argument must be Number");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_NUMBER);
     }
     const collect = iter => {
       const array = [];
@@ -129,7 +142,7 @@ export default class KasenArray extends Collection {
 
   takeWhile(fun) {
     if (!isFunction(fun)) {
-      throw new TypeError("1st argument must be Function");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION);
     }
     const collect = iter => {
       const array = [];
@@ -158,7 +171,7 @@ export default class KasenArray extends Collection {
 
   takeUntil(fun) {
     if (!isFunction(fun)) {
-      throw new TypeError("1st argument must be Function");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION);
     }
     return this.takeWhile((v, i) => !fun(v, i));
   }
@@ -169,7 +182,7 @@ export default class KasenArray extends Collection {
 
   skip(num) {
     if (!isNumber(num)) {
-      throw new TypeError("1st argument must be Number");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_NUMBER);
     }
     const collect = iter => {
       const array = [];
@@ -193,7 +206,7 @@ export default class KasenArray extends Collection {
 
   skipLast(num) {
     if (!isNumber(num)) {
-      throw new TypeError("1st argument must be Number");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_NUMBER);
     }
     const collect = iter => {
       const array = [];
@@ -218,7 +231,7 @@ export default class KasenArray extends Collection {
 
   skipWhile(fun) {
     if (!isFunction(fun)) {
-      throw new TypeError("1st argument must be Function");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION);
     }
     const collect = iter => {
       const array = [];
@@ -255,7 +268,7 @@ export default class KasenArray extends Collection {
 
   skipUntil(fun) {
     if (!isFunction(fun)) {
-      throw new TypeError("1st argument must be Function");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION);
     }
     return this.skipWhile((v, i) => !fun(v, i));
   }
@@ -266,17 +279,17 @@ export default class KasenArray extends Collection {
 
   set(index, value) {
     if (!isNumber(index)) {
-      throw new TypeError("1st argument must be Number");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_NUMBER);
     }
     return super.set(index, value);
   }
 
   update(index, fun) {
     if (!isNumber(index)) {
-      throw new TypeError("1st argument must be Number");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_NUMBER);
     }
     if (!isFunction(fun)) {
-      throw new TypeError("2nd argument must be Function");
+      throw new TypeError(SECOND_ARGUMENT_MUST_BE_FUNCTION);
     }
     const collect = iter => {
       const array = ArrayIterator.collect(iter);
@@ -303,7 +316,7 @@ export default class KasenArray extends Collection {
 
   delete(index) {
     if (!isNumber(index)) {
-      throw new TypeError("1st argument must be Number");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_NUMBER);
     }
     const collect = iter => {
       const array = ArrayIterator.collect(iter);
@@ -344,7 +357,7 @@ export default class KasenArray extends Collection {
 
   insert(index, value) {
     if (!isNumber(index)) {
-      throw new TypeError("1st argument must be Number");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_NUMBER);
     }
     const collect = iter => {
       const array = ArrayIterator.collect(iter);
@@ -425,10 +438,10 @@ export default class KasenArray extends Collection {
 
   splice(index, num, ...values) {
     if (!isNumber(index)) {
-      throw new TypeError("1st argument must be Number");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_NUMBER);
     }
     if (!isNumber(num)) {
-      throw new TypeError("2nd argument must be Number");
+      throw new TypeError(SECOND_ARGUMENT_MUST_BE_NUMBER);
     }
     const collect = iter => {
       const array = iter.Origin.collect(iter);
@@ -476,7 +489,7 @@ export default class KasenArray extends Collection {
 
   flatMap(fun) {
     if (!isFunction(fun)) {
-      throw new TypeError("1st argument must be Function");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION);
     }
     const collect = iter => {
       let array = [];
@@ -516,7 +529,7 @@ export default class KasenArray extends Collection {
     const { length } = arrays;
     for (let i = 0; i < length; i += 1) {
       if (!isArray(arrays[i])) {
-        throw new TypeError("Each argument must be Array");
+        throw new TypeError(EACH_ARGUMENT_MUST_BE_ARRAY);
       }
     }
     const collect = iter => {
@@ -566,7 +579,7 @@ export default class KasenArray extends Collection {
     const { length } = arrays;
     for (let i = 0; i < length; i += 1) {
       if (!isArray(arrays[i])) {
-        throw new TypeError("Each argument must be Array");
+        throw new TypeError(EACH_ARGUMENT_MUST_BE_ARRAY);
       }
     }
     const collect = iter => {
@@ -611,12 +624,12 @@ export default class KasenArray extends Collection {
 
   zipWith(fun, ...arrays) {
     if (!isFunction(fun)) {
-      throw new TypeError("1st argument must be Function");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION);
     }
     const { length } = arrays;
     for (let i = 0; i < length; i += 1) {
       if (!isArray(arrays[i])) {
-        throw new TypeError("Each argument except 1st one must be Array");
+        throw new TypeError(EACH_ARGUMENT_EXCEPT_FIRST_ONE_MUST_BE_ARRAY);
       }
     }
     const collect = iter => {
@@ -665,7 +678,7 @@ export default class KasenArray extends Collection {
 
   sort(fun) {
     if (!(isFunction(fun) || fun === undefined)) {
-      throw new TypeError("1st argument must be Function or Undefined");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION_OR_UNDEFINED);
     }
     const fn = fun || compare;
     const collect = iter => {
@@ -687,7 +700,7 @@ export default class KasenArray extends Collection {
 
   unique(fun) {
     if (!(isFunction(fun) || fun === undefined)) {
-      throw new TypeError("1st argument must be Function or Undefined");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION_OR_UNDEFINED);
     }
     const fn = fun || (v => v);
     const collect = iter => {
@@ -729,17 +742,17 @@ export default class KasenArray extends Collection {
 
   chunk(num) {
     if (!(isNumber(num) && num >= 1)) {
-      throw new TypeError("1st argument must be Number >= 1");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_NUMBER_AND_OVER_1);
     }
     return this.sliding(num, num);
   }
 
   sliding(num, step) {
     if (!(isNumber(num) && num >= 1)) {
-      throw new TypeError("1st argument must be Number >= 1");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_NUMBER_AND_OVER_1);
     }
     if (!((isNumber(step) && step >= 1) || step === undefined)) {
-      throw new TypeError("2nd argument must be Number or Undefined");
+      throw new TypeError(SECOND_ARGUMENT_MUST_BE_NUMBER_OR_UNDEFINED);
     }
     const stp = step || 1;
     const collect = iter => {
@@ -820,7 +833,7 @@ export default class KasenArray extends Collection {
 
   get(index, protection) {
     if (!isNumber(index)) {
-      throw new TypeError("1st argument must be Number");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_NUMBER);
     }
     const array = this.__consume(null);
     return this.constructor.get(array, index, protection);
@@ -837,7 +850,7 @@ export default class KasenArray extends Collection {
 
   has(index) {
     if (!isNumber(index)) {
-      throw new TypeError("1st argument must be Number");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_NUMBER);
     }
     return super.has(index);
   }
@@ -887,7 +900,7 @@ export default class KasenArray extends Collection {
 
   splitAt(index) {
     if (!isNumber(index)) {
-      throw new TypeError("1st argument must be Number");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_NUMBER);
     }
     const finalize = iter => {
       const array = iter.Origin.collect(iter);
@@ -910,7 +923,7 @@ export default class KasenArray extends Collection {
 
   reduceRight(fun, init) {
     if (!isFunction(fun)) {
-      throw new TypeError("1st argument must be Function");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION);
     }
     const finalize = iter => {
       let acc = init;
@@ -930,7 +943,7 @@ export default class KasenArray extends Collection {
         }
       }
       if (isFirst && init === undefined) {
-        throw new TypeError("Reduce of empty array with no initial value");
+        throw new TypeError(REDUCE_OF_EMPTY_ARRAY_WITH_NO_INITIAL_VALUE);
       }
       return acc;
     };
@@ -943,7 +956,7 @@ export default class KasenArray extends Collection {
     let acc = init;
     if (init === undefined) {
       if (!length) {
-        throw new TypeError("Reduce of empty array with no initial value");
+        throw new TypeError(REDUCE_OF_EMPTY_ARRAY_WITH_NO_INITIAL_VALUE);
       }
       acc = array[startIndex];
       startIndex -= 1;
@@ -960,7 +973,7 @@ export default class KasenArray extends Collection {
     let acc = init;
     if (init === undefined) {
       if (!length) {
-        throw new TypeError("Reduce of empty array with no initial value");
+        throw new TypeError(REDUCE_OF_EMPTY_ARRAY_WITH_NO_INITIAL_VALUE);
       }
       acc = array[startIndex];
       startIndex += 1;
@@ -981,7 +994,7 @@ export default class KasenArray extends Collection {
     let acc = init;
     if (init === undefined) {
       if (!length) {
-        throw new TypeError("Scan of empty array with no initial value");
+        throw new TypeError(SCAN_OF_EMPTY_ARRAY_WITH_NO_INITIAL_VALUE);
       }
       acc = array[startIndex];
       startIndex += 1;
@@ -996,7 +1009,7 @@ export default class KasenArray extends Collection {
 
   scanRight(fun, init) {
     if (!isFunction(fun)) {
-      throw new TypeError("1st argument must be Function");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION);
     }
     const finalize = iter => {
       const result = init === undefined ? [] : [init];
@@ -1018,7 +1031,7 @@ export default class KasenArray extends Collection {
         result.push(acc);
       }
       if (isFirst && init === undefined) {
-        throw new TypeError("Scan of empty collection with no initial value");
+        throw new TypeError(SCAN_OF_EMPTY_ARRAY_WITH_NO_INITIAL_VALUE);
       }
       return result;
     };
@@ -1031,7 +1044,7 @@ export default class KasenArray extends Collection {
     let acc = init;
     if (init === undefined) {
       if (!length) {
-        throw new TypeError("Scan of empty array with no initial value");
+        throw new TypeError(SCAN_OF_EMPTY_ARRAY_WITH_NO_INITIAL_VALUE);
       }
       acc = array[startIndex];
       startIndex -= 1;
@@ -1070,7 +1083,7 @@ export default class KasenArray extends Collection {
 
   findLast(fun) {
     if (!isFunction(fun)) {
-      throw new TypeError("1st argument must be Function");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION);
     }
     const result = this.findLastEntry(fun);
     return result ? result[1] : result;
@@ -1093,7 +1106,7 @@ export default class KasenArray extends Collection {
 
   findLastEntry(fun) {
     if (!isFunction(fun)) {
-      throw new TypeError("1st argument must be Function");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION);
     }
     const finalize = iter => {
       let key;
@@ -1120,7 +1133,7 @@ export default class KasenArray extends Collection {
 
   findLastKey(fun) {
     if (!isFunction(fun)) {
-      throw new TypeError("1st argument must be Function");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION);
     }
     const result = this.findLastEntry(fun);
     return result ? result[0] : result;
@@ -1133,7 +1146,7 @@ export default class KasenArray extends Collection {
 
   findIndex(fun) {
     if (!isFunction(fun)) {
-      throw new TypeError("1st argument must be Function");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION);
     }
     const result = this.findKey(fun);
     return result === undefined ? -1 : result;
@@ -1146,7 +1159,7 @@ export default class KasenArray extends Collection {
 
   findLastIndex(fun) {
     if (!isFunction(fun)) {
-      throw new TypeError("1st argument must be Function");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION);
     }
     const result = this.findLastKey(fun);
     return result === undefined ? -1 : result;
