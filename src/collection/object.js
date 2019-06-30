@@ -1,4 +1,14 @@
 import Collection from ".";
+import {
+  EACH_ARGUMENT_MUST_BE_OBJECT,
+  EACH_ARGUMENT_EXCEPT_FIRST_ONE_MUST_BE_OBJECT,
+  FIRST_ARGUMENT_MUST_BE_ARRAY,
+  FIRST_ARGUMENT_MUST_BE_FUNCTION,
+  FIRST_ARGUMENT_MUST_BE_FUNCTION_OR_UNDEFINED,
+  FIRST_ARGUMENT_MUST_BE_NUMBER_OR_STRING,
+  REDUCE_OF_EMPTY_OBJECT_WITH_NO_INITIAL_VALUE,
+  SCAN_OF_EMPTY_OBJECT_WITH_NO_INITIAL_VALUE
+} from "../error-message";
 import { OriginIterator, Collector } from "../iterator";
 import { FilterIterator, FlipIterator } from "../iterator/object";
 import { isNumber, isString, isArray, isFunction, isObject } from "../type";
@@ -74,7 +84,7 @@ export default class KasenObject extends Collection {
 
   filter(fun) {
     if (!(isFunction(fun) || fun === undefined)) {
-      throw new TypeError("1st argument must be Function or Undefined");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION_OR_UNDEFINED);
     }
     const fn = fun || (v => v);
     this.__pile(FilterIterator, fn);
@@ -93,7 +103,7 @@ export default class KasenObject extends Collection {
 
   pick(keys) {
     if (!isArray(keys)) {
-      throw new TypeError("1st argument must be Array");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_ARRAY);
     }
     const fun = (_value, key) => keys.some(k => k === key);
     return this.filter(fun);
@@ -106,7 +116,7 @@ export default class KasenObject extends Collection {
 
   flip(fun) {
     if (!(isFunction(fun) || fun === undefined)) {
-      throw new TypeError("1st argument must be Function");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION);
     }
     const fn = fun || (v => v);
     this.__pile(FlipIterator, fn);
@@ -123,17 +133,17 @@ export default class KasenObject extends Collection {
 
   set(key, value) {
     if (!(isNumber(key) || isString(key))) {
-      throw new TypeError("1st argument must be Number or String");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_NUMBER_OR_STRING);
     }
     return super.set(key, value);
   }
 
   update(key, fun) {
     if (!(isNumber(key) || isString(key))) {
-      throw new TypeError("1st argument must be Number or String");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_NUMBER_OR_STRING);
     }
     if (!isFunction(fun)) {
-      throw new TypeError("2nd argument must be Function");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION);
     }
     const collect = iter => {
       const object = ObjectIterator.collect(iter);
@@ -152,7 +162,7 @@ export default class KasenObject extends Collection {
 
   delete(key) {
     if (!(isNumber(key) || isString(key))) {
-      throw new TypeError("1st argument must be Number or String");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_NUMBER_OR_STRING);
     }
     const collect = iter => {
       const object = ObjectIterator.collect(iter);
@@ -171,7 +181,7 @@ export default class KasenObject extends Collection {
 
   deleteAll(keys) {
     if (!isArray(keys)) {
-      throw new TypeError("1st argument must be Array");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_ARRAY);
     }
     const collect = iter => {
       const object = ObjectIterator.collect(iter);
@@ -195,7 +205,7 @@ export default class KasenObject extends Collection {
   merge(...objects) {
     for (let i = 0, { length } = objects; i < length; i += 1) {
       if (!isObject(objects[i])) {
-        throw new TypeError("Each argument must be Object");
+        throw new TypeError(EACH_ARGUMENT_MUST_BE_OBJECT);
       }
     }
     const collect = iter => {
@@ -224,7 +234,7 @@ export default class KasenObject extends Collection {
   assign(...objects) {
     for (let i = 0, { length } = objects; i < length; i += 1) {
       if (!isObject(objects[i])) {
-        throw new TypeError("Each argument must be Object");
+        throw new TypeError(EACH_ARGUMENT_MUST_BE_OBJECT);
       }
     }
     return this.merge(...objects);
@@ -232,11 +242,11 @@ export default class KasenObject extends Collection {
 
   mergeWith(fun, ...objects) {
     if (!isFunction(fun)) {
-      throw new TypeError("1st argument must be Function");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION);
     }
     for (let i = 0, { length } = objects; i < length; i += 1) {
       if (!isObject(objects[i])) {
-        throw new TypeError("Each argument except 1st one must be Object");
+        throw new TypeError(EACH_ARGUMENT_EXCEPT_FIRST_ONE_MUST_BE_OBJECT);
       }
     }
     const collect = iter => {
@@ -269,7 +279,7 @@ export default class KasenObject extends Collection {
   mergeDeep(...objects) {
     for (let i = 0, { length } = objects; i < length; i += 1) {
       if (!isObject(objects[i])) {
-        throw new TypeError("Each argument must be Object");
+        throw new TypeError(EACH_ARGUMENT_MUST_BE_OBJECT);
       }
     }
     return this.mergeDeepWith((left, right) => right, ...objects);
@@ -285,11 +295,11 @@ export default class KasenObject extends Collection {
 
   mergeDeepWith(fun, ...objects) {
     if (!isFunction(fun)) {
-      throw new TypeError("1st argument must be Function");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION);
     }
     for (let i = 0, { length } = objects; i < length; i += 1) {
       if (!isObject(objects[i])) {
-        throw new TypeError("Each argument except 1st one must be Object");
+        throw new TypeError(EACH_ARGUMENT_EXCEPT_FIRST_ONE_MUST_BE_OBJECT);
       }
     }
     const collect = iter => {
@@ -323,7 +333,7 @@ export default class KasenObject extends Collection {
 
   get(key, protection) {
     if (!(isNumber(key) || isString(key))) {
-      throw new TypeError("1st argument must be Number or String");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_NUMBER_OR_STRING);
     }
     const finalize = iter => {
       let k;
@@ -351,7 +361,7 @@ export default class KasenObject extends Collection {
 
   has(key) {
     if (!(isNumber(key) || isString(key))) {
-      throw new TypeError("1st argument must be Number or String");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_NUMBER_OR_STRING);
     }
     return super.has(key);
   }
@@ -384,7 +394,7 @@ export default class KasenObject extends Collection {
     let acc = init;
     if (init === undefined) {
       if (!keys.length) {
-        throw new TypeError("Reduce of empty object with no initial value");
+        throw new TypeError(REDUCE_OF_EMPTY_OBJECT_WITH_NO_INITIAL_VALUE);
       }
       acc = object[keys.pop()];
     }
@@ -399,7 +409,7 @@ export default class KasenObject extends Collection {
     let acc = init;
     if (init === undefined) {
       if (!keys.length) {
-        throw new TypeError("Reduce of empty object with no initial value");
+        throw new TypeError(REDUCE_OF_EMPTY_OBJECT_WITH_NO_INITIAL_VALUE);
       }
       acc = object[keys.pop()];
     }
@@ -419,7 +429,7 @@ export default class KasenObject extends Collection {
     let acc = init;
     if (init === undefined) {
       if (!keys.length) {
-        throw new TypeError("Scan of empty object with no initial value");
+        throw new TypeError(SCAN_OF_EMPTY_OBJECT_WITH_NO_INITIAL_VALUE);
       }
       acc = object[keys.pop()];
     }

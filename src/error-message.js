@@ -36,6 +36,8 @@ export const THIRD_ARGUMENT_MUST_BE_NUMBER_OR_UNDEFINED =
 
 export const EACH_ARGUMENT_EXCEPT_FIRST_ONE_MUST_BE_ARRAY =
   "Each argument except 1st one must be Array";
+export const EACH_ARGUMENT_EXCEPT_FIRST_ONE_MUST_BE_OBJECT =
+  "Each argument except 1st one must be Object";
 export const EACH_ARGUMENT_EXCEPT_SECOND_ONE_MUST_BE_ARRAY =
   "Each argument except 2nd one must be Array";
 export const EACH_ARGUMENT_EXCEPT_SECOND_ONE_MUST_BE_OBJECT =
@@ -47,9 +49,13 @@ export const REDUCE_OF_EMPTY_ARRAY_WITH_NO_INITIAL_VALUE =
   "Reduce of empty array with no initial value";
 export const REDUCE_OF_EMPTY_COLLECTION_WITH_NO_INITIAL_VALUE =
   "Reduce of empty collection with no initial value";
+export const REDUCE_OF_EMPTY_OBJECT_WITH_NO_INITIAL_VALUE =
+  "Reduce of empty object with no initial value";
 export const SCAN_OF_EMPTY_ARRAY_WITH_NO_INITIAL_VALUE =
   "Scan of empty array with no initial value";
 export const SCAN_OF_EMPTY_COLLECTION_WITH_NO_INITIAL_VALUE =
   "Scan of empty collection with no initial value";
+export const SCAN_OF_EMPTY_OBJECT_WITH_NO_INITIAL_VALUE =
+  "Scan of empty object with no initial value";
 
 export const CANNOT_HAPPEN = "cannot happen";
