@@ -1,4 +1,15 @@
 import {
+  CANNOT_HAPPEN,
+  FIRST_ARGUMENT_MUST_BE_NUMBER_OR_STRING,
+  FIRST_ARGUMENT_MUST_BE_ARRAY,
+  SECOND_ARGUMENT_MUST_BE_FUNCTION,
+  FIRST_ARGUMENT_MUST_BE_FUNCTION_OR_UNDEFINED,
+  REDUCE_OF_EMPTY_COLLECTION_WITH_NO_INITIAL_VALUE,
+  SCAN_OF_EMPTY_COLLECTION_WITH_NO_INITIAL_VALUE,
+  FIRST_ARGUMENT_MUST_BE_STRING_OR_UNDEFINED,
+  FIRST_ARGUMENT_MUST_BE_FUNCTION
+} from "../error-message";
+import {
   TapIterator,
   MapIterator,
   OriginIterator,
@@ -83,7 +94,7 @@ export default class Collection {
       } else if (iter instanceof OriginIterator) {
         arg = copy(iter.coll);
       } else {
-        throw new Error("cannot happen");
+        throw new Error(CANNOT_HAPPEN);
       }
       iters.unshift([iter.constructor, arg]);
     }
@@ -108,7 +119,7 @@ export default class Collection {
 
   tap(fun) {
     if (!isFunction(fun)) {
-      throw new TypeError("1st argument must be Function");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION);
     }
     this.__pile(TapIterator, fun);
     return this;
@@ -116,7 +127,7 @@ export default class Collection {
 
   map(fun) {
     if (!isFunction(fun)) {
-      throw new TypeError("1st argument must be Function");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION);
     }
     this.__pile(MapIterator, fun);
     return this;
@@ -129,7 +140,7 @@ export default class Collection {
 
   pluck(key) {
     if (!(isNumber(key) || isString(key))) {
-      throw new TypeError("1st argument must be Number or String");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_NUMBER_OR_STRING);
     }
     return this.map(v => v[key]);
   }
@@ -150,7 +161,7 @@ export default class Collection {
 
   filterNot(fun) {
     if (!isFunction(fun)) {
-      throw new TypeError("1st argument must be Function");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION);
     }
     return this.filter((v, k) => !fun(v, k));
   }
@@ -196,7 +207,7 @@ export default class Collection {
 
   setIn(keys, value) {
     if (!isArray(keys)) {
-      throw new TypeError("1st argument must be Array");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_ARRAY);
     }
     return this.updateIn(keys, () => value);
   }
@@ -207,10 +218,10 @@ export default class Collection {
 
   updateIn(keys, fun) {
     if (!isArray(keys)) {
-      throw new TypeError("1st argument must be Array");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_ARRAY);
     }
     if (!isFunction(fun)) {
-      throw new TypeError("2nd argument must be Function");
+      throw new TypeError(SECOND_ARGUMENT_MUST_BE_FUNCTION);
     }
     const collect = iter => {
       const coll = iter.Origin.collect(iter);
@@ -226,7 +237,7 @@ export default class Collection {
 
   deleteIn(keys) {
     if (!isArray(keys)) {
-      throw new TypeError("1st argument must be Array");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_ARRAY);
     }
     const collect = iter => {
       const coll = iter.Origin.collect(iter);
@@ -258,7 +269,7 @@ export default class Collection {
 
   count(fun) {
     if (!(isFunction(fun) || fun === undefined)) {
-      throw new TypeError("1st argument must be Function or Undefined");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION_OR_UNDEFINED);
     }
     const fn = fun || (() => true);
     const finalize = iter => {
@@ -336,7 +347,7 @@ export default class Collection {
 
   getIn(keys, protection) {
     if (!isArray(keys)) {
-      throw new TypeError("1st argument must be Array");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_ARRAY);
     }
     const finalize = iter => {
       if (!keys.length) {
@@ -379,7 +390,7 @@ export default class Collection {
 
   hasIn(keys) {
     if (!isArray(keys)) {
-      throw new TypeError("1st argument must be Array");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_ARRAY);
     }
     const finalize = iter => {
       if (!keys.length) {
@@ -470,7 +481,7 @@ export default class Collection {
 
   reduce(fun, init) {
     if (!isFunction(fun)) {
-      throw new TypeError("1st argument must be Function");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION);
     }
     const finalize = iter => {
       let acc = init;
@@ -490,7 +501,7 @@ export default class Collection {
         }
       }
       if (isFirst && init === undefined) {
-        throw new TypeError("Reduce of empty collection with no initial value");
+        throw new TypeError(REDUCE_OF_EMPTY_COLLECTION_WITH_NO_INITIAL_VALUE);
       }
       return acc;
     };
@@ -504,7 +515,7 @@ export default class Collection {
 
   reduceWhile(fun, init) {
     if (!isFunction(fun)) {
-      throw new TypeError("1st argument must be Function");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION);
     }
     const finalize = iter => {
       let acc = init;
@@ -529,7 +540,7 @@ export default class Collection {
         }
       }
       if (isFirst && init === undefined) {
-        throw new TypeError("Reduce of empty collection with no initial value");
+        throw new TypeError(REDUCE_OF_EMPTY_COLLECTION_WITH_NO_INITIAL_VALUE);
       }
       return acc;
     };
@@ -543,7 +554,7 @@ export default class Collection {
 
   scan(fun, init) {
     if (!isFunction(fun)) {
-      throw new TypeError("1st argument must be Function");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION);
     }
     const finalize = iter => {
       const result = init === undefined ? [] : [init];
@@ -565,7 +576,7 @@ export default class Collection {
         result.push(acc);
       }
       if (isFirst && init === undefined) {
-        throw new TypeError("Scan of empty collection with no initial value");
+        throw new TypeError(SCAN_OF_EMPTY_COLLECTION_WITH_NO_INITIAL_VALUE);
       }
       return result;
     };
@@ -579,7 +590,7 @@ export default class Collection {
 
   partition(fun) {
     if (!isFunction(fun)) {
-      throw new TypeError("1st argument must be Function");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION);
     }
     const finalize = iter => {
       const result = [iter.Origin.default(), iter.Origin.default()];
@@ -601,7 +612,7 @@ export default class Collection {
 
   join(delimiter) {
     if (!(isString(delimiter) || delimiter === undefined)) {
-      throw new TypeError("1st argument must be String or Undefined");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_STRING_OR_UNDEFINED);
     }
     const delim = delimiter || ",";
     const finalize = iter => {
@@ -630,7 +641,7 @@ export default class Collection {
   // TODO: groupBy(fun1, fun2, init)?
   groupBy(fun) {
     if (!isFunction(fun)) {
-      throw new TypeError("1st argument must be Function");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION);
     }
     const finalize = iter => {
       const object = {};
@@ -662,7 +673,7 @@ export default class Collection {
 
   every(fun) {
     if (!isFunction(fun)) {
-      throw new TypeError("1st argument must be Function");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION);
     }
     const finalize = iter => {
       let key;
@@ -684,7 +695,7 @@ export default class Collection {
 
   some(fun) {
     if (!isFunction(fun)) {
-      throw new TypeError("1st argument must be Function");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION);
     }
     return !this.every((v, k) => !fun(v, k));
   }
@@ -696,7 +707,7 @@ export default class Collection {
 
   find(fun) {
     if (!isFunction(fun)) {
-      throw new TypeError("1st argument must be Function");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION);
     }
     const result = this.findEntry(fun);
     return result ? result[1] : result;
@@ -710,7 +721,7 @@ export default class Collection {
 
   findEntry(fun) {
     if (!isFunction(fun)) {
-      throw new TypeError("1st argument must be Function");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION);
     }
     const finalize = iter => {
       let key;
@@ -732,7 +743,7 @@ export default class Collection {
 
   findKey(fun) {
     if (!isFunction(fun)) {
-      throw new TypeError("1st argument must be Function");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION);
     }
     const result = this.findEntry(fun);
     return result ? result[0] : result;
@@ -764,7 +775,7 @@ export default class Collection {
 
   sum(fun) {
     if (!(isFunction(fun) || fun === undefined)) {
-      throw new TypeError("1st argument must be Function or Undefined");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION_OR_UNDEFINED);
     }
     const fn = fun || (v => v);
     const finalize = iter => {
@@ -789,7 +800,7 @@ export default class Collection {
 
   max(fun) {
     if (!(isFunction(fun) || fun === undefined)) {
-      throw new TypeError("1st argument must be Function or Undefined");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION_OR_UNDEFINED);
     }
     const fn = fun || ((v1, v2) => v1 > v2);
     const finalize = iter => {
@@ -818,7 +829,7 @@ export default class Collection {
 
   min(fun) {
     if (!(isFunction(fun) || fun === undefined)) {
-      throw new TypeError("1st argument must be Function or Undefined");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION_OR_UNDEFINED);
     }
     const fn = fun || ((v1, v2) => v1 < v2);
     return this.max(fn);
@@ -892,7 +903,7 @@ export default class Collection {
 
   forEach(fun) {
     if (!isFunction(fun)) {
-      throw new TypeError("1st argument must be Function");
+      throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION);
     }
     const finalize = iter => {
       let key;

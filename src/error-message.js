@@ -1,8 +1,15 @@
 export const FIRST_ARGUMENT_MUST_BE_ARRAY = "1st argument must be Array";
-export const FIRST_ARGUMENT_MUST_BE_NUMBER = "1st argument must be Number";
-export const FIRST_ARGUMENT_MUST_BE_OBJECT = "1st argument must be Object";
 export const FIRST_ARGUMENT_MUST_BE_ARRAY_OR_OBJECT =
   "1st argument must be Array or Object";
+export const FIRST_ARGUMENT_MUST_BE_FUNCTION = "1st argument must be Function";
+export const FIRST_ARGUMENT_MUST_BE_FUNCTION_OR_UNDEFINED =
+  "1st argument must be Function or Undefined";
+export const FIRST_ARGUMENT_MUST_BE_NUMBER = "1st argument must be Number";
+export const FIRST_ARGUMENT_MUST_BE_NUMBER_OR_STRING =
+  "1st argument must be Number or String";
+export const FIRST_ARGUMENT_MUST_BE_OBJECT = "1st argument must be Object";
+export const FIRST_ARGUMENT_MUST_BE_STRING_OR_UNDEFINED =
+  "1st argument must be String or Undefined";
 
 export const SECOND_ARGUMENT_MUST_BE_ARRAY = "2nd argument must be Array";
 export const SECOND_ARGUMENT_MUST_BE_FUNCTION = "2nd argument must be Function";
@@ -29,3 +36,10 @@ export const EACH_ARGUMENT_EXCEPT_SECOND_ONE_MUST_BE_ARRAY =
   "Each argument except 2nd one must be Array";
 export const EACH_ARGUMENT_EXCEPT_SECOND_ONE_MUST_BE_OBJECT =
   "Each argument except 2nd one must be Object";
+
+export const REDUCE_OF_EMPTY_COLLECTION_WITH_NO_INITIAL_VALUE =
+  "Reduce of empty collection with no initial value";
+export const SCAN_OF_EMPTY_COLLECTION_WITH_NO_INITIAL_VALUE =
+  "Scan of empty collection with no initial value";
+
+export const CANNOT_HAPPEN = "cannot happen";
