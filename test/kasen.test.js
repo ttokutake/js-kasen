@@ -21,19 +21,59 @@ describe("Kasen", () => {
   });
 
   describe("map()", () => {
-    test("error", () => {});
+    test("error", () => {
+      expect(() => Kasen([]).map()).toThrow(TypeError);
+      expect(() => Kasen([]).map(null)).toThrow(TypeError);
+      expect(() => Kasen({}).map()).toThrow(TypeError);
+      expect(() => Kasen({}).map(null)).toThrow(TypeError);
+      expect(() => Kasen.map()).toThrow(TypeError);
+      expect(() => Kasen.map(null)).toThrow(TypeError);
+      expect(() => Kasen.map([])).toThrow(TypeError);
+      expect(() => Kasen.map([], null)).toThrow(TypeError);
+      expect(() => Kasen.map({})).toThrow(TypeError);
+      expect(() => Kasen.map({}, null)).toThrow(TypeError);
+    });
   });
 
   describe("pluck()", () => {
-    test("error", () => {});
+    test("error", () => {
+      expect(() => Kasen([]).pluck()).toThrow(TypeError);
+      expect(() => Kasen([]).pluck(null)).toThrow(TypeError);
+      expect(() => Kasen({}).pluck()).toThrow(TypeError);
+      expect(() => Kasen({}).pluck(null)).toThrow(TypeError);
+      expect(() => Kasen.pluck()).toThrow(TypeError);
+      expect(() => Kasen.pluck(null)).toThrow(TypeError);
+      expect(() => Kasen.pluck([])).toThrow(TypeError);
+      expect(() => Kasen.pluck([], null)).toThrow(TypeError);
+      expect(() => Kasen.pluck({})).toThrow(TypeError);
+      expect(() => Kasen.pluck({}, null)).toThrow(TypeError);
+    });
   });
 
   describe("filter()", () => {
-    test("error", () => {});
+    test("error", () => {
+      expect(() => Kasen([]).filter(null)).toThrow(TypeError);
+      expect(() => Kasen({}).filter(null)).toThrow(TypeError);
+      expect(() => Kasen.filter()).toThrow(TypeError);
+      expect(() => Kasen.filter(null)).toThrow(TypeError);
+      expect(() => Kasen.filter([], null)).toThrow(TypeError);
+      expect(() => Kasen.filter({}, null)).toThrow(TypeError);
+    });
   });
 
   describe("filterNot()", () => {
-    test("error", () => {});
+    test("error", () => {
+      expect(() => Kasen([]).filterNot()).toThrow(TypeError);
+      expect(() => Kasen([]).filterNot(null)).toThrow(TypeError);
+      expect(() => Kasen({}).filterNot()).toThrow(TypeError);
+      expect(() => Kasen({}).filterNot(null)).toThrow(TypeError);
+      expect(() => Kasen.filterNot()).toThrow(TypeError);
+      expect(() => Kasen.filterNot(null)).toThrow(TypeError);
+      expect(() => Kasen.filterNot([])).toThrow(TypeError);
+      expect(() => Kasen.filterNot([], null)).toThrow(TypeError);
+      expect(() => Kasen.filterNot({})).toThrow(TypeError);
+      expect(() => Kasen.filterNot({}, null)).toThrow(TypeError);
+    });
   });
 
   describe("reverse()", () => {
