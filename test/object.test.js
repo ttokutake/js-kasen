@@ -195,6 +195,16 @@ describe("Object", () => {
         expect(result).toEqual(expected);
       });
     });
+
+    test("error", () => {
+      expect(() => Kasen({}).pick()).toThrow(TypeError);
+      expect(() => Kasen({}).pick(null)).toThrow(TypeError);
+      expect(() => Kasen.pick()).toThrow(TypeError);
+      expect(() => Kasen.pick(null)).toThrow(TypeError);
+      expect(() => Kasen.pick([])).toThrow(TypeError);
+      expect(() => Kasen.pick({})).toThrow(TypeError);
+      expect(() => Kasen.pick({}, null)).toThrow(TypeError);
+    });
   });
 
   describe("flip()", () => {
