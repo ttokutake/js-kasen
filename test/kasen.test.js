@@ -76,10 +76,6 @@ describe("Kasen", () => {
     });
   });
 
-  describe("reverse()", () => {
-    test("error", () => {});
-  });
-
   describe("pick()", () => {
     test("error", () => {});
   });

@@ -185,6 +185,12 @@ describe("Array", () => {
         expect(result).toEqual(expected);
       });
     });
+
+    test("error", () => {
+      expect(() => Kasen.reverse()).toThrow(TypeError);
+      expect(() => Kasen.reverse(null)).toThrow(TypeError);
+      expect(() => Kasen.reverse({})).toThrow(TypeError);
+    });
   });
 
   describe("take()", () => {
