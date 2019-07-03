@@ -245,6 +245,14 @@ describe("Object", () => {
         expect(result).toEqual(expected);
       });
     });
+
+    test("error", () => {
+      expect(() => Kasen({}).flip(null)).toThrow(TypeError);
+      expect(() => Kasen.flip()).toThrow(TypeError);
+      expect(() => Kasen.flip(null)).toThrow(TypeError);
+      expect(() => Kasen.flip([])).toThrow(TypeError);
+      expect(() => Kasen.flip({}, null)).toThrow(TypeError);
+    });
   });
 
   describe("set()", () => {

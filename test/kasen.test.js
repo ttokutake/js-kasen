@@ -76,10 +76,6 @@ describe("Kasen", () => {
     });
   });
 
-  describe("flip()", () => {
-    test("error", () => {});
-  });
-
   describe("take()", () => {
     test("error", () => {});
   });
