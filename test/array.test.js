@@ -224,6 +224,16 @@ describe("Array", () => {
         expect(result).toEqual(expected);
       });
     });
+
+    test("error", () => {
+      expect(() => Kasen([]).take()).toThrow(TypeError);
+      expect(() => Kasen([]).take(null)).toThrow(TypeError);
+      expect(() => Kasen.take()).toThrow(TypeError);
+      expect(() => Kasen.take(null)).toThrow(TypeError);
+      expect(() => Kasen.take({})).toThrow(TypeError);
+      expect(() => Kasen.take([])).toThrow(TypeError);
+      expect(() => Kasen.take([], null)).toThrow(TypeError);
+    });
   });
 
   describe("takeLast()", () => {
@@ -256,6 +266,16 @@ describe("Array", () => {
         const result = Kasen.takeLast(input, num);
         expect(result).toEqual(expected);
       });
+    });
+
+    test("error", () => {
+      expect(() => Kasen([]).takeLast()).toThrow(TypeError);
+      expect(() => Kasen([]).takeLast(null)).toThrow(TypeError);
+      expect(() => Kasen.takeLast()).toThrow(TypeError);
+      expect(() => Kasen.takeLast(null)).toThrow(TypeError);
+      expect(() => Kasen.takeLast({})).toThrow(TypeError);
+      expect(() => Kasen.takeLast([])).toThrow(TypeError);
+      expect(() => Kasen.takeLast([], null)).toThrow(TypeError);
     });
   });
 
