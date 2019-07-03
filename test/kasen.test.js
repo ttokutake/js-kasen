@@ -77,7 +77,20 @@ describe("Kasen", () => {
   });
 
   describe("set()", () => {
-    test("error", () => {});
+    test("error", () => {
+      expect(() => Kasen([]).set()).toThrow(TypeError);
+      expect(() => Kasen([]).set(null)).toThrow(TypeError);
+      expect(() => Kasen([]).set("a")).toThrow(TypeError);
+      expect(() => Kasen({}).set()).toThrow(TypeError);
+      expect(() => Kasen({}).set(null)).toThrow(TypeError);
+      expect(() => Kasen.set()).toThrow(TypeError);
+      expect(() => Kasen.set(null)).toThrow(TypeError);
+      expect(() => Kasen.set([])).toThrow(TypeError);
+      expect(() => Kasen.set([], null)).toThrow(TypeError);
+      expect(() => Kasen.set([], "a")).toThrow(TypeError);
+      expect(() => Kasen.set({})).toThrow(TypeError);
+      expect(() => Kasen.set({}, null)).toThrow(TypeError);
+    });
   });
 
   describe("update()", () => {
