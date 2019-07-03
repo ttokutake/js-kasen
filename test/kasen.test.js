@@ -76,22 +76,6 @@ describe("Kasen", () => {
     });
   });
 
-  describe("skip()", () => {
-    test("error", () => {});
-  });
-
-  describe("skipLast()", () => {
-    test("error", () => {});
-  });
-
-  describe("skipWhile()", () => {
-    test("error", () => {});
-  });
-
-  describe("skipUntil()", () => {
-    test("error", () => {});
-  });
-
   describe("set()", () => {
     test("error", () => {});
   });

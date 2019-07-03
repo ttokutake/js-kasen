@@ -382,6 +382,16 @@ describe("Array", () => {
         expect(result).toEqual(expected);
       });
     });
+
+    test("error", () => {
+      expect(() => Kasen([]).skip()).toThrow(TypeError);
+      expect(() => Kasen([]).skip(null)).toThrow(TypeError);
+      expect(() => Kasen.skip()).toThrow(TypeError);
+      expect(() => Kasen.skip(null)).toThrow(TypeError);
+      expect(() => Kasen.skip({})).toThrow(TypeError);
+      expect(() => Kasen.skip([])).toThrow(TypeError);
+      expect(() => Kasen.skip([], null)).toThrow(TypeError);
+    });
   });
 
   describe("skipLast()", () => {
@@ -415,6 +425,16 @@ describe("Array", () => {
         expect(result).toEqual(expected);
       });
     });
+
+    test("error", () => {
+      expect(() => Kasen([]).skipLast()).toThrow(TypeError);
+      expect(() => Kasen([]).skipLast(null)).toThrow(TypeError);
+      expect(() => Kasen.skipLast()).toThrow(TypeError);
+      expect(() => Kasen.skipLast(null)).toThrow(TypeError);
+      expect(() => Kasen.skipLast({})).toThrow(TypeError);
+      expect(() => Kasen.skipLast([])).toThrow(TypeError);
+      expect(() => Kasen.skipLast([], null)).toThrow(TypeError);
+    });
   });
 
   describe("skipWhile()", () => {
@@ -441,6 +461,16 @@ describe("Array", () => {
         expect(result).toEqual(expected);
       });
     });
+
+    test("error", () => {
+      expect(() => Kasen([]).skipWhile()).toThrow(TypeError);
+      expect(() => Kasen([]).skipWhile(null)).toThrow(TypeError);
+      expect(() => Kasen.skipWhile()).toThrow(TypeError);
+      expect(() => Kasen.skipWhile(null)).toThrow(TypeError);
+      expect(() => Kasen.skipWhile({})).toThrow(TypeError);
+      expect(() => Kasen.skipWhile([])).toThrow(TypeError);
+      expect(() => Kasen.skipWhile([], null)).toThrow(TypeError);
+    });
   });
 
   describe("skipUntil()", () => {
@@ -466,6 +496,16 @@ describe("Array", () => {
         const result = Kasen.skipUntil(input, v => v % 2 === 0);
         expect(result).toEqual(expected);
       });
+    });
+
+    test("error", () => {
+      expect(() => Kasen([]).skipUntil()).toThrow(TypeError);
+      expect(() => Kasen([]).skipUntil(null)).toThrow(TypeError);
+      expect(() => Kasen.skipUntil()).toThrow(TypeError);
+      expect(() => Kasen.skipUntil(null)).toThrow(TypeError);
+      expect(() => Kasen.skipUntil({})).toThrow(TypeError);
+      expect(() => Kasen.skipUntil([])).toThrow(TypeError);
+      expect(() => Kasen.skipUntil([], null)).toThrow(TypeError);
     });
   });
 
