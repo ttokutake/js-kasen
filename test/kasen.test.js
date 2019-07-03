@@ -94,7 +94,28 @@ describe("Kasen", () => {
   });
 
   describe("update()", () => {
-    test("error", () => {});
+    test("error", () => {
+      expect(() => Kasen([]).update()).toThrow(TypeError);
+      expect(() => Kasen([]).update(null)).toThrow(TypeError);
+      expect(() => Kasen([]).update("a")).toThrow(TypeError);
+      expect(() => Kasen([]).update(0)).toThrow(TypeError);
+      expect(() => Kasen([]).update(0, null)).toThrow(TypeError);
+      expect(() => Kasen({}).update()).toThrow(TypeError);
+      expect(() => Kasen({}).update(null)).toThrow(TypeError);
+      expect(() => Kasen({}).update("a")).toThrow(TypeError);
+      expect(() => Kasen({}).update("a", null)).toThrow(TypeError);
+      expect(() => Kasen.update()).toThrow(TypeError);
+      expect(() => Kasen.update(null)).toThrow(TypeError);
+      expect(() => Kasen.update([])).toThrow(TypeError);
+      expect(() => Kasen.update([], null)).toThrow(TypeError);
+      expect(() => Kasen.update([], "a")).toThrow(TypeError);
+      expect(() => Kasen.update([], 0)).toThrow(TypeError);
+      expect(() => Kasen.update([], 0, null)).toThrow(TypeError);
+      expect(() => Kasen.update({})).toThrow(TypeError);
+      expect(() => Kasen.update({}, null)).toThrow(TypeError);
+      expect(() => Kasen.update({}, "a")).toThrow(TypeError);
+      expect(() => Kasen.update({}, "a", null)).toThrow(TypeError);
+    });
   });
 
   describe("delete()", () => {
