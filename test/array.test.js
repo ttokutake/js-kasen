@@ -303,6 +303,16 @@ describe("Array", () => {
         expect(result).toEqual(expected);
       });
     });
+
+    test("error", () => {
+      expect(() => Kasen([]).takeWhile()).toThrow(TypeError);
+      expect(() => Kasen([]).takeWhile(null)).toThrow(TypeError);
+      expect(() => Kasen.takeWhile()).toThrow(TypeError);
+      expect(() => Kasen.takeWhile(null)).toThrow(TypeError);
+      expect(() => Kasen.takeWhile({})).toThrow(TypeError);
+      expect(() => Kasen.takeWhile([])).toThrow(TypeError);
+      expect(() => Kasen.takeWhile([], null)).toThrow(TypeError);
+    });
   });
 
   describe("takeUntil()", () => {
@@ -328,6 +338,16 @@ describe("Array", () => {
         const result = Kasen.takeUntil(input, v => v % 2 === 0);
         expect(result).toEqual(expected);
       });
+    });
+
+    test("error", () => {
+      expect(() => Kasen([]).takeUntil()).toThrow(TypeError);
+      expect(() => Kasen([]).takeUntil(null)).toThrow(TypeError);
+      expect(() => Kasen.takeUntil()).toThrow(TypeError);
+      expect(() => Kasen.takeUntil(null)).toThrow(TypeError);
+      expect(() => Kasen.takeUntil({})).toThrow(TypeError);
+      expect(() => Kasen.takeUntil([])).toThrow(TypeError);
+      expect(() => Kasen.takeUntil([], null)).toThrow(TypeError);
     });
   });
 
