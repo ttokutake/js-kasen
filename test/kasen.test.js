@@ -119,7 +119,18 @@ describe("Kasen", () => {
   });
 
   describe("delete()", () => {
-    test("error", () => {});
+    expect(() => Kasen([]).delete()).toThrow(TypeError);
+    expect(() => Kasen([]).delete(null)).toThrow(TypeError);
+    expect(() => Kasen([]).delete("a")).toThrow(TypeError);
+    expect(() => Kasen({}).delete()).toThrow(TypeError);
+    expect(() => Kasen({}).delete(null)).toThrow(TypeError);
+    expect(() => Kasen.delete()).toThrow(TypeError);
+    expect(() => Kasen.delete(null)).toThrow(TypeError);
+    expect(() => Kasen.delete([])).toThrow(TypeError);
+    expect(() => Kasen.delete([], null)).toThrow(TypeError);
+    expect(() => Kasen.delete([], "a")).toThrow(TypeError);
+    expect(() => Kasen.delete({})).toThrow(TypeError);
+    expect(() => Kasen.delete({}, null)).toThrow(TypeError);
   });
 
   describe("deleteAll()", () => {
