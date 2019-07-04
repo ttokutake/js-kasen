@@ -338,6 +338,16 @@ describe("Object", () => {
         expect(result).toEqual(expected);
       });
     });
+
+    test("error", () => {
+      expect(() => Kasen({}).deleteAll()).toThrow(TypeError);
+      expect(() => Kasen({}).deleteAll(null)).toThrow(TypeError);
+      expect(() => Kasen.deleteAll()).toThrow(TypeError);
+      expect(() => Kasen.deleteAll(null)).toThrow(TypeError);
+      expect(() => Kasen.deleteAll([])).toThrow(TypeError);
+      expect(() => Kasen.deleteAll({})).toThrow(TypeError);
+      expect(() => Kasen.deleteAll({}, null)).toThrow(TypeError);
+    });
   });
 
   describe("clear()", () => {

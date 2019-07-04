@@ -119,22 +119,20 @@ describe("Kasen", () => {
   });
 
   describe("delete()", () => {
-    expect(() => Kasen([]).delete()).toThrow(TypeError);
-    expect(() => Kasen([]).delete(null)).toThrow(TypeError);
-    expect(() => Kasen([]).delete("a")).toThrow(TypeError);
-    expect(() => Kasen({}).delete()).toThrow(TypeError);
-    expect(() => Kasen({}).delete(null)).toThrow(TypeError);
-    expect(() => Kasen.delete()).toThrow(TypeError);
-    expect(() => Kasen.delete(null)).toThrow(TypeError);
-    expect(() => Kasen.delete([])).toThrow(TypeError);
-    expect(() => Kasen.delete([], null)).toThrow(TypeError);
-    expect(() => Kasen.delete([], "a")).toThrow(TypeError);
-    expect(() => Kasen.delete({})).toThrow(TypeError);
-    expect(() => Kasen.delete({}, null)).toThrow(TypeError);
-  });
-
-  describe("deleteAll()", () => {
-    test("error", () => {});
+    test("error", () => {
+      expect(() => Kasen([]).delete()).toThrow(TypeError);
+      expect(() => Kasen([]).delete(null)).toThrow(TypeError);
+      expect(() => Kasen([]).delete("a")).toThrow(TypeError);
+      expect(() => Kasen({}).delete()).toThrow(TypeError);
+      expect(() => Kasen({}).delete(null)).toThrow(TypeError);
+      expect(() => Kasen.delete()).toThrow(TypeError);
+      expect(() => Kasen.delete(null)).toThrow(TypeError);
+      expect(() => Kasen.delete([])).toThrow(TypeError);
+      expect(() => Kasen.delete([], null)).toThrow(TypeError);
+      expect(() => Kasen.delete([], "a")).toThrow(TypeError);
+      expect(() => Kasen.delete({})).toThrow(TypeError);
+      expect(() => Kasen.delete({}, null)).toThrow(TypeError);
+    });
   });
 
   describe("concat()", () => {
