@@ -637,6 +637,12 @@ describe("Array", () => {
         expect(result).toEqual(expected);
       });
     });
+
+    test("error", () => {
+      expect(() => Kasen.concat()).toThrow(TypeError);
+      expect(() => Kasen.concat(null)).toThrow(TypeError);
+      expect(() => Kasen.concat({})).toThrow(TypeError);
+    });
   });
 
   describe("insert()", () => {

@@ -135,10 +135,6 @@ describe("Kasen", () => {
     });
   });
 
-  describe("concat()", () => {
-    test("error", () => {});
-  });
-
   describe("merge() / assign()", () => {
     test("error", () => {});
   });
