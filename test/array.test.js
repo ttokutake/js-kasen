@@ -673,6 +673,16 @@ describe("Array", () => {
         expect(result).toEqual(expected);
       });
     });
+
+    test("error", () => {
+      expect(() => Kasen([]).insert()).toThrow(TypeError);
+      expect(() => Kasen([]).insert(null)).toThrow(TypeError);
+      expect(() => Kasen.insert()).toThrow(TypeError);
+      expect(() => Kasen.insert(null)).toThrow(TypeError);
+      expect(() => Kasen.insert({})).toThrow(TypeError);
+      expect(() => Kasen.insert([])).toThrow(TypeError);
+      expect(() => Kasen.insert([], null)).toThrow(TypeError);
+    });
   });
 
   describe("push()", () => {
@@ -696,6 +706,12 @@ describe("Array", () => {
         expect(result).toEqual(expected);
       });
     });
+
+    test("error", () => {
+      expect(() => Kasen.push()).toThrow(TypeError);
+      expect(() => Kasen.push(null)).toThrow(TypeError);
+      expect(() => Kasen.push({})).toThrow(TypeError);
+    });
   });
 
   describe("pop()", () => {
@@ -711,6 +727,12 @@ describe("Array", () => {
         const result = Kasen.pop(input);
         expect(result).toEqual(expected);
       });
+    });
+
+    test("error", () => {
+      expect(() => Kasen.pop()).toThrow(TypeError);
+      expect(() => Kasen.pop(null)).toThrow(TypeError);
+      expect(() => Kasen.pop({})).toThrow(TypeError);
     });
   });
 
@@ -735,6 +757,12 @@ describe("Array", () => {
         expect(result).toEqual(expected);
       });
     });
+
+    test("error", () => {
+      expect(() => Kasen.unshift()).toThrow(TypeError);
+      expect(() => Kasen.unshift(null)).toThrow(TypeError);
+      expect(() => Kasen.unshift({})).toThrow(TypeError);
+    });
   });
 
   describe("shift()", () => {
@@ -750,6 +778,12 @@ describe("Array", () => {
         const result = Kasen.shift(input);
         expect(result).toEqual(expected);
       });
+    });
+
+    test("error", () => {
+      expect(() => Kasen.shift()).toThrow(TypeError);
+      expect(() => Kasen.shift(null)).toThrow(TypeError);
+      expect(() => Kasen.shift({})).toThrow(TypeError);
     });
   });
 
@@ -785,6 +819,20 @@ describe("Array", () => {
         const result = Kasen.splice(input, index, num, ...values);
         expect(result).toEqual(expected);
       });
+    });
+
+    test("error", () => {
+      expect(() => Kasen([]).splice()).toThrow(TypeError);
+      expect(() => Kasen([]).splice(null)).toThrow(TypeError);
+      expect(() => Kasen([]).splice(0)).toThrow(TypeError);
+      expect(() => Kasen([]).splice(0, null)).toThrow(TypeError);
+      expect(() => Kasen.splice()).toThrow(TypeError);
+      expect(() => Kasen.splice(null)).toThrow(TypeError);
+      expect(() => Kasen.splice({})).toThrow(TypeError);
+      expect(() => Kasen.splice([])).toThrow(TypeError);
+      expect(() => Kasen.splice([], null)).toThrow(TypeError);
+      expect(() => Kasen.splice([], 0)).toThrow(TypeError);
+      expect(() => Kasen.splice([], 0, null)).toThrow(TypeError);
     });
   });
 

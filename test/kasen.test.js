@@ -135,30 +135,6 @@ describe("Kasen", () => {
     });
   });
 
-  describe("insert()", () => {
-    test("error", () => {});
-  });
-
-  describe("push()", () => {
-    test("error", () => {});
-  });
-
-  describe("pop()", () => {
-    test("error", () => {});
-  });
-
-  describe("unshift()", () => {
-    test("error", () => {});
-  });
-
-  describe("shift()", () => {
-    test("error", () => {});
-  });
-
-  describe("splice()", () => {
-    test("error", () => {});
-  });
-
   describe("setIn()", () => {
     test("error", () => {});
   });
