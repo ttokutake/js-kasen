@@ -135,22 +135,6 @@ describe("Kasen", () => {
     });
   });
 
-  describe("merge() / assign()", () => {
-    test("error", () => {});
-  });
-
-  describe("mergeWith()", () => {
-    test("error", () => {});
-  });
-
-  describe("mergeDeep()", () => {
-    test("error", () => {});
-  });
-
-  describe("mergeDeepWith()", () => {
-    test("error", () => {});
-  });
-
   describe("insert()", () => {
     test("error", () => {});
   });

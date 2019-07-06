@@ -395,6 +395,17 @@ describe("Object", () => {
         expect(result).toEqual(expected);
       });
     });
+
+    test("error", () => {
+      expect(() => Kasen({}).merge(null)).toThrow(TypeError);
+      expect(() => Kasen.merge(null)).toThrow(TypeError);
+      expect(() => Kasen.merge([])).toThrow(TypeError);
+      expect(() => Kasen.merge({}, null)).toThrow(TypeError);
+      expect(() => Kasen({}).assign(null)).toThrow(TypeError);
+      expect(() => Kasen.assign(null)).toThrow(TypeError);
+      expect(() => Kasen.assign([])).toThrow(TypeError);
+      expect(() => Kasen.assign({}, null)).toThrow(TypeError);
+    });
   });
 
   describe("mergeWith()", () => {
@@ -426,6 +437,17 @@ describe("Object", () => {
         expect(result).toEqual(expected);
       });
     });
+
+    test("error", () => {
+      expect(() => Kasen({}).mergeWith()).toThrow(TypeError);
+      expect(() => Kasen({}).mergeWith(null)).toThrow(TypeError);
+      expect(() => Kasen({}).mergeWith(() => null, null)).toThrow(TypeError);
+      expect(() => Kasen.mergeWith()).toThrow(TypeError);
+      expect(() => Kasen.mergeWith(null)).toThrow(TypeError);
+      expect(() => Kasen.mergeWith([])).toThrow(TypeError);
+      expect(() => Kasen.mergeWith({}, null)).toThrow(TypeError);
+      expect(() => Kasen.mergeWith({}, () => null, null)).toThrow(TypeError);
+    });
   });
 
   describe("mergeDeep()", () => {
@@ -456,6 +478,13 @@ describe("Object", () => {
         const result = Kasen.mergeDeep(input, ...objects);
         expect(result).toEqual(expected);
       });
+    });
+
+    test("error", () => {
+      expect(() => Kasen({}).mergeDeep(null)).toThrow(TypeError);
+      expect(() => Kasen.mergeDeep(null)).toThrow(TypeError);
+      expect(() => Kasen.mergeDeep([])).toThrow(TypeError);
+      expect(() => Kasen.mergeDeep({}, null)).toThrow(TypeError);
     });
   });
 
@@ -491,6 +520,21 @@ describe("Object", () => {
         );
         expect(result).toEqual(expected);
       });
+    });
+
+    test("error", () => {
+      expect(() => Kasen({}).mergeDeepWith()).toThrow(TypeError);
+      expect(() => Kasen({}).mergeDeepWith(null)).toThrow(TypeError);
+      expect(() => Kasen({}).mergeDeepWith(() => null, null)).toThrow(
+        TypeError
+      );
+      expect(() => Kasen.mergeDeepWith()).toThrow(TypeError);
+      expect(() => Kasen.mergeDeepWith(null)).toThrow(TypeError);
+      expect(() => Kasen.mergeDeepWith([])).toThrow(TypeError);
+      expect(() => Kasen.mergeDeepWith({}, null)).toThrow(TypeError);
+      expect(() => Kasen.mergeDeepWith({}, () => null, null)).toThrow(
+        TypeError
+      );
     });
   });
 
