@@ -136,15 +136,56 @@ describe("Kasen", () => {
   });
 
   describe("setIn()", () => {
-    test("error", () => {});
+    test("error", () => {
+      expect(() => Kasen([]).setIn()).toThrow(TypeError);
+      expect(() => Kasen([]).setIn(null)).toThrow(TypeError);
+      expect(() => Kasen({}).setIn()).toThrow(TypeError);
+      expect(() => Kasen({}).setIn(null)).toThrow(TypeError);
+      expect(() => Kasen.setIn()).toThrow(TypeError);
+      expect(() => Kasen.setIn(null)).toThrow(TypeError);
+      expect(() => Kasen.setIn([])).toThrow(TypeError);
+      expect(() => Kasen.setIn([], null)).toThrow(TypeError);
+      expect(() => Kasen.setIn({})).toThrow(TypeError);
+      expect(() => Kasen.setIn({}, null)).toThrow(TypeError);
+    });
   });
 
   describe("updateIn()", () => {
-    test("error", () => {});
+    test("error", () => {
+      expect(() => Kasen([]).updateIn()).toThrow(TypeError);
+      expect(() => Kasen([]).updateIn(null)).toThrow(TypeError);
+      expect(() => Kasen([]).updateIn([])).toThrow(TypeError);
+      expect(() => Kasen([]).updateIn([], null)).toThrow(TypeError);
+      expect(() => Kasen({}).updateIn()).toThrow(TypeError);
+      expect(() => Kasen({}).updateIn(null)).toThrow(TypeError);
+      expect(() => Kasen({}).updateIn([])).toThrow(TypeError);
+      expect(() => Kasen({}).updateIn([], null)).toThrow(TypeError);
+      expect(() => Kasen.updateIn()).toThrow(TypeError);
+      expect(() => Kasen.updateIn(null)).toThrow(TypeError);
+      expect(() => Kasen.updateIn([])).toThrow(TypeError);
+      expect(() => Kasen.updateIn([], null)).toThrow(TypeError);
+      expect(() => Kasen.updateIn([], [])).toThrow(TypeError);
+      expect(() => Kasen.updateIn([], [], null)).toThrow(TypeError);
+      expect(() => Kasen.updateIn({})).toThrow(TypeError);
+      expect(() => Kasen.updateIn({}, null)).toThrow(TypeError);
+      expect(() => Kasen.updateIn({}, [])).toThrow(TypeError);
+      expect(() => Kasen.updateIn({}, [], null)).toThrow(TypeError);
+    });
   });
 
   describe("deleteIn()", () => {
-    test("error", () => {});
+    test("error", () => {
+      expect(() => Kasen([]).deleteIn()).toThrow(TypeError);
+      expect(() => Kasen([]).deleteIn(null)).toThrow(TypeError);
+      expect(() => Kasen({}).deleteIn()).toThrow(TypeError);
+      expect(() => Kasen({}).deleteIn(null)).toThrow(TypeError);
+      expect(() => Kasen.deleteIn()).toThrow(TypeError);
+      expect(() => Kasen.deleteIn(null)).toThrow(TypeError);
+      expect(() => Kasen.deleteIn([])).toThrow(TypeError);
+      expect(() => Kasen.deleteIn([], null)).toThrow(TypeError);
+      expect(() => Kasen.deleteIn({})).toThrow(TypeError);
+      expect(() => Kasen.deleteIn({}, null)).toThrow(TypeError);
+    });
   });
 
   describe("flatten()", () => {
