@@ -188,14 +188,6 @@ describe("Kasen", () => {
     });
   });
 
-  describe("repeat()", () => {
-    test("error", () => {});
-  });
-
-  describe("repeat()", () => {
-    test("error", () => {});
-  });
-
   describe("isEmpty()", () => {
     test("error", () => {
       expect(() => Kasen.isEmpty()).toThrow(TypeError);

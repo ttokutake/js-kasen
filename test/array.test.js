@@ -1378,6 +1378,13 @@ describe("Array", () => {
         expect(result).toEqual(expected);
       });
     });
+
+    test("error", () => {
+      expect(() => Kasen.repeat._(null)).toThrow(TypeError);
+      expect(() => Kasen.repeat._(null, null)).toThrow(TypeError);
+      expect(() => Kasen.repeat(null)).toThrow(TypeError);
+      expect(() => Kasen.repeat(null, null)).toThrow(TypeError);
+    });
   });
 
   describe("isEmpty()", () => {
