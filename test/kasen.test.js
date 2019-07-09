@@ -188,14 +188,6 @@ describe("Kasen", () => {
     });
   });
 
-  describe("sort()", () => {
-    test("error", () => {});
-  });
-
-  describe("unique()", () => {
-    test("error", () => {});
-  });
-
   describe("chunk()", () => {
     test("error", () => {});
   });

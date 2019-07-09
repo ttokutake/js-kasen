@@ -1157,6 +1157,14 @@ describe("Array", () => {
         expect(result).toEqual(expected);
       });
     });
+
+    test("error", () => {
+      expect(() => Kasen([]).sort(null)).toThrow(TypeError);
+      expect(() => Kasen.sort()).toThrow(TypeError);
+      expect(() => Kasen.sort(null)).toThrow(TypeError);
+      expect(() => Kasen.sort({})).toThrow(TypeError);
+      expect(() => Kasen.sort([], null)).toThrow(TypeError);
+    });
   });
 
   describe("unique()", () => {
@@ -1198,6 +1206,14 @@ describe("Array", () => {
         const result = Kasen.unique(input, v => v.a);
         expect(result).toEqual(expected);
       });
+    });
+
+    test("error", () => {
+      expect(() => Kasen([]).unique(null)).toThrow(TypeError);
+      expect(() => Kasen.unique()).toThrow(TypeError);
+      expect(() => Kasen.unique(null)).toThrow(TypeError);
+      expect(() => Kasen.unique({})).toThrow(TypeError);
+      expect(() => Kasen.unique([], null)).toThrow(TypeError);
     });
   });
 
