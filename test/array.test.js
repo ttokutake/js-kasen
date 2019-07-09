@@ -1031,6 +1031,13 @@ describe("Array", () => {
         expect(result).toEqual(expected);
       });
     });
+
+    test("error", () => {
+      expect(() => Kasen([]).zip(null)).toThrow(TypeError);
+      expect(() => Kasen.zip(null)).toThrow(TypeError);
+      expect(() => Kasen.zip({})).toThrow(TypeError);
+      expect(() => Kasen.zip([], null)).toThrow(TypeError);
+    });
   });
 
   describe("zipAll()", () => {
@@ -1057,6 +1064,13 @@ describe("Array", () => {
         const result = Kasen.zipAll(input, ...arrays);
         expect(result).toEqual(expected);
       });
+    });
+
+    test("error", () => {
+      expect(() => Kasen([]).zipAll(null)).toThrow(TypeError);
+      expect(() => Kasen.zipAll(null)).toThrow(TypeError);
+      expect(() => Kasen.zipAll({})).toThrow(TypeError);
+      expect(() => Kasen.zipAll([], null)).toThrow(TypeError);
     });
   });
 
@@ -1088,6 +1102,16 @@ describe("Array", () => {
         );
         expect(result).toEqual(expected);
       });
+    });
+
+    test("error", () => {
+      expect(() => Kasen([]).zipWith()).toThrow(TypeError);
+      expect(() => Kasen([]).zipWith(null)).toThrow(TypeError);
+      expect(() => Kasen.zipWith()).toThrow(TypeError);
+      expect(() => Kasen.zipWith(null)).toThrow(TypeError);
+      expect(() => Kasen.zipWith({})).toThrow(TypeError);
+      expect(() => Kasen.zipWith([])).toThrow(TypeError);
+      expect(() => Kasen.zipWith([], null)).toThrow(TypeError);
     });
   });
 

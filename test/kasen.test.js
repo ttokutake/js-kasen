@@ -188,18 +188,6 @@ describe("Kasen", () => {
     });
   });
 
-  describe("zip()", () => {
-    test("error", () => {});
-  });
-
-  describe("zipAll()", () => {
-    test("error", () => {});
-  });
-
-  describe("zipWith()", () => {
-    test("error", () => {});
-  });
-
   describe("sort()", () => {
     test("error", () => {});
   });
