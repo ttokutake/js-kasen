@@ -188,10 +188,6 @@ describe("Kasen", () => {
     });
   });
 
-  describe("range()", () => {
-    test("error", () => {});
-  });
-
   describe("repeat()", () => {
     test("error", () => {});
   });

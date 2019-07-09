@@ -1351,7 +1351,17 @@ describe("Array", () => {
     });
 
     test("error", () => {
+      expect(() => Kasen.range._()).toThrow(TypeError);
+      expect(() => Kasen.range._(null)).toThrow(TypeError);
+      expect(() => Kasen.range._(0)).toThrow(TypeError);
+      expect(() => Kasen.range._(0, null)).toThrow(TypeError);
+      expect(() => Kasen.range._(0, 0, null)).toThrow(TypeError);
       expect(() => Kasen.range._(0, 0, 0)).toThrow(TypeError);
+      expect(() => Kasen.range()).toThrow(TypeError);
+      expect(() => Kasen.range(null)).toThrow(TypeError);
+      expect(() => Kasen.range(0)).toThrow(TypeError);
+      expect(() => Kasen.range(0, null)).toThrow(TypeError);
+      expect(() => Kasen.range(0, 0, null)).toThrow(TypeError);
       expect(() => Kasen.range(0, 0, 0)).toThrow(TypeError);
     });
   });
