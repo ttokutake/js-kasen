@@ -1243,7 +1243,14 @@ describe("Array", () => {
     });
 
     test("error", () => {
+      expect(() => Kasen([]).chunk()).toThrow(TypeError);
+      expect(() => Kasen([]).chunk(null)).toThrow(TypeError);
       expect(() => Kasen([]).chunk(0)).toThrow(TypeError);
+      expect(() => Kasen.chunk()).toThrow(TypeError);
+      expect(() => Kasen.chunk(null)).toThrow(TypeError);
+      expect(() => Kasen.chunk({})).toThrow(TypeError);
+      expect(() => Kasen.chunk([])).toThrow(TypeError);
+      expect(() => Kasen.chunk([], null)).toThrow(TypeError);
       expect(() => Kasen.chunk([], 0)).toThrow(TypeError);
     });
   });
@@ -1296,9 +1303,18 @@ describe("Array", () => {
     });
 
     test("error", () => {
+      expect(() => Kasen([]).sliding()).toThrow(TypeError);
+      expect(() => Kasen([]).sliding(null)).toThrow(TypeError);
       expect(() => Kasen([]).sliding(0)).toThrow(TypeError);
-      expect(() => Kasen.sliding([], 0)).toThrow(TypeError);
+      expect(() => Kasen([]).sliding(1, null)).toThrow(TypeError);
       expect(() => Kasen([]).sliding(1, 0)).toThrow(TypeError);
+      expect(() => Kasen.sliding()).toThrow(TypeError);
+      expect(() => Kasen.sliding(null)).toThrow(TypeError);
+      expect(() => Kasen.sliding({})).toThrow(TypeError);
+      expect(() => Kasen.sliding([])).toThrow(TypeError);
+      expect(() => Kasen.sliding([], null)).toThrow(TypeError);
+      expect(() => Kasen.sliding([], 0)).toThrow(TypeError);
+      expect(() => Kasen.sliding([], 1, null)).toThrow(TypeError);
       expect(() => Kasen.sliding([], 1, 0)).toThrow(TypeError);
     });
   });
