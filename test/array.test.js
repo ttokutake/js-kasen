@@ -967,6 +967,12 @@ describe("Array", () => {
         expect(result).toEqual(expected);
       });
     });
+
+    test("error", () => {
+      expect(() => Kasen.flatten()).toThrow(TypeError);
+      expect(() => Kasen.flatten(null)).toThrow(TypeError);
+      expect(() => Kasen.flatten({})).toThrow(TypeError);
+    });
   });
 
   describe("flatMap()", () => {
@@ -987,6 +993,16 @@ describe("Array", () => {
         const result = Kasen.flatMap(input, v => Array(v).fill(1));
         expect(result).toEqual(expected);
       });
+    });
+
+    test("error", () => {
+      expect(() => Kasen([]).flatMap()).toThrow(TypeError);
+      expect(() => Kasen([]).flatMap(null)).toThrow(TypeError);
+      expect(() => Kasen.flatMap()).toThrow(TypeError);
+      expect(() => Kasen.flatMap(null)).toThrow(TypeError);
+      expect(() => Kasen.flatMap({})).toThrow(TypeError);
+      expect(() => Kasen.flatMap([])).toThrow(TypeError);
+      expect(() => Kasen.flatMap([], null)).toThrow(TypeError);
     });
   });
 

@@ -188,14 +188,6 @@ describe("Kasen", () => {
     });
   });
 
-  describe("flatten()", () => {
-    test("error", () => {});
-  });
-
-  describe("flatMap()", () => {
-    test("error", () => {});
-  });
-
   describe("zip()", () => {
     test("error", () => {});
   });
