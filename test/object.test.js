@@ -6,23 +6,23 @@ describe("Object", () => {
       {
         const object = Kasen({ a: 1, b: 2, c: 3 }).map(v => v + 1);
         const object2 = object.copy().map(v => v + 1);
-        expect(object.toJs()).toEqual({ a: 2, b: 3, c: 4 });
-        expect(object2.toJs()).toEqual({ a: 3, b: 4, c: 5 });
+        expect(object.toJS()).toEqual({ a: 2, b: 3, c: 4 });
+        expect(object2.toJS()).toEqual({ a: 3, b: 4, c: 5 });
       }
       {
         const object = Kasen({ a: 1, b: 2, c: 3 });
         const object2 = object.copy();
         object.delete("a");
-        expect(object.toJs()).toEqual({ b: 2, c: 3 });
-        expect(object2.toJs()).toEqual({ a: 1, b: 2, c: 3 });
+        expect(object.toJS()).toEqual({ b: 2, c: 3 });
+        expect(object2.toJS()).toEqual({ a: 1, b: 2, c: 3 });
       }
       {
         const object = { a: 1, b: 2, c: 3 };
         const object2 = Kasen(object);
         const object3 = object2.copy();
         object.a = 10;
-        expect(object2.toJs()).toEqual({ a: 10, b: 2, c: 3 });
-        expect(object3.toJs()).toEqual({ a: 1, b: 2, c: 3 });
+        expect(object2.toJS()).toEqual({ a: 10, b: 2, c: 3 });
+        expect(object3.toJS()).toEqual({ a: 1, b: 2, c: 3 });
       }
       {
         const origin = { a: 1, b: 2, c: 3 };
@@ -41,20 +41,20 @@ describe("Object", () => {
         const object = Kasen(origin).memoize();
         origin.a = 1;
         expect(origin).toEqual({ a: 1, b: null, c: null });
-        expect(object.toJs()).toEqual({ a: null, b: null, c: null });
+        expect(object.toJS()).toEqual({ a: null, b: null, c: null });
       }
       {
         const object = Kasen({ a: null, b: null, c: null })
           .map(() => Math.random())
           .memoize();
-        expect(object.toJs()).toEqual(object.toJs());
+        expect(object.toJS()).toEqual(object.toJS());
       }
       {
         const object = Kasen({ a: null, b: null, c: null })
           .map(() => Math.random())
           .set("a", 1)
           .memoize();
-        expect(object.toJs()).toEqual(object.toJs());
+        expect(object.toJS()).toEqual(object.toJS());
       }
     });
   });
@@ -65,7 +65,7 @@ describe("Object", () => {
       inputs.forEach(input => {
         const result = Kasen(input)
           .tap(v => v + 1)
-          .toJs();
+          .toJS();
         expect(result).toEqual(input);
       });
     });
@@ -82,7 +82,7 @@ describe("Object", () => {
       ios.forEach(([input, expected]) => {
         const result = Kasen(input)
           .map(v => v + 1)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, expected]) => {
@@ -102,7 +102,7 @@ describe("Object", () => {
       ios.forEach(([input, expected]) => {
         const result = Kasen(input)
           .pluck("a")
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, expected]) => {
@@ -123,7 +123,7 @@ describe("Object", () => {
       ios.forEach(([input, expected]) => {
         const result = Kasen(input)
           .filter()
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, expected]) => {
@@ -143,7 +143,7 @@ describe("Object", () => {
       ios.forEach(([input, expected]) => {
         const result = Kasen(input)
           .filter(v => v % 2 === 0)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, expected]) => {
@@ -165,7 +165,7 @@ describe("Object", () => {
       ios.forEach(([input, expected]) => {
         const result = Kasen(input)
           .filterNot(v => v % 2 === 1)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, expected]) => {
@@ -187,7 +187,7 @@ describe("Object", () => {
       ios.forEach(([input, expected]) => {
         const result = Kasen(input)
           .pick(["a", "c"])
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, expected]) => {
@@ -218,7 +218,7 @@ describe("Object", () => {
       ios.forEach(([input, expected]) => {
         const result = Kasen(input)
           .flip()
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, expected]) => {
@@ -237,7 +237,7 @@ describe("Object", () => {
       ios.forEach(([input, expected]) => {
         const result = Kasen(input)
           .flip(v => v.aa)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, expected]) => {
@@ -265,7 +265,7 @@ describe("Object", () => {
       ios.forEach(([input, key, expected]) => {
         const result = Kasen(input)
           .set(key, 10)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, key, expected]) => {
@@ -285,7 +285,7 @@ describe("Object", () => {
       ios.forEach(([input, key, expected]) => {
         const result = Kasen(input)
           .update(key, v => (v || 0) + 10)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, key, expected]) => {
@@ -305,7 +305,7 @@ describe("Object", () => {
       ios.forEach(([input, key, expected]) => {
         const result = Kasen(input)
           .delete(key)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, key, expected]) => {
@@ -330,7 +330,7 @@ describe("Object", () => {
       ios.forEach(([input, keys, expected]) => {
         const result = Kasen(input)
           .deleteAll(keys)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, keys, expected]) => {
@@ -356,7 +356,7 @@ describe("Object", () => {
       inputs.forEach(input => {
         const result = Kasen(input)
           .clear()
-          .toJs();
+          .toJS();
         expect(result).toEqual({});
       });
     });
@@ -377,7 +377,7 @@ describe("Object", () => {
       ios.forEach(([input, objects, expected]) => {
         const result = Kasen(input)
           .merge(...objects)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, objects, expected]) => {
@@ -387,7 +387,7 @@ describe("Object", () => {
       ios.forEach(([input, objects, expected]) => {
         const result = Kasen(input)
           .assign(...objects)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, objects, expected]) => {
@@ -425,7 +425,7 @@ describe("Object", () => {
       ios.forEach(([input, objects, expected]) => {
         const result = Kasen(input)
           .mergeWith((left, right) => left + right, ...objects)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, objects, expected]) => {
@@ -471,7 +471,7 @@ describe("Object", () => {
       ios.forEach(([input, objects, expected]) => {
         const result = Kasen(input)
           .mergeDeep(...objects)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, objects, expected]) => {
@@ -509,7 +509,7 @@ describe("Object", () => {
       ios.forEach(([input, objects, expected]) => {
         const result = Kasen(input)
           .mergeDeepWith((v1, v2) => v1 + v2, ...objects)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, objects, expected]) => {
@@ -550,7 +550,7 @@ describe("Object", () => {
       ios.forEach(([input, keys, expected]) => {
         const result = Kasen(input)
           .setIn(keys, 10)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, keys, expected]) => {
@@ -567,7 +567,7 @@ describe("Object", () => {
       ios.forEach(([input, keys, expected]) => {
         const result = Kasen(input)
           .setIn(keys, 10)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, keys, expected]) => {
@@ -589,7 +589,7 @@ describe("Object", () => {
       ios.forEach(([input, keys, expected]) => {
         const result = Kasen(input)
           .updateIn(keys, v => v + 10)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, keys, expected]) => {
@@ -606,7 +606,7 @@ describe("Object", () => {
       ios.forEach(([input, keys, expected]) => {
         const result = Kasen(input)
           .updateIn(keys, v => v + 10)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, keys, expected]) => {
@@ -629,7 +629,7 @@ describe("Object", () => {
       ios.forEach(([input, keys, expected]) => {
         const result = Kasen(input)
           .deleteIn(keys)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, keys, expected]) => {
@@ -834,11 +834,11 @@ describe("Object", () => {
     });
   });
 
-  describe("toJs()", () => {
+  describe("toJS()", () => {
     test("ok", () => {
       const inputs = [{}, { a: 1 }, { a: 1, b: 2 }, { a: 1, b: 2, c: 3 }];
       inputs.forEach(input => {
-        const result = Kasen(input).toJs();
+        const result = Kasen(input).toJS();
         expect(result).toEqual(input);
       });
     });

@@ -437,7 +437,7 @@ export default class Collection {
     return true;
   }
 
-  toJs() {
+  toJS() {
     return this.__consume(null);
   }
 

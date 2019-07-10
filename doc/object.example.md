@@ -58,7 +58,7 @@
 
 ## `hasIn(keys)`
 
-## `toJs()`
+## `toJS()`
 
 ## `toArray()`
 

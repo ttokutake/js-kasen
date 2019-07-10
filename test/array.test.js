@@ -6,23 +6,23 @@ describe("Array", () => {
       {
         const array = Kasen([1, 2, 3]).map(v => v + 1);
         const array2 = array.copy().map(v => v + 1);
-        expect(array.toJs()).toEqual([2, 3, 4]);
-        expect(array2.toJs()).toEqual([3, 4, 5]);
+        expect(array.toJS()).toEqual([2, 3, 4]);
+        expect(array2.toJS()).toEqual([3, 4, 5]);
       }
       {
         const array = Kasen([1, 2, 3]);
         const array2 = array.copy();
         array.take(2);
-        expect(array.toJs()).toEqual([1, 2]);
-        expect(array2.toJs()).toEqual([1, 2, 3]);
+        expect(array.toJS()).toEqual([1, 2]);
+        expect(array2.toJS()).toEqual([1, 2, 3]);
       }
       {
         const array = [1, 2, 3];
         const array2 = Kasen(array);
         const array3 = array2.copy();
         array[0] = 10;
-        expect(array2.toJs()).toEqual([10, 2, 3]);
-        expect(array3.toJs()).toEqual([1, 2, 3]);
+        expect(array2.toJS()).toEqual([10, 2, 3]);
+        expect(array3.toJS()).toEqual([1, 2, 3]);
       }
       {
         const origin = [1, 2, 3];
@@ -41,20 +41,20 @@ describe("Array", () => {
         const array = Kasen([null, null, null]).memoize();
         origin[0] = 1;
         expect(origin).toEqual([1, null, null]);
-        expect(array.toJs()).toEqual([null, null, null]);
+        expect(array.toJS()).toEqual([null, null, null]);
       }
       {
         const array = Kasen([null, null, null])
           .map(() => Math.random())
           .memoize();
-        expect(array.toJs()).toEqual(array.toJs());
+        expect(array.toJS()).toEqual(array.toJS());
       }
       {
         const array = Kasen([null, null, null])
           .map(() => Math.random())
           .take(2)
           .memoize();
-        expect(array.toJs()).toEqual(array.toJs());
+        expect(array.toJS()).toEqual(array.toJS());
       }
     });
   });
@@ -65,7 +65,7 @@ describe("Array", () => {
       inputs.forEach(input => {
         const result = Kasen(input)
           .tap(v => v + 1)
-          .toJs();
+          .toJS();
         expect(result).toEqual(input);
       });
     });
@@ -82,7 +82,7 @@ describe("Array", () => {
       ios.forEach(([input, expected]) => {
         const result = Kasen(input)
           .map(v => v + 1)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, expected]) => {
@@ -98,7 +98,7 @@ describe("Array", () => {
       ios.forEach(([input, expected]) => {
         const result = Kasen(input)
           .pluck("a")
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, expected]) => {
@@ -114,7 +114,7 @@ describe("Array", () => {
       ios.forEach(([input, expected]) => {
         const result = Kasen(input)
           .filter()
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, expected]) => {
@@ -134,7 +134,7 @@ describe("Array", () => {
       ios.forEach(([input, expected]) => {
         const result = Kasen(input)
           .filter(v => v % 2 === 0)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, expected]) => {
@@ -156,7 +156,7 @@ describe("Array", () => {
       ios.forEach(([input, expected]) => {
         const result = Kasen(input)
           .filterNot(v => v % 2 === 1)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, expected]) => {
@@ -177,7 +177,7 @@ describe("Array", () => {
       ios.forEach(([input, expected]) => {
         const result = Kasen(input)
           .reverse()
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, expected]) => {
@@ -216,7 +216,7 @@ describe("Array", () => {
       ios.forEach(([input, num, expected]) => {
         const result = Kasen(input)
           .take(num)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, num, expected]) => {
@@ -259,7 +259,7 @@ describe("Array", () => {
       ios.forEach(([input, num, expected]) => {
         const result = Kasen(input)
           .takeLast(num)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, num, expected]) => {
@@ -295,7 +295,7 @@ describe("Array", () => {
       ios.forEach(([input, expected]) => {
         const result = Kasen(input)
           .takeWhile(v => v % 2 === 1)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, expected]) => {
@@ -331,7 +331,7 @@ describe("Array", () => {
       ios.forEach(([input, expected]) => {
         const result = Kasen(input)
           .takeUntil(v => v % 2 === 0)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, expected]) => {
@@ -374,7 +374,7 @@ describe("Array", () => {
       ios.forEach(([input, num, expected]) => {
         const result = Kasen(input)
           .skip(num)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, num, expected]) => {
@@ -417,7 +417,7 @@ describe("Array", () => {
       ios.forEach(([input, num, expected]) => {
         const result = Kasen(input)
           .skipLast(num)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, num, expected]) => {
@@ -453,7 +453,7 @@ describe("Array", () => {
       ios.forEach(([input, expected]) => {
         const result = Kasen(input)
           .skipWhile(v => v % 2 === 1)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, expected]) => {
@@ -489,7 +489,7 @@ describe("Array", () => {
       ios.forEach(([input, expected]) => {
         const result = Kasen(input)
           .skipUntil(v => v % 2 === 0)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, expected]) => {
@@ -528,7 +528,7 @@ describe("Array", () => {
       ios.forEach(([input, index, expected]) => {
         const result = Kasen(input)
           .set(index, 10)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, index, expected]) => {
@@ -557,7 +557,7 @@ describe("Array", () => {
       ios.forEach(([input, index, expected]) => {
         const result = Kasen(input)
           .update(index, v => v + 10)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, index, expected]) => {
@@ -586,7 +586,7 @@ describe("Array", () => {
       ios.forEach(([input, index, expected]) => {
         const result = Kasen(input)
           .delete(index)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, index, expected]) => {
@@ -602,7 +602,7 @@ describe("Array", () => {
       inputs.forEach(input => {
         const result = Kasen(input)
           .clear()
-          .toJs();
+          .toJS();
         expect(result).toEqual([]);
       });
     });
@@ -629,7 +629,7 @@ describe("Array", () => {
       ios.forEach(([input, values, expected]) => {
         const result = Kasen(input)
           .concat(...values)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, arrays, expected]) => {
@@ -665,7 +665,7 @@ describe("Array", () => {
       ios.forEach(([input, index, expected]) => {
         const result = Kasen(input)
           .insert(index, 10)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, index, expected]) => {
@@ -698,7 +698,7 @@ describe("Array", () => {
       ios.forEach(([input, values, expected]) => {
         const result = Kasen(input)
           .push(...values)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, values, expected]) => {
@@ -720,7 +720,7 @@ describe("Array", () => {
       ios.forEach(([input, expected]) => {
         const result = Kasen(input)
           .pop()
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, expected]) => {
@@ -749,7 +749,7 @@ describe("Array", () => {
       ios.forEach(([input, values, expected]) => {
         const result = Kasen(input)
           .unshift(...values)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, values, expected]) => {
@@ -771,7 +771,7 @@ describe("Array", () => {
       ios.forEach(([input, expected]) => {
         const result = Kasen(input)
           .shift()
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, expected]) => {
@@ -812,7 +812,7 @@ describe("Array", () => {
       ios.forEach(([input, index, num, values, expected]) => {
         const result = Kasen(input)
           .splice(index, num, ...values)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, index, num, values, expected]) => {
@@ -848,7 +848,7 @@ describe("Array", () => {
       ios.forEach(([input, keys, expected]) => {
         const result = Kasen(input)
           .setIn(keys, 10)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, keys, expected]) => {
@@ -865,7 +865,7 @@ describe("Array", () => {
       ios.forEach(([input, keys, expected]) => {
         const result = Kasen(input)
           .setIn(keys, 10)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, keys, expected]) => {
@@ -887,7 +887,7 @@ describe("Array", () => {
       ios.forEach(([input, keys, expected]) => {
         const result = Kasen(input)
           .updateIn(keys, v => v + 10)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, keys, expected]) => {
@@ -904,7 +904,7 @@ describe("Array", () => {
       ios.forEach(([input, keys, expected]) => {
         const result = Kasen(input)
           .updateIn(keys, v => v + 10)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, keys, expected]) => {
@@ -927,7 +927,7 @@ describe("Array", () => {
       ios.forEach(([input, keys, expected]) => {
         const result = Kasen(input)
           .deleteIn(keys)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, keys, expected]) => {
@@ -959,7 +959,7 @@ describe("Array", () => {
       ios.forEach(([input, expected]) => {
         const result = Kasen(input)
           .flatten()
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, expected]) => {
@@ -986,7 +986,7 @@ describe("Array", () => {
       ios.forEach(([input, expected]) => {
         const result = Kasen(input)
           .flatMap(v => Array(v).fill(1))
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, expected]) => {
@@ -1023,7 +1023,7 @@ describe("Array", () => {
       ios.forEach(([input, arrays, expected]) => {
         const result = Kasen(input)
           .zip(...arrays)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, arrays, expected]) => {
@@ -1057,7 +1057,7 @@ describe("Array", () => {
       ios.forEach(([input, arrays, expected]) => {
         const result = Kasen(input)
           .zipAll(...arrays)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, arrays, expected]) => {
@@ -1091,7 +1091,7 @@ describe("Array", () => {
       ios.forEach(([input, arrays, expected]) => {
         const result = Kasen(input)
           .zipWith((...values) => values.reduce((acc, v) => acc + v), ...arrays)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, arrays, expected]) => {
@@ -1132,7 +1132,7 @@ describe("Array", () => {
       ios.forEach(([input, expected]) => {
         const result = Kasen(input)
           .sort()
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, expected]) => {
@@ -1149,7 +1149,7 @@ describe("Array", () => {
       ios.forEach(([input, expected]) => {
         const result = Kasen(input)
           .sort(({ a: v1 }, { a: v2 }) => v1 - v2)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, expected]) => {
@@ -1179,7 +1179,7 @@ describe("Array", () => {
       ios.forEach(([input, expected]) => {
         const result = Kasen(input)
           .unique()
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, expected]) => {
@@ -1199,7 +1199,7 @@ describe("Array", () => {
       ios.forEach(([input, expected]) => {
         const result = Kasen(input)
           .unique(v => v.a)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, expected]) => {
@@ -1233,7 +1233,7 @@ describe("Array", () => {
       ios.forEach(([input, num, expected]) => {
         const result = Kasen(input)
           .chunk(num)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, num, expected]) => {
@@ -1270,7 +1270,7 @@ describe("Array", () => {
       ios.forEach(([input, num, expected]) => {
         const result = Kasen(input)
           .sliding(num)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, num, expected]) => {
@@ -1293,7 +1293,7 @@ describe("Array", () => {
       ios.forEach(([input, num, step, expected]) => {
         const result = Kasen(input)
           .sliding(num, step)
-          .toJs();
+          .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, num, step, expected]) => {
@@ -1329,7 +1329,7 @@ describe("Array", () => {
         [1, 4, [1, 2, 3]]
       ];
       ios.forEach(([start, end, expected]) => {
-        const result = Kasen.range._(start, end).toJs();
+        const result = Kasen.range._(start, end).toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([start, end, expected]) => {
@@ -1341,7 +1341,7 @@ describe("Array", () => {
     test("step is specified", () => {
       const ios = [[0, 3, 1, [0, 1, 2]], [0, 3, 2, [0, 2]], [0, 3, 3, [0]]];
       ios.forEach(([start, end, step, expected]) => {
-        const result = Kasen.range._(start, end, step).toJs();
+        const result = Kasen.range._(start, end, step).toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([start, end, step, expected]) => {
@@ -1370,7 +1370,7 @@ describe("Array", () => {
     test("ok", () => {
       const ios = [[-1, []], [0, []], [1, [null]], [2, [null, null]]];
       ios.forEach(([num, expected]) => {
-        const result = Kasen.repeat._(null, num).toJs();
+        const result = Kasen.repeat._(null, num).toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([num, expected]) => {
@@ -1676,11 +1676,11 @@ describe("Array", () => {
     });
   });
 
-  describe("toJs()", () => {
+  describe("toJS()", () => {
     test("ok", () => {
       const inputs = [[], [1], [1, 2], [1, 2, 3]];
       inputs.forEach(input => {
-        const result = Kasen(input).toJs();
+        const result = Kasen(input).toJS();
         expect(result).toEqual(input);
       });
     });
@@ -2489,7 +2489,7 @@ describe("Array", () => {
       const keys = Kasen([1, 2, 3])
         .filter(v => v % 2 === 1)
         .map((_v, k) => k)
-        .toJs();
+        .toJS();
       expect(keys).toEqual([0, 1]);
     });
 
@@ -2497,7 +2497,7 @@ describe("Array", () => {
       const keys = Kasen([1, 2, 3])
         .reverse()
         .map((_v, k) => k)
-        .toJs();
+        .toJS();
       expect(keys).toEqual([0, 1, 2]);
     });
 
@@ -2507,7 +2507,7 @@ describe("Array", () => {
         .take(4)
         .reverse()
         .take(3)
-        .toJs();
+        .toJS();
       expect(result).toEqual([2, 3, 4]);
     });
   });
