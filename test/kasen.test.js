@@ -248,11 +248,33 @@ describe("Kasen", () => {
   });
 
   describe("getIn()", () => {
-    test("error", () => {});
+    test("error", () => {
+      expect(() => Kasen([]).getIn()).toThrow(TypeError);
+      expect(() => Kasen([]).getIn(null)).toThrow(TypeError);
+      expect(() => Kasen({}).getIn()).toThrow(TypeError);
+      expect(() => Kasen({}).getIn(null)).toThrow(TypeError);
+      expect(() => Kasen.getIn()).toThrow(TypeError);
+      expect(() => Kasen.getIn(null)).toThrow(TypeError);
+      expect(() => Kasen.getIn([])).toThrow(TypeError);
+      expect(() => Kasen.getIn([], null)).toThrow(TypeError);
+      expect(() => Kasen.getIn({})).toThrow(TypeError);
+      expect(() => Kasen.getIn({}, null)).toThrow(TypeError);
+    });
   });
 
   describe("hasIn()", () => {
-    test("error", () => {});
+    test("error", () => {
+      expect(() => Kasen([]).hasIn()).toThrow(TypeError);
+      expect(() => Kasen([]).hasIn(null)).toThrow(TypeError);
+      expect(() => Kasen({}).hasIn()).toThrow(TypeError);
+      expect(() => Kasen({}).hasIn(null)).toThrow(TypeError);
+      expect(() => Kasen.hasIn()).toThrow(TypeError);
+      expect(() => Kasen.hasIn(null)).toThrow(TypeError);
+      expect(() => Kasen.hasIn([])).toThrow(TypeError);
+      expect(() => Kasen.hasIn([], null)).toThrow(TypeError);
+      expect(() => Kasen.hasIn({})).toThrow(TypeError);
+      expect(() => Kasen.hasIn({}, null)).toThrow(TypeError);
+    });
   });
 
   describe("head() / first()", () => {
