@@ -198,6 +198,7 @@ describe("Kasen", () => {
   describe("count()", () => {
     test("error", () => {
       expect(() => Kasen([]).count(null)).toThrow(TypeError);
+      expect(() => Kasen({}).count(null)).toThrow(TypeError);
       expect(() => Kasen.count()).toThrow(TypeError);
       expect(() => Kasen.count(null)).toThrow(TypeError);
       expect(() => Kasen.count([], null)).toThrow(TypeError);
@@ -206,15 +207,44 @@ describe("Kasen", () => {
   });
 
   describe("get()", () => {
-    test("error", () => {});
+    test("error", () => {
+      expect(() => Kasen([]).get()).toThrow(TypeError);
+      expect(() => Kasen([]).get(null)).toThrow(TypeError);
+      expect(() => Kasen([]).get("a")).toThrow(TypeError);
+      expect(() => Kasen({}).get()).toThrow(TypeError);
+      expect(() => Kasen({}).get(null)).toThrow(TypeError);
+      expect(() => Kasen.get()).toThrow(TypeError);
+      expect(() => Kasen.get(null)).toThrow(TypeError);
+      expect(() => Kasen.get([])).toThrow(TypeError);
+      expect(() => Kasen.get([], null)).toThrow(TypeError);
+      expect(() => Kasen.get([], "a")).toThrow(TypeError);
+      expect(() => Kasen.get({})).toThrow(TypeError);
+      expect(() => Kasen.get({}, null)).toThrow(TypeError);
+    });
   });
 
   describe("has()", () => {
-    test("error", () => {});
+    test("error", () => {
+      expect(() => Kasen([]).has()).toThrow(TypeError);
+      expect(() => Kasen([]).has(null)).toThrow(TypeError);
+      expect(() => Kasen([]).has("a")).toThrow(TypeError);
+      expect(() => Kasen({}).has()).toThrow(TypeError);
+      expect(() => Kasen({}).has(null)).toThrow(TypeError);
+      expect(() => Kasen.has()).toThrow(TypeError);
+      expect(() => Kasen.has(null)).toThrow(TypeError);
+      expect(() => Kasen.has([])).toThrow(TypeError);
+      expect(() => Kasen.has([], null)).toThrow(TypeError);
+      expect(() => Kasen.has([], "a")).toThrow(TypeError);
+      expect(() => Kasen.has({})).toThrow(TypeError);
+      expect(() => Kasen.has({}, null)).toThrow(TypeError);
+    });
   });
 
   describe("includes()", () => {
-    test("error", () => {});
+    test("error", () => {
+      expect(() => Kasen.includes()).toThrow(TypeError);
+      expect(() => Kasen.includes(null)).toThrow(TypeError);
+    });
   });
 
   describe("getIn()", () => {
