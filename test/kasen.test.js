@@ -196,7 +196,13 @@ describe("Kasen", () => {
   });
 
   describe("count()", () => {
-    test("error", () => {});
+    test("error", () => {
+      expect(() => Kasen([]).count(null)).toThrow(TypeError);
+      expect(() => Kasen.count()).toThrow(TypeError);
+      expect(() => Kasen.count(null)).toThrow(TypeError);
+      expect(() => Kasen.count([], null)).toThrow(TypeError);
+      expect(() => Kasen.count({}, null)).toThrow(TypeError);
+    });
   });
 
   describe("get()", () => {
