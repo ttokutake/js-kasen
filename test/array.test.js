@@ -1607,6 +1607,15 @@ describe("Array", () => {
         expect(result).toBe(expected);
       });
     });
+
+    test("error", () => {
+      expect(() => Kasen.head()).toThrow(TypeError);
+      expect(() => Kasen.head(null)).toThrow(TypeError);
+      expect(() => Kasen.head({})).toThrow(TypeError);
+      expect(() => Kasen.first()).toThrow(TypeError);
+      expect(() => Kasen.first(null)).toThrow(TypeError);
+      expect(() => Kasen.first({})).toThrow(TypeError);
+    });
   });
 
   describe("tail()", () => {
@@ -1620,6 +1629,12 @@ describe("Array", () => {
         const result = Kasen.tail(input);
         expect(result).toEqual(expected);
       });
+    });
+
+    test("error", () => {
+      expect(() => Kasen.tail()).toThrow(TypeError);
+      expect(() => Kasen.tail(null)).toThrow(TypeError);
+      expect(() => Kasen.tail({})).toThrow(TypeError);
     });
   });
 
@@ -1635,6 +1650,12 @@ describe("Array", () => {
         expect(result).toEqual(expected);
       });
     });
+
+    test("error", () => {
+      expect(() => Kasen.init()).toThrow(TypeError);
+      expect(() => Kasen.init(null)).toThrow(TypeError);
+      expect(() => Kasen.init({})).toThrow(TypeError);
+    });
   });
 
   describe("last()", () => {
@@ -1648,6 +1669,12 @@ describe("Array", () => {
         const result = Kasen.last(input);
         expect(result).toBe(expected);
       });
+    });
+
+    test("error", () => {
+      expect(() => Kasen.last()).toThrow(TypeError);
+      expect(() => Kasen.last(null)).toThrow(TypeError);
+      expect(() => Kasen.last({})).toThrow(TypeError);
     });
   });
 
@@ -1673,6 +1700,16 @@ describe("Array", () => {
         const result = Kasen.splitAt(input, index);
         expect(result).toEqual(expected);
       });
+    });
+
+    test("error", () => {
+      expect(() => Kasen([]).splitAt()).toThrow(TypeError);
+      expect(() => Kasen([]).splitAt(null)).toThrow(TypeError);
+      expect(() => Kasen.splitAt()).toThrow(TypeError);
+      expect(() => Kasen.splitAt(null)).toThrow(TypeError);
+      expect(() => Kasen.splitAt({})).toThrow(TypeError);
+      expect(() => Kasen.splitAt([])).toThrow(TypeError);
+      expect(() => Kasen.splitAt([], null)).toThrow(TypeError);
     });
   });
 

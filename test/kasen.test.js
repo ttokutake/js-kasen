@@ -277,26 +277,6 @@ describe("Kasen", () => {
     });
   });
 
-  describe("head() / first()", () => {
-    test("error", () => {});
-  });
-
-  describe("tail()", () => {
-    test("error", () => {});
-  });
-
-  describe("init()", () => {
-    test("error", () => {});
-  });
-
-  describe("last()", () => {
-    test("error", () => {});
-  });
-
-  describe("splitAt()", () => {
-    test("error", () => {});
-  });
-
   describe("toArray()", () => {
     test("error", () => {
       expect(() => Kasen.toArray()).toThrow(TypeError);
