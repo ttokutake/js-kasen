@@ -831,21 +831,21 @@ export default class KasenArray extends Collection {
     return super.count(array, fun);
   }
 
-  get(index, protection) {
+  get(index, defaultValue) {
     if (!isNumber(index)) {
       throw new TypeError(FIRST_ARGUMENT_MUST_BE_NUMBER);
     }
     const array = this.__consume(null);
-    return this.constructor.get(array, index, protection);
+    return this.constructor.get(array, index, defaultValue);
   }
 
-  static get(array, index, protection) {
+  static get(array, index, defaultValue) {
     const { length } = array;
     if (-length <= index && index < length) {
       const key = correctIndex(index, length);
       return array[key];
     }
-    return protection;
+    return defaultValue;
   }
 
   has(index) {

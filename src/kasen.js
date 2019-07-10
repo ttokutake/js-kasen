@@ -544,7 +544,7 @@ Kasen.count = (coll, fun) => {
   return Coll.count(coll, fun);
 };
 
-Kasen.get = (coll, key, protection) => {
+Kasen.get = (coll, key, defaultValue) => {
   const Coll = choose(coll);
   if (!Coll) {
     throw new TypeError(FIRST_ARGUMENT_MUST_BE_ARRAY_OR_OBJECT);
@@ -555,7 +555,7 @@ Kasen.get = (coll, key, protection) => {
   if (isObject(coll) && !(isNumber(key) || isString(key))) {
     throw new TypeError(SECOND_ARGUMENT_MUST_BE_NUMBER_OR_STRING);
   }
-  return Coll.get(coll, key, protection);
+  return Coll.get(coll, key, defaultValue);
 };
 
 Kasen.has = (coll, key) => {
@@ -580,7 +580,7 @@ Kasen.includes = (coll, value) => {
   return Coll.includes(coll, value);
 };
 
-Kasen.getIn = (coll, keys, protection) => {
+Kasen.getIn = (coll, keys, defaultValue) => {
   const Coll = choose(coll);
   if (!Coll) {
     throw new TypeError(FIRST_ARGUMENT_MUST_BE_ARRAY_OR_OBJECT);
@@ -588,7 +588,7 @@ Kasen.getIn = (coll, keys, protection) => {
   if (!isArray(keys)) {
     throw new TypeError(SECOND_ARGUMENT_MUST_BE_ARRAY);
   }
-  return Coll.getIn(coll, keys, protection);
+  return Coll.getIn(coll, keys, defaultValue);
 };
 
 Kasen.hasIn = (coll, keys) => {

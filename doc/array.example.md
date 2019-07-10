@@ -776,13 +776,13 @@ Kasen.zip([[1, 2, 3], [11, 12]);
 
 ## `count(fun)`
 
-## `get(index, protection)`
+## `get(index, defaultValue)`
 
 ## `has(index)`
 
 ## `includes(value)`
 
-## `getIn(keys, protection)`
+## `getIn(keys, defaultValue)`
 
 ## `hasIn(keys)`
 

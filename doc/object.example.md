@@ -48,13 +48,13 @@
 
 ## `count(fun)`
 
-## `get(key, protection)`
+## `get(key, defaultValue)`
 
 ## `has(key)`
 
 ## `includes(value)`
 
-## `getIn(keys, protection)`
+## `getIn(keys, defaultValue)`
 
 ## `hasIn(keys)`
 

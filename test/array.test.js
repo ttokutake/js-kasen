@@ -1428,7 +1428,7 @@ describe("Array", () => {
   });
 
   describe("get()", () => {
-    test("protection is undefined", () => {
+    test("defaultValue is undefined", () => {
       const inputs = [
         [[], -1, undefined],
         [[], 0, undefined],
@@ -1453,7 +1453,7 @@ describe("Array", () => {
       });
     });
 
-    test("protection is specified", () => {
+    test("defaultValue is specified", () => {
       const inputs = [
         [[], -1, 10],
         [[], 0, 10],
@@ -1525,7 +1525,7 @@ describe("Array", () => {
   });
 
   describe("getIn()", () => {
-    test("protection is undefined", () => {
+    test("defaultValue is undefined", () => {
       const ios = [
         [[], [], undefined],
         [[], [0], undefined],
@@ -1544,7 +1544,7 @@ describe("Array", () => {
       });
     });
 
-    test("protection is specified", () => {
+    test("defaultValue is specified", () => {
       const ios = [
         [[], [], 10],
         [[], [0], 10],

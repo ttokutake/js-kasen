@@ -690,7 +690,7 @@ describe("Object", () => {
   });
 
   describe("get()", () => {
-    test("protection is undefined", () => {
+    test("defaultValue is undefined", () => {
       const inputs = [
         [{}, "a", undefined],
         [{ a: 1 }, "a", 1],
@@ -709,7 +709,7 @@ describe("Object", () => {
       });
     });
 
-    test("protection is specified", () => {
+    test("defaultValue is specified", () => {
       const inputs = [
         [{}, "a", 10],
         [{ a: 1 }, "a", 1],
@@ -772,7 +772,7 @@ describe("Object", () => {
   });
 
   describe("getIn()", () => {
-    test("protection is undefined", () => {
+    test("defaultValue is undefined", () => {
       const ios = [
         [{}, [], undefined],
         [{}, ["a"], undefined],
@@ -791,7 +791,7 @@ describe("Object", () => {
       });
     });
 
-    test("protection is specified", () => {
+    test("defaultValue is specified", () => {
       const ios = [
         [{}, [], 10],
         [{}, ["a"], 10],

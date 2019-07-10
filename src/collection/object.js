@@ -331,7 +331,7 @@ export default class KasenObject extends Collection {
     return !Object.keys(object).length;
   }
 
-  get(key, protection) {
+  get(key, defaultValue) {
     if (!(isNumber(key) || isString(key))) {
       throw new TypeError(FIRST_ARGUMENT_MUST_BE_NUMBER_OR_STRING);
     }
@@ -343,12 +343,12 @@ export default class KasenObject extends Collection {
           return value;
         }
       }
-      return protection;
+      return defaultValue;
     };
     return this.__consume(finalize);
   }
 
-  static get(object, key, protection) {
+  static get(object, key, defaultValue) {
     const keys = Object.keys(object);
     for (let i = 0, { length } = keys; i < length; i += 1) {
       const k = keys[i];
@@ -356,7 +356,7 @@ export default class KasenObject extends Collection {
         return object[key];
       }
     }
-    return protection;
+    return defaultValue;
   }
 
   has(key) {

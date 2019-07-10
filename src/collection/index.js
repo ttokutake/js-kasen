@@ -298,12 +298,12 @@ export default class Collection {
   }
 
   // eslint-disable-next-line class-methods-use-this, no-unused-vars
-  get(_key, _protection) {
+  get(_key, _defaultValue) {
     throw new Error("not implemented");
   }
 
   // eslint-disable-next-line no-unused-vars
-  static get(_coll, _key, _protection) {
+  static get(_coll, _key, _defaultValue) {
     throw new Error("not implemented");
   }
 
@@ -345,13 +345,13 @@ export default class Collection {
     throw new Error("not implemented");
   }
 
-  getIn(keys, protection) {
+  getIn(keys, defaultValue) {
     if (!isArray(keys)) {
       throw new TypeError(FIRST_ARGUMENT_MUST_BE_ARRAY);
     }
     const finalize = iter => {
       if (!keys.length) {
-        return protection;
+        return defaultValue;
       }
       const [head, ...tail] = keys;
       let key;
@@ -362,30 +362,30 @@ export default class Collection {
             return value;
           }
           if (isArray(value) || isObject(value)) {
-            return this.constructor.getIn(value, tail, protection);
+            return this.constructor.getIn(value, tail, defaultValue);
           }
           break;
         }
       }
-      return protection;
+      return defaultValue;
     };
     return this.__consume(finalize);
   }
 
-  static getIn(coll, keys, protection) {
+  static getIn(coll, keys, defaultValue) {
     let nextColl = coll;
     for (let i = 0, { length } = keys; i < length; i += 1) {
       const key = keys[i];
       const value = nextColl[key];
       if (i >= length - 1) {
-        return value === undefined ? protection : value;
+        return value === undefined ? defaultValue : value;
       }
       if (!(isArray(value) || isObject(value))) {
         break;
       }
       nextColl = value;
     }
-    return protection;
+    return defaultValue;
   }
 
   hasIn(keys) {
