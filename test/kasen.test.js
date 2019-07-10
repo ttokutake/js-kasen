@@ -292,15 +292,49 @@ describe("Kasen", () => {
   });
 
   describe("reduce()", () => {
-    test("error", () => {});
-  });
-
-  describe("reduceRight()", () => {
-    test("error", () => {});
+    test("error", () => {
+      expect(() => Kasen([]).reduce()).toThrow(TypeError);
+      expect(() => Kasen([]).reduce(null)).toThrow(TypeError);
+      expect(() => Kasen([]).reduce((acc, v) => acc + v)).toThrow(TypeError);
+      expect(() => Kasen({}).reduce()).toThrow(TypeError);
+      expect(() => Kasen({}).reduce(null)).toThrow(TypeError);
+      expect(() => Kasen({}).reduce((acc, v) => acc + v)).toThrow(TypeError);
+      expect(() => Kasen.reduce()).toThrow(TypeError);
+      expect(() => Kasen.reduce(null)).toThrow(TypeError);
+      expect(() => Kasen.reduce([])).toThrow(TypeError);
+      expect(() => Kasen.reduce([], null)).toThrow(TypeError);
+      expect(() => Kasen.reduce([], (acc, v) => acc + v)).toThrow(TypeError);
+      expect(() => Kasen.reduce({})).toThrow(TypeError);
+      expect(() => Kasen.reduce({}, null)).toThrow(TypeError);
+      expect(() => Kasen.reduce({}, (acc, v) => acc + v)).toThrow(TypeError);
+    });
   });
 
   describe("reduceWhile()", () => {
-    test("error", () => {});
+    test("error", () => {
+      expect(() => Kasen([]).reduceWhile()).toThrow(TypeError);
+      expect(() => Kasen([]).reduceWhile(null)).toThrow(TypeError);
+      expect(() =>
+        Kasen([]).reduceWhile((acc, v) => ["halt", acc + v])
+      ).toThrow(TypeError);
+      expect(() => Kasen({}).reduceWhile()).toThrow(TypeError);
+      expect(() => Kasen({}).reduceWhile(null)).toThrow(TypeError);
+      expect(() =>
+        Kasen({}).reduceWhile((acc, v) => ["halt", acc + v])
+      ).toThrow(TypeError);
+      expect(() => Kasen.reduceWhile()).toThrow(TypeError);
+      expect(() => Kasen.reduceWhile(null)).toThrow(TypeError);
+      expect(() => Kasen.reduceWhile([])).toThrow(TypeError);
+      expect(() => Kasen.reduceWhile([], null)).toThrow(TypeError);
+      expect(() =>
+        Kasen.reduceWhile([], (acc, v) => ["halt", acc + v])
+      ).toThrow(TypeError);
+      expect(() => Kasen.reduceWhile({})).toThrow(TypeError);
+      expect(() => Kasen.reduceWhile({}, null)).toThrow(TypeError);
+      expect(() =>
+        Kasen.reduceWhile({}, (acc, v) => ["halt", acc + v])
+      ).toThrow(TypeError);
+    });
   });
 
   describe("scan()", () => {
@@ -416,7 +450,7 @@ describe("Kasen", () => {
     });
   });
 
-  describe("korEach()", () => {
+  describe("forEach()", () => {
     test("error", () => {});
   });
 });

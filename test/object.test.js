@@ -910,11 +910,6 @@ describe("Object", () => {
         expect(result).toBe(expected);
       });
     });
-
-    test("error", () => {
-      expect(() => Kasen({}).reduce((acc, v) => acc + v)).toThrow(TypeError);
-      expect(() => Kasen.reduce({}, (acc, v) => acc + v)).toThrow(TypeError);
-    });
   });
 
   describe("reduceWhile()", () => {
@@ -956,15 +951,6 @@ describe("Object", () => {
         );
         expect(result).toBe(expected);
       });
-    });
-
-    test("error", () => {
-      expect(() =>
-        Kasen({}).reduceWhile((acc, v) => ["halt", acc + v])
-      ).toThrow(TypeError);
-      expect(() =>
-        Kasen.reduceWhile({}, (acc, v) => ["halt", acc + v])
-      ).toThrow(TypeError);
     });
   });
 

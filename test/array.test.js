@@ -1785,11 +1785,6 @@ describe("Array", () => {
         expect(result).toBe(expected);
       });
     });
-
-    test("error", () => {
-      expect(() => Kasen([]).reduce((acc, v) => acc + v)).toThrow(TypeError);
-      expect(() => Kasen.reduce([], (acc, v) => acc + v)).toThrow(TypeError);
-    });
   });
 
   describe("reduceRight()", () => {
@@ -1823,9 +1818,16 @@ describe("Array", () => {
     });
 
     test("error", () => {
+      expect(() => Kasen([]).reduceRight()).toThrow(TypeError);
+      expect(() => Kasen([]).reduceRight(null)).toThrow(TypeError);
       expect(() => Kasen([]).reduceRight((acc, v) => acc + v)).toThrow(
         TypeError
       );
+      expect(() => Kasen.reduceRight()).toThrow(TypeError);
+      expect(() => Kasen.reduceRight(null)).toThrow(TypeError);
+      expect(() => Kasen.reduceRight({})).toThrow(TypeError);
+      expect(() => Kasen.reduceRight([])).toThrow(TypeError);
+      expect(() => Kasen.reduceRight([], null)).toThrow(TypeError);
       expect(() => Kasen.reduceRight([], (acc, v) => acc + v)).toThrow(
         TypeError
       );
@@ -1862,15 +1864,6 @@ describe("Array", () => {
         );
         expect(result).toBe(expected);
       });
-    });
-
-    test("error", () => {
-      expect(() =>
-        Kasen([]).reduceWhile((acc, v) => ["halt", acc + v])
-      ).toThrow(TypeError);
-      expect(() =>
-        Kasen.reduceWhile([], (acc, v) => ["halt", acc + v])
-      ).toThrow(TypeError);
     });
   });
 
