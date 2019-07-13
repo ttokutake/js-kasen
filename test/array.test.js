@@ -2206,6 +2206,16 @@ describe("Array", () => {
         expect(result).toBe(expected);
       });
     });
+
+    test("error", () => {
+      expect(() => Kasen([]).findLastKey()).toThrow(TypeError);
+      expect(() => Kasen([]).findLastKey(null)).toThrow(TypeError);
+      expect(() => Kasen.findLastKey()).toThrow(TypeError);
+      expect(() => Kasen.findLastKey(null)).toThrow(TypeError);
+      expect(() => Kasen.findLastKey({})).toThrow(TypeError);
+      expect(() => Kasen.findLastKey([])).toThrow(TypeError);
+      expect(() => Kasen.findLastKey([], null)).toThrow(TypeError);
+    });
   });
 
   describe("findIndex()", () => {
