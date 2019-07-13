@@ -934,15 +934,19 @@ describe("Object", () => {
     test("init is undefined", () => {
       const ios = [
         [{ a: 1 }, 1],
-        [{ a: 1, b: 1 }, 2],
-        [{ a: 1, b: 1, c: 1 }, 2]
+        [{ a: 1, b: 2 }, 2],
+        [{ a: 1, b: 2, c: 3 }, 2]
       ];
       ios.forEach(([input, expected]) => {
-        const result = Kasen(input).reduceWhile((acc, v) => ["halt", acc + v]);
+        const result = Kasen(input).reduceWhile((acc, v) =>
+          v % 2 === 0 ? ["halt", v] : ["cont", acc + v]
+        );
         expect(result).toBe(expected);
       });
       ios.forEach(([input, expected]) => {
-        const result = Kasen.reduceWhile(input, (acc, v) => ["halt", acc + v]);
+        const result = Kasen.reduceWhile(input, (acc, v) =>
+          v % 2 === 0 ? ["halt", v] : ["cont", acc + v]
+        );
         expect(result).toBe(expected);
       });
     });
@@ -951,12 +955,12 @@ describe("Object", () => {
       const ios = [
         [{}, 10],
         [{ a: 1 }, 11],
-        [{ a: 1, b: 1 }, 11],
-        [{ a: 1, b: 1, c: 1 }, 11]
+        [{ a: 1, b: 2 }, 2],
+        [{ a: 1, b: 2, c: 3 }, 2]
       ];
       ios.forEach(([input, expected]) => {
         const result = Kasen(input).reduceWhile(
-          (acc, v) => ["halt", acc + v],
+          (acc, v) => (v % 2 === 0 ? ["halt", v] : ["cont", acc + v]),
           10
         );
         expect(result).toBe(expected);
@@ -964,7 +968,7 @@ describe("Object", () => {
       ios.forEach(([input, expected]) => {
         const result = Kasen.reduceWhile(
           input,
-          (acc, v) => ["halt", acc + v],
+          (acc, v) => (v % 2 === 0 ? ["halt", v] : ["cont", acc + v]),
           10
         );
         expect(result).toBe(expected);
