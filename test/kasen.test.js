@@ -512,6 +512,16 @@ describe("Kasen", () => {
     });
   });
 
+  describe("equals()", () => {
+    test("true", () => {
+      expect(Kasen.equals(null, null)).toBe(true);
+    });
+
+    test("false", () => {
+      expect(Kasen.equals(null)).toBe(false);
+    });
+  });
+
   describe("keys()", () => {
     test("error", () => {
       expect(() => Kasen.keys()).toThrow(TypeError);
