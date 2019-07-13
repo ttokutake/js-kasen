@@ -357,15 +357,44 @@ describe("Kasen", () => {
   });
 
   describe("partition()", () => {
-    test("error", () => {});
+    test("error", () => {
+      expect(() => Kasen([]).partition()).toThrow(TypeError);
+      expect(() => Kasen([]).partition(null)).toThrow(TypeError);
+      expect(() => Kasen({}).partition()).toThrow(TypeError);
+      expect(() => Kasen({}).partition(null)).toThrow(TypeError);
+      expect(() => Kasen.partition()).toThrow(TypeError);
+      expect(() => Kasen.partition(null)).toThrow(TypeError);
+      expect(() => Kasen.partition([])).toThrow(TypeError);
+      expect(() => Kasen.partition([], null)).toThrow(TypeError);
+      expect(() => Kasen.partition({})).toThrow(TypeError);
+      expect(() => Kasen.partition({}, null)).toThrow(TypeError);
+    });
   });
 
   describe("join()", () => {
-    test("error", () => {});
+    test("error", () => {
+      expect(() => Kasen([]).join(null)).toThrow(TypeError);
+      expect(() => Kasen({}).join(null)).toThrow(TypeError);
+      expect(() => Kasen.join()).toThrow(TypeError);
+      expect(() => Kasen.join(null)).toThrow(TypeError);
+      expect(() => Kasen.join([], null)).toThrow(TypeError);
+      expect(() => Kasen.join({}, null)).toThrow(TypeError);
+    });
   });
 
   describe("groupBy()", () => {
-    test("error", () => {});
+    test("error", () => {
+      expect(() => Kasen([]).groupBy()).toThrow(TypeError);
+      expect(() => Kasen([]).groupBy(null)).toThrow(TypeError);
+      expect(() => Kasen({}).groupBy()).toThrow(TypeError);
+      expect(() => Kasen({}).groupBy(null)).toThrow(TypeError);
+      expect(() => Kasen.groupBy()).toThrow(TypeError);
+      expect(() => Kasen.groupBy(null)).toThrow(TypeError);
+      expect(() => Kasen.groupBy([])).toThrow(TypeError);
+      expect(() => Kasen.groupBy([], null)).toThrow(TypeError);
+      expect(() => Kasen.groupBy({})).toThrow(TypeError);
+      expect(() => Kasen.groupBy({}, null)).toThrow(TypeError);
+    });
   });
 
   describe("every()", () => {
