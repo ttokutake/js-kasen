@@ -472,18 +472,6 @@ describe("Kasen", () => {
     });
   });
 
-  describe("findLastKey()", () => {
-    test("error", () => {});
-  });
-
-  describe("findIndex()", () => {
-    test("error", () => {});
-  });
-
-  describe("findLastIndex()", () => {
-    test("error", () => {});
-  });
-
   describe("keyOf()", () => {
     test("error", () => {});
   });

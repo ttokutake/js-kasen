@@ -2238,6 +2238,16 @@ describe("Array", () => {
         expect(result).toBe(expected);
       });
     });
+
+    test("error", () => {
+      expect(() => Kasen([]).findIndex()).toThrow(TypeError);
+      expect(() => Kasen([]).findIndex(null)).toThrow(TypeError);
+      expect(() => Kasen.findIndex()).toThrow(TypeError);
+      expect(() => Kasen.findIndex(null)).toThrow(TypeError);
+      expect(() => Kasen.findIndex({})).toThrow(TypeError);
+      expect(() => Kasen.findIndex([])).toThrow(TypeError);
+      expect(() => Kasen.findIndex([], null)).toThrow(TypeError);
+    });
   });
 
   describe("findLastIndex()", () => {
@@ -2259,6 +2269,16 @@ describe("Array", () => {
         const result = Kasen.findLastIndex(input, v => v % 2 === 1);
         expect(result).toBe(expected);
       });
+    });
+
+    test("error", () => {
+      expect(() => Kasen([]).findLastIndex()).toThrow(TypeError);
+      expect(() => Kasen([]).findLastIndex(null)).toThrow(TypeError);
+      expect(() => Kasen.findLastIndex()).toThrow(TypeError);
+      expect(() => Kasen.findLastIndex(null)).toThrow(TypeError);
+      expect(() => Kasen.findLastIndex({})).toThrow(TypeError);
+      expect(() => Kasen.findLastIndex([])).toThrow(TypeError);
+      expect(() => Kasen.findLastIndex([], null)).toThrow(TypeError);
     });
   });
 
