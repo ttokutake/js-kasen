@@ -1107,11 +1107,13 @@ describe("Array", () => {
     test("error", () => {
       expect(() => Kasen([]).zipWith()).toThrow(TypeError);
       expect(() => Kasen([]).zipWith(null)).toThrow(TypeError);
+      expect(() => Kasen([]).zipWith(() => {}, null)).toThrow(TypeError);
       expect(() => Kasen.zipWith()).toThrow(TypeError);
       expect(() => Kasen.zipWith(null)).toThrow(TypeError);
       expect(() => Kasen.zipWith({})).toThrow(TypeError);
       expect(() => Kasen.zipWith([])).toThrow(TypeError);
       expect(() => Kasen.zipWith([], null)).toThrow(TypeError);
+      expect(() => Kasen.zipWith([], () => {}, null)).toThrow(TypeError);
     });
   });
 
