@@ -4,16 +4,18 @@ describe("Object", () => {
   describe("copy()", () => {
     test("ok", () => {
       {
-        const object = Kasen({ a: 1, b: 2, c: 3 }).map(v => v + 1);
+        const object = Kasen({ a: 1, b: 2, c: 3 })
+          .map(v => v + 1)
+          .set("a", 10);
         const object2 = object.copy().map(v => v + 1);
-        expect(object.toJS()).toEqual({ a: 2, b: 3, c: 4 });
-        expect(object2.toJS()).toEqual({ a: 3, b: 4, c: 5 });
+        expect(object.toJS()).toEqual({ a: 10, b: 3, c: 4 });
+        expect(object2.toJS()).toEqual({ a: 11, b: 4, c: 5 });
       }
       {
         const object = Kasen({ a: 1, b: 2, c: 3 });
         const object2 = object.copy();
-        object.delete("a");
-        expect(object.toJS()).toEqual({ b: 2, c: 3 });
+        object.map(v => v + 1);
+        expect(object.toJS()).toEqual({ a: 2, b: 3, c: 4 });
         expect(object2.toJS()).toEqual({ a: 1, b: 2, c: 3 });
       }
       {
