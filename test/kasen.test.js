@@ -473,11 +473,10 @@ describe("Kasen", () => {
   });
 
   describe("keyOf()", () => {
-    test("error", () => {});
-  });
-
-  describe("lastKeyOf()", () => {
-    test("error", () => {});
+    test("error", () => {
+      expect(() => Kasen.keyOf()).toThrow(TypeError);
+      expect(() => Kasen.keyOf(null)).toThrow(TypeError);
+    });
   });
 
   describe("indexOf()", () => {

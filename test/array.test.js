@@ -2324,6 +2324,12 @@ describe("Array", () => {
         expect(result).toBe(expected);
       });
     });
+
+    test("error", () => {
+      expect(() => Kasen.lastKeyOf()).toThrow(TypeError);
+      expect(() => Kasen.lastKeyOf(null)).toThrow(TypeError);
+      expect(() => Kasen.lastKeyOf({})).toThrow(TypeError);
+    });
   });
 
   describe("indexOf()", () => {
