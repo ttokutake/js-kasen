@@ -4,20 +4,11 @@ class BaseIterator {
     this.parent = null;
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  next() {
-    throw new Error("not implemented");
-  }
+  // abstract next() { }
 
-  // eslint-disable-next-line class-methods-use-this
-  prev() {
-    throw new Error("not implemented");
-  }
+  // abstract prev() { }
 
-  // eslint-disable-next-line class-methods-use-this
-  reset() {
-    throw new Error("not implemented");
-  }
+  // abstract reset() { }
 }
 
 export class OriginIterator extends BaseIterator {
@@ -26,14 +17,9 @@ export class OriginIterator extends BaseIterator {
     this.coll = coll;
   }
 
-  static default() {
-    throw new Error("not implemented");
-  }
+  // abstract static default() { }
 
-  // eslint-disable-next-line no-unused-vars
-  static add(_coll, _key, _value) {
-    throw new Error("not implemented");
-  }
+  // abstract static add(coll, key, value) { }
 
   static collect(iter) {
     const coll = this.default();
@@ -53,10 +39,7 @@ export class ChainIterator extends BaseIterator {
     this.fun = fun;
   }
 
-  // eslint-disable-next-line class-methods-use-this, no-unused-vars
-  base(_direction) {
-    throw new Error("not implemented");
-  }
+  // abstract base(direction) { }
 
   next() {
     return this.base("next");

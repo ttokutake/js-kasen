@@ -66,10 +66,7 @@ export default class Collection {
     this.__iter = iter || this.constructor.__iterator(coll);
   }
 
-  // eslint-disable-next-line no-unused-vars
-  static __iterator(_coll) {
-    throw new Error("not implemented");
-  }
+  // abstract static __iterator(coll) { }
 
   __pile(Iter, fun) {
     this.__iter = new Iter(this.__iter, fun);
@@ -106,10 +103,7 @@ export default class Collection {
     return new this.constructor(null, iter);
   }
 
-  // eslint-disable-next-line no-unused-vars
-  static copy(_coll) {
-    throw new Error("not implemented");
-  }
+  // abstract static copy(coll) { }
 
   memoize() {
     const coll = this.__consume(null);
@@ -133,10 +127,7 @@ export default class Collection {
     return this;
   }
 
-  // eslint-disable-next-line no-unused-vars
-  static map(_coll, _fun) {
-    throw new Error("not implemented");
-  }
+  // abstract static map(coll, fun) { }
 
   pluck(key) {
     if (!(isNumber(key) || isString(key))) {
@@ -149,15 +140,9 @@ export default class Collection {
     return this.map(coll, v => v[key]);
   }
 
-  // eslint-disable-next-line class-methods-use-this, no-unused-vars
-  filter(_fun) {
-    throw new Error("not implemented");
-  }
+  // abstract filter(fun) { }
 
-  // eslint-disable-next-line no-unused-vars
-  static filter(_coll, _fun) {
-    throw new Error("not implemented");
-  }
+  // abstract static filter(coll, fun) { }
 
   filterNot(fun) {
     if (!isFunction(fun)) {
@@ -180,25 +165,13 @@ export default class Collection {
 
   // TODO: setAll()
 
-  // eslint-disable-next-line class-methods-use-this, no-unused-vars
-  update(_fun) {
-    throw new Error("not implemented");
-  }
+  // abstract update(fun) { }
 
-  // eslint-disable-next-line no-unused-vars
-  static update(_coll, _key, _fun) {
-    throw new Error("not implemented");
-  }
+  // abstract static update(coll, key, fun) { }
 
-  // eslint-disable-next-line class-methods-use-this, no-unused-vars
-  delete(_fun) {
-    throw new Error("not implemented");
-  }
+  // abstract delete(fun) { }
 
-  // eslint-disable-next-line no-unused-vars
-  static delete(_coll, _key) {
-    throw new Error("not implemented");
-  }
+  // abstract static delete(coll, key) { }
 
   clear() {
     this.__pile(ClearCollector, null);
@@ -258,10 +231,7 @@ export default class Collection {
     return this.__consume(finalize);
   }
 
-  // eslint-disable-next-line no-unused-vars
-  static isEmpty(_coll) {
-    throw new Error("not implemented");
-  }
+  // abstract static isEmpty(coll) { }
 
   // TODO?: isSubset()
 
@@ -297,15 +267,9 @@ export default class Collection {
     return counter;
   }
 
-  // eslint-disable-next-line class-methods-use-this, no-unused-vars
-  get(_key, _defaultValue) {
-    throw new Error("not implemented");
-  }
+  // abstract get(key, defaultValue) { }
 
-  // eslint-disable-next-line no-unused-vars
-  static get(_coll, _key, _defaultValue) {
-    throw new Error("not implemented");
-  }
+  // abstract static get(coll, key, defaultValue) { }
 
   // eslint-disable-next-line class-methods-use-this, no-unused-vars
   has(key) {
@@ -321,10 +285,7 @@ export default class Collection {
     return this.__consume(finalize);
   }
 
-  // eslint-disable-next-line no-unused-vars
-  static has(_coll, _key) {
-    throw new Error("not implemented");
-  }
+  // abstract static has(coll, key) { }
 
   // TODO?: Use SameValueZero algorithm
   includes(value) {
@@ -340,10 +301,7 @@ export default class Collection {
     return this.__consume(finalize);
   }
 
-  // eslint-disable-next-line no-unused-vars
-  static includes(_coll, _value) {
-    throw new Error("not implemented");
-  }
+  // abstract static includes(coll, value) { }
 
   getIn(keys, defaultValue) {
     if (!isArray(keys)) {
@@ -453,10 +411,7 @@ export default class Collection {
     return this.__consume(finalize);
   }
 
-  // eslint-disable-next-line no-unused-vars
-  static toArray(_coll) {
-    throw new Error("not implemented");
-  }
+  // abstract static toArray(coll) { }
 
   toObject() {
     const finalize = iter => {
@@ -508,10 +463,7 @@ export default class Collection {
     return this.__consume(finalize);
   }
 
-  // eslint-disable-next-line no-unused-vars
-  static reduce(_coll, _fun, _init) {
-    throw new Error("not implemented");
-  }
+  // abstract static reduce(coll, fun, init) { }
 
   reduceWhile(fun, init) {
     if (!isFunction(fun)) {
@@ -547,10 +499,7 @@ export default class Collection {
     return this.__consume(finalize);
   }
 
-  // eslint-disable-next-line no-unused-vars
-  static reduceWhile(_coll, _fun, _init) {
-    throw new Error("not implemented");
-  }
+  // abstract static reduceWhile(coll, fun, init) { }
 
   scan(fun, init) {
     if (!isFunction(fun)) {
@@ -583,10 +532,7 @@ export default class Collection {
     return this.__consume(finalize);
   }
 
-  // eslint-disable-next-line no-unused-vars
-  static scan(_coll, _fun, _init) {
-    throw new Error("not implemented");
-  }
+  // abstract static scan(coll, fun, init) { }
 
   partition(fun) {
     if (!isFunction(fun)) {
@@ -605,10 +551,7 @@ export default class Collection {
     return this.__consume(finalize);
   }
 
-  // eslint-disable-next-line no-unused-vars
-  static partition(_coll, _fun) {
-    throw new Error("not implemented");
-  }
+  // abstract static partition(coll, fun) { }
 
   join(delimiter) {
     if (!(isString(delimiter) || delimiter === undefined)) {
@@ -632,10 +575,7 @@ export default class Collection {
     return this.__consume(finalize);
   }
 
-  // eslint-disable-next-line no-unused-vars
-  static join(_coll, _delimiter) {
-    throw new Error("not implemented");
-  }
+  // abstract static join(coll, delimiter) { }
 
   // TODO: Need version to return KasenObject?
   // TODO: groupBy(fun1, fun2, init)?
@@ -688,10 +628,7 @@ export default class Collection {
     return this.__consume(finalize);
   }
 
-  // eslint-disable-next-line no-unused-vars
-  static every(_coll, _fun) {
-    throw new Error("not implemented");
-  }
+  // abstract static every(coll, fun) { }
 
   some(fun) {
     if (!isFunction(fun)) {
@@ -700,10 +637,7 @@ export default class Collection {
     return !this.every((v, k) => !fun(v, k));
   }
 
-  // eslint-disable-next-line no-unused-vars
-  static some(_coll, _fun) {
-    throw new Error("not implemented");
-  }
+  // abstract static some(coll, fun) { }
 
   find(fun) {
     if (!isFunction(fun)) {
@@ -736,10 +670,7 @@ export default class Collection {
     return this.__consume(finalize);
   }
 
-  // eslint-disable-next-line no-unused-vars
-  static findEntry(_coll, _fun) {
-    throw new Error("not implemented");
-  }
+  // abstract static findEntry(coll, fun) { }
 
   findKey(fun) {
     if (!isFunction(fun)) {
@@ -768,10 +699,7 @@ export default class Collection {
     return this.__consume(finalize);
   }
 
-  // eslint-disable-next-line no-unused-vars
-  static keyOf(_coll, _value) {
-    throw new Error("not implemented");
-  }
+  // abstract static keyOf(coll, value) { }
 
   sum(fun) {
     if (!(isFunction(fun) || fun === undefined)) {
@@ -822,10 +750,7 @@ export default class Collection {
 
   // TODO?: maxBy()
 
-  // eslint-disable-next-line no-unused-vars
-  static max(_coll, _fun) {
-    throw new Error("not implemented");
-  }
+  // abstract static max(coll, fun) { }
 
   min(fun) {
     if (!(isFunction(fun) || fun === undefined)) {
@@ -837,15 +762,9 @@ export default class Collection {
 
   // TODO?: minBy()
 
-  // eslint-disable-next-line class-methods-use-this, no-unused-vars
-  equals(_value) {
-    throw new Error("not implemented");
-  }
+  // abstract equals(value) { }
 
-  // eslint-disable-next-line no-unused-vars
-  static equals(_coll, _value) {
-    throw new Error("not implemented");
-  }
+  // abstract static equals(coll, value) { }
 
   // TODO?: equalsDeep()
 
@@ -861,10 +780,7 @@ export default class Collection {
     return this.__consume(finalize);
   }
 
-  // eslint-disable-next-line no-unused-vars
-  static keys(_coll) {
-    throw new Error("not implemented");
-  }
+  // abstract static keys(coll) { }
 
   values() {
     const finalize = iter => {
@@ -878,10 +794,7 @@ export default class Collection {
     return this.__consume(finalize);
   }
 
-  // eslint-disable-next-line no-unused-vars
-  static values(_coll) {
-    throw new Error("not implemented");
-  }
+  // abstract static values(coll) { }
 
   entries() {
     const finalize = iter => {
@@ -896,10 +809,7 @@ export default class Collection {
     return this.__consume(finalize);
   }
 
-  // eslint-disable-next-line no-unused-vars
-  static entries(_coll) {
-    throw new Error("not implemented");
-  }
+  // abstract static entries(coll) { }
 
   forEach(fun) {
     if (!isFunction(fun)) {
@@ -916,8 +826,5 @@ export default class Collection {
     return this.__consume(finalize);
   }
 
-  // eslint-disable-next-line no-unused-vars
-  static forEach(_coll, _fun) {
-    throw new Error("not implemented");
-  }
+  // abstract static forEach(coll, fun) { }
 }
