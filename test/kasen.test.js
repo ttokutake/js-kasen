@@ -512,10 +512,6 @@ describe("Kasen", () => {
     });
   });
 
-  describe("equals()", () => {
-    test("error", () => {});
-  });
-
   describe("keys()", () => {
     test("error", () => {
       expect(() => Kasen.keys()).toThrow(TypeError);
@@ -538,6 +534,17 @@ describe("Kasen", () => {
   });
 
   describe("forEach()", () => {
-    test("error", () => {});
+    test("error", () => {
+      expect(() => Kasen([]).forEach()).toThrow(TypeError);
+      expect(() => Kasen([]).forEach(null)).toThrow(TypeError);
+      expect(() => Kasen({}).forEach()).toThrow(TypeError);
+      expect(() => Kasen({}).forEach(null)).toThrow(TypeError);
+      expect(() => Kasen.forEach()).toThrow(TypeError);
+      expect(() => Kasen.forEach(null)).toThrow(TypeError);
+      expect(() => Kasen.forEach([])).toThrow(TypeError);
+      expect(() => Kasen.forEach([], null)).toThrow(TypeError);
+      expect(() => Kasen.forEach({})).toThrow(TypeError);
+      expect(() => Kasen.forEach({}, null)).toThrow(TypeError);
+    });
   });
 });
