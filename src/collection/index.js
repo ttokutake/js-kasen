@@ -384,7 +384,7 @@ export default class Collection {
         if (isArray(nextColl)) {
           return key >= 0 && key < nextColl.length;
         }
-        return false;
+        throw new Error(CANNOT_HAPPEN);
       }
       const value = nextColl[key];
       if (!(isArray(value) || isObject(value))) {
