@@ -2352,6 +2352,12 @@ describe("Array", () => {
         expect(result).toBe(expected);
       });
     });
+
+    test("error", () => {
+      expect(() => Kasen.indexOf()).toThrow(TypeError);
+      expect(() => Kasen.indexOf(null)).toThrow(TypeError);
+      expect(() => Kasen.indexOf({})).toThrow(TypeError);
+    });
   });
 
   describe("lastIndexOf()", () => {
@@ -2373,6 +2379,12 @@ describe("Array", () => {
         const result = Kasen.lastIndexOf(input, value);
         expect(result).toBe(expected);
       });
+    });
+
+    test("error", () => {
+      expect(() => Kasen.lastIndexOf()).toThrow(TypeError);
+      expect(() => Kasen.lastIndexOf(null)).toThrow(TypeError);
+      expect(() => Kasen.lastIndexOf({})).toThrow(TypeError);
     });
   });
 

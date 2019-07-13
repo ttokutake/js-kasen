@@ -479,14 +479,6 @@ describe("Kasen", () => {
     });
   });
 
-  describe("indexOf()", () => {
-    test("error", () => {});
-  });
-
-  describe("lastIndexOf()", () => {
-    test("error", () => {});
-  });
-
   describe("sum()", () => {
     test("error", () => {});
   });
