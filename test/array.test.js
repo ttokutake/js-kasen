@@ -2098,6 +2098,16 @@ describe("Array", () => {
         expect(result).toBe(expected);
       });
     });
+
+    test("error", () => {
+      expect(() => Kasen([]).findLast()).toThrow(TypeError);
+      expect(() => Kasen([]).findLast(null)).toThrow(TypeError);
+      expect(() => Kasen.findLast()).toThrow(TypeError);
+      expect(() => Kasen.findLast(null)).toThrow(TypeError);
+      expect(() => Kasen.findLast({})).toThrow(TypeError);
+      expect(() => Kasen.findLast([])).toThrow(TypeError);
+      expect(() => Kasen.findLast([], null)).toThrow(TypeError);
+    });
   });
 
   describe("findEntry()", () => {

@@ -428,7 +428,18 @@ describe("Kasen", () => {
   });
 
   describe("find()", () => {
-    test("error", () => {});
+    test("error", () => {
+      expect(() => Kasen([]).find()).toThrow(TypeError);
+      expect(() => Kasen([]).find(null)).toThrow(TypeError);
+      expect(() => Kasen({}).find()).toThrow(TypeError);
+      expect(() => Kasen({}).find(null)).toThrow(TypeError);
+      expect(() => Kasen.find()).toThrow(TypeError);
+      expect(() => Kasen.find(null)).toThrow(TypeError);
+      expect(() => Kasen.find([])).toThrow(TypeError);
+      expect(() => Kasen.find([], null)).toThrow(TypeError);
+      expect(() => Kasen.find({})).toThrow(TypeError);
+      expect(() => Kasen.find({}, null)).toThrow(TypeError);
+    });
   });
 
   describe("findLast()", () => {
