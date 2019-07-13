@@ -991,17 +991,19 @@ describe("Array", () => {
       const ios = [
         [[], []],
         [[1], [1]],
-        [[1, 2], [1, 1, 1]],
-        [[1, 2, 3], [1, 1, 1, 1, 1, 1]]
+        [[1, 2], [1, 2]],
+        [[1, 2, 3], [1, 2, 1, 1, 1]]
       ];
       ios.forEach(([input, expected]) => {
         const result = Kasen(input)
-          .flatMap(v => Array(v).fill(1))
+          .flatMap(v => (v % 2 === 1 ? Array(v).fill(1) : v))
           .toJS();
         expect(result).toEqual(expected);
       });
       ios.forEach(([input, expected]) => {
-        const result = Kasen.flatMap(input, v => Array(v).fill(1));
+        const result = Kasen.flatMap(input, v =>
+          v % 2 === 1 ? Array(v).fill(1) : v
+        );
         expect(result).toEqual(expected);
       });
     });
