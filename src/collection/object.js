@@ -286,7 +286,7 @@ export default class KasenObject extends Collection {
   }
 
   static mergeDeep(objects) {
-    if (!Object.keys(objects).length) {
+    if (!objects.length) {
       return {};
     }
     const [object, ...objs] = objects;

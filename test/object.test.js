@@ -398,6 +398,17 @@ describe("Object", () => {
       });
     });
 
+    test("ok (static only)", () => {
+      {
+        const result = Kasen.merge();
+        expect(result).toEqual({});
+      }
+      {
+        const result = Kasen.assign();
+        expect(result).toEqual({});
+      }
+    });
+
     test("error", () => {
       expect(() => Kasen({}).merge(null)).toThrow(TypeError);
       expect(() => Kasen.merge(null)).toThrow(TypeError);
@@ -480,6 +491,11 @@ describe("Object", () => {
         const result = Kasen.mergeDeep(input, ...objects);
         expect(result).toEqual(expected);
       });
+    });
+
+    test("ok (static only)", () => {
+      const result = Kasen.mergeDeep();
+      expect(result).toEqual({});
     });
 
     test("error", () => {

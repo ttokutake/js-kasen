@@ -1045,6 +1045,11 @@ describe("Array", () => {
       });
     });
 
+    test("ok (static only)", () => {
+      const result = Kasen.zip();
+      expect(result).toEqual([]);
+    });
+
     test("error", () => {
       expect(() => Kasen([]).zip(null)).toThrow(TypeError);
       expect(() => Kasen.zip(null)).toThrow(TypeError);
@@ -1077,6 +1082,11 @@ describe("Array", () => {
         const result = Kasen.zipAll(input, ...arrays);
         expect(result).toEqual(expected);
       });
+    });
+
+    test("ok (static only)", () => {
+      const result = Kasen.zipAll();
+      expect(result).toEqual([]);
     });
 
     test("error", () => {
