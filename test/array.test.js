@@ -175,10 +175,19 @@ describe("Array", () => {
         [[1, 2, 3], [3, 2, 1]]
       ];
       ios.forEach(([input, expected]) => {
-        const result = Kasen(input)
-          .reverse()
-          .toJS();
-        expect(result).toEqual(expected);
+        {
+          const result = Kasen(input)
+            .reverse()
+            .toJS();
+          expect(result).toEqual(expected);
+        }
+        {
+          const result = Kasen(input)
+            .reverse()
+            .reverse()
+            .toJS();
+          expect(result).toEqual(input);
+        }
       });
       ios.forEach(([input, expected]) => {
         const result = Kasen.reverse(input);
