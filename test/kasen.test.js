@@ -523,11 +523,10 @@ describe("Kasen", () => {
 
   describe("equals()", () => {
     test("true", () => {
-      expect(Kasen.equals(null, null)).toBe(true);
-    });
-
-    test("false", () => {
-      expect(Kasen.equals(null)).toBe(false);
+      const ios = [[[null], false], [[null, null], true]];
+      ios.forEach(([args, expected]) => {
+        expect(Kasen.equals(...args)).toBe(expected);
+      });
     });
   });
 
