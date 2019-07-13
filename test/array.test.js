@@ -1896,11 +1896,6 @@ describe("Array", () => {
         expect(result).toEqual(expected);
       });
     });
-
-    test("error", () => {
-      expect(() => Kasen([]).scan((acc, v) => acc + v)).toThrow(TypeError);
-      expect(() => Kasen.scan([], (acc, v) => acc + v)).toThrow(TypeError);
-    });
   });
 
   describe("scanRight()", () => {
@@ -1934,8 +1929,15 @@ describe("Array", () => {
     });
 
     test("error", () => {
-      expect(() => Kasen([]).scanRight((acc, v) => acc + v)).toThrow(TypeError);
-      expect(() => Kasen.scanRight([], (acc, v) => acc + v)).toThrow(TypeError);
+      expect(() => Kasen([]).scan()).toThrow(TypeError);
+      expect(() => Kasen([]).scan(null)).toThrow(TypeError);
+      expect(() => Kasen([]).scan((acc, v) => acc + v)).toThrow(TypeError);
+      expect(() => Kasen.scan()).toThrow(TypeError);
+      expect(() => Kasen.scan(null)).toThrow(TypeError);
+      expect(() => Kasen.scan({})).toThrow(TypeError);
+      expect(() => Kasen.scan([])).toThrow(TypeError);
+      expect(() => Kasen.scan([], null)).toThrow(TypeError);
+      expect(() => Kasen.scan([], (acc, v) => acc + v)).toThrow(TypeError);
     });
   });
 

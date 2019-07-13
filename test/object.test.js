@@ -986,11 +986,6 @@ describe("Object", () => {
         expect(result).toEqual(expected);
       });
     });
-
-    test("error", () => {
-      expect(() => Kasen({}).scan((acc, v) => acc + v)).toThrow(TypeError);
-      expect(() => Kasen.scan({}, (acc, v) => acc + v)).toThrow(TypeError);
-    });
   });
 
   describe("partition()", () => {

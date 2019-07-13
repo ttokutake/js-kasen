@@ -338,11 +338,22 @@ describe("Kasen", () => {
   });
 
   describe("scan()", () => {
-    test("error", () => {});
-  });
-
-  describe("scanRight()", () => {
-    test("error", () => {});
+    test("error", () => {
+      expect(() => Kasen([]).scan()).toThrow(TypeError);
+      expect(() => Kasen([]).scan(null)).toThrow(TypeError);
+      expect(() => Kasen([]).scan((acc, v) => acc + v)).toThrow(TypeError);
+      expect(() => Kasen({}).scan()).toThrow(TypeError);
+      expect(() => Kasen({}).scan(null)).toThrow(TypeError);
+      expect(() => Kasen({}).scan((acc, v) => acc + v)).toThrow(TypeError);
+      expect(() => Kasen.scan()).toThrow(TypeError);
+      expect(() => Kasen.scan(null)).toThrow(TypeError);
+      expect(() => Kasen.scan([])).toThrow(TypeError);
+      expect(() => Kasen.scan([], null)).toThrow(TypeError);
+      expect(() => Kasen.scan([], (acc, v) => acc + v)).toThrow(TypeError);
+      expect(() => Kasen.scan({})).toThrow(TypeError);
+      expect(() => Kasen.scan({}, null)).toThrow(TypeError);
+      expect(() => Kasen.scan({}, (acc, v) => acc + v)).toThrow(TypeError);
+    });
   });
 
   describe("partition()", () => {
