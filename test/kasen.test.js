@@ -398,11 +398,33 @@ describe("Kasen", () => {
   });
 
   describe("every()", () => {
-    test("error", () => {});
+    test("error", () => {
+      expect(() => Kasen([]).every()).toThrow(TypeError);
+      expect(() => Kasen([]).every(null)).toThrow(TypeError);
+      expect(() => Kasen({}).every()).toThrow(TypeError);
+      expect(() => Kasen({}).every(null)).toThrow(TypeError);
+      expect(() => Kasen.every()).toThrow(TypeError);
+      expect(() => Kasen.every(null)).toThrow(TypeError);
+      expect(() => Kasen.every([])).toThrow(TypeError);
+      expect(() => Kasen.every([], null)).toThrow(TypeError);
+      expect(() => Kasen.every({})).toThrow(TypeError);
+      expect(() => Kasen.every({}, null)).toThrow(TypeError);
+    });
   });
 
   describe("some()", () => {
-    test("error", () => {});
+    test("error", () => {
+      expect(() => Kasen([]).some()).toThrow(TypeError);
+      expect(() => Kasen([]).some(null)).toThrow(TypeError);
+      expect(() => Kasen({}).some()).toThrow(TypeError);
+      expect(() => Kasen({}).some(null)).toThrow(TypeError);
+      expect(() => Kasen.some()).toThrow(TypeError);
+      expect(() => Kasen.some(null)).toThrow(TypeError);
+      expect(() => Kasen.some([])).toThrow(TypeError);
+      expect(() => Kasen.some([], null)).toThrow(TypeError);
+      expect(() => Kasen.some({})).toThrow(TypeError);
+      expect(() => Kasen.some({}, null)).toThrow(TypeError);
+    });
   });
 
   describe("find()", () => {
