@@ -931,27 +931,7 @@ describe("Object", () => {
   });
 
   describe("reduceWhile()", () => {
-    test("init is undefined", () => {
-      const ios = [
-        [{ a: 1 }, 1],
-        [{ a: 1, b: 2 }, 2],
-        [{ a: 1, b: 2, c: 3 }, 2]
-      ];
-      ios.forEach(([input, expected]) => {
-        const result = Kasen(input).reduceWhile((acc, v) =>
-          v % 2 === 0 ? ["halt", v] : ["cont", acc + v]
-        );
-        expect(result).toBe(expected);
-      });
-      ios.forEach(([input, expected]) => {
-        const result = Kasen.reduceWhile(input, (acc, v) =>
-          v % 2 === 0 ? ["halt", v] : ["cont", acc + v]
-        );
-        expect(result).toBe(expected);
-      });
-    });
-
-    test("init is specified", () => {
+    test("ok", () => {
       const ios = [
         [{}, 10],
         [{ a: 1 }, 11],

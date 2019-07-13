@@ -19,7 +19,8 @@ const {
   THIRD_ARGUMENT_MUST_BE_FUNCTION,
   THIRD_ARGUMENT_MUST_BE_NUMBER,
   THIRD_ARGUMENT_MUST_BE_NUMBER_EXCLUDING_0_OR_UNDEFINED,
-  THIRD_ARGUMENT_MUST_BE_NUMBER_OR_UNDEFINED
+  THIRD_ARGUMENT_MUST_BE_NUMBER_OR_UNDEFINED,
+  THIRD_ARGUMENT_MUST_NOT_BE_UNDEFINED
 } = require("./error-message");
 const { isNumber, isString, isObject, isArray, isFunction } = require("./type");
 const { compare } = require("./util");
@@ -676,6 +677,9 @@ Kasen.reduceWhile = (coll, fun, init) => {
   }
   if (!isFunction(fun)) {
     throw new TypeError(SECOND_ARGUMENT_MUST_BE_FUNCTION);
+  }
+  if (init === undefined) {
+    throw new TypeError(THIRD_ARGUMENT_MUST_NOT_BE_UNDEFINED);
   }
   return Coll.reduceWhile(coll, fun, init);
 };

@@ -26,6 +26,8 @@ export const SECOND_ARGUMENT_MUST_BE_NUMBER_OR_UNDEFINED =
   "2nd argument must be Number or Undefined";
 export const SECOND_ARGUMENT_MUST_BE_STRING_OR_UNDEFINED =
   "2nd argument must be String or Undefined";
+export const SECOND_ARGUMENT_MUST_NOT_BE_UNDEFINED =
+  "2nd argument must NOT be Undefined";
 
 export const THIRD_ARGUMENT_MUST_BE_FUNCTION = "3rd argument must be Function";
 export const THIRD_ARGUMENT_MUST_BE_NUMBER = "3rd argument must be Number";
@@ -33,6 +35,8 @@ export const THIRD_ARGUMENT_MUST_BE_NUMBER_EXCLUDING_0_OR_UNDEFINED =
   "3rd argument must be Number excluding 0 or Undefined";
 export const THIRD_ARGUMENT_MUST_BE_NUMBER_OR_UNDEFINED =
   "3rd argument must be Number or Undefined";
+export const THIRD_ARGUMENT_MUST_NOT_BE_UNDEFINED =
+  "3rd argument must NOT be Undefined";
 
 export const EACH_ARGUMENT_EXCEPT_FIRST_ONE_MUST_BE_ARRAY =
   "Each argument except 1st one must be Array";

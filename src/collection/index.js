@@ -7,7 +7,8 @@ import {
   FIRST_ARGUMENT_MUST_BE_STRING_OR_UNDEFINED,
   REDUCE_OF_EMPTY_COLLECTION_WITH_NO_INITIAL_VALUE,
   SCAN_OF_EMPTY_COLLECTION_WITH_NO_INITIAL_VALUE,
-  SECOND_ARGUMENT_MUST_BE_FUNCTION
+  SECOND_ARGUMENT_MUST_BE_FUNCTION,
+  SECOND_ARGUMENT_MUST_NOT_BE_UNDEFINED
 } from "../error-message";
 import {
   TapIterator,
@@ -469,30 +470,19 @@ export default class Collection {
     if (!isFunction(fun)) {
       throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION);
     }
+    if (init === undefined) {
+      throw new TypeError(SECOND_ARGUMENT_MUST_NOT_BE_UNDEFINED);
+    }
     const finalize = iter => {
-      let acc = init;
       let key;
       let value;
-      let isFirst = true;
       let state;
+      let acc = init;
       while (!({ key, value } = iter.next()).done) {
-        if (isFirst) {
-          isFirst = false;
-          if (init === undefined) {
-            state = "cont";
-            acc = value;
-          } else {
-            [state, acc] = fun(init, value, key);
-          }
-        } else {
-          [state, acc] = fun(acc, value, key);
-        }
+        [state, acc] = fun(acc, value, key);
         if (state === "halt") {
-          return acc;
+          break;
         }
-      }
-      if (isFirst && init === undefined) {
-        throw new TypeError(REDUCE_OF_EMPTY_COLLECTION_WITH_NO_INITIAL_VALUE);
       }
       return acc;
     };

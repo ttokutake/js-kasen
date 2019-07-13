@@ -1860,25 +1860,7 @@ describe("Array", () => {
   });
 
   describe("reduceWhile()", () => {
-    test("init is undefined", () => {
-      const ios = [[[1], 1], [[1, 2], 3], [[1, 2, 3], 3]];
-      ios.forEach(([input, expected]) => {
-        const result = Kasen(input).reduceWhile((acc, v) => [
-          v % 2 === 0 ? "halt" : "cont",
-          acc + v
-        ]);
-        expect(result).toBe(expected);
-      });
-      ios.forEach(([input, expected]) => {
-        const result = Kasen.reduceWhile(input, (acc, v) => [
-          v % 2 === 0 ? "halt" : "cont",
-          acc + v
-        ]);
-        expect(result).toBe(expected);
-      });
-    });
-
-    test("init is specified", () => {
+    test("ok", () => {
       const ios = [[[], 10], [[1], 11], [[1, 2], 13], [[1, 2, 3], 13]];
       ios.forEach(([input, expected]) => {
         const result = Kasen(input).reduceWhile(

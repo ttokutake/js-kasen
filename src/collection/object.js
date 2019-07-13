@@ -406,20 +406,14 @@ export default class KasenObject extends Collection {
 
   static reduceWhile(object, fun, init) {
     const keys = Object.keys(object);
+    let state;
     let acc = init;
-    if (init === undefined) {
-      if (!keys.length) {
-        throw new TypeError(REDUCE_OF_EMPTY_OBJECT_WITH_NO_INITIAL_VALUE);
-      }
-      acc = object[keys.pop()];
-    }
     for (let i = 0, { length } = keys; i < length; i += 1) {
       const key = keys[i];
-      const [state, result] = fun(acc, object[key], key);
+      [state, acc] = fun(acc, object[key], key);
       if (state === "halt") {
-        return result;
+        break;
       }
-      acc = result;
     }
     return acc;
   }

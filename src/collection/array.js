@@ -968,22 +968,13 @@ export default class KasenArray extends Collection {
   }
 
   static reduceWhile(array, fun, init) {
-    const { length } = array;
-    let startIndex = 0;
+    let state;
     let acc = init;
-    if (init === undefined) {
-      if (!length) {
-        throw new TypeError(REDUCE_OF_EMPTY_ARRAY_WITH_NO_INITIAL_VALUE);
-      }
-      acc = array[startIndex];
-      startIndex += 1;
-    }
-    for (let i = startIndex; i < length; i += 1) {
-      const [state, result] = fun(acc, array[i], i);
+    for (let i = 0, { length } = array; i < length; i += 1) {
+      [state, acc] = fun(acc, array[i], i);
       if (state === "halt") {
-        return result;
+        break;
       }
-      acc = result;
     }
     return acc;
   }
