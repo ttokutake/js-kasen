@@ -442,16 +442,19 @@ describe("Kasen", () => {
     });
   });
 
-  describe("findLast()", () => {
-    test("error", () => {});
-  });
-
   describe("findEntry()", () => {
-    test("error", () => {});
-  });
-
-  describe("findLastEntry()", () => {
-    test("error", () => {});
+    test("error", () => {
+      expect(() => Kasen([]).findEntry()).toThrow(TypeError);
+      expect(() => Kasen([]).findEntry(null)).toThrow(TypeError);
+      expect(() => Kasen({}).findEntry()).toThrow(TypeError);
+      expect(() => Kasen({}).findEntry(null)).toThrow(TypeError);
+      expect(() => Kasen.findEntry()).toThrow(TypeError);
+      expect(() => Kasen.findEntry(null)).toThrow(TypeError);
+      expect(() => Kasen.findEntry([])).toThrow(TypeError);
+      expect(() => Kasen.findEntry([], null)).toThrow(TypeError);
+      expect(() => Kasen.findEntry({})).toThrow(TypeError);
+      expect(() => Kasen.findEntry({}, null)).toThrow(TypeError);
+    });
   });
 
   describe("findKey()", () => {

@@ -2152,6 +2152,16 @@ describe("Array", () => {
         expect(result).toEqual(expected);
       });
     });
+
+    test("error", () => {
+      expect(() => Kasen([]).findLastEntry()).toThrow(TypeError);
+      expect(() => Kasen([]).findLastEntry(null)).toThrow(TypeError);
+      expect(() => Kasen.findLastEntry()).toThrow(TypeError);
+      expect(() => Kasen.findLastEntry(null)).toThrow(TypeError);
+      expect(() => Kasen.findLastEntry({})).toThrow(TypeError);
+      expect(() => Kasen.findLastEntry([])).toThrow(TypeError);
+      expect(() => Kasen.findLastEntry([], null)).toThrow(TypeError);
+    });
   });
 
   describe("findKey()", () => {
