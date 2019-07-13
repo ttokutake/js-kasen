@@ -22,6 +22,15 @@ describe("Kasen", () => {
 
   describe("map()", () => {
     test("error", () => {
+      expect(() => Kasen([]).tap()).toThrow(TypeError);
+      expect(() => Kasen([]).tap(null)).toThrow(TypeError);
+      expect(() => Kasen({}).tap()).toThrow(TypeError);
+      expect(() => Kasen({}).tap(null)).toThrow(TypeError);
+    });
+  });
+
+  describe("map()", () => {
+    test("error", () => {
       expect(() => Kasen([]).map()).toThrow(TypeError);
       expect(() => Kasen([]).map(null)).toThrow(TypeError);
       expect(() => Kasen({}).map()).toThrow(TypeError);
