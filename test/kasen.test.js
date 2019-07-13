@@ -480,15 +480,36 @@ describe("Kasen", () => {
   });
 
   describe("sum()", () => {
-    test("error", () => {});
+    test("error", () => {
+      expect(() => Kasen([]).sum(null)).toThrow(TypeError);
+      expect(() => Kasen({}).sum(null)).toThrow(TypeError);
+      expect(() => Kasen.sum()).toThrow(TypeError);
+      expect(() => Kasen.sum(null)).toThrow(TypeError);
+      expect(() => Kasen.sum([], null)).toThrow(TypeError);
+      expect(() => Kasen.sum({}, null)).toThrow(TypeError);
+    });
   });
 
   describe("max()", () => {
-    test("error", () => {});
+    test("error", () => {
+      expect(() => Kasen([]).max(null)).toThrow(TypeError);
+      expect(() => Kasen({}).max(null)).toThrow(TypeError);
+      expect(() => Kasen.max()).toThrow(TypeError);
+      expect(() => Kasen.max(null)).toThrow(TypeError);
+      expect(() => Kasen.max([], null)).toThrow(TypeError);
+      expect(() => Kasen.max({}, null)).toThrow(TypeError);
+    });
   });
 
   describe("min()", () => {
-    test("error", () => {});
+    test("error", () => {
+      expect(() => Kasen([]).min(null)).toThrow(TypeError);
+      expect(() => Kasen({}).min(null)).toThrow(TypeError);
+      expect(() => Kasen.min()).toThrow(TypeError);
+      expect(() => Kasen.min(null)).toThrow(TypeError);
+      expect(() => Kasen.min([], null)).toThrow(TypeError);
+      expect(() => Kasen.min({}, null)).toThrow(TypeError);
+    });
   });
 
   describe("equals()", () => {
