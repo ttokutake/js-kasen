@@ -4,16 +4,18 @@ describe("Array", () => {
   describe("copy()", () => {
     test("ok", () => {
       {
-        const array = Kasen([1, 2, 3]).map(v => v + 1);
+        const array = Kasen([1, 2, 3])
+          .map(v => v + 1)
+          .take(2);
         const array2 = array.copy().map(v => v + 1);
-        expect(array.toJS()).toEqual([2, 3, 4]);
-        expect(array2.toJS()).toEqual([3, 4, 5]);
+        expect(array.toJS()).toEqual([2, 3]);
+        expect(array2.toJS()).toEqual([3, 4]);
       }
       {
         const array = Kasen([1, 2, 3]);
         const array2 = array.copy();
-        array.take(2);
-        expect(array.toJS()).toEqual([1, 2]);
+        array.map(v => v + 1);
+        expect(array.toJS()).toEqual([2, 3, 4]);
         expect(array2.toJS()).toEqual([1, 2, 3]);
       }
       {
