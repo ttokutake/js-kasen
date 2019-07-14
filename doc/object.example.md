@@ -1,6 +1,6 @@
 # Object
 
-## `tap(fun)`
+## `tap()`
 
 TBD
 
@@ -51,6 +51,20 @@ TBD
 | Elixir     | [map](https://hexdocs.pm/elixir/Enum.html#map/2)                                                                  |
 
 ## `pluck(key)`
+
+### References
+
+| Library   | Function                                 |
+| --------- | ---------------------------------------- |
+| Lodash    | -                                        |
+| Immutable | -                                        |
+| Rambda    | [pluck](https://ramdajs.com/docs/#pluck) |
+
+| Language   | Function |
+| ---------- | -------- |
+| JavaScript | -        |
+| Scala      | -        |
+| Elixir     | -        |
 
 ## `filter(fun)`
 
