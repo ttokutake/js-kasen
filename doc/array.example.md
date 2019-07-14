@@ -4,18 +4,33 @@
 
 ### References
 
-| Library   | Function                                   |
-| --------- | ------------------------------------------ |
-| Lodash    | [tap](https://lodash.com/docs/4.17.11#tap) |
-| Immutable | -                                          |
-| Rambda    | [tap](https://ramdajs.com/docs/#tap)       |
+| Library   | Function                                      |
+| --------- | --------------------------------------------- |
+| Lodash    | \* [tap](https://lodash.com/docs/4.17.11#tap) |
+| Immutable | -                                             |
+| Rambda    | \* [tap](https://ramdajs.com/docs/#tap)       |
 
-| Language | Function                                                                                                              |
-| -------- | --------------------------------------------------------------------------------------------------------------------- |
-| Scala    | [tapEach](<https://www.scala-lang.org/api/current/scala/collection/immutable/IndexedSeq.html#tapEach[U](f:A=%3EU):C>) |
-| Elixir   | -                                                                                                                     |
+| Language   | Function                                                                                                              |
+| ---------- | --------------------------------------------------------------------------------------------------------------------- |
+| JavaScript | -                                                                                                                     |
+| Scala      | [tapEach](<https://www.scala-lang.org/api/current/scala/collection/immutable/IndexedSeq.html#tapEach[U](f:A=%3EU):C>) |
+| Elixir     | -                                                                                                                     |
 
 ## `map(fun)`
+
+### References
+
+| Library   | Function                                                                 |
+| --------- | ------------------------------------------------------------------------ |
+| Lodash    | [map](https://lodash.com/docs/4.17.11#map)                               |
+| Immutable | [map](https://immutable-js.github.io/immutable-js/docs/#/Collection/map) |
+| Rambda    | [map](https://ramdajs.com/docs/#map)                                     |
+
+| Language   | Function                                                                                                          |
+| ---------- | ----------------------------------------------------------------------------------------------------------------- |
+| JavaScript | [map](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/map)                    |
+| Scala      | [map](<https://www.scala-lang.org/api/current/scala/collection/immutable/IndexedSeq.html#map[B](f:A=%3EB):CC[B]>) |
+| Elixir     | [map](https://hexdocs.pm/elixir/Enum.html#map/2)                                                                  |
 
 ## `pluck(key)`
 
