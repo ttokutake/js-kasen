@@ -1,4 +1,4 @@
-# Array
+# Object
 
 ## `tap(fun)`
 
@@ -99,8 +99,6 @@
 ## `mix(fun)`
 
 ## `equals(value)`
-
-## `hashCode()`
 
 ## `keys()`
 
