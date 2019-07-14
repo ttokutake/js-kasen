@@ -2,6 +2,8 @@
 
 ## `tap(fun)`
 
+TBD
+
 ### References
 
 | Library   | Function                                   |
