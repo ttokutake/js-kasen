@@ -10,7 +10,7 @@ TBD
 | --------- | ------------------------------------------ |
 | Lodash    | [tap](https://lodash.com/docs/4.17.11#tap) |
 | Immutable | -                                          |
-| Rambda    | [tap](https://ramdajs.com/docs/#tap)       |
+| Ramda     | [tap](https://ramdajs.com/docs/#tap)       |
 
 | Language   | Function                                                                                       |
 | ---------- | ---------------------------------------------------------------------------------------------- |
@@ -26,7 +26,7 @@ TBD
 | --------- | -------- |
 | Lodash    | -        |
 | Immutable | -        |
-| Rambda    | -        |
+| Ramda     | -        |
 
 | Language   | Function                                                                                                              |
 | ---------- | --------------------------------------------------------------------------------------------------------------------- |
@@ -42,7 +42,7 @@ TBD
 | --------- | ------------------------------------------------------------------------ |
 | Lodash    | [map](https://lodash.com/docs/4.17.11#map)                               |
 | Immutable | [map](https://immutable-js.github.io/immutable-js/docs/#/Collection/map) |
-| Rambda    | [map](https://ramdajs.com/docs/#map)                                     |
+| Ramda     | [map](https://ramdajs.com/docs/#map)                                     |
 
 | Language   | Function                                                                                                          |
 | ---------- | ----------------------------------------------------------------------------------------------------------------- |
@@ -58,7 +58,7 @@ TBD
 | --------- | ---------------------------------------- |
 | Lodash    | -                                        |
 | Immutable | -                                        |
-| Rambda    | [pluck](https://ramdajs.com/docs/#pluck) |
+| Ramda     | [pluck](https://ramdajs.com/docs/#pluck) |
 
 | Language   | Function |
 | ---------- | -------- |
@@ -74,7 +74,7 @@ TBD
 | --------- | ------------------------------------------------------------------------------ |
 | Lodash    | [filter](https://lodash.com/docs/4.17.14#filter)                               |
 | Immutable | [filter](https://immutable-js.github.io/immutable-js/docs/#/Collection/filter) |
-| Rambda    | [filter](https://ramdajs.com/docs/#filter)                                     |
+| Ramda     | [filter](https://ramdajs.com/docs/#filter)                                     |
 
 | Language   | Function                                                                                                        |
 | ---------- | --------------------------------------------------------------------------------------------------------------- |
@@ -90,7 +90,7 @@ TBD
 | --------- | ------------------------------------------------------------------------------------ |
 | Lodash    | [reject](https://lodash.com/docs/4.17.14#reject)                                     |
 | Immutable | [filterNot](https://immutable-js.github.io/immutable-js/docs/#/Collection/filterNot) |
-| Rambda    | [reject](https://ramdajs.com/docs/#reject)                                           |
+| Ramda     | [reject](https://ramdajs.com/docs/#reject)                                           |
 
 | Language   | Function                                                                                                              |
 | ---------- | --------------------------------------------------------------------------------------------------------------------- |
