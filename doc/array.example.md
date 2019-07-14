@@ -2,6 +2,8 @@
 
 ## `tap(fun)`
 
+### References
+
 | Library   | Function |
 |-----------|----------|
 | Lodash    | [tap](https://lodash.com/docs/4.17.11#tap) |
