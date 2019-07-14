@@ -2,6 +2,17 @@
 
 ## `tap(fun)`
 
+| Library   | Function |
+|-----------|----------|
+| Lodash    | [tap](https://lodash.com/docs/4.17.11#tap) |
+| Immutable | - |
+| Rambda    | [tap](https://ramdajs.com/docs/#tap) |
+
+| Language | Function |
+|----------|----------|
+| Scala    | [tapEach](https://www.scala-lang.org/api/current/scala/Array.html#tapEach[U](f:A=%3EU):C) |
+| Elixir   | - |
+
 ## `map(fun)`
 
 ## `pluck(key)`
