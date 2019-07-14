@@ -112,7 +112,7 @@ export default class Collection {
     return this;
   }
 
-  tap(fun) {
+  tapEach(fun) {
     if (!isFunction(fun)) {
       throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION);
     }

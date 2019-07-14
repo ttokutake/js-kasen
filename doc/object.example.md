@@ -4,11 +4,27 @@
 
 ### References
 
-| Library   | Function                                      |
-| --------- | --------------------------------------------- |
-| Lodash    | \* [tap](https://lodash.com/docs/4.17.11#tap) |
-| Immutable | -                                             |
-| Rambda    | \* [tap](https://ramdajs.com/docs/#tap)       |
+| Library   | Function                                   |
+| --------- | ------------------------------------------ |
+| Lodash    | [tap](https://lodash.com/docs/4.17.11#tap) |
+| Immutable | -                                          |
+| Rambda    | [tap](https://ramdajs.com/docs/#tap)       |
+
+| Language   | Function                                                                                       |
+| ---------- | ---------------------------------------------------------------------------------------------- |
+| JavaScript | -                                                                                              |
+| Scala      | [tap](<https://www.scala-lang.org/api/current/scala/util/ChainingOps.html#tap[U](f:A=%3EU):A>) |
+| Elixir     | -                                                                                              |
+
+## `tapEach(fun)`
+
+### References
+
+| Library   | Function |
+| --------- | -------- |
+| Lodash    | -        |
+| Immutable | -        |
+| Rambda    | -        |
 
 | Language   | Function                                                                                                              |
 | ---------- | --------------------------------------------------------------------------------------------------------------------- |

@@ -61,12 +61,12 @@ describe("Array", () => {
     });
   });
 
-  describe("tap()", () => {
+  describe("tapEach()", () => {
     test("ok", () => {
       const inputs = [[], [1], [1, 2], [1, 2, 3]];
       inputs.forEach(input => {
         const result = Kasen(input)
-          .tap(v => v + 1)
+          .tapEach(v => v + 1)
           .toJS();
         expect(result).toEqual(input);
       });

@@ -22,10 +22,10 @@ describe("Kasen", () => {
 
   describe("map()", () => {
     test("error", () => {
-      expect(() => Kasen([]).tap()).toThrow(TypeError);
-      expect(() => Kasen([]).tap(null)).toThrow(TypeError);
-      expect(() => Kasen({}).tap()).toThrow(TypeError);
-      expect(() => Kasen({}).tap(null)).toThrow(TypeError);
+      expect(() => Kasen([]).tapEach()).toThrow(TypeError);
+      expect(() => Kasen([]).tapEach(null)).toThrow(TypeError);
+      expect(() => Kasen({}).tapEach()).toThrow(TypeError);
+      expect(() => Kasen({}).tapEach(null)).toThrow(TypeError);
     });
   });
 

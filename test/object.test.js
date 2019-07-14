@@ -61,12 +61,12 @@ describe("Object", () => {
     });
   });
 
-  describe("tap()", () => {
+  describe("tapEach()", () => {
     test("ok", () => {
       const inputs = [{}, { a: 1 }, { a: 1, b: 2 }, { a: 1, b: 2, c: 3 }];
       inputs.forEach(input => {
         const result = Kasen(input)
-          .tap(v => v + 1)
+          .tapEach(v => v + 1)
           .toJS();
         expect(result).toEqual(input);
       });
