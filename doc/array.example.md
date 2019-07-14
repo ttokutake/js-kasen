@@ -68,7 +68,35 @@ TBD
 
 ## `filter(fun)`
 
+### References
+
+| Library   | Function                                                                       |
+| --------- | ------------------------------------------------------------------------------ |
+| Lodash    | [filter](https://lodash.com/docs/4.17.14#filter)                               |
+| Immutable | [filter](https://immutable-js.github.io/immutable-js/docs/#/Collection/filter) |
+| Rambda    | [filter](https://ramdajs.com/docs/#filter)                                     |
+
+| Language   | Function                                                                                                        |
+| ---------- | --------------------------------------------------------------------------------------------------------------- |
+| JavaScript | [filter](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)            |
+| Scala      | [filter](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#filter(pred:A=%3EBoolean):C>) |
+| Elixir     | [filter](https://hexdocs.pm/elixir/Enum.html#filter/2)                                                          |
+
 ## `filterNot(fun)`
+
+### References
+
+| Library   | Function                                                                             |
+| --------- | ------------------------------------------------------------------------------------ |
+| Lodash    | [reject](https://lodash.com/docs/4.17.14#reject)                                     |
+| Immutable | [filterNot](https://immutable-js.github.io/immutable-js/docs/#/Collection/filterNot) |
+| Rambda    | [reject](https://ramdajs.com/docs/#reject)                                           |
+
+| Language   | Function                                                                                                              |
+| ---------- | --------------------------------------------------------------------------------------------------------------------- |
+| JavaScript | -                                                                                                                     |
+| Scala      | [filterNot](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#filterNot(pred:A=%3EBoolean):C>) |
+| Elixir     | [reject](https://hexdocs.pm/elixir/Enum.html#reject/2)                                                                |
 
 ## `reverse()`
 
