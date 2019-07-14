@@ -164,8 +164,6 @@ export default class Collection {
     return this.update(coll, key, () => value);
   }
 
-  // TODO: setAll()
-
   // abstract update(fun) { }
 
   // abstract static update(coll, key, fun) { }
@@ -233,10 +231,6 @@ export default class Collection {
   }
 
   // abstract static isEmpty(coll) { }
-
-  // TODO?: isSubset()
-
-  // TODO?: isSuperset()
 
   count(fun) {
     if (!(isFunction(fun) || fun === undefined)) {
@@ -567,8 +561,6 @@ export default class Collection {
 
   // abstract static join(coll, delimiter) { }
 
-  // TODO: Need version to return KasenObject?
-  // TODO: groupBy(fun1, fun2, init)?
   groupBy(fun) {
     if (!isFunction(fun)) {
       throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION);
@@ -738,8 +730,6 @@ export default class Collection {
     return this.__consume(finalize);
   }
 
-  // TODO?: maxBy()
-
   // abstract static max(coll, fun) { }
 
   min(fun) {
@@ -750,13 +740,9 @@ export default class Collection {
     return this.max(fn);
   }
 
-  // TODO?: minBy()
-
   // abstract equals(value) { }
 
   // abstract static equals(coll, value) { }
-
-  // TODO?: equalsDeep()
 
   keys() {
     const finalize = iter => {

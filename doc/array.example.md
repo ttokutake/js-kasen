@@ -30,6 +30,10 @@
 
 ## `set(index, value)`
 
+## `setAll()`
+
+TBD
+
 ## `update(index, fun)`
 
 ## `delete(index)`
@@ -60,6 +64,14 @@
 
 ## `flatMap(fun)`
 
+## `interpose()`
+
+TBD
+
+## `interleave()`
+
+TBD
+
 ## `zip(...arrays)`
 
 ## `zipAll(...arrays)`
@@ -67,6 +79,10 @@
 ## `zipWith(fun, ...arrays)`
 
 ## `sort(fun)`
+
+## `sortBy()`
+
+TBD
 
 ## `unique(fun)`
 
@@ -83,6 +99,22 @@
 ## `memoize()`
 
 ## `isEmpty()`
+
+## `isSubset()`
+
+TBD
+
+## `isSuperset()`
+
+TBD
+
+## `startsWith()`
+
+TBD
+
+## `endsWith()`
+
+TBD
 
 ## `count(fun)`
 
@@ -128,6 +160,14 @@
 
 ## `join()`
 
+## `unzip()`
+
+TBD
+
+## `unzipAll()`
+
+TBD
+
 ## `groupBy(fun)`
 
 ## `every(fun)`
@@ -162,9 +202,21 @@
 
 ## `max(fun)`
 
-## `mix(fun)`
+## `maxBy()`
+
+TBD
+
+## `min(fun)`
+
+## `minBy()`
+
+TBD
 
 ## `equals(value)`
+
+## `equalsDeep()`
+
+TBD
 
 ## `keys()`
 

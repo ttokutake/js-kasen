@@ -522,9 +522,6 @@ export default class KasenArray extends Collection {
     return result;
   }
 
-  // TODO?: interpose()
-  // TODO?: interleave()
-
   zip(...arrays) {
     const { length } = arrays;
     for (let i = 0; i < length; i += 1) {
@@ -696,8 +693,6 @@ export default class KasenArray extends Collection {
     return result;
   }
 
-  // TODO?: sortBy()
-
   unique(fun) {
     if (!(isFunction(fun) || fun === undefined)) {
       throw new TypeError(FIRST_ARGUMENT_MUST_BE_FUNCTION_OR_UNDEFINED);
@@ -820,9 +815,6 @@ export default class KasenArray extends Collection {
   static isEmpty(array) {
     return !array.length;
   }
-
-  // TODO?: startsWith() from Scala
-  // TODO?: endsWith() from Scala
 
   static count(array, fun) {
     if (fun === undefined) {
@@ -1060,9 +1052,6 @@ export default class KasenArray extends Collection {
   static join(array, delimiter) {
     return array.join(delimiter);
   }
-
-  // TODO?: unzip() from Scala
-  // TODO?: unzipAll() from Scala?
 
   static every(array, fun) {
     return array.every(fun);

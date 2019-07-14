@@ -16,6 +16,10 @@
 
 ## `set(key, value)`
 
+## `setAll()`
+
+TBD
+
 ## `update(key, fun)`
 
 ## `delete(key)`
@@ -45,6 +49,14 @@
 ## `memoize()`
 
 ## `isEmpty()`
+
+## `isSubset()`
+
+TBD
+
+## `isSuperset()`
+
+TBD
 
 ## `count(fun)`
 
@@ -96,9 +108,21 @@
 
 ## `max(fun)`
 
-## `mix(fun)`
+## `maxBy()`
+
+TBD
+
+## `min(fun)`
+
+## `minBy()`
+
+TBD
 
 ## `equals(value)`
+
+## `equalsDeep()`
+
+TBD
 
 ## `keys()`
 
