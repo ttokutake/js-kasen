@@ -10,10 +10,10 @@
 | Immutable | -                                          |
 | Rambda    | [tap](https://ramdajs.com/docs/#tap)       |
 
-| Language | Function                                                                                    |
-| -------- | ------------------------------------------------------------------------------------------- |
-| Scala    | [tapEach](<https://www.scala-lang.org/api/current/scala/Array.html#tapEach[U](f:A=%3EU):C>) |
-| Elixir   | -                                                                                           |
+| Language | Function                                                                                                             |
+| -------- | -------------------------------------------------------------------------------------------------------------------- |
+| Scala    | [tapEach](<https://www.scala-lang.org/api/current/scala/collection/immutable/IndexedSeq.html#tapEach[U](f:A=%3EU):C) |
+| Elixir   | -                                                                                                                    |
 
 ## `map(fun)`
 
