@@ -116,11 +116,67 @@ TBD
 
 ## `take(num)`
 
+### References
+
+| Library   | Function                                                                   |
+| --------- | -------------------------------------------------------------------------- |
+| Lodash    | [take](https://lodash.com/docs/4.17.14#take)                               |
+| Immutable | [take](https://immutable-js.github.io/immutable-js/docs/#/Collection/take) |
+| Ramda     | [take](https://ramdajs.com/docs/#take)                                     |
+
+| Language   | Function                                                                                        |
+| ---------- | ----------------------------------------------------------------------------------------------- |
+| JavaScript | -                                                                                               |
+| Scala      | [take](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#take(n:Int):C>) |
+| Elixir     | [take](https://hexdocs.pm/elixir/Enum.html#take/2)                                              |
+
 ## `takeLast(num)`
+
+### References
+
+| Library   | Function                                                                           |
+| --------- | ---------------------------------------------------------------------------------- |
+| Lodash    | [takeRight](https://lodash.com/docs/4.17.14#takeRight)                             |
+| Immutable | [takeLast](https://immutable-js.github.io/immutable-js/docs/#/Collection/takeLast) |
+| Ramda     | [takeLast](https://ramdajs.com/docs/#takeLast)                                     |
+
+| Language   | Function                                                                                                  |
+| ---------- | --------------------------------------------------------------------------------------------------------- |
+| JavaScript | -                                                                                                         |
+| Scala      | [takeRight](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#takeRight(n:Int):C>) |
+| Elixir     | -                                                                                                         |
 
 ## `takeWhile(fun)`
 
+### References
+
+| Library   | Function                                                                             |
+| --------- | ------------------------------------------------------------------------------------ |
+| Lodash    | [takeWhile](https://lodash.com/docs/4.17.14#takeWhile)                               |
+| Immutable | [takeWhile](https://immutable-js.github.io/immutable-js/docs/#/Collection/takeWhile) |
+| Ramda     | [takeWhile](https://ramdajs.com/docs/#takeWhile)                                     |
+
+| Language   | Function                                                                                                           |
+| ---------- | ------------------------------------------------------------------------------------------------------------------ |
+| JavaScript | -                                                                                                                  |
+| Scala      | [takeWhile](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#takeWhile(p:A=%3EBoolean):C>) |
+| Elixir     | [take_while](https://hexdocs.pm/elixir/Enum.html#take_while/2)                                                     |
+
 ## `takeUntil(fun)`
+
+### References
+
+| Library   | Function                                                                             |
+| --------- | ------------------------------------------------------------------------------------ |
+| Lodash    | -                                                                                    |
+| Immutable | [takeUntil](https://immutable-js.github.io/immutable-js/docs/#/Collection/takeUntil) |
+| Ramda     | -                                                                                    |
+
+| Language   | Function |
+| ---------- | -------- |
+| JavaScript | -        |
+| Scala      | -        |
+| Elixir     | -        |
 
 ## `skip(num)`
 
