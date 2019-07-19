@@ -100,6 +100,20 @@ TBD
 
 ## `reverse()`
 
+### References
+
+| Library   | Function                                                                         |
+| --------- | -------------------------------------------------------------------------------- |
+| Lodash    | [reverse](https://lodash.com/docs/4.17.14#reverse)                               |
+| Immutable | [reverse](https://immutable-js.github.io/immutable-js/docs/#/Collection/reverse) |
+| Ramda     | [reverse](https://ramdajs.com/docs/#reverse)                                     |
+
+| Language   | Function                                                                                     |
+| ---------- | -------------------------------------------------------------------------------------------- |
+| JavaScript | -                                                                                            |
+| Scala      | [reverse](https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#reverse:C) |
+| Elixir     | [reverse](https://hexdocs.pm/elixir/Enum.html#reverse/1)                                     |
+
 ## `take(num)`
 
 ## `takeLast(num)`
