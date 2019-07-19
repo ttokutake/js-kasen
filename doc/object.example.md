@@ -100,7 +100,35 @@ TBD
 
 ## `pick(keys)`
 
+### References
+
+| Library   | Function                                     |
+| --------- | -------------------------------------------- |
+| Lodash    | [pick](https://lodash.com/docs/4.17.14#pick) |
+| Immutable | -                                            |
+| Ramda     | [pick](https://ramdajs.com/docs/#pick)       |
+
+| Language   | Function |
+| ---------- | -------- |
+| JavaScript | -        |
+| Scala      | -        |
+| Elixir     | -        |
+
 ## `flip(fun)`
+
+### References
+
+| Library   | Function                                                                         |
+| --------- | -------------------------------------------------------------------------------- |
+| Lodash    | [flip](https://lodash.com/docs/4.17.14#flip)                                     |
+| Immutable | [flip](https://immutable-js.github.io/immutable-js/docs/#/Collection.Keyed/flip) |
+| Ramda     | [flip](https://ramdajs.com/docs/#flip)                                           |
+
+| Language   | Function |
+| ---------- | -------- |
+| JavaScript | -        |
+| Scala      | -        |
+| Elixir     | -        |
 
 ## `set(key, value)`
 
