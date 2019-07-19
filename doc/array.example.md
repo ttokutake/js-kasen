@@ -244,13 +244,51 @@ TBD
 
 ## `set(index, value)`
 
-## `setAll()`
+### References
 
-TBD
+| Library   | Function                                                      |
+| --------- | ------------------------------------------------------------- |
+| Lodash    | -                                                             |
+| Immutable | [set](https://immutable-js.github.io/immutable-js/docs/#/set) |
+| Ramda     | -                                                             |
+
+| Language   | Function                                                                                                                |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------- |
+| JavaScript | -                                                                                                                       |
+| Scala      | [update](<https://www.scala-lang.org/api/current/scala/collection/mutable/IndexedSeq.html#update(idx:Int,elem:A):Unit>) |
+| Elixir     | -                                                                                                                       |
 
 ## `update(index, fun)`
 
+### References
+
+| Library   | Function                                                            |
+| --------- | ------------------------------------------------------------------- |
+| Lodash    | -                                                                   |
+| Immutable | [update](https://immutable-js.github.io/immutable-js/docs/#/update) |
+| Ramda     | [update](https://ramdajs.com/docs/#update)                          |
+
+| Language   | Function |
+| ---------- | -------- |
+| JavaScript | -        |
+| Scala      | -        |
+| Elixir     | -        |
+
 ## `delete(index)`
+
+### References
+
+| Library   | Function                                                                |
+| --------- | ----------------------------------------------------------------------- |
+| Lodash    | -                                                                       |
+| Immutable | [delete](https://immutable-js.github.io/immutable-js/docs/#/Map/delete) |
+| Ramda     | -                                                                       |
+
+| Language   | Function |
+| ---------- | -------- |
+| JavaScript | -        |
+| Scala      | -        |
+| Elixir     | -        |
 
 ## `clear()`
 

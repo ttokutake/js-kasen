@@ -132,15 +132,67 @@ TBD
 
 ## `set(key, value)`
 
-## `setAll()`
+### References
 
-TBD
+| Library   | Function                                                      |
+| --------- | ------------------------------------------------------------- |
+| Lodash    | -                                                             |
+| Immutable | [set](https://immutable-js.github.io/immutable-js/docs/#/set) |
+| Ramda     | [set](https://ramdajs.com/docs/#set)                          |
+
+| Language   | Function                                                                                                                |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------- |
+| JavaScript | -                                                                                                                       |
+| Scala      | [update](<https://www.scala-lang.org/api/current/scala/collection/mutable/IndexedSeq.html#update(idx:Int,elem:A):Unit>) |
+| Elixir     | [put](https://hexdocs.pm/elixir/Map.html#put/3)                                                                         |
 
 ## `update(key, fun)`
 
+### References
+
+| Library   | Function                                                            |
+| --------- | ------------------------------------------------------------------- |
+| Lodash    | -                                                                   |
+| Immutable | [update](https://immutable-js.github.io/immutable-js/docs/#/update) |
+| Ramda     | -                                                                   |
+
+| Language   | Function                                              |
+| ---------- | ----------------------------------------------------- |
+| JavaScript | -                                                     |
+| Scala      | -                                                     |
+| Elixir     | [update](https://hexdocs.pm/elixir/Map.html#update/4) |
+
 ## `delete(key)`
 
+### References
+
+| Library   | Function                                                                |
+| --------- | ----------------------------------------------------------------------- |
+| Lodash    | -                                                                       |
+| Immutable | [delete](https://immutable-js.github.io/immutable-js/docs/#/Map/delete) |
+| Ramda     | -                                                                       |
+
+| Language   | Function                                        |
+| ---------- | ----------------------------------------------- |
+| JavaScript | -                                               |
+| Scala      | -                                               |
+| Elixir     | [pop](https://hexdocs.pm/elixir/Map.html#pop/3) |
+
 ## `deleteAll(keys)`
+
+### References
+
+| Library   | Function                                                                      |
+| --------- | ----------------------------------------------------------------------------- |
+| Lodash    | -                                                                             |
+| Immutable | [deleteAll](https://immutable-js.github.io/immutable-js/docs/#/Map/deleteAll) |
+| Ramda     | -                                                                             |
+
+| Language   | Function |
+| ---------- | -------- |
+| JavaScript | -        |
+| Scala      | -        |
+| Elixir     | -        |
 
 ## `clear()`
 
