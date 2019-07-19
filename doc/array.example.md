@@ -180,11 +180,67 @@ TBD
 
 ## `skip(num)`
 
+### References
+
+| Library   | Function                                                                   |
+| --------- | -------------------------------------------------------------------------- |
+| Lodash    | -                                                                          |
+| Immutable | [skip](https://immutable-js.github.io/immutable-js/docs/#/Collection/skip) |
+| Ramda     | -                                                                          |
+
+| Language   | Function |
+| ---------- | -------- |
+| JavaScript | -        |
+| Scala      | -        |
+| Elixir     | -        |
+
 ## `skipLast(num)`
+
+### References
+
+| Library   | Function                                                                           |
+| --------- | ---------------------------------------------------------------------------------- |
+| Lodash    | -                                                                                  |
+| Immutable | [skipLast](https://immutable-js.github.io/immutable-js/docs/#/Collection/skipLast) |
+| Ramda     | -                                                                                  |
+
+| Language   | Function |
+| ---------- | -------- |
+| JavaScript | -        |
+| Scala      | -        |
+| Elixir     | -        |
 
 ## `skipWhile(fun)`
 
+### References
+
+| Library   | Function                                                                             |
+| --------- | ------------------------------------------------------------------------------------ |
+| Lodash    | -                                                                                    |
+| Immutable | [skipWhile](https://immutable-js.github.io/immutable-js/docs/#/Collection/skipWhile) |
+| Ramda     | -                                                                                    |
+
+| Language   | Function |
+| ---------- | -------- |
+| JavaScript | -        |
+| Scala      | -        |
+| Elixir     | -        |
+
 ## `skipUntil(fun)`
+
+### References
+
+| Library   | Function                                                                             |
+| --------- | ------------------------------------------------------------------------------------ |
+| Lodash    | -                                                                                    |
+| Immutable | [skipUntil](https://immutable-js.github.io/immutable-js/docs/#/Collection/skipUntil) |
+| Ramda     | -                                                                                    |
+
+| Language   | Function |
+| ---------- | -------- |
+| JavaScript | -        |
+| Scala      | -        |
+| Elixir     | -        |
 
 ## `set(index, value)`
 
