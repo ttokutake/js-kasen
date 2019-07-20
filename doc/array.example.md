@@ -292,6 +292,20 @@ TBD
 
 ## `clear()`
 
+### References
+
+| Library   | Function                                                               |
+| --------- | ---------------------------------------------------------------------- |
+| Lodash    | -                                                                      |
+| Immutable | [clear](https://immutable-js.github.io/immutable-js/docs/#/List/clear) |
+| Ramda     | -                                                                      |
+
+| Language   | Function |
+| ---------- | -------- |
+| JavaScript | -        |
+| Scala      | -        |
+| Elixir     | -        |
+
 ## `concat(...values)`
 
 ## `insert(index, value)`

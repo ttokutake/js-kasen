@@ -196,6 +196,20 @@ TBD
 
 ## `clear()`
 
+### References
+
+| Library   | Function                                                              |
+| --------- | --------------------------------------------------------------------- |
+| Lodash    | -                                                                     |
+| Immutable | [clear](https://immutable-js.github.io/immutable-js/docs/#/Map/clear) |
+| Ramda     | -                                                                     |
+
+| Language   | Function |
+| ---------- | -------- |
+| JavaScript | -        |
+| Scala      | -        |
+| Elixir     | -        |
+
 ## `merge(...objects)`
 
 ## `assign(...objects)`
