@@ -580,21 +580,53 @@ TBD
 
 ### References
 
-| Library   | Function                                     |
-| --------- | -------------------------------------------- |
-| Lodash    | [uniq](https://lodash.com/docs/4.17.14#uniq) |
-| Immutable | -                                            |
-| Ramda     | [uniq](https://ramdajs.com/docs/#uniq)       |
+| Library   | Function                                                                                       |
+| --------- | ---------------------------------------------------------------------------------------------- |
+| Lodash    | [uniq](https://lodash.com/docs/4.17.14#uniq), [uniqBy](https://lodash.com/docs/4.17.14#uniqBy) |
+| Immutable | -                                                                                              |
+| Ramda     | [uniq](https://ramdajs.com/docs/#uniq), [uniqBy](https://ramdajs.com/docs/#uniqBy)             |
 
-| Language   | Function                                           |
-| ---------- | -------------------------------------------------- |
-| JavaScript | -                                                  |
-| Scala      | -                                                  |
-| Elixir     | [uniq](https://hexdocs.pm/elixir/Enum.html#uniq/1) |
+| Language   | Function                                                                                                     |
+| ---------- | ------------------------------------------------------------------------------------------------------------ |
+| JavaScript | -                                                                                                            |
+| Scala      | -                                                                                                            |
+| Elixir     | [uniq](https://hexdocs.pm/elixir/Enum.html#uniq/1), [uniq_by](https://hexdocs.pm/elixir/Enum.html#uniq_by/2) |
+
+## `uniqueBy()`
+
+TBD
 
 ## `chunk(num)`
 
+### References
+
+| Library   | Function                                           |
+| --------- | -------------------------------------------------- |
+| Lodash    | [chunk](https://lodash.com/docs/4.17.14#chunk)     |
+| Immutable | -                                                  |
+| Ramda     | [splitEvery](https://ramdajs.com/docs/#splitEvery) |
+
+| Language   | Function                                                                                                           |
+| ---------- | ------------------------------------------------------------------------------------------------------------------ |
+| JavaScript | -                                                                                                                  |
+| Scala      | [sliding](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#sliding(size:Int):Iterator[C]>) |
+| Elixir     | [chunk_every](https://hexdocs.pm/elixir/Enum.html#chunk_every/2)                                                   |
+
 ## `sliding(num, step)`
+
+### References
+
+| Library   | Function |
+| --------- | -------- |
+| Lodash    | -        |
+| Immutable | -        |
+| Ramda     | -        |
+
+| Language   | Function                                                                                                                    |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------- |
+| JavaScript | -                                                                                                                           |
+| Scala      | [sliding](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#sliding(size:Int,step:Int):Iterator[C]>) |
+| Elixir     | -                                                                                                                           |
 
 ## `range(start, end, step)`
 
