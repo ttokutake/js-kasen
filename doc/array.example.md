@@ -20,6 +20,8 @@ TBD
 
 ## `tapEach(fun)`
 
+- **No static function**
+
 ### References
 
 | Library   | Function |
@@ -556,11 +558,39 @@ TBD
 
 ## `sort(fun)`
 
+### References
+
+| Library   | Function                                                                   |
+| --------- | -------------------------------------------------------------------------- |
+| Lodash    | [sortBy](https://lodash.com/docs/4.17.14#sortBy)                           |
+| Immutable | [sort](https://immutable-js.github.io/immutable-js/docs/#/Collection/sort) |
+| Ramda     | [sort](https://ramdajs.com/docs/#sort)                                     |
+
+| Language   | Function                                                                                                                      |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| JavaScript | [sort](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)                              |
+| Scala      | [sorted](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#sorted[B%3E:A](implicitord:Ordering[B]):C>) |
+| Elixir     | [sort](https://hexdocs.pm/elixir/Enum.html#sort/2)                                                                            |
+
 ## `sortBy()`
 
 TBD
 
 ## `unique(fun)`
+
+### References
+
+| Library   | Function                                     |
+| --------- | -------------------------------------------- |
+| Lodash    | [uniq](https://lodash.com/docs/4.17.14#uniq) |
+| Immutable | -                                            |
+| Ramda     | [uniq](https://ramdajs.com/docs/#uniq)       |
+
+| Language   | Function                                           |
+| ---------- | -------------------------------------------------- |
+| JavaScript | -                                                  |
+| Scala      | -                                                  |
+| Elixir     | [uniq](https://hexdocs.pm/elixir/Enum.html#uniq/1) |
 
 ## `chunk(num)`
 

@@ -20,6 +20,8 @@ TBD
 
 ## `tapEach(fun)`
 
+- **No static function**
+
 ### References
 
 | Library   | Function |
