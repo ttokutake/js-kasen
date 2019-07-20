@@ -138,7 +138,7 @@ TBD
 | --------- | ------------------------------------------------------------- |
 | Lodash    | [set](https://lodash.com/docs/4.17.14#set)                    |
 | Immutable | [set](https://immutable-js.github.io/immutable-js/docs/#/set) |
-| Ramda     | [set](https://ramdajs.com/docs/#set)                          |
+| Ramda     | [assoc](https://ramdajs.com/docs/#assoc)                      |
 
 | Language   | Function                                                                                                                |
 | ---------- | ----------------------------------------------------------------------------------------------------------------------- |
@@ -170,7 +170,7 @@ TBD
 | --------- | ----------------------------------------------------------------------- |
 | Lodash    | [unset](https://lodash.com/docs/4.17.14#unset)                          |
 | Immutable | [delete](https://immutable-js.github.io/immutable-js/docs/#/Map/delete) |
-| Ramda     | -                                                                       |
+| Ramda     | [dissoc](https://ramdajs.com/docs/#dissoc)                              |
 
 | Language   | Function                                        |
 | ---------- | ----------------------------------------------- |
@@ -276,9 +276,51 @@ TBD
 
 ## `setIn(keys, value)`
 
+### References
+
+| Library   | Function                                                               |
+| --------- | ---------------------------------------------------------------------- |
+| Lodash    | [set](https://lodash.com/docs/4.17.14#set)                             |
+| Immutable | [setIn](https://immutable-js.github.io/immutable-js/docs/#/List/setIn) |
+| Ramda     | -                                                                      |
+
+| Language   | Function                                                 |
+| ---------- | -------------------------------------------------------- |
+| JavaScript | -                                                        |
+| Scala      | -                                                        |
+| Elixir     | [put_in](https://hexdocs.pm/elixir/Kernel.html#put_in/3) |
+
 ## `updateIn(keys, fun)`
 
+### References
+
+| Library   | Function                                                                  |
+| --------- | ------------------------------------------------------------------------- |
+| Lodash    | -                                                                         |
+| Immutable | [updateIn](https://immutable-js.github.io/immutable-js/docs/#/List/setIn) |
+| Ramda     | -                                                                         |
+
+| Language   | Function                                                       |
+| ---------- | -------------------------------------------------------------- |
+| JavaScript | -                                                              |
+| Scala      | -                                                              |
+| Elixir     | [update_in](https://hexdocs.pm/elixir/Kernel.html#update_in/3) |
+
 ## `deleteIn(keys)`
+
+### References
+
+| Library   | Function                                                                     |
+| --------- | ---------------------------------------------------------------------------- |
+| Lodash    | [unset](https://lodash.com/docs/4.17.14#unset)                               |
+| Immutable | [deleteIn](https://immutable-js.github.io/immutable-js/docs/#/List/deleteIn) |
+| Ramda     | [dissocPath](https://ramdajs.com/docs/#dissocPath)                           |
+
+| Language   | Function                                                 |
+| ---------- | -------------------------------------------------------- |
+| JavaScript | -                                                        |
+| Scala      | -                                                        |
+| Elixir     | [put_in](https://hexdocs.pm/elixir/Kernel.html#put_in/3) |
 
 ## `copy()`
 
