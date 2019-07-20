@@ -308,17 +308,115 @@ TBD
 
 ## `concat(...values)`
 
+### References
+
+| Library   | Function                                                                       |
+| --------- | ------------------------------------------------------------------------------ |
+| Lodash    | [concat](https://lodash.com/docs/4.17.14#concat)                               |
+| Immutable | [concat](https://immutable-js.github.io/immutable-js/docs/#/Collection/concat) |
+| Ramda     | [concat](https://ramdajs.com/docs/#concat)                                     |
+
+| Language   | Function                                                                                                                                          |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| JavaScript | [concat](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/concat)                                              |
+| Scala      | [concat](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#concat[B%3E:A](suffix:scala.collection.IterableOnce[B]):CC[B]>) |
+| Elixir     | [concat](https://hexdocs.pm/elixir/Enum.html#concat/2)                                                                                            |
+
 ## `insert(index, value)`
+
+### References
+
+| Library   | Function                                                                 |
+| --------- | ------------------------------------------------------------------------ |
+| Lodash    | -                                                                        |
+| Immutable | [insert](https://immutable-js.github.io/immutable-js/docs/#/List/insert) |
+| Ramda     | [insert](https://ramdajs.com/docs/#insert)                               |
+
+| Language   | Function                                                                                                                   |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------- |
+| JavaScript | -                                                                                                                          |
+| Scala      | [insert](<https://www.scala-lang.org/api/current/scala/collection/mutable/ArrayBuffer.html#insert(index:Int,elem:A):Unit>) |
+| Elixir     | [insert_at](https://hexdocs.pm/elixir/List.html#insert_at/3)                                                               |
 
 ## `push(...values)`
 
+### References
+
+| Library   | Function                                                             |
+| --------- | -------------------------------------------------------------------- |
+| Lodash    | -                                                                    |
+| Immutable | [push](https://immutable-js.github.io/immutable-js/docs/#/List/push) |
+| Ramda     | -                                                                    |
+
+| Language   | Function                                                                                         |
+| ---------- | ------------------------------------------------------------------------------------------------ |
+| JavaScript | [push](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/push) |
+| Scala      | -                                                                                                |
+| Elixir     | -                                                                                                |
+
 ## `pop()`
+
+### References
+
+| Library   | Function                                                           |
+| --------- | ------------------------------------------------------------------ |
+| Lodash    | -                                                                  |
+| Immutable | [pop](https://immutable-js.github.io/immutable-js/docs/#/List/pop) |
+| Ramda     | -                                                                  |
+
+| Language   | Function                                                                                       |
+| ---------- | ---------------------------------------------------------------------------------------------- |
+| JavaScript | [pop](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/pop) |
+| Scala      | [init](https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#init:C)         |
+| Elixir     | -                                                                                              |
 
 ## `unshift(...values)`
 
+### References
+
+| Library   | Function                                                                   |
+| --------- | -------------------------------------------------------------------------- |
+| Lodash    | -                                                                          |
+| Immutable | [unshift](https://immutable-js.github.io/immutable-js/docs/#/List/unshift) |
+| Ramda     | -                                                                          |
+
+| Language   | Function                                                                                               |
+| ---------- | ------------------------------------------------------------------------------------------------------ |
+| JavaScript | [unshift](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/unshift) |
+| Scala      | -                                                                                                      |
+| Elixir     | -                                                                                                      |
+
 ## `shift()`
 
+### References
+
+| Library   | Function                                                               |
+| --------- | ---------------------------------------------------------------------- |
+| Lodash    | -                                                                      |
+| Immutable | [shift](https://immutable-js.github.io/immutable-js/docs/#/List/shift) |
+| Ramda     | -                                                                      |
+
+| Language   | Function                                                                                           |
+| ---------- | -------------------------------------------------------------------------------------------------- |
+| JavaScript | [shift](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/shift) |
+| Scala      | [tail](https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#tail:C)             |
+| Elixir     | -                                                                                                  |
+
 ## `splice(index, num, ...values)`
+
+### References
+
+| Library   | Function                                                                 |
+| --------- | ------------------------------------------------------------------------ |
+| Lodash    | -                                                                        |
+| Immutable | [splice](https://immutable-js.github.io/immutable-js/docs/#/List/splice) |
+| Ramda     | -                                                                        |
+
+| Language   | Function                                                                                             |
+| ---------- | ---------------------------------------------------------------------------------------------------- |
+| JavaScript | [splice](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) |
+| Scala      | -                                                                                                    |
+| Elixir     | -                                                                                                    |
 
 ## `setIn(keys, value)`
 
