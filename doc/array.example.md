@@ -508,9 +508,51 @@ TBD
 
 ## `zip(...arrays)`
 
+### References
+
+| Library   | Function                                                           |
+| --------- | ------------------------------------------------------------------ |
+| Lodash    | [zip](https://lodash.com/docs/4.17.14#zip)                         |
+| Immutable | [zip](https://immutable-js.github.io/immutable-js/docs/#/List/zip) |
+| Ramda     | [zip](https://ramdajs.com/docs/#zip)                               |
+
+| Language   | Function                                                                                                                                                                              |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| JavaScript | -                                                                                                                                                                                     |
+| Scala      | [zip](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#zip[B](that:scala.collection.IterableOnce[B]):CC[(A@scala.annotation.unchecked.uncheckedVariance,B)]>) |
+| Elixir     | [zip](https://hexdocs.pm/elixir/Enum.html#zip/2)                                                                                                                                      |
+
 ## `zipAll(...arrays)`
 
+### References
+
+| Library   | Function                                                                 |
+| --------- | ------------------------------------------------------------------------ |
+| Lodash    | -                                                                        |
+| Immutable | [zipAll](https://immutable-js.github.io/immutable-js/docs/#/List/zipAll) |
+| Ramda     | -                                                                        |
+
+| Language   | Function                                                                                                                                                  |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| JavaScript | -                                                                                                                                                         |
+| Scala      | [zipAll](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#zipAll[A1%3E:A,B](that:Iterable[B],thisElem:A1,thatElem:B):CC[(A1,B)]>) |
+| Elixir     | -                                                                                                                                                         |
+
 ## `zipWith(fun, ...arrays)`
+
+### References
+
+| Library   | Function                                                                   |
+| --------- | -------------------------------------------------------------------------- |
+| Lodash    | [zipWith](https://lodash.com/docs/4.17.14#zipWith)                         |
+| Immutable | [zipWith](https://immutable-js.github.io/immutable-js/docs/#/List/zipWith) |
+| Ramda     | [zipWith](https://ramdajs.com/docs/#zipWith)                               |
+
+| Language   | Function |
+| ---------- | -------- |
+| JavaScript | -        |
+| Scala      | -        |
+| Elixir     | -        |
 
 ## `sort(fun)`
 
