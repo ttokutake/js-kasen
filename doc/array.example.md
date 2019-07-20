@@ -630,7 +630,35 @@ TBD
 
 ## `range(start, end, step)`
 
+### References
+
+| Library   | Function                                                          |
+| --------- | ----------------------------------------------------------------- |
+| Lodash    | [range](https://lodash.com/docs/4.17.14#range)                    |
+| Immutable | [Range](https://immutable-js.github.io/immutable-js/docs/#/Range) |
+| Ramda     | [range](https://ramdajs.com/docs/#range)                          |
+
+| Language   | Function                                                                                                                                                 |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| JavaScript | -                                                                                                                                                        |
+| Scala      | [range](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq$.html#range[A](start:A,end:A,step:A)(implicitevidence$4:Integral[A]):CC[A]>) |
+| Elixir     | [Range](https://hexdocs.pm/elixir/Range.html)                                                                                                            |
+
 ## `repeat(value, num)`
+
+### References
+
+| Library   | Function                                                            |
+| --------- | ------------------------------------------------------------------- |
+| Lodash    | -                                                                   |
+| Immutable | [Repeat](https://immutable-js.github.io/immutable-js/docs/#/Repeat) |
+| Ramda     | [repeat](https://ramdajs.com/docs/#repeat)                          |
+
+| Language   | Function                                                         |
+| ---------- | ---------------------------------------------------------------- |
+| JavaScript | -                                                                |
+| Scala      | -                                                                |
+| Elixir     | [repeatedly](https://hexdocs.pm/elixir/Stream.html#repeatedly/1) |
 
 ## `copy()`
 
