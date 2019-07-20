@@ -210,15 +210,69 @@ TBD
 | Scala      | -        |
 | Elixir     | -        |
 
-## `merge(...objects)`
+## `merge(...objects)` / `assign(...objects)`
 
-## `assign(...objects)`
+### References
+
+| Library   | Function                                                              |
+| --------- | --------------------------------------------------------------------- |
+| Lodash    | [merge](https://lodash.com/docs/4.17.14#merge)                        |
+| Immutable | [merge](https://immutable-js.github.io/immutable-js/docs/#/Map/merge) |
+| Ramda     | [merge](https://ramdajs.com/docs/#merge)                              |
+
+| Language   | Function                                                                                                                                          |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| JavaScript | [assign](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)                                             |
+| Scala      | [concat](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#concat[B%3E:A](suffix:scala.collection.IterableOnce[B]):CC[B]>) |
+| Elixir     | [merge](https://hexdocs.pm/elixir/Map.html#merge/2)                                                                                               |
 
 ## `mergeWith(fun, ...objects)`
 
+### References
+
+| Library   | Function                                                                      |
+| --------- | ----------------------------------------------------------------------------- |
+| Lodash    | [mergeWith](https://lodash.com/docs/4.17.14#mergeWith)                        |
+| Immutable | [mergeWith](https://immutable-js.github.io/immutable-js/docs/#/Map/mergeWith) |
+| Ramda     | [mergeWith](https://ramdajs.com/docs/#mergeWith)                              |
+
+| Language   | Function                                            |
+| ---------- | --------------------------------------------------- |
+| JavaScript | -                                                   |
+| Scala      | -                                                   |
+| Elixir     | [merge](https://hexdocs.pm/elixir/Map.html#merge/3) |
+
 ## `mergeDeep(...objects)`
 
+### References
+
+| Library   | Function                                                                      |
+| --------- | ----------------------------------------------------------------------------- |
+| Lodash    | [merge](https://lodash.com/docs/4.17.14#merge)                                |
+| Immutable | [mergeDeep](https://immutable-js.github.io/immutable-js/docs/#/Map/mergeDeep) |
+| Ramda     | [mergeDeepRight](https://ramdajs.com/docs/#mergeDeepRight)                    |
+
+| Language   | Function |
+| ---------- | -------- |
+| JavaScript | -        |
+| Scala      | -        |
+| Elixir     | -        |
+
 ## `mergeDeepWith(fun, ...objects)`
+
+### References
+
+| Library   | Function                                                                          |
+| --------- | --------------------------------------------------------------------------------- |
+| Lodash    | [mergeWith](https://lodash.com/docs/4.17.14#mergeWith)                            |
+| Immutable | [mergeDeepWith](https://immutable-js.github.io/immutable-js/docs/#/Map/mergeDeep) |
+| Ramda     | [mergeDeepWith](https://ramdajs.com/docs/#mergeDeepWith)                          |
+
+| Language   | Function |
+| ---------- | -------- |
+| JavaScript | -        |
+| Scala      | -        |
+| Elixir     | -        |
 
 ## `setIn(keys, value)`
 
