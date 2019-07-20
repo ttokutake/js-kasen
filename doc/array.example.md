@@ -464,7 +464,7 @@ TBD
 | ---------- | -------------------------------------------------------- |
 | JavaScript | -                                                        |
 | Scala      | -                                                        |
-| Elixir     | [put_in](https://hexdocs.pm/elixir/Kernel.html#put_in/3) |
+| Elixir     | [pop_in](https://hexdocs.pm/elixir/Kernel.html#pop_in/2) |
 
 ## `flatten()`
 
