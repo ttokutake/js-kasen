@@ -136,7 +136,7 @@ TBD
 
 | Library   | Function                                                      |
 | --------- | ------------------------------------------------------------- |
-| Lodash    | -                                                             |
+| Lodash    | [set](https://lodash.com/docs/4.17.14#set)                    |
 | Immutable | [set](https://immutable-js.github.io/immutable-js/docs/#/set) |
 | Ramda     | [set](https://ramdajs.com/docs/#set)                          |
 
@@ -168,7 +168,7 @@ TBD
 
 | Library   | Function                                                                |
 | --------- | ----------------------------------------------------------------------- |
-| Lodash    | -                                                                       |
+| Lodash    | [unset](https://lodash.com/docs/4.17.14#unset)                          |
 | Immutable | [delete](https://immutable-js.github.io/immutable-js/docs/#/Map/delete) |
 | Ramda     | -                                                                       |
 
