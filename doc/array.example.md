@@ -348,7 +348,7 @@ TBD
 | --------- | -------------------------------------------------------------------- |
 | Lodash    | -                                                                    |
 | Immutable | [push](https://immutable-js.github.io/immutable-js/docs/#/List/push) |
-| Ramda     | -                                                                    |
+| Ramda     | [append](https://ramdajs.com/docs/#append)                           |
 
 | Language   | Function                                                                                         |
 | ---------- | ------------------------------------------------------------------------------------------------ |
@@ -380,7 +380,7 @@ TBD
 | --------- | -------------------------------------------------------------------------- |
 | Lodash    | -                                                                          |
 | Immutable | [unshift](https://immutable-js.github.io/immutable-js/docs/#/List/unshift) |
-| Ramda     | -                                                                          |
+| Ramda     | [prepend](https://ramdajs.com/docs/#prepend)                               |
 
 | Language   | Function                                                                                               |
 | ---------- | ------------------------------------------------------------------------------------------------------ |
