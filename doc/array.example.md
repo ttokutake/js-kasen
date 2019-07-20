@@ -468,7 +468,35 @@ TBD
 
 ## `flatten()`
 
+### References
+
+| Library   | Function                                                                         |
+| --------- | -------------------------------------------------------------------------------- |
+| Lodash    | [flatten](https://lodash.com/docs/4.17.14#flatten)                               |
+| Immutable | [flatten](https://immutable-js.github.io/immutable-js/docs/#/Collection/flatten) |
+| Ramda     | [flatten](https://ramdajs.com/docs/#flatten)                                     |
+
+| Language   | Function                                                                                                                                                        |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| JavaScript | [flat](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/flat)                                                                |
+| Scala      | [flatten](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#flatten[B](implicitasIterable:A=%3Escala.collection.IterableOnce[B]):CC[B]>) |
+| Elixir     | [flatten](https://hexdocs.pm/elixir/List.html#flatten/1)                                                                                                        |
+
 ## `flatMap(fun)`
+
+### References
+
+| Library   | Function                                                                         |
+| --------- | -------------------------------------------------------------------------------- |
+| Lodash    | [flatMap](https://lodash.com/docs/4.17.14#flatMap)                               |
+| Immutable | [flatMap](https://immutable-js.github.io/immutable-js/docs/#/Collection/flatMap) |
+| Ramda     | -                                                                                |
+
+| Language   | Function                                                                                                                                       |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| JavaScript | [flatMap](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap)                                         |
+| Scala      | [flatMap](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#flatMap[B](f:A=%3Escala.collection.IterableOnce[B]):CC[B]>) |
+| Elixir     | [flat_map](https://hexdocs.pm/elixir/Enum.html#flat_map/2)                                                                                     |
 
 ## `interpose()`
 
