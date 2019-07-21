@@ -922,6 +922,22 @@ TBD
 
 ## `splitAt(index)`
 
+- **Consumer**
+
+### References
+
+| Library   | Function                                     |
+| --------- | -------------------------------------------- |
+| Lodash    | -                                            |
+| Immutable | -                                            |
+| Ramda     | [splitAt](https://ramdajs.com/docs/#splitAt) |
+
+| Language   | Function                                                                                                  |
+| ---------- | --------------------------------------------------------------------------------------------------------- |
+| JavaScript | -                                                                                                         |
+| Scala      | [splitAt](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#splitAt(n:Int):(C,C)>) |
+| Elixir     | [split](https://hexdocs.pm/elixir/Enum.html#split/2)                                                      |
+
 ## `toJS()`
 
 - **Method chaining only**
