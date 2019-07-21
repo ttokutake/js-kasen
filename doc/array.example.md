@@ -20,7 +20,7 @@ TBD
 
 ## `tapEach(fun)`
 
-- **No static function**
+- **Method chaining only**
 
 ### References
 
@@ -682,7 +682,7 @@ TODO
 
 ## `memoize()`
 
-- **No static function**
+- **Method chaining only**
 
 ### Example
 
@@ -703,6 +703,8 @@ TODO
 | Elixir     | -        |
 
 ## `isEmpty()`
+
+- **Consumer**
 
 ### References
 
@@ -736,6 +738,8 @@ TBD
 
 ## `count(fun)`
 
+- **Consumer**
+
 ### References
 
 | Library   | Function                                                                     |
@@ -751,6 +755,8 @@ TBD
 | Elixir     | [length](https://hexdocs.pm/elixir/Kernel.html#length/1)                                                     |
 
 ## `get(index, defaultValue)`
+
+- **Consumer**
 
 ### References
 
@@ -768,6 +774,8 @@ TBD
 
 ## `has(index)`
 
+- **Consumer**
+
 ### References
 
 | Library   | Function                                                                                   |
@@ -783,6 +791,8 @@ TBD
 | Elixir     | -        |
 
 ## `includes(value)`
+
+- **Consumer**
 
 ### References
 
@@ -800,6 +810,8 @@ TBD
 
 ## `getIn(keys, defaultValue)`
 
+- **Consumer**
+
 ### References
 
 | Library   | Function                                                                     |
@@ -815,6 +827,8 @@ TBD
 | Elixir     | [get_in](https://hexdocs.pm/elixir/Kernel.html#get_in/2) |
 
 ## `hasIn(keys)`
+
+- **Consumer**
 
 ### References
 
@@ -843,6 +857,9 @@ TBD
 ## `splitAt(index)`
 
 ## `toJS()`
+
+- **Method chaining only**
+- **Consumer**
 
 ## `toArray()`
 
