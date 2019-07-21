@@ -848,15 +848,77 @@ TBD
 | Scala      | -        |
 | Elixir     | -        |
 
-## `head()`
+## `head() / first()`
 
-## `first()`
+- **Consumer**
+
+### References
+
+| Library   | Function                                                                     |
+| --------- | ---------------------------------------------------------------------------- |
+| Lodash    | [head / first](https://lodash.com/docs/4.17.14#head)                         |
+| Immutable | [first](https://immutable-js.github.io/immutable-js/docs/#/Collection/first) |
+| Ramda     | [head](https://ramdajs.com/docs/#head)                                       |
+
+| Language   | Function                                                                               |
+| ---------- | -------------------------------------------------------------------------------------- |
+| JavaScript | -                                                                                      |
+| Scala      | [head](https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#head:A) |
+| Elixir     | [hd](https://hexdocs.pm/elixir/Kernel.html#hd/1)                                       |
 
 ## `tail()`
 
+- **Consumer**
+
+### References
+
+| Library   | Function                                                                   |
+| --------- | -------------------------------------------------------------------------- |
+| Lodash    | [tail](https://lodash.com/docs/4.17.14#tail)                               |
+| Immutable | [rest](https://immutable-js.github.io/immutable-js/docs/#/Collection/rest) |
+| Ramda     | [tail](https://ramdajs.com/docs/#tail)                                     |
+
+| Language   | Function                                                                               |
+| ---------- | -------------------------------------------------------------------------------------- |
+| JavaScript | -                                                                                      |
+| Scala      | [tail](https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#tail:C) |
+| Elixir     | [tl](https://hexdocs.pm/elixir/Kernel.html#tl/1)                                       |
+
 ## `init()`
 
+- **Consumer**
+
+### References
+
+| Library   | Function                                                                         |
+| --------- | -------------------------------------------------------------------------------- |
+| Lodash    | [initial](https://lodash.com/docs/4.17.14#initial)                               |
+| Immutable | [butLast](https://immutable-js.github.io/immutable-js/docs/#/Collection/butLast) |
+| Ramda     | [init](https://ramdajs.com/docs/#init)                                           |
+
+| Language   | Function                                                                               |
+| ---------- | -------------------------------------------------------------------------------------- |
+| JavaScript | -                                                                                      |
+| Scala      | [init](https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#init:C) |
+| Elixir     | -                                                                                      |
+
 ## `last()`
+
+- **Consumer**
+
+### References
+
+| Library   | Function                                                                   |
+| --------- | -------------------------------------------------------------------------- |
+| Lodash    | [last](https://lodash.com/docs/4.17.14#last)                               |
+| Immutable | [last](https://immutable-js.github.io/immutable-js/docs/#/Collection/last) |
+| Ramda     | [last](https://ramdajs.com/docs/#last)                                     |
+
+| Language   | Function                                                                               |
+| ---------- | -------------------------------------------------------------------------------------- |
+| JavaScript | -                                                                                      |
+| Scala      | [last](https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#last:A) |
+| Elixir     | [last](https://hexdocs.pm/elixir/List.html#last/1)                                     |
 
 ## `splitAt(index)`
 
