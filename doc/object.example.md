@@ -392,6 +392,20 @@ TBD
 
 ## `count(fun)`
 
+### References
+
+| Library   | Function                                                                     |
+| --------- | ---------------------------------------------------------------------------- |
+| Lodash    | -                                                                            |
+| Immutable | [count](https://immutable-js.github.io/immutable-js/docs/#/Collection/count) |
+| Ramda     | -                                                                            |
+
+| Language   | Function                                                                                                     |
+| ---------- | ------------------------------------------------------------------------------------------------------------ |
+| JavaScript | -                                                                                                            |
+| Scala      | [count](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#count(p:A=%3EBoolean):Int>) |
+| Elixir     | -                                                                                                            |
+
 ## `get(key, defaultValue)`
 
 ## `has(key)`
