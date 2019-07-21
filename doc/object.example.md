@@ -440,6 +440,20 @@ TBD
 
 ## `includes(value)`
 
+### References
+
+| Library   | Function                                                                           |
+| --------- | ---------------------------------------------------------------------------------- |
+| Lodash    | [includes](https://lodash.com/docs/4.17.14#includes)                               |
+| Immutable | [includes](https://immutable-js.github.io/immutable-js/docs/#/Collection/includes) |
+| Ramda     | -                                                                                  |
+
+| Language   | Function                                                                                                                 |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------ |
+| JavaScript | -                                                                                                                        |
+| Scala      | [contains](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#contains[A1%3E:A](elem:A1):Boolean>) |
+| Elixir     | -                                                                                                                        |
+
 ## `getIn(keys, defaultValue)`
 
 ## `hasIn(keys)`
