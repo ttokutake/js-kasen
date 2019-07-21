@@ -752,6 +752,20 @@ TBD
 
 ## `get(index, defaultValue)`
 
+### References
+
+| Library   | Function                                                                 |
+| --------- | ------------------------------------------------------------------------ |
+| Lodash    | [get](https://lodash.com/docs/4.17.14#get)                               |
+| Immutable | [get](https://immutable-js.github.io/immutable-js/docs/#/Collection/get) |
+| Ramda     | -                                                                        |
+
+| Language   | Function |
+| ---------- | -------- |
+| JavaScript | -        |
+| Scala      | -        |
+| Elixir     | -        |
+
 ## `has(index)`
 
 ## `includes(value)`
