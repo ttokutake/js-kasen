@@ -424,6 +424,20 @@ TBD
 
 ## `has(key)`
 
+### References
+
+| Library   | Function                                                                 |
+| --------- | ------------------------------------------------------------------------ |
+| Lodash    | [has](https://lodash.com/docs/4.17.14#has)                               |
+| Immutable | [has](https://immutable-js.github.io/immutable-js/docs/#/Collection/has) |
+| Ramda     | [has](https://ramdajs.com/docs/#has)                                     |
+
+| Language   | Function                                                  |
+| ---------- | --------------------------------------------------------- |
+| JavaScript | -                                                         |
+| Scala      | -                                                         |
+| Elixir     | [has_key?](https://hexdocs.pm/elixir/Map.html#has_key?/2) |
+
 ## `includes(value)`
 
 ## `getIn(keys, defaultValue)`
