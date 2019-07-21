@@ -136,11 +136,11 @@ TBD
 
 ### References
 
-| Library   | Function                                                      |
-| --------- | ------------------------------------------------------------- |
-| Lodash    | [set](https://lodash.com/docs/4.17.14#set)                    |
-| Immutable | [set](https://immutable-js.github.io/immutable-js/docs/#/set) |
-| Ramda     | [assoc](https://ramdajs.com/docs/#assoc)                      |
+| Library   | Function                                                                                       |
+| --------- | ---------------------------------------------------------------------------------------------- |
+| Lodash    | [set](https://lodash.com/docs/4.17.14#set)                                                     |
+| Immutable | [set](https://immutable-js.github.io/immutable-js/docs/#/set)                                  |
+| Ramda     | [assoc](https://ramdajs.com/docs/#assoc), [set + lensProp](https://ramdajs.com/docs/#lensProp) |
 
 | Language   | Function                                                                                                                |
 | ---------- | ----------------------------------------------------------------------------------------------------------------------- |
@@ -156,7 +156,7 @@ TBD
 | --------- | ------------------------------------------------------------------- |
 | Lodash    | -                                                                   |
 | Immutable | [update](https://immutable-js.github.io/immutable-js/docs/#/update) |
-| Ramda     | -                                                                   |
+| Ramda     | [over + lensProp](https://ramdajs.com/docs/#lensProp)               |
 
 | Language   | Function                                              |
 | ---------- | ----------------------------------------------------- |
@@ -284,7 +284,7 @@ TBD
 | --------- | ---------------------------------------------------------------------- |
 | Lodash    | [set](https://lodash.com/docs/4.17.14#set)                             |
 | Immutable | [setIn](https://immutable-js.github.io/immutable-js/docs/#/List/setIn) |
-| Ramda     | -                                                                      |
+| Ramda     | [set + lensPath](https://ramdajs.com/docs/#lensPath)                   |
 
 | Language   | Function                                                 |
 | ---------- | -------------------------------------------------------- |
@@ -300,7 +300,7 @@ TBD
 | --------- | ------------------------------------------------------------------------- |
 | Lodash    | -                                                                         |
 | Immutable | [updateIn](https://immutable-js.github.io/immutable-js/docs/#/List/setIn) |
-| Ramda     | -                                                                         |
+| Ramda     | [over + lensPath](https://ramdajs.com/docs/#lensPath)                     |
 
 | Language   | Function                                                       |
 | ---------- | -------------------------------------------------------------- |
