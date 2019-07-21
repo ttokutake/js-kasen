@@ -116,6 +116,10 @@ TBD
 | Scala      | [reverse](https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#reverse:C) |
 | Elixir     | [reverse](https://hexdocs.pm/elixir/Enum.html#reverse/1)                                     |
 
+## `slice()`
+
+TBD
+
 ## `take(num)`
 
 ### References
