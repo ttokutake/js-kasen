@@ -414,7 +414,7 @@ TBD
 | --------- | ------------------------------------------------------------------------ |
 | Lodash    | [get](https://lodash.com/docs/4.17.14#get)                               |
 | Immutable | [get](https://immutable-js.github.io/immutable-js/docs/#/Collection/get) |
-| Ramda     | -                                                                        |
+| Ramda     | [view + lensProp](https://ramdajs.com/docs/#lensProp)                    |
 
 | Language   | Function                                        |
 | ---------- | ----------------------------------------------- |
@@ -426,11 +426,11 @@ TBD
 
 ### References
 
-| Library   | Function                                                                 |
-| --------- | ------------------------------------------------------------------------ |
-| Lodash    | [has](https://lodash.com/docs/4.17.14#has)                               |
-| Immutable | [has](https://immutable-js.github.io/immutable-js/docs/#/Collection/has) |
-| Ramda     | [has](https://ramdajs.com/docs/#has)                                     |
+| Library   | Function                                                                                   |
+| --------- | ------------------------------------------------------------------------------------------ |
+| Lodash    | [has](https://lodash.com/docs/4.17.14#has), [hasIn](https://lodash.com/docs/4.17.14#hasIn) |
+| Immutable | [has](https://immutable-js.github.io/immutable-js/docs/#/Collection/has)                   |
+| Ramda     | [has](https://ramdajs.com/docs/#has)                                                       |
 
 | Language   | Function                                                  |
 | ---------- | --------------------------------------------------------- |
@@ -456,7 +456,35 @@ TBD
 
 ## `getIn(keys, defaultValue)`
 
+### References
+
+| Library   | Function                                                                     |
+| --------- | ---------------------------------------------------------------------------- |
+| Lodash    | [get](https://lodash.com/docs/4.17.14#get)                                   |
+| Immutable | [getIn](https://immutable-js.github.io/immutable-js/docs/#/Collection/getIn) |
+| Ramda     | [view + lensPath](https://ramdajs.com/docs/#lensPath)                        |
+
+| Language   | Function                                                 |
+| ---------- | -------------------------------------------------------- |
+| JavaScript | -                                                        |
+| Scala      | -                                                        |
+| Elixir     | [get_in](https://hexdocs.pm/elixir/Kernel.html#get_in/2) |
+
 ## `hasIn(keys)`
+
+### References
+
+| Library   | Function                                                                                   |
+| --------- | ------------------------------------------------------------------------------------------ |
+| Lodash    | [has](https://lodash.com/docs/4.17.14#has), [hasIn](https://lodash.com/docs/4.17.14#hasIn) |
+| Immutable | [hasIn](https://immutable-js.github.io/immutable-js/docs/#/Collection/hasIn)               |
+| Ramda     | [hasPath](https://ramdajs.com/docs/#hasPath)                                               |
+
+| Language   | Function |
+| ---------- | -------- |
+| JavaScript | -        |
+| Scala      | -        |
+| Elixir     | -        |
 
 ## `toJS()`
 
