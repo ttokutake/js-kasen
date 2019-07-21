@@ -852,7 +852,7 @@ TBD
 
 ## `init()`
 
-## `tail()`
+## `last()`
 
 ## `splitAt(index)`
 
