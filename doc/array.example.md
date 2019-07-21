@@ -186,15 +186,15 @@ TBD
 
 | Library   | Function                                                                   |
 | --------- | -------------------------------------------------------------------------- |
-| Lodash    | -                                                                          |
+| Lodash    | [drop](https://lodash.com/docs/4.17.14#drop)                               |
 | Immutable | [skip](https://immutable-js.github.io/immutable-js/docs/#/Collection/skip) |
-| Ramda     | -                                                                          |
+| Ramda     | [drop](https://ramdajs.com/docs/#drop)                                     |
 
-| Language   | Function |
-| ---------- | -------- |
-| JavaScript | -        |
-| Scala      | -        |
-| Elixir     | -        |
+| Language   | Function                                                                                        |
+| ---------- | ----------------------------------------------------------------------------------------------- |
+| JavaScript | -                                                                                               |
+| Scala      | [drop](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#drop(n:Int):C>) |
+| Elixir     | [drop](https://hexdocs.pm/elixir/Enum.html#drop/2)                                              |
 
 ## `skipLast(num)`
 
@@ -202,15 +202,15 @@ TBD
 
 | Library   | Function                                                                           |
 | --------- | ---------------------------------------------------------------------------------- |
-| Lodash    | -                                                                                  |
+| Lodash    | [dropRight](https://lodash.com/docs/4.17.14#dropRight)                             |
 | Immutable | [skipLast](https://immutable-js.github.io/immutable-js/docs/#/Collection/skipLast) |
-| Ramda     | -                                                                                  |
+| Ramda     | [dropLast](https://ramdajs.com/docs/#dropLast)                                     |
 
-| Language   | Function |
-| ---------- | -------- |
-| JavaScript | -        |
-| Scala      | -        |
-| Elixir     | -        |
+| Language   | Function                                                                                                  |
+| ---------- | --------------------------------------------------------------------------------------------------------- |
+| JavaScript | -                                                                                                         |
+| Scala      | [dropRight](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#dropRight(n:Int):C>) |
+| Elixir     | -                                                                                                         |
 
 ## `skipWhile(fun)`
 
@@ -218,15 +218,15 @@ TBD
 
 | Library   | Function                                                                             |
 | --------- | ------------------------------------------------------------------------------------ |
-| Lodash    | -                                                                                    |
+| Lodash    | [dropWhile](https://lodash.com/docs/4.17.14#dropWhile)                               |
 | Immutable | [skipWhile](https://immutable-js.github.io/immutable-js/docs/#/Collection/skipWhile) |
-| Ramda     | -                                                                                    |
+| Ramda     | [dropWhile](https://ramdajs.com/docs/#dropWhile)                                     |
 
-| Language   | Function |
-| ---------- | -------- |
-| JavaScript | -        |
-| Scala      | -        |
-| Elixir     | -        |
+| Language   | Function                                                                                                           |
+| ---------- | ------------------------------------------------------------------------------------------------------------------ |
+| JavaScript | -                                                                                                                  |
+| Scala      | [dropWhile](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#dropWhile(p:A=%3EBoolean):C>) |
+| Elixir     | [drop_while](https://hexdocs.pm/elixir/Enum.html#drop_while/2)                                                     |
 
 ## `skipUntil(fun)`
 
