@@ -364,7 +364,7 @@ TBD
 | --------- | ------------------------------------------------------------------ |
 | Lodash    | -                                                                  |
 | Immutable | [pop](https://immutable-js.github.io/immutable-js/docs/#/List/pop) |
-| Ramda     | -                                                                  |
+| Ramda     | [init](https://ramdajs.com/docs/#init)                             |
 
 | Language   | Function                                                                                       |
 | ---------- | ---------------------------------------------------------------------------------------------- |
@@ -394,9 +394,9 @@ TBD
 
 | Library   | Function                                                               |
 | --------- | ---------------------------------------------------------------------- |
-| Lodash    | -                                                                      |
+| Lodash    | [tail](https://lodash.com/docs/4.17.14#tail)                           |
 | Immutable | [shift](https://immutable-js.github.io/immutable-js/docs/#/List/shift) |
-| Ramda     | -                                                                      |
+| Ramda     | [tail](https://ramdajs.com/docs/#tail)                                 |
 
 | Language   | Function                                                                                           |
 | ---------- | -------------------------------------------------------------------------------------------------- |
