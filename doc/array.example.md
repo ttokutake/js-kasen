@@ -704,6 +704,20 @@ TODO
 
 ## `isEmpty()`
 
+### References
+
+| Library   | Function                                                                         |
+| --------- | -------------------------------------------------------------------------------- |
+| Lodash    | [isEmpty](https://lodash.com/docs/4.17.14#isEmpty)                               |
+| Immutable | [isEmpty](https://immutable-js.github.io/immutable-js/docs/#/Collection/isEmpty) |
+| Ramda     | [isEmpty](https://ramdajs.com/docs/#isEmpty)                                     |
+
+| Language   | Function                                                                                           |
+| ---------- | -------------------------------------------------------------------------------------------------- |
+| JavaScript | -                                                                                                  |
+| Scala      | [isEmpty](https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#isEmpty:Boolean) |
+| Elixir     | [empty?](https://hexdocs.pm/elixir/Enum.html#empty?/1)                                             |
+
 ## `isSubset()`
 
 TBD
