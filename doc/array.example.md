@@ -662,7 +662,45 @@ TBD
 
 ## `copy()`
 
+### Example
+
+TODO
+
+### References
+
+| Library   | Function |
+| --------- | -------- |
+| Lodash    | -        |
+| Immutable | -        |
+| Ramda     | -        |
+
+| Language   | Function |
+| ---------- | -------- |
+| JavaScript | -        |
+| Scala      | -        |
+| Elixir     | -        |
+
 ## `memoize()`
+
+- **No static function**
+
+### Example
+
+TODO
+
+### References
+
+| Library   | Function                                                                          |
+| --------- | --------------------------------------------------------------------------------- |
+| Lodash    | -                                                                                 |
+| Immutable | [cacheResult](https://immutable-js.github.io/immutable-js/docs/#/Seq/cacheResult) |
+| Ramda     | -                                                                                 |
+
+| Language   | Function |
+| ---------- | -------- |
+| JavaScript | -        |
+| Scala      | -        |
+| Elixir     | -        |
 
 ## `isEmpty()`
 
