@@ -633,6 +633,7 @@ Kasen.splitAt = (array, index) => {
   return KasenArray.splitAt(array, index);
 };
 
+// TODO: remove
 Kasen.toArray = coll => {
   const Coll = choose(coll);
   if (!Coll) {
@@ -641,6 +642,7 @@ Kasen.toArray = coll => {
   return Coll.toArray(coll);
 };
 
+// TODO: remove
 Kasen.toObject = coll => {
   const Coll = choose(coll);
   if (!Coll) {

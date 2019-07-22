@@ -505,9 +505,31 @@ TBD
 - **Method chaining only**
 - **Consumer**
 
+### References
+
+| Library   | Function                                                                       |
+| --------- | ------------------------------------------------------------------------------ |
+| Lodash    | [value](https://lodash.com/docs/4.17.14#prototype-value)                       |
+| Immutable | [toJSON](https://immutable-js.github.io/immutable-js/docs/#/Collection/toJSON) |
+| Ramda     | -                                                                              |
+
+| Language   | Function |
+| ---------- | -------- |
+| JavaScript | -        |
+| Scala      | -        |
+| Elixir     | -        |
+
 ## `toArray()`
 
+TBD
+
 ## `toObject()`
+
+TBD
+
+## `toPairs()`
+
+TBD
 
 ## `reduce(fun, init)`
 
