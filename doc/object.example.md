@@ -521,15 +521,39 @@ TBD
 
 ## `toArray()`
 
-TBD
+- **Consumer**
+
+### References
+
+| Library   | Function                                                                         |
+| --------- | -------------------------------------------------------------------------------- |
+| Lodash    | [toPairs](https://lodash.com/docs/4.17.14#toPairs)                               |
+| Immutable | [toArray](https://immutable-js.github.io/immutable-js/docs/#/Collection/toArray) |
+| Ramda     | [toPairs](https://ramdajs.com/docs/#toPairs)                                     |
+
+| Language   | Function                                                |
+| ---------- | ------------------------------------------------------- |
+| JavaScript | -                                                       |
+| Scala      | -                                                       |
+| Elixir     | [to_list](https://hexdocs.pm/elixir/Map.html#to_list/1) |
 
 ## `toObject()`
 
-TBD
+- **Consumer**
 
-## `toPairs()`
+### References
 
-TBD
+| Library   | Function                                                                           |
+| --------- | ---------------------------------------------------------------------------------- |
+| Lodash    | -                                                                                  |
+| Immutable | [toObject](https://immutable-js.github.io/immutable-js/docs/#/Collection/toObject) |
+| Ramda     | -                                                                                  |
+
+| Language   | Function |
+| ---------- | -------- |
+| JavaScript | -        |
+| Scala      | -        |
+| Elixir     | -        |
 
 ## `reduce(fun, init)`
 

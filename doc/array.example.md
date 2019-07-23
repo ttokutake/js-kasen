@@ -959,15 +959,39 @@ TBD
 
 ## `toArray()`
 
-TBD
+- **Consumer**
+
+### References
+
+| Library   | Function                                                                         |
+| --------- | -------------------------------------------------------------------------------- |
+| Lodash    | -                                                                                |
+| Immutable | [toArray](https://immutable-js.github.io/immutable-js/docs/#/Collection/toArray) |
+| Ramda     | -                                                                                |
+
+| Language   | Function |
+| ---------- | -------- |
+| JavaScript | -        |
+| Scala      | -        |
+| Elixir     | -        |
 
 ## `toObject()`
 
-TBD
+- **Consumer**
 
-## `toPairs()`
+### References
 
-TBD
+| Library   | Function                                                                           |
+| --------- | ---------------------------------------------------------------------------------- |
+| Lodash    | -                                                                                  |
+| Immutable | [toObject](https://immutable-js.github.io/immutable-js/docs/#/Collection/toObject) |
+| Ramda     | -                                                                                  |
+
+| Language   | Function |
+| ---------- | -------- |
+| JavaScript | -        |
+| Scala      | -        |
+| Elixir     | -        |
 
 ## `reduce(fun, init)`
 
