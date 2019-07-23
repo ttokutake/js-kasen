@@ -557,7 +557,39 @@ TBD
 
 ## `reduce(fun, init)`
 
+- **Consumer**
+
+### References
+
+| Library   | Function                                                                       |
+| --------- | ------------------------------------------------------------------------------ |
+| Lodash    | [reduce](https://lodash.com/docs/4.17.14#reduce)                               |
+| Immutable | [reduce](https://immutable-js.github.io/immutable-js/docs/#/Collection/reduce) |
+| Ramda     | -                                                                              |
+
+| Language   | Function                                                                                                                                                                                                                                        |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| JavaScript | -                                                                                                                                                                                                                                               |
+| Scala      | [reduce](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#reduce[B%3E:A](op:(B,B)=%3EB):B>), [fold](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#fold[A1%3E:A](z:A1)(op:(A1,A1)=%3EA1):A1>) |
+| Elixir     | -                                                                                                                                                                                                                                               |
+
 ## `reduceWhile(fun, init)`
+
+- **Consumer**
+
+### References
+
+| Library   | Function |
+| --------- | -------- |
+| Lodash    | -        |
+| Immutable | -        |
+| Ramda     | -        |
+
+| Language   | Function |
+| ---------- | -------- |
+| JavaScript | -        |
+| Scala      | -        |
+| Elixir     | -        |
 
 ## `scan(fun, init)`
 

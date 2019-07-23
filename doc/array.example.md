@@ -995,9 +995,57 @@ TBD
 
 ## `reduce(fun, init)`
 
+- **Consumer**
+
+### References
+
+| Library   | Function                                                                       |
+| --------- | ------------------------------------------------------------------------------ |
+| Lodash    | [reduce](https://lodash.com/docs/4.17.14#reduce)                               |
+| Immutable | [reduce](https://immutable-js.github.io/immutable-js/docs/#/Collection/reduce) |
+| Ramda     | [reduce](https://ramdajs.com/docs/#reduce)                                     |
+
+| Language   | Function                                                                                                                                                                                                                                        |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| JavaScript | [reduce](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce)                                                                                                                                            |
+| Scala      | [reduce](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#reduce[B%3E:A](op:(B,B)=%3EB):B>), [fold](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#fold[A1%3E:A](z:A1)(op:(A1,A1)=%3EA1):A1>) |
+| Elixir     | [reduce](https://hexdocs.pm/elixir/Enum.html#reduce/3)                                                                                                                                                                                          |
+
 ## `reduceRight(fun, init)`
 
+- **Consumer**
+
+### References
+
+| Library   | Function                                                                                 |
+| --------- | ---------------------------------------------------------------------------------------- |
+| Lodash    | [reduceRight](https://lodash.com/docs/4.17.14#reduce)                                    |
+| Immutable | [reduceRight](https://immutable-js.github.io/immutable-js/docs/#/Collection/reduceRight) |
+| Ramda     | [reduceRight](https://ramdajs.com/docs/#reduceRight)                                     |
+
+| Language   | Function                                                                                                                                                                                                                                                 |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| JavaScript | [reduceRight](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/reduceRight)                                                                                                                                           |
+| Scala      | [reduceRight](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#reduceRight[B%3E:A](op:(A,B)=%3EB):B>), [foldRight](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#foldRight[B](z:B)(op:(A,B)=%3EB):B>) |
+| Elixir     | -                                                                                                                                                                                                                                                        |
+
 ## `reduceWhile(fun, init)`
+
+- **Consumer**
+
+### References
+
+| Library   | Function                                             |
+| --------- | ---------------------------------------------------- |
+| Lodash    | -                                                    |
+| Immutable | -                                                    |
+| Ramda     | [reduceWhile](https://ramdajs.com/docs/#reduceWhile) |
+
+| Language   | Function                                                           |
+| ---------- | ------------------------------------------------------------------ |
+| JavaScript | -                                                                  |
+| Scala      | -                                                                  |
+| Elixir     | [reduce_while](https://hexdocs.pm/elixir/Enum.html#reduce_while/3) |
 
 ## `scan(fun, init)`
 
