@@ -381,10 +381,23 @@ export default class KasenObject extends Collection {
     return false;
   }
 
+  toArray() {
+    const finalize = iter => {
+      const array = [];
+      let key;
+      let value;
+      while (!({ key, value } = iter.next()).done) {
+        array.push([key, value]);
+      }
+      return array;
+    };
+    return this.__consume(finalize);
+  }
+
   static toArray(object) {
     const array = [];
-    this.forEach(object, value => {
-      array.push(value);
+    this.forEach(object, (value, key) => {
+      array.push([key, value]);
     });
     return array;
   }

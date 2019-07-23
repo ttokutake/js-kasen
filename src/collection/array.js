@@ -905,6 +905,18 @@ export default class KasenArray extends Collection {
     return [array.slice(0, index), array.slice(index)];
   }
 
+  toArray() {
+    const finalize = iter => {
+      const array = [];
+      let value;
+      while (!({ value } = iter.next()).done) {
+        array.push(value);
+      }
+      return array;
+    };
+    return this.__consume(finalize);
+  }
+
   static toArray(array) {
     return this.copy(array);
   }

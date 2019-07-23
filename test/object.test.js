@@ -866,9 +866,9 @@ describe("Object", () => {
     test("ok", () => {
       const inputs = [
         [{}, []],
-        [{ a: 1 }, [1]],
-        [{ a: 1, b: 2 }, [1, 2]],
-        [{ a: 1, b: 2, c: 3 }, [1, 2, 3]]
+        [{ a: 1 }, [["a", 1]]],
+        [{ a: 1, b: 2 }, [["a", 1], ["b", 2]]],
+        [{ a: 1, b: 2, c: 3 }, [["a", 1], ["b", 2], ["c", 3]]]
       ];
       inputs.forEach(([input, expected]) => {
         const result = Kasen(input).toArray();

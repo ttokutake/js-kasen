@@ -394,17 +394,7 @@ export default class Collection {
     return this.__consume(null);
   }
 
-  toArray() {
-    const finalize = iter => {
-      const array = [];
-      let value;
-      while (!({ value } = iter.next()).done) {
-        array.push(value);
-      }
-      return array;
-    };
-    return this.__consume(finalize);
-  }
+  // abstract toArray() { }
 
   // abstract static toArray(coll) { }
 
