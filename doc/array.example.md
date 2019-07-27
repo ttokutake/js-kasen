@@ -1389,6 +1389,22 @@ TBD
 
 ## `equals(value)`
 
+- **Consumer**
+
+### References
+
+| Library   | Function                                                                       |
+| --------- | ------------------------------------------------------------------------------ |
+| Lodash    | [isEqual](https://lodash.com/docs/4.17.14#isEqual)                             |
+| Immutable | [equals](https://immutable-js.github.io/immutable-js/docs/#/Collection/equals) |
+| Ramda     | [equals](https://ramdajs.com/docs/#equals)                                     |
+
+| Language   | Function                                                                                                  |
+| ---------- | --------------------------------------------------------------------------------------------------------- |
+| JavaScript | -                                                                                                         |
+| Scala      | [equals](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#equals(o:Any):Boolean>) |
+| Elixir     | -                                                                                                         |
+
 ## `equalsDeep()`
 
 TBD
