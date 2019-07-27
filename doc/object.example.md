@@ -719,6 +719,22 @@ TBD
 
 ## `findEntry(fun)`
 
+- **Consumer**
+
+### References
+
+| Library   | Function                                                                             |
+| --------- | ------------------------------------------------------------------------------------ |
+| Lodash    | -                                                                                    |
+| Immutable | [findEntry](https://immutable-js.github.io/immutable-js/docs/#/Collection/findEntry) |
+| Ramda     | -                                                                                    |
+
+| Language   | Function |
+| ---------- | -------- |
+| JavaScript | -        |
+| Scala      | -        |
+| Elixir     | -        |
+
 ## `findKey(fun)`
 
 ## `findkey(fun)`

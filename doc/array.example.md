@@ -1219,7 +1219,39 @@ TBD
 
 ## `findEntry(fun)`
 
+- **Consumer**
+
+### References
+
+| Library   | Function                                                                             |
+| --------- | ------------------------------------------------------------------------------------ |
+| Lodash    | -                                                                                    |
+| Immutable | [findEntry](https://immutable-js.github.io/immutable-js/docs/#/Collection/findEntry) |
+| Ramda     | -                                                                                    |
+
+| Language   | Function |
+| ---------- | -------- |
+| JavaScript | -        |
+| Scala      | -        |
+| Elixir     | -        |
+
 ## `findLastEntry(fun)`
+
+- **Consumer**
+
+### References
+
+| Library   | Function                                                                                     |
+| --------- | -------------------------------------------------------------------------------------------- |
+| Lodash    | -                                                                                            |
+| Immutable | [findLastEntry](https://immutable-js.github.io/immutable-js/docs/#/Collection/findLastEntry) |
+| Ramda     | -                                                                                            |
+
+| Language   | Function |
+| ---------- | -------- |
+| JavaScript | -        |
+| Scala      | -        |
+| Elixir     | -        |
 
 ## `findKey(fun)`
 
