@@ -647,6 +647,22 @@ TBD
 
 ## `groupBy(fun)`
 
+- **Consumer**
+
+### References
+
+| Library   | Function                                                                         |
+| --------- | -------------------------------------------------------------------------------- |
+| Lodash    | [groupBy](https://lodash.com/docs/4.17.14#groupBy)                               |
+| Immutable | [groupBy](https://immutable-js.github.io/immutable-js/docs/#/Collection/groupBy) |
+| Ramda     | -                                                                                |
+
+| Language   | Function                                                                                                                                      |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| JavaScript | -                                                                                                                                             |
+| Scala      | [groupBy](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#groupBy[K](f:A=%3EK):scala.collection.immutable.Map[K,C]>) |
+| Elixir     | -                                                                                                                                             |
+
 ## `every(fun)`
 
 ## `some(fun)`
