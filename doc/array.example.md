@@ -1085,7 +1085,39 @@ TBD
 
 ## `partition(fun)`
 
+- **Consumer**
+
+### References
+
+| Library   | Function                                               |
+| --------- | ------------------------------------------------------ |
+| Lodash    | [partition](https://lodash.com/docs/4.17.14#partition) |
+| Immutable | -                                                      |
+| Ramda     | [partition](https://ramdajs.com/docs/#partition)       |
+
+| Language   | Function                                                                                                               |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------- |
+| JavaScript | -                                                                                                                      |
+| Scala      | [partition](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#partition(p:A=%3EBoolean):(C,C)>) |
+| Elixir     | [split_with](https://hexdocs.pm/elixir/Enum.html#split_with/2)                                                         |
+
 ## `join()`
+
+- **Consumer**
+
+### References
+
+| Library   | Function                                                                   |
+| --------- | -------------------------------------------------------------------------- |
+| Lodash    | [join](https://lodash.com/docs/4.17.14#join)                               |
+| Immutable | [join](https://immutable-js.github.io/immutable-js/docs/#/Collection/join) |
+| Ramda     | [partition](https://ramdajs.com/docs/#partition)                           |
+
+| Language   | Function                                                                                                               |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------- |
+| JavaScript | -                                                                                                                      |
+| Scala      | [partition](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#partition(p:A=%3EBoolean):(C,C)>) |
+| Elixir     | [split_with](https://hexdocs.pm/elixir/Enum.html#split_with/2)                                                         |
 
 ## `unzip()`
 

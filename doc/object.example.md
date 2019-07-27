@@ -611,7 +611,39 @@ TBD
 
 ## `partition(fun)`
 
+- **Consumer**
+
+### References
+
+| Library   | Function                                               |
+| --------- | ------------------------------------------------------ |
+| Lodash    | [partition](https://lodash.com/docs/4.17.14#partition) |
+| Immutable | -                                                      |
+| Ramda     | -                                                      |
+
+| Language   | Function                                                                                                               |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------- |
+| JavaScript | -                                                                                                                      |
+| Scala      | [partition](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#partition(p:A=%3EBoolean):(C,C)>) |
+| Elixir     | -                                                                                                                      |
+
 ## `join()`
+
+- **Consumer**
+
+### References
+
+| Library   | Function                                                                   |
+| --------- | -------------------------------------------------------------------------- |
+| Lodash    | -                                                                          |
+| Immutable | [join](https://immutable-js.github.io/immutable-js/docs/#/Collection/join) |
+| Ramda     | -                                                                          |
+
+| Language   | Function |
+| ---------- | -------- |
+| JavaScript | -        |
+| Scala      | -        |
+| Elixir     | -        |
 
 ## `groupBy(fun)`
 
