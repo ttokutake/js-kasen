@@ -773,13 +773,61 @@ TBD
 
 ## `sum(fun)`
 
+- **Consumer**
+
+### References
+
+| Library   | Function |
+| --------- | -------- |
+| Lodash    | -        |
+| Immutable | -        |
+| Ramda     | -        |
+
+| Language   | Function                                                                                                                                      |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| JavaScript | -                                                                                                                                             |
+| Scala      | [sum](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html?search=some#sum[B%3E:A](implicitnum:scala.math.Numeric[B]):B>) |
+| Elixir     | -                                                                                                                                             |
+
 ## `max(fun)`
+
+- **Consumer**
+
+### References
+
+| Library   | Function |
+| --------- | -------- |
+| Lodash    | -        |
+| Immutable | -        |
+| Ramda     | -        |
+
+| Language   | Function                                                                                                                                                                                                                                                                             |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| JavaScript | -                                                                                                                                                                                                                                                                                    |
+| Scala      | [max](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#maxBy[B](f:A=%3EB)(implicitcmp:scala.math.Ordering[B]):A>), [maxBy](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#maxBy[B](f:A=>B)(implicitcmp:scala.math.Ordering[B]):A>) |
+| Elixir     | -                                                                                                                                                                                                                                                                                    |
 
 ## `maxBy()`
 
 TBD
 
 ## `min(fun)`
+
+- **Consumer**
+
+### References
+
+| Library   | Function |
+| --------- | -------- |
+| Lodash    | -        |
+| Immutable | -        |
+| Ramda     | -        |
+
+| Language   | Function                                                                                                                                                                                                                                                                        |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| JavaScript | -                                                                                                                                                                                                                                                                               |
+| Scala      | [min](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#min[B%3E:A](implicitord:scala.math.Ordering[B]):A>), [minBy](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#minBy[B](f:A=%3EB)(implicitcmp:scala.math.Ordering[B]):A>) |
+| Elixir     | -                                                                                                                                                                                                                                                                               |
 
 ## `minBy()`
 

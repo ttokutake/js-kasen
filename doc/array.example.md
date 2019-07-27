@@ -1327,13 +1327,61 @@ TBD
 
 ## `sum(fun)`
 
+- **Consumer**
+
+### References
+
+| Library   | Function                                                                                   |
+| --------- | ------------------------------------------------------------------------------------------ |
+| Lodash    | [sum](https://lodash.com/docs/4.17.14#sum), [sumBy](https://lodash.com/docs/4.17.14#sumBy) |
+| Immutable | -                                                                                          |
+| Ramda     | [sum](https://ramdajs.com/docs/#sum)                                                       |
+
+| Language   | Function                                                                                                                                      |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| JavaScript | -                                                                                                                                             |
+| Scala      | [sum](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html?search=some#sum[B%3E:A](implicitnum:scala.math.Numeric[B]):B>) |
+| Elixir     | [sum](https://hexdocs.pm/elixir/Enum.html#sum/1)                                                                                              |
+
 ## `max(fun)`
+
+- **Consumer**
+
+### References
+
+| Library   | Function                                                                                   |
+| --------- | ------------------------------------------------------------------------------------------ |
+| Lodash    | [max](https://lodash.com/docs/4.17.14#max), [maxBy](https://lodash.com/docs/4.17.14#maxBy) |
+| Immutable | -                                                                                          |
+| Ramda     | [max](https://ramdajs.com/docs/#max), [maxBy](https://ramdajs.com/docs/#maxBy)             |
+
+| Language   | Function                                                                                                                                                                                                                                                                             |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| JavaScript | [max](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Math/max)                                                                                                                                                                                        |
+| Scala      | [max](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#maxBy[B](f:A=%3EB)(implicitcmp:scala.math.Ordering[B]):A>), [maxBy](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#maxBy[B](f:A=>B)(implicitcmp:scala.math.Ordering[B]):A>) |
+| Elixir     | [max](https://hexdocs.pm/elixir/Enum.html#max/2)                                                                                                                                                                                                                                     |
 
 ## `maxBy()`
 
 TBD
 
 ## `min(fun)`
+
+- **Consumer**
+
+### References
+
+| Library   | Function                                                                                   |
+| --------- | ------------------------------------------------------------------------------------------ |
+| Lodash    | [min](https://lodash.com/docs/4.17.14#min), [minBy](https://lodash.com/docs/4.17.14#minBy) |
+| Immutable | -                                                                                          |
+| Ramda     | [min](https://ramdajs.com/docs/#min), [minBy](https://ramdajs.com/docs/#minBy)             |
+
+| Language   | Function                                                                                                                                                                                                                                                                        |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| JavaScript | [min](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Math/min)                                                                                                                                                                                   |
+| Scala      | [min](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#min[B%3E:A](implicitord:scala.math.Ordering[B]):A>), [minBy](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#minBy[B](f:A=%3EB)(implicitcmp:scala.math.Ordering[B]):A>) |
+| Elixir     | [min](https://hexdocs.pm/elixir/Enum.html#min/2)                                                                                                                                                                                                                                |
 
 ## `minBy()`
 
