@@ -593,6 +593,22 @@ TBD
 
 ## `scan(fun, init)`
 
+- **Consumer**
+
+### References
+
+| Library   | Function |
+| --------- | -------- |
+| Lodash    | -        |
+| Immutable | -        |
+| Ramda     | -        |
+
+| Language   | Function                                                                                                                 |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------ |
+| JavaScript | -                                                                                                                        |
+| Scala      | [scan](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#scan[B%3E:A](z:B)(op:(B,B)=%3EB):CC[B]>) |
+| Elixir     | -                                                                                                                        |
+
 ## `partition(fun)`
 
 ## `join()`
