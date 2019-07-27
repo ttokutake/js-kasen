@@ -755,6 +755,22 @@ TBD
 
 ## `keyOf(value)`
 
+- **Consumer**
+
+### References
+
+| Library   | Function                                                                     |
+| --------- | ---------------------------------------------------------------------------- |
+| Lodash    | -                                                                            |
+| Immutable | [keyOf](https://immutable-js.github.io/immutable-js/docs/#/Collection/keyOf) |
+| Ramda     | -                                                                            |
+
+| Language   | Function                                                                                                                     |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| JavaScript | -                                                                                                                            |
+| Scala      | [indexOf](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html?search=some#indexOf[B%3E:A](elem:B):Int>) |
+| Elixir     | -                                                                                                                            |
+
 ## `sum(fun)`
 
 ## `max(fun)`

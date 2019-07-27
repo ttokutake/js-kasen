@@ -1291,7 +1291,39 @@ TBD
 
 ## `keyOf(value) / indexOf(value)`
 
+- **Consumer**
+
+### References
+
+| Library   | Function                                                                     |
+| --------- | ---------------------------------------------------------------------------- |
+| Lodash    | [indexOf](https://lodash.com/docs/4.17.14#indexOf)                           |
+| Immutable | [keyOf](https://immutable-js.github.io/immutable-js/docs/#/Collection/keyOf) |
+| Ramda     | [indexOf](https://ramdajs.com/docs/#indexOf)                                 |
+
+| Language   | Function                                                                                                                     |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| JavaScript | [indexOf](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf)                       |
+| Scala      | [indexOf](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html?search=some#indexOf[B%3E:A](elem:B):Int>) |
+| Elixir     | -                                                                                                                            |
+
 ## `lastKeyOf(value) / lastIndexOf(value)`
+
+- **Consumer**
+
+### References
+
+| Library   | Function                                                                             |
+| --------- | ------------------------------------------------------------------------------------ |
+| Lodash    | -                                                                                    |
+| Immutable | [lastKeyOf](https://immutable-js.github.io/immutable-js/docs/#/Collection/lastKeyOf) |
+| Ramda     | [lastIndexOf](https://ramdajs.com/docs/#lastIndexOf)                                 |
+
+| Language   | Function                                                                                                       |
+| ---------- | -------------------------------------------------------------------------------------------------------------- |
+| JavaScript | [lastIndexOf](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf) |
+| Scala      | -                                                                                                              |
+| Elixir     | -                                                                                                              |
 
 ## `sum(fun)`
 
