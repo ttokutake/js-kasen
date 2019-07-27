@@ -1147,7 +1147,39 @@ TBD
 
 ## `every(fun)`
 
+- **Consumer**
+
+### References
+
+| Library   | Function                                                                     |
+| --------- | ---------------------------------------------------------------------------- |
+| Lodash    | [every](https://lodash.com/docs/4.17.14#every)                               |
+| Immutable | [every](https://immutable-js.github.io/immutable-js/docs/#/Collection/every) |
+| Ramda     | [all](https://ramdajs.com/docs/#all)                                         |
+
+| Language   | Function                                                                                                           |
+| ---------- | ------------------------------------------------------------------------------------------------------------------ |
+| JavaScript | [every](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/every)                 |
+| Scala      | [forall](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#forall(p:A=%3EBoolean):Boolean>) |
+| Elixir     | [all?](https://hexdocs.pm/elixir/Enum.html#all?/2)                                                                 |
+
 ## `some(fun)`
+
+- **Consumer**
+
+### References
+
+| Library   | Function                                                                   |
+| --------- | -------------------------------------------------------------------------- |
+| Lodash    | [some](https://lodash.com/docs/4.17.14#some)                               |
+| Immutable | [some](https://immutable-js.github.io/immutable-js/docs/#/Collection/some) |
+| Ramda     | [any](https://ramdajs.com/docs/#any)                                       |
+
+| Language   | Function                                                                                                                       |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| JavaScript | [some](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/some)                               |
+| Scala      | [exists](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html?search=some#exists(p:A=%3EBoolean):Boolean>) |
+| Elixir     | [any?](https://hexdocs.pm/elixir/Enum.html#any?/2)                                                                             |
 
 ## `find(fun)`
 

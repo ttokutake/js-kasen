@@ -665,7 +665,39 @@ TBD
 
 ## `every(fun)`
 
+- **Consumer**
+
+### References
+
+| Library   | Function                                                                     |
+| --------- | ---------------------------------------------------------------------------- |
+| Lodash    | [every](https://lodash.com/docs/4.17.14#every)                               |
+| Immutable | [every](https://immutable-js.github.io/immutable-js/docs/#/Collection/every) |
+| Ramda     | -                                                                            |
+
+| Language   | Function                                                                                                           |
+| ---------- | ------------------------------------------------------------------------------------------------------------------ |
+| JavaScript | -                                                                                                                  |
+| Scala      | [forall](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#forall(p:A=%3EBoolean):Boolean>) |
+| Elixir     | -                                                                                                                  |
+
 ## `some(fun)`
+
+- **Consumer**
+
+### References
+
+| Library   | Function                                                                   |
+| --------- | -------------------------------------------------------------------------- |
+| Lodash    | [some](https://lodash.com/docs/4.17.14#some)                               |
+| Immutable | [some](https://immutable-js.github.io/immutable-js/docs/#/Collection/some) |
+| Ramda     | -                                                                          |
+
+| Language   | Function                                                                                                                       |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| JavaScript | -                                                                                                                              |
+| Scala      | [exists](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html?search=some#exists(p:A=%3EBoolean):Boolean>) |
+| Elixir     | -                                                                                                                              |
 
 ## `find(fun)`
 
