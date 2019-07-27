@@ -735,11 +735,23 @@ TBD
 | Scala      | -        |
 | Elixir     | -        |
 
-## `findKey(fun)`
-
 ## `findkey(fun)`
 
-## `keyOf(value)`
+- **Consumer**
+
+### References
+
+| Library   | Function                                                                         |
+| --------- | -------------------------------------------------------------------------------- |
+| Lodash    | [findKey](https://lodash.com/docs/4.17.14#findKey)                               |
+| Immutable | [findKey](https://immutable-js.github.io/immutable-js/docs/#/Collection/findKey) |
+| Ramda     | -                                                                                |
+
+| Language   | Function |
+| ---------- | -------- |
+| JavaScript | -        |
+| Scala      | -        |
+| Elixir     | -        |
 
 ## `keyOf(value)`
 

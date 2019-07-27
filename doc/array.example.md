@@ -1253,21 +1253,45 @@ TBD
 | Scala      | -        |
 | Elixir     | -        |
 
-## `findKey(fun)`
+## `findKey(fun) / findIndex(fun)`
 
-## `findLastKey(fun)`
+- **Consumer**
 
-## `findIndex(fun)`
+### References
 
-## `findLastIndex(fun)`
+| Library   | Function                                                                         |
+| --------- | -------------------------------------------------------------------------------- |
+| Lodash    | [findIndex](https://lodash.com/docs/4.17.14#findIndex)                           |
+| Immutable | [findKey](https://immutable-js.github.io/immutable-js/docs/#/Collection/findKey) |
+| Ramda     | [findIndex](https://ramdajs.com/docs/#findIndex)                                 |
 
-## `keyOf(value)`
+| Language   | Function                                                                                                   |
+| ---------- | ---------------------------------------------------------------------------------------------------------- |
+| JavaScript | [findIndex](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex) |
+| Scala      | -                                                                                                          |
+| Elixir     | [find_index](https://hexdocs.pm/elixir/Enum.html#find_index/2)                                             |
 
-## `lastKeyOf(value)`
+## `findLastKey(fun) / findLastIndex(fun)`
 
-## `indexOf(value)`
+- **Consumer**
 
-## `lastIndexOf(value)`
+### References
+
+| Library   | Function                                                                                 |
+| --------- | ---------------------------------------------------------------------------------------- |
+| Lodash    | [findLastIndex](https://lodash.com/docs/4.17.14#findLastIndex)                           |
+| Immutable | [findLastKey](https://immutable-js.github.io/immutable-js/docs/#/Collection/findLastKey) |
+| Ramda     | [findLastIndex](https://ramdajs.com/docs/#findLastIndex)                                 |
+
+| Language   | Function |
+| ---------- | -------- |
+| JavaScript | -        |
+| Scala      | -        |
+| Elixir     | -        |
+
+## `keyOf(value) / indexOf(value)`
+
+## `lastKeyOf(value) / lastIndexOf(value)`
 
 ## `sum(fun)`
 
