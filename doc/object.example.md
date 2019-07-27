@@ -701,6 +701,22 @@ TBD
 
 ## `find(fun)`
 
+- **Consumer**
+
+### References
+
+| Library   | Function                                                                   |
+| --------- | -------------------------------------------------------------------------- |
+| Lodash    | [find](https://lodash.com/docs/4.17.14#find)                               |
+| Immutable | [find](https://immutable-js.github.io/immutable-js/docs/#/Collection/find) |
+| Ramda     | -                                                                          |
+
+| Language   | Function                                                                                                                     |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| JavaScript | -                                                                                                                            |
+| Scala      | [find](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html?search=some#find(p:A=%3EBoolean):Option[A]>) |
+| Elixir     | -                                                                                                                            |
+
 ## `findEntry(fun)`
 
 ## `findKey(fun)`

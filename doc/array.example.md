@@ -110,11 +110,11 @@ TBD
 | Immutable | [reverse](https://immutable-js.github.io/immutable-js/docs/#/Collection/reverse) |
 | Ramda     | [reverse](https://ramdajs.com/docs/#reverse)                                     |
 
-| Language   | Function                                                                                     |
-| ---------- | -------------------------------------------------------------------------------------------- |
-| JavaScript | -                                                                                            |
-| Scala      | [reverse](https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#reverse:C) |
-| Elixir     | [reverse](https://hexdocs.pm/elixir/Enum.html#reverse/1)                                     |
+| Language   | Function                                                                                               |
+| ---------- | ------------------------------------------------------------------------------------------------------ |
+| JavaScript | [reverse](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse) |
+| Scala      | [reverse](https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#reverse:C)           |
+| Elixir     | [reverse](https://hexdocs.pm/elixir/Enum.html#reverse/1)                                               |
 
 ## `slice()`
 
@@ -1183,7 +1183,39 @@ TBD
 
 ## `find(fun)`
 
+- **Consumer**
+
+### References
+
+| Library   | Function                                                                   |
+| --------- | -------------------------------------------------------------------------- |
+| Lodash    | [find](https://lodash.com/docs/4.17.14#find)                               |
+| Immutable | [find](https://immutable-js.github.io/immutable-js/docs/#/Collection/find) |
+| Ramda     | [find](https://ramdajs.com/docs/#find)                                     |
+
+| Language   | Function                                                                                                                     |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| JavaScript | [find](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/find)                             |
+| Scala      | [find](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html?search=some#find(p:A=%3EBoolean):Option[A]>) |
+| Elixir     | [find](https://hexdocs.pm/elixir/Enum.html#find/3)                                                                           |
+
 ## `findLast(fun)`
+
+- **Consumer**
+
+### References
+
+| Library   | Function                                                                           |
+| --------- | ---------------------------------------------------------------------------------- |
+| Lodash    | [findLast](https://lodash.com/docs/4.17.14#findLast)                               |
+| Immutable | [findLast](https://immutable-js.github.io/immutable-js/docs/#/Collection/findLast) |
+| Ramda     | [findLast](https://ramdajs.com/docs/#findLast)                                     |
+
+| Language   | Function                                                                                                                             |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| JavaScript | -                                                                                                                                    |
+| Scala      | [findLast](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html?search=some#findLast(p:A=%3EBoolean):Option[A]>) |
+| Elixir     | -                                                                                                                                    |
 
 ## `findEntry(fun)`
 
