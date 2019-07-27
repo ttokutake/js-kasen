@@ -1411,8 +1411,72 @@ TBD
 
 ## `keys()`
 
+- **Consumer**
+
+### References
+
+| Library   | Function                                                                   |
+| --------- | -------------------------------------------------------------------------- |
+| Lodash    | -                                                                          |
+| Immutable | [keys](https://immutable-js.github.io/immutable-js/docs/#/Collection/keys) |
+| Ramda     | -                                                                          |
+
+| Language   | Function |
+| ---------- | -------- |
+| JavaScript | -        |
+| Scala      | -        |
+| Elixir     | -        |
+
 ## `values()`
+
+- **Consumer**
+
+### References
+
+| Library   | Function                                                                       |
+| --------- | ------------------------------------------------------------------------------ |
+| Lodash    | -                                                                              |
+| Immutable | [values](https://immutable-js.github.io/immutable-js/docs/#/Collection/values) |
+| Ramda     | -                                                                              |
+
+| Language   | Function |
+| ---------- | -------- |
+| JavaScript | -        |
+| Scala      | -        |
+| Elixir     | -        |
 
 ## `entries()`
 
+- **Consumer**
+
+### References
+
+| Library   | Function                                                                         |
+| --------- | -------------------------------------------------------------------------------- |
+| Lodash    | -                                                                                |
+| Immutable | [entries](https://immutable-js.github.io/immutable-js/docs/#/Collection/entries) |
+| Ramda     | -                                                                                |
+
+| Language   | Function |
+| ---------- | -------- |
+| JavaScript | -        |
+| Scala      | -        |
+| Elixir     | -        |
+
 ## `forEach(fun)`
+
+- **Consumer**
+
+### References
+
+| Library   | Function                                                                                                       |
+| --------- | -------------------------------------------------------------------------------------------------------------- |
+| Lodash    | [forEach](https://lodash.com/docs/4.17.14#forEach)                                                             |
+| Immutable | [forEach](https://immutable-js.github.io/immutable-js/docs/#/Collection/forEach)                               |
+| Ramda     | [forEach](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#foreach[U](f:A=%3EU):Unit>) |
+
+| Language   | Function                                                                                                       |
+| ---------- | -------------------------------------------------------------------------------------------------------------- |
+| JavaScript | [forEach](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)         |
+| Scala      | [forEach](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#foreach[U](f:A=%3EU):Unit>) |
+| Elixir     | [each](https://hexdocs.pm/elixir/Enum.html#each/2)                                                             |

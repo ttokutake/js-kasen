@@ -857,8 +857,72 @@ TBD
 
 ## `keys()`
 
+- **Consumer**
+
+### References
+
+| Library   | Function                                                                   |
+| --------- | -------------------------------------------------------------------------- |
+| Lodash    | [keys](https://lodash.com/docs/4.17.14#keys)                               |
+| Immutable | [keys](https://immutable-js.github.io/immutable-js/docs/#/Collection/keys) |
+| Ramda     | [keys](https://ramdajs.com/docs/#keys)                                     |
+
+| Language   | Function                                                                                          |
+| ---------- | ------------------------------------------------------------------------------------------------- |
+| JavaScript | [keys](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Object/keys) |
+| Scala      | -                                                                                                 |
+| Elixir     | [keys](https://hexdocs.pm/elixir/Map.html#keys/1)                                                 |
+
 ## `values()`
+
+- **Consumer**
+
+### References
+
+| Library   | Function                                                                       |
+| --------- | ------------------------------------------------------------------------------ |
+| Lodash    | [values](https://lodash.com/docs/4.17.14#values)                               |
+| Immutable | [values](https://immutable-js.github.io/immutable-js/docs/#/Collection/values) |
+| Ramda     | [values](https://ramdajs.com/docs/#values)                                     |
+
+| Language   | Function                                                                                              |
+| ---------- | ----------------------------------------------------------------------------------------------------- |
+| JavaScript | [values](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Object/values) |
+| Scala      | -                                                                                                     |
+| Elixir     | [values](https://hexdocs.pm/elixir/Map.html#values/1)                                                 |
 
 ## `entries()`
 
+- **Consumer**
+
+### References
+
+| Library   | Function                                                                         |
+| --------- | -------------------------------------------------------------------------------- |
+| Lodash    | [toPairs](https://lodash.com/docs/4.17.14#toPairs)                               |
+| Immutable | [entries](https://immutable-js.github.io/immutable-js/docs/#/Collection/entries) |
+| Ramda     | [toPairs](https://ramdajs.com/docs/#toPairs)                                     |
+
+| Language   | Function                                                                                                |
+| ---------- | ------------------------------------------------------------------------------------------------------- |
+| JavaScript | [entries](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Object/entries) |
+| Scala      | -                                                                                                       |
+| Elixir     | [to_list](https://hexdocs.pm/elixir/Map.html#to_list/1)                                                 |
+
 ## `forEach(fun)`
+
+- **Consumer**
+
+### References
+
+| Library   | Function                                                                         |
+| --------- | -------------------------------------------------------------------------------- |
+| Lodash    | [forEach](https://lodash.com/docs/4.17.14#forEach)                               |
+| Immutable | [forEach](https://immutable-js.github.io/immutable-js/docs/#/Collection/forEach) |
+| Ramda     | [forEachObjIndexed](https://ramdajs.com/docs/#forEachObjIndexed)                 |
+
+| Language   | Function                                                                                                       |
+| ---------- | -------------------------------------------------------------------------------------------------------------- |
+| JavaScript | -                                                                                                              |
+| Scala      | [forEach](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#foreach[U](f:A=%3EU):Unit>) |
+| Elixir     | -                                                                                                              |
