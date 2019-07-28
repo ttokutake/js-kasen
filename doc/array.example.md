@@ -4,23 +4,18 @@
 
 TBD
 
-### References
-
-| Library   | Function                                   |
-| --------- | ------------------------------------------ |
-| Lodash    | [tap](https://lodash.com/docs/4.17.11#tap) |
-| Immutable | -                                          |
-| Ramda     | [tap](https://ramdajs.com/docs/#tap)       |
-
-| Language   | Function                                                                                       |
-| ---------- | ---------------------------------------------------------------------------------------------- |
-| JavaScript | -                                                                                              |
-| Scala      | [tap](<https://www.scala-lang.org/api/current/scala/util/ChainingOps.html#tap[U](f:A=%3EU):A>) |
-| Elixir     | -                                                                                              |
-
 ## `tapEach(fun)`
 
 - **Method chaining only**
+
+### Arguments
+
+- `fun: (v: T, k: number) => any`
+
+### Example
+
+```js
+```
 
 ### References
 
@@ -38,6 +33,15 @@ TBD
 
 ## `map(fun)`
 
+### Arguments
+
+- `fun: (v: T, k: number) => U`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                 |
@@ -53,6 +57,15 @@ TBD
 | Elixir     | [map](https://hexdocs.pm/elixir/Enum.html#map/2)                                                                  |
 
 ## `pluck(key)`
+
+### Arguments
+
+- `key: string`
+
+### Example
+
+```js
+```
 
 ### References
 
@@ -70,6 +83,16 @@ TBD
 
 ## `filter(fun)`
 
+### Arguments
+
+- `fun: (v: T, k: number) => boolean`
+  - default: `v => v`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                       |
@@ -86,6 +109,15 @@ TBD
 
 ## `filterNot(fun)`
 
+### Arguments
+
+- `fun: (v: T, k: number) => boolean`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                             |
@@ -101,6 +133,11 @@ TBD
 | Elixir     | [reject](https://hexdocs.pm/elixir/Enum.html#reject/2)                                                                |
 
 ## `reverse()`
+
+### Example
+
+```js
+```
 
 ### References
 
