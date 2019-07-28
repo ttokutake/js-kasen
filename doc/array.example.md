@@ -459,7 +459,7 @@ TBD
 
 ### Arguments
 
-- `...values: T[] | T`
+- `...values: Array<T[] | T>`
 
 ### Example
 
@@ -482,6 +482,16 @@ TBD
 
 ## `insert(index, value)`
 
+### Arguments
+
+- `index: number`
+- `value: T`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                 |
@@ -497,6 +507,15 @@ TBD
 | Elixir     | [insert_at](https://hexdocs.pm/elixir/List.html#insert_at/3)                                                               |
 
 ## `push(...values)`
+
+### Arguments
+
+- `...values: T[]`
+
+### Example
+
+```js
+```
 
 ### References
 
@@ -514,6 +533,11 @@ TBD
 
 ## `pop()`
 
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                           |
@@ -529,6 +553,15 @@ TBD
 | Elixir     | -                                                                                              |
 
 ## `unshift(...values)`
+
+### Arguments
+
+- `...values: T[]`
+
+### Example
+
+```js
+```
 
 ### References
 
@@ -546,6 +579,11 @@ TBD
 
 ## `shift()`
 
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                               |
@@ -561,6 +599,17 @@ TBD
 | Elixir     | -                                                                                                  |
 
 ## `splice(index, num, ...values)`
+
+### Arguments
+
+- `index: number`
+- `num: number`
+- `...values: T[]`
+
+### Example
+
+```js
+```
 
 ### References
 

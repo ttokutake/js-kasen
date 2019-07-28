@@ -308,7 +308,7 @@ TBD
 
 ### Arguments
 
-- `...objects: object<string, T>[]`
+- `...objects: Object<string, T>[]`
 
 ### Example
 
@@ -334,7 +334,7 @@ TBD
 ### Arguments
 
 - `fun: (left: T, right: T, k: string) => T`
-- `...objects: object<string, T>[]`
+- `...objects: Object<string, T>[]`
 
 ### Example
 
@@ -359,7 +359,7 @@ TBD
 
 ### Arguments
 
-- `...objects: object<string, T>[]`
+- `...objects: Object<string, T>[]`
 
 ### Example
 
@@ -385,7 +385,7 @@ TBD
 ### Arguments
 
 - `fun: (left: T, right: T, k: string) => T`
-- `...objects: object<string, T>[]`
+- `...objects: Object<string, T>[]`
 
 ### Example
 
