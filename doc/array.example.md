@@ -457,6 +457,15 @@ TBD
 
 ## `concat(...values)`
 
+### Arguments
+
+- `...values: T[] | T`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                       |

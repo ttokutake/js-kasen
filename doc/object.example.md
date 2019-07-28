@@ -306,6 +306,15 @@ TBD
 
 ## `merge(...objects)` / `assign(...objects)`
 
+### Arguments
+
+- `...objects: object<string, T>[]`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                              |
@@ -321,6 +330,16 @@ TBD
 | Elixir     | [merge](https://hexdocs.pm/elixir/Map.html#merge/2)                                                                                               |
 
 ## `mergeWith(fun, ...objects)`
+
+### Arguments
+
+- `fun: (left: T, right: T, k: string) => T`
+- `...objects: object<string, T>[]`
+
+### Example
+
+```js
+```
 
 ### References
 
@@ -338,6 +357,15 @@ TBD
 
 ## `mergeDeep(...objects)`
 
+### Arguments
+
+- `...objects: object<string, T>[]`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                      |
@@ -353,6 +381,16 @@ TBD
 | Elixir     | -        |
 
 ## `mergeDeepWith(fun, ...objects)`
+
+### Arguments
+
+- `fun: (left: T, right: T, k: string) => T`
+- `...objects: object<string, T>[]`
+
+### Example
+
+```js
+```
 
 ### References
 
