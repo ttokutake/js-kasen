@@ -183,6 +183,16 @@ TBD
 
 ## `set(key, value)`
 
+### Arguments
+
+- `key: string`
+- `value: T`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                                       |
@@ -198,6 +208,16 @@ TBD
 | Elixir     | [put](https://hexdocs.pm/elixir/Map.html#put/3)                                                                         |
 
 ## `update(key, fun)`
+
+### Arguments
+
+- `key: string`
+- `fun: (v: T) => T`
+
+### Example
+
+```js
+```
 
 ### References
 
@@ -215,6 +235,15 @@ TBD
 
 ## `delete(key)`
 
+### Arguments
+
+- `key: string`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                |
@@ -231,6 +260,15 @@ TBD
 
 ## `deleteAll(keys)`
 
+### Arguments
+
+- `keys: string[]`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                      |
@@ -246,6 +284,11 @@ TBD
 | Elixir     | -        |
 
 ## `clear()`
+
+### Example
+
+```js
+```
 
 ### References
 

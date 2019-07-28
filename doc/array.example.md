@@ -359,6 +359,16 @@ TBD
 
 ## `set(index, value)`
 
+### Arguments
+
+- `index: number`
+- `value: T`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                                           |
@@ -374,6 +384,16 @@ TBD
 | Elixir     | -                                                                                                                       |
 
 ## `update(index, fun)`
+
+### Arguments
+
+- `index: number`
+- `fun: (v: T) => T`
+
+### Example
+
+```js
+```
 
 ### References
 
@@ -391,6 +411,15 @@ TBD
 
 ## `delete(index)`
 
+### Arguments
+
+- `index: number`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                |
@@ -406,6 +435,11 @@ TBD
 | Elixir     | -        |
 
 ## `clear()`
+
+### Example
+
+```js
+```
 
 ### References
 
