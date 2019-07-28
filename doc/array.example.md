@@ -159,6 +159,15 @@ TBD
 
 ## `take(num)`
 
+### Arguments
+
+- `num: number`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                   |
@@ -174,6 +183,15 @@ TBD
 | Elixir     | [take](https://hexdocs.pm/elixir/Enum.html#take/2)                                              |
 
 ## `takeLast(num)`
+
+### Arguments
+
+- `num: number`
+
+### Example
+
+```js
+```
 
 ### References
 
@@ -191,6 +209,15 @@ TBD
 
 ## `takeWhile(fun)`
 
+### Arguments
+
+- `fun: (v: T, k: number) => boolean`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                             |
@@ -206,6 +233,15 @@ TBD
 | Elixir     | [take_while](https://hexdocs.pm/elixir/Enum.html#take_while/2)                                                     |
 
 ## `takeUntil(fun)`
+
+### Arguments
+
+- `fun: (v: T, k: number) => boolean`
+
+### Example
+
+```js
+```
 
 ### References
 
@@ -223,6 +259,15 @@ TBD
 
 ## `skip(num)`
 
+### Arguments
+
+- `num: number`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                   |
@@ -238,6 +283,15 @@ TBD
 | Elixir     | [drop](https://hexdocs.pm/elixir/Enum.html#drop/2)                                              |
 
 ## `skipLast(num)`
+
+### Arguments
+
+- `num: number`
+
+### Example
+
+```js
+```
 
 ### References
 
@@ -255,6 +309,15 @@ TBD
 
 ## `skipWhile(fun)`
 
+### Arguments
+
+- `fun: (v: T, k: number) => boolean`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                             |
@@ -270,6 +333,15 @@ TBD
 | Elixir     | [drop_while](https://hexdocs.pm/elixir/Enum.html#drop_while/2)                                                     |
 
 ## `skipUntil(fun)`
+
+### Arguments
+
+- `fun: (v: T, k: number) => boolean`
+
+### Example
+
+```js
+```
 
 ### References
 
