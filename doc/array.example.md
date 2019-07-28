@@ -10,7 +10,7 @@ TBD
 
 ### Arguments
 
-- `fun: (v: T, k: number) => any`
+- `fun: (v: T, i: number) => any`
 
 ### Example
 
@@ -35,7 +35,7 @@ TBD
 
 ### Arguments
 
-- `fun: (v: T, k: number) => U`
+- `fun: (v: T, i: number) => U`
 
 ### Example
 
@@ -85,7 +85,7 @@ TBD
 
 ### Arguments
 
-- `fun: (v: T, k: number) => boolean`
+- `fun: (v: T, i: number) => boolean`
   - default: `v => v`
 
 ### Example
@@ -111,7 +111,7 @@ TBD
 
 ### Arguments
 
-- `fun: (v: T, k: number) => boolean`
+- `fun: (v: T, i: number) => boolean`
 
 ### Example
 
@@ -211,7 +211,7 @@ TBD
 
 ### Arguments
 
-- `fun: (v: T, k: number) => boolean`
+- `fun: (v: T, i: number) => boolean`
 
 ### Example
 
@@ -236,7 +236,7 @@ TBD
 
 ### Arguments
 
-- `fun: (v: T, k: number) => boolean`
+- `fun: (v: T, i: number) => boolean`
 
 ### Example
 
@@ -311,7 +311,7 @@ TBD
 
 ### Arguments
 
-- `fun: (v: T, k: number) => boolean`
+- `fun: (v: T, i: number) => boolean`
 
 ### Example
 
@@ -336,7 +336,7 @@ TBD
 
 ### Arguments
 
-- `fun: (v: T, k: number) => boolean`
+- `fun: (v: T, i: number) => boolean`
 
 ### Example
 
