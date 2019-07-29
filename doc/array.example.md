@@ -679,6 +679,15 @@ TBD
 
 ## `deleteIn(keys)`
 
+### Arguments
+
+- `keys: (number | string)[]`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                    |
@@ -695,6 +704,11 @@ TBD
 
 ## `flatten()`
 
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                         |
@@ -710,6 +724,15 @@ TBD
 | Elixir     | [flatten](https://hexdocs.pm/elixir/List.html#flatten/1)                                                                                                        |
 
 ## `flatMap(fun)`
+
+### Arguments
+
+- `fun: (v: T, i: number) => U[]`
+
+### Example
+
+```js
+```
 
 ### References
 
@@ -735,6 +758,15 @@ TBD
 
 ## `zip(...arrays)`
 
+### Arguments
+
+- `...arrays: Array<any[]>`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                           |
@@ -751,6 +783,15 @@ TBD
 
 ## `zipAll(...arrays)`
 
+### Arguments
+
+- `...arrays: Array<any[]>`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                 |
@@ -766,6 +807,16 @@ TBD
 | Elixir     | -                                                                                                                                                         |
 
 ## `zipWith(fun, ...arrays)`
+
+### Arguments
+
+- `fun: (...values: any[]) => U`
+- `...arrays: Array<any[]>`
+
+### Example
+
+```js
+```
 
 ### References
 
