@@ -408,6 +408,16 @@ TBD
 
 ## `setIn(keys, value)`
 
+### Arguments
+
+- `keys: (number | string)[]`
+- `value: T`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                               |
@@ -424,6 +434,16 @@ TBD
 
 ## `updateIn(keys, fun)`
 
+### Arguments
+
+- `keys: (number | string)[]`
+- `fun: (v: any, k: number | string) => any`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                  |
@@ -439,6 +459,15 @@ TBD
 | Elixir     | [update_in](https://hexdocs.pm/elixir/Kernel.html#update_in/3) |
 
 ## `deleteIn(keys)`
+
+### Arguments
+
+- `keys: (number | string)[]`
+
+### Example
+
+```js
+```
 
 ### References
 
