@@ -894,6 +894,16 @@ TBD
 
 ## `chunk(num)`
 
+### Arguments
+
+- `num: number`
+  - constraint: `num >= 1`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                           |
@@ -909,6 +919,19 @@ TBD
 | Elixir     | [chunk_every](https://hexdocs.pm/elixir/Enum.html#chunk_every/2)                                                   |
 
 ## `sliding(num, step)`
+
+### Arguments
+
+- `num: number`
+  - constraint: `num >= 1`
+- `step: number`
+  - default: `1`
+  - constraint: `step >= 1`
+
+### Example
+
+```js
+```
 
 ### References
 
