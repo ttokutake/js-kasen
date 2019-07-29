@@ -949,6 +949,19 @@ TBD
 
 ## `range(start, end, step)`
 
+### Arguments
+
+- `start: number`
+- `end: number`
+- `step: number`
+  - default: `1`
+  - constraint: `step >= 1`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                          |
@@ -964,6 +977,16 @@ TBD
 | Elixir     | [Range](https://hexdocs.pm/elixir/Range.html)                                                                                                            |
 
 ## `repeat(value, num)`
+
+### Arguments
+
+- `value: any`
+- `num: number`
+
+### Example
+
+```js
+```
 
 ### References
 
