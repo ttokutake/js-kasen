@@ -1006,7 +1006,8 @@ TBD
 
 ### Example
 
-TODO
+```js
+```
 
 ### References
 
@@ -1028,7 +1029,8 @@ TODO
 
 ### Example
 
-TODO
+```js
+```
 
 ### References
 
