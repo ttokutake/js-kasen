@@ -1050,6 +1050,11 @@ TBD
 
 - **Consumer**
 
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                         |
@@ -1083,6 +1088,15 @@ TBD
 ## `count(fun)`
 
 - **Consumer**
+
+### Arguments
+
+- `fun: (v: T, k: string) => boolean`
+
+### Example
+
+```js
+```
 
 ### References
 
