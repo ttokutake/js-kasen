@@ -964,6 +964,15 @@ TBD
 
 - **Consumer**
 
+### Arguments
+
+- `fun: (v: T, k: string) => boolean`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                     |
@@ -981,6 +990,15 @@ TBD
 ## `some(fun)`
 
 - **Consumer**
+
+### Arguments
+
+- `fun: (v: T, k: string) => boolean`
+
+### Example
+
+```js
+```
 
 ### References
 
@@ -1000,6 +1018,15 @@ TBD
 
 - **Consumer**
 
+### Arguments
+
+- `fun: (v: T, k: string) => boolean`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                   |
@@ -1017,6 +1044,15 @@ TBD
 ## `findEntry(fun)`
 
 - **Consumer**
+
+### Arguments
+
+- `fun: (v: T, k: string) => boolean`
+
+### Example
+
+```js
+```
 
 ### References
 
@@ -1036,6 +1072,15 @@ TBD
 
 - **Consumer**
 
+### Arguments
+
+- `fun: (v: T, k: string) => boolean`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                         |
@@ -1053,6 +1098,15 @@ TBD
 ## `keyOf(value)`
 
 - **Consumer**
+
+### Arguments
+
+- `value: T`
+
+### Example
+
+```js
+```
 
 ### References
 

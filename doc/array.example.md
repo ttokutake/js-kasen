@@ -1676,6 +1676,15 @@ TBD
 
 - **Consumer**
 
+### Arguments
+
+- `fun: (v: T, i: number) => boolean`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                     |
@@ -1693,6 +1702,15 @@ TBD
 ## `some(fun)`
 
 - **Consumer**
+
+### Arguments
+
+- `fun: (v: T, i: number) => boolean`
+
+### Example
+
+```js
+```
 
 ### References
 
@@ -1712,6 +1730,15 @@ TBD
 
 - **Consumer**
 
+### Arguments
+
+- `fun: (v: T, i: number) => boolean`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                   |
@@ -1729,6 +1756,15 @@ TBD
 ## `findLast(fun)`
 
 - **Consumer**
+
+### Arguments
+
+- `fun: (v: T, i: number) => boolean`
+
+### Example
+
+```js
+```
 
 ### References
 
@@ -1748,6 +1784,15 @@ TBD
 
 - **Consumer**
 
+### Arguments
+
+- `fun: (v: T, i: number) => boolean`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                             |
@@ -1765,6 +1810,15 @@ TBD
 ## `findLastEntry(fun)`
 
 - **Consumer**
+
+### Arguments
+
+- `fun: (v: T, i: number) => boolean`
+
+### Example
+
+```js
+```
 
 ### References
 
@@ -1784,6 +1838,15 @@ TBD
 
 - **Consumer**
 
+### Arguments
+
+- `fun: (v: T, i: number) => boolean`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                         |
@@ -1801,6 +1864,15 @@ TBD
 ## `findLastKey(fun) / findLastIndex(fun)`
 
 - **Consumer**
+
+### Arguments
+
+- `fun: (v: T, i: number) => boolean`
+
+### Example
+
+```js
+```
 
 ### References
 
@@ -1820,6 +1892,15 @@ TBD
 
 - **Consumer**
 
+### Arguments
+
+- `value: T`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                     |
@@ -1837,6 +1918,15 @@ TBD
 ## `lastKeyOf(value) / lastIndexOf(value)`
 
 - **Consumer**
+
+### Arguments
+
+- `value: T`
+
+### Example
+
+```js
+```
 
 ### References
 
