@@ -1126,6 +1126,15 @@ TBD
 
 - **Consumer**
 
+### Arguments
+
+- `fun: (v: T, k: string) => U`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function |
@@ -1143,6 +1152,16 @@ TBD
 ## `max(fun)`
 
 - **Consumer**
+
+### Arguments
+
+- `fun: (v1: T, v2: T) => number`
+  - default: `(v1, v2) => v1 > v2 ? -1 : (v1 === v2 ? 0 : 1)`
+
+### Example
+
+```js
+```
 
 ### References
 
@@ -1165,6 +1184,16 @@ TBD
 ## `min(fun)`
 
 - **Consumer**
+
+### Arguments
+
+- `fun: (v1: T, v2: T) => number`
+  - default: `(v1, v2) => v1 > v2 ? 1 : (v1 === v2 ? 0 : -1)`
+
+### Example
+
+```js
+```
 
 ### References
 

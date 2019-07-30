@@ -836,7 +836,7 @@ TBD
 
 ### Arguments
 
-- `fun: (v1: T, v2: T) => boolean`
+- `fun: (v1: T, v2: T) => number`
   - default: `(v1, v2) => v1 > v2 ? 1 : (v1 === v2 ? 0 : -1)`
 
 ### Example
@@ -866,7 +866,7 @@ TBD
 
 ### Arguments
 
-- `fun: (v1: T, v2: T) => boolean`
+- `fun: (v: T, i: index) => any`
   - default: `v => v`
 
 ### Example
@@ -887,10 +887,6 @@ TBD
 | JavaScript | -                                                                                                            |
 | Scala      | -                                                                                                            |
 | Elixir     | [uniq](https://hexdocs.pm/elixir/Enum.html#uniq/1), [uniq_by](https://hexdocs.pm/elixir/Enum.html#uniq_by/2) |
-
-## `uniqueBy()`
-
-TBD
 
 ## `chunk(num)`
 
@@ -1946,6 +1942,16 @@ TBD
 
 - **Consumer**
 
+### Arguments
+
+- `fun: (v: T, i: number) => U`
+  - default: `v => v`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                                   |
@@ -1963,6 +1969,16 @@ TBD
 ## `max(fun)`
 
 - **Consumer**
+
+### Arguments
+
+- `fun: (v1: T, v2: T) => number`
+  - default: `(v1, v2) => v1 > v2 ? -1 : (v1 === v2 ? 0 : 1)`
+
+### Example
+
+```js
+```
 
 ### References
 
@@ -1985,6 +2001,16 @@ TBD
 ## `min(fun)`
 
 - **Consumer**
+
+### Arguments
+
+- `fun: (v1: T, v2: T) => number`
+  - default: `(v1, v2) => v1 > v2 ? 1 : (v1 === v2 ? 0 : -1)`
+
+### Example
+
+```js
+```
 
 ### References
 
