@@ -727,6 +727,11 @@ TBD
 - **Method chaining only**
 - **Consumer**
 
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                       |
@@ -745,6 +750,11 @@ TBD
 
 - **Consumer**
 
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                         |
@@ -762,6 +772,11 @@ TBD
 ## `toObject()`
 
 - **Consumer**
+
+### Example
+
+```js
+```
 
 ### References
 
