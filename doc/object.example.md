@@ -796,6 +796,17 @@ TBD
 
 - **Consumer**
 
+### Arguments
+
+- `fun: (acc: U, v: T, i: number) => U`
+- `init: U`
+  - default: `undefined`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                       |
@@ -814,6 +825,17 @@ TBD
 
 - **Consumer**
 
+### Arguments
+
+- `fun: (acc: U, v: T, i: number) => U`
+- `init: U`
+  - constraint: `init !== undefined`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function |
@@ -831,6 +853,17 @@ TBD
 ## `scan(fun, init)`
 
 - **Consumer**
+
+### Arguments
+
+- `fun: (acc: U, v: T, i: number) => U`
+- `init: U`
+  - default: `undefined`
+
+### Example
+
+```js
+```
 
 ### References
 
