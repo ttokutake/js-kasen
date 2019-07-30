@@ -1988,11 +1988,11 @@ TBD
 | Immutable | -                                                                                          |
 | Ramda     | [max](https://ramdajs.com/docs/#max), [maxBy](https://ramdajs.com/docs/#maxBy)             |
 
-| Language   | Function                                                                                                                                                                                                                                                                             |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| JavaScript | [max](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Math/max)                                                                                                                                                                                        |
-| Scala      | [max](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#maxBy[B](f:A=%3EB)(implicitcmp:scala.math.Ordering[B]):A>), [maxBy](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#maxBy[B](f:A=>B)(implicitcmp:scala.math.Ordering[B]):A>) |
-| Elixir     | [max](https://hexdocs.pm/elixir/Enum.html#max/2)                                                                                                                                                                                                                                     |
+| Language   | Function                                                                                                                                                                                                                                                                               |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| JavaScript | [max](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Math/max)                                                                                                                                                                                          |
+| Scala      | [max](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#maxBy[B](f:A=%3EB)(implicitcmp:scala.math.Ordering[B]):A>), [maxBy](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#maxBy[B](f:A=%3CB)(implicitcmp:scala.math.Ordering[B]):A>) |
+| Elixir     | [max](https://hexdocs.pm/elixir/Enum.html#max/2)                                                                                                                                                                                                                                       |
 
 ## `maxBy()`
 

@@ -1171,11 +1171,11 @@ TBD
 | Immutable | -        |
 | Ramda     | -        |
 
-| Language   | Function                                                                                                                                                                                                                                                                             |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| JavaScript | -                                                                                                                                                                                                                                                                                    |
-| Scala      | [max](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#maxBy[B](f:A=%3EB)(implicitcmp:scala.math.Ordering[B]):A>), [maxBy](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#maxBy[B](f:A=>B)(implicitcmp:scala.math.Ordering[B]):A>) |
-| Elixir     | -                                                                                                                                                                                                                                                                                    |
+| Language   | Function                                                                                                                                                                                                                                                                               |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| JavaScript | -                                                                                                                                                                                                                                                                                      |
+| Scala      | [max](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#maxBy[B](f:A=%3EB)(implicitcmp:scala.math.Ordering[B]):A>), [maxBy](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#maxBy[B](f:A=%3CB)(implicitcmp:scala.math.Ordering[B]):A>) |
+| Elixir     | -                                                                                                                                                                                                                                                                                      |
 
 ## `maxBy()`
 
