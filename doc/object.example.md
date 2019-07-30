@@ -1217,6 +1217,15 @@ TBD
 
 - **Consumer**
 
+### Arguments
+
+- `value: any`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                       |
@@ -1239,6 +1248,11 @@ TBD
 
 - **Consumer**
 
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                   |
@@ -1256,6 +1270,11 @@ TBD
 ## `values()`
 
 - **Consumer**
+
+### Example
+
+```js
+```
 
 ### References
 
@@ -1275,6 +1294,11 @@ TBD
 
 - **Consumer**
 
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                         |
@@ -1292,6 +1316,15 @@ TBD
 ## `forEach(fun)`
 
 - **Consumer**
+
+### Arguments
+
+- `fun: (v: T, k: string) => any`
+
+### Example
+
+```js
+```
 
 ### References
 
