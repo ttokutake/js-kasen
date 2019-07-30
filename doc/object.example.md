@@ -798,7 +798,7 @@ TBD
 
 ### Arguments
 
-- `fun: (acc: U, v: T, i: number) => U`
+- `fun: (acc: U, v: T, k: string) => U`
 - `init: U`
   - default: `undefined`
 
@@ -827,7 +827,7 @@ TBD
 
 ### Arguments
 
-- `fun: (acc: U, v: T, i: number) => U`
+- `fun: (acc: U, v: T, k: string) => U`
 - `init: U`
   - constraint: `init !== undefined`
 
@@ -856,7 +856,7 @@ TBD
 
 ### Arguments
 
-- `fun: (acc: U, v: T, i: number) => U`
+- `fun: (acc: U, v: T, k: string) => U`
 - `init: U`
   - default: `undefined`
 
@@ -883,6 +883,15 @@ TBD
 
 - **Consumer**
 
+### Arguments
+
+- `fun: (v: T, k: string) => boolean`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                               |
@@ -897,9 +906,18 @@ TBD
 | Scala      | [partition](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#partition(p:A=%3EBoolean):(C,C)>) |
 | Elixir     | -                                                                                                                      |
 
-## `join()`
+## `join(delimiter)`
 
 - **Consumer**
+
+### Arguments
+
+- `delimiter: string`
+
+### Example
+
+```js
+```
 
 ### References
 
@@ -918,6 +936,15 @@ TBD
 ## `groupBy(fun)`
 
 - **Consumer**
+
+### Arguments
+
+- `fun: (v: T, k: string) => string`
+
+### Example
+
+```js
+```
 
 ### References
 

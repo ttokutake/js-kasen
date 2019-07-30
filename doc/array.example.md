@@ -1587,6 +1587,15 @@ TBD
 
 - **Consumer**
 
+### Arguments
+
+- `fun: (v: T, i: number) => boolean`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                               |
@@ -1601,9 +1610,18 @@ TBD
 | Scala      | [partition](<https://www.scala-lang.org/api/current/scala/collection/IndexedSeq.html#partition(p:A=%3EBoolean):(C,C)>) |
 | Elixir     | [split_with](https://hexdocs.pm/elixir/Enum.html#split_with/2)                                                         |
 
-## `join()`
+## `join(delimiter)`
 
 - **Consumer**
+
+### Arguments
+
+- `delimiter: string`
+
+### Example
+
+```js
+```
 
 ### References
 
@@ -1630,6 +1648,15 @@ TBD
 ## `groupBy(fun)`
 
 - **Consumer**
+
+### Arguments
+
+- `fun: (v: T, i: number) => string`
+
+### Example
+
+```js
+```
 
 ### References
 
