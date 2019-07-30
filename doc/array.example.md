@@ -629,7 +629,7 @@ TBD
 
 ### Arguments
 
-- `keys: (number | string)[]`
+- `keys: Array<number | string>`
 - `value: T`
 
 ### Example
@@ -655,7 +655,7 @@ TBD
 
 ### Arguments
 
-- `keys: (number | string)[]`
+- `keys: Array<number | string>`
 - `fun: (v: any, k: number | string) => any`
 
 ### Example
@@ -681,7 +681,7 @@ TBD
 
 ### Arguments
 
-- `keys: (number | string)[]`
+- `keys: Array<number | string>`
 
 ### Example
 
@@ -1091,7 +1091,7 @@ TBD
 
 ### Arguments
 
-- `fun: (v: T, k: string) => boolean`
+- `fun: (v: T, i: number) => boolean`
 
 ### Example
 
@@ -1116,6 +1116,16 @@ TBD
 
 - **Consumer**
 
+### Arguments
+
+- `index: number`
+- `defaultValue: T`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                 |
@@ -1131,6 +1141,15 @@ TBD
 | Elixir     | -        |
 
 ## `has(index)`
+
+### Arguments
+
+- `index: number`
+
+### Example
+
+```js
+```
 
 - **Consumer**
 
@@ -1152,6 +1171,15 @@ TBD
 
 - **Consumer**
 
+### Arguments
+
+- `value: T`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                           |
@@ -1170,6 +1198,16 @@ TBD
 
 - **Consumer**
 
+### Arguments
+
+- `keys: Array<number | string>`
+- `defaultValue: any`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                     |
@@ -1187,6 +1225,15 @@ TBD
 ## `hasIn(keys)`
 
 - **Consumer**
+
+### Arguments
+
+- `keys: Array<number | string>`
+
+### Example
+
+```js
+```
 
 ### References
 

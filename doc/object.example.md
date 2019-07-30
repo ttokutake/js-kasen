@@ -410,7 +410,7 @@ TBD
 
 ### Arguments
 
-- `keys: (number | string)[]`
+- `keys: Array<number | string>`
 - `value: T`
 
 ### Example
@@ -436,7 +436,7 @@ TBD
 
 ### Arguments
 
-- `keys: (number | string)[]`
+- `keys: Array<number | string>`
 - `fun: (v: any, k: number | string) => any`
 
 ### Example
@@ -462,7 +462,7 @@ TBD
 
 ### Arguments
 
-- `keys: (number | string)[]`
+- `keys: Array<number | string>`
 
 ### Example
 
@@ -589,6 +589,16 @@ TBD
 
 - **Consumer**
 
+### Arguments
+
+- `key: string`
+- `defaultValue: T`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                 |
@@ -606,6 +616,15 @@ TBD
 ## `has(key)`
 
 - **Consumer**
+
+### Arguments
+
+- `key: string`
+
+### Example
+
+```js
+```
 
 ### References
 
@@ -625,6 +644,15 @@ TBD
 
 - **Consumer**
 
+### Arguments
+
+- `value: T`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                           |
@@ -643,6 +671,16 @@ TBD
 
 - **Consumer**
 
+### Arguments
+
+- `keys: Array<number | string>`
+- `defaultValue: any`
+
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                     |
@@ -660,6 +698,15 @@ TBD
 ## `hasIn(keys)`
 
 - **Consumer**
+
+### Arguments
+
+- `keys: Array<number | string>`
+
+### Example
+
+```js
+```
 
 ### References
 
