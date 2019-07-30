@@ -1253,6 +1253,11 @@ TBD
 
 - **Consumer**
 
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                     |
@@ -1270,6 +1275,11 @@ TBD
 ## `tail()`
 
 - **Consumer**
+
+### Example
+
+```js
+```
 
 ### References
 
@@ -1289,6 +1299,11 @@ TBD
 
 - **Consumer**
 
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                         |
@@ -1307,6 +1322,11 @@ TBD
 
 - **Consumer**
 
+### Example
+
+```js
+```
+
 ### References
 
 | Library   | Function                                                                   |
@@ -1324,6 +1344,15 @@ TBD
 ## `splitAt(index)`
 
 - **Consumer**
+
+### Arguments
+
+- `key: number`
+
+### Example
+
+```js
+```
 
 ### References
 
