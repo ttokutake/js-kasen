@@ -1,10 +1,23 @@
 {
   "name": "kasen",
   "version": "0.0.1",
-  "main": "index.js",
+  "description": "The library of collection methods",
+  "main": "dist/kasen.js",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "repository": "git@github.com:ttokutake/js-kasen.git",
   "author": "ttokutake <tadatoshi.tokutake@gmail.com>",
   "license": "MIT",
+  "keywords": [
+    "collection",
+    "array",
+    "object",
+    "immutable",
+    "lazy evaluation"
+  ],
   "scripts": {
     "upgrade": "ncu -u",
     "audit": "# TODO: npm audit fix --force",
@@ -19,7 +32,6 @@
     "test": "jest",
     "test:ci": "npm run test && codecov"
   },
-  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.5.4",
     "@babel/preset-env": "^7.5.4",
